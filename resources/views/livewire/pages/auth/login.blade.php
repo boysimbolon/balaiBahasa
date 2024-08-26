@@ -29,21 +29,18 @@ new #[Layout('layouts.guest')] class extends Component
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form wire:submit="login">
-        <!-- Email Address -->
+        <!-- NIM / No Peserta -->
         <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input wire:model="form.email" id="email" class="block mt-1 w-full" type="email" name="email" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('form.email')" class="mt-2" />
+{{--            <x-input-label for="email" :value="__('NIM')" />--}}
+            <x-text-input wire:model="form.username" id="username" class="block mt-1 w-full" type="text" name="username" placeholder="NIM / No Peserta" required autofocus autocomplete="username" />
+            <x-input-error :messages="$errors->get('form.username')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+{{--            <x-input-label for="password" :value="__('Password')" />--}}
 
-            <x-text-input wire:model="form.password" id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+            <x-text-input wire:model="form.password" id="password" class="block mt-1 w-full" type="password" name="password" placeholder="Password" required autocomplete="current-password" />
 
             <x-input-error :messages="$errors->get('form.password')" class="mt-2" />
         </div>
@@ -56,16 +53,22 @@ new #[Layout('layouts.guest')] class extends Component
             </label>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
+        <!-- Forgot Password & Log In -->
+        <div class="flex flex-col items-start gap-2 mt-4">
             @if (Route::has('password.request'))
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}" wire:navigate>
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
 
-            <x-primary-button class="ms-3">
+            <x-primary-button class="w-full">
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
     </form>
+
+    <!-- Registration -->
+    <div class="text-sm text-center mt-4">
+        <p>Anda belum mendaftar? Silahkan <a class="text-blue-500" href="{{ route('register') }}">{{ __('Register') }}</a></p>
+    </div>
 </div>
