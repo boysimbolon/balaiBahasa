@@ -69,6 +69,6 @@ new #[Layout('layouts.guest')] class extends Component
 
     <!-- Registration -->
     <div class="text-sm text-center mt-4">
-        <p>Anda belum mendaftar? Silahkan <a class="text-blue-500" href="{{ route('register') }}">{{ __('Register') }}</a></p>
+        <p>Anda belum mendaftar? Silahkan <a class="text-blue-500 underline" href="{{ route('register') }}">{{ __('Register') }}</a></p>
     </div>
 </div>
