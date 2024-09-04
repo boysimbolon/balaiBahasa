@@ -18,7 +18,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'no_Peserta',
-        'password',
+        'pin',
     ];
 
     /**
@@ -27,7 +27,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
+        'pin',
         'remember_token',
     ];
 
@@ -39,7 +39,7 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'password' => 'hashed',
+            'pin' => 'hashed',
         ];
     }
 }

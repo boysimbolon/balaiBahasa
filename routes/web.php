@@ -1,11 +1,12 @@
 <?php
 
+use App\Livewire\Forms\Register;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return redirect()->route('login');
 });
-
+Route::get('umum/register/', Register::class);
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');

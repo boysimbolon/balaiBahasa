@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 class data_user extends Model
 {
     use HasFactory,Notifiable;
+    protected $table = 'data_users';
     protected $fillable = [
         'nama',
         'nik' ,
@@ -26,6 +27,7 @@ class data_user extends Model
         'kewarganegaraan' ,
         'pasFoto',
         'ktp',
+        'bhs_seharian',
         'no_Peserta'
     ];
 }
