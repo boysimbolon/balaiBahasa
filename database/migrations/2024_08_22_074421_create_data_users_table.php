@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('data_users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('no_Peserta')->constrained('users');
+            // Definisikan kolom 'no_Peserta' terlebih dahulu
+            $table->char('no_Peserta', 8);
+            // Tambahkan foreign key setelah kolom 'no_Peserta' didefinisikan
+            $table->foreign('no_Peserta')->references('no_Peserta')->on('users');
             $table->string('nama');
             $table->string('nik');
             $table->string('tmpt_lahir');
@@ -23,10 +26,10 @@ return new class extends Migration
             $table->string('alamat');
             $table->enum('jenis_kelamin',['Laki-Laki','Perempuan']);
             $table->string('instansi');
-            $table->integer('num_telp');
+            $table->string('num_telp',20);
             $table->string('email');
             $table->enum('Pendidikan',['Tidak/Belum Sekolah','Belum Tamat SD/Sederajat','Tamat SD/Sederajat','SLTP/Sederajat','SLTA/Sederajat','D-I/II','D-III','D-IV','S1','S2','S3']);
-            $table->integer('thn_lulus');
+            $table->string('thn_lulus');
             $table->string('kewarganegaraan');
             $table->string('bhs_seharian');
             $table->text('pasFoto');
