@@ -5,7 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>UNAI - Balai Bahasa</title>
+
+        <!-- Favicon -->
+        <link rel="icon" href="Logo-Unai.png">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -14,23 +17,51 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+    <body class="font-sans antialiased h-screen">
+        <!-- Navbar -->
+        <nav class="fixed h-20 w-screen drop-shadow-lg bg-white flex items-center z-10">
+            <!-- Menu -->
+            <div id="menuIcon" class="w-[72px] h-full flex items-center justify-center bg-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                </svg>
+            </div>
+
+            <!-- Navbar Heading -->
+            <h1 class="ml-5 text-2xl font-semibold">Balai Bahasa UNAI</h1>
+        </nav>
+
+        <div class="min-h-screen flex">
+            <!-- Sidebar -->
             <livewire:layout.navigation />
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
-
             <!-- Page Content -->
-            <main>
+            <main class="pt-20 bg-neutral-100 min-h-screen w-full transition-spacing duration-700 ease-in-out" id="mainContent">
                 {{ $slot }}
             </main>
         </div>
+
+        <script>
+            const menuIcon = document.getElementById('menuIcon');
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('mainContent');
+            const profileDropdown = document.getElementById('profileDropdown');
+
+
+            menuIcon.addEventListener('click', function () {
+                sidebar.classList.toggle('translate-x-full');
+                mainContent.classList.toggle('ml-60');
+            });
+
+            function openProfileDropdown() {
+                document.getElementById('profileDropdown').classList.toggle('hidden');
+                document.getElementById('caret1').classList.toggle('rotate-180');
+            }
+
+            function openTypeDropdown() {
+                document.getElementById('typeDropdown').classList.toggle('hidden');
+                document.getElementById('caret2').classList.toggle('rotate-180');
+            }
+        </script>
     </body>
 </html>

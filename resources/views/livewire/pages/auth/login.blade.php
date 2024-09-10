@@ -8,6 +8,7 @@ use Livewire\Volt\Component;
 new #[Layout('layouts.guest')] class extends Component
 {
     public LoginForm $form;
+    public $title = 'Login | Balai Bahasa';
 
     /**
      * Handle an incoming authentication request.
@@ -29,6 +30,11 @@ new #[Layout('layouts.guest')] class extends Component
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form wire:submit="login">
+        <div class="text-center mb-5">
+            <h1 class="font-bold text-2xl mb-1">Universitas Advent Indonesia</h1>
+            <h3 class="font-light text-xl">Balai Bahasa</h3>
+        </div>
+
         <!-- NIM / No Peserta -->
         <div>
 {{--            <x-input-label for="email" :value="__('NIM')" />--}}
@@ -69,6 +75,6 @@ new #[Layout('layouts.guest')] class extends Component
 
     <!-- Registration -->
     <div class="text-sm text-center mt-4">
-        <p>Anda belum mendaftar? Silahkan <a class="text-blue-500 underline" href="{{ route('register') }}" wire:navigate>{{ __('Register') }}</a></p>
+        <p>Anda belum mendaftar? Silahkan <a class="text-blue-500 hover:text-blue-700 hover:underline" href="{{ route('register') }}" wire:navigate>{{ __('Register') }}</a></p>
     </div>
 </div>

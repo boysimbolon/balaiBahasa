@@ -8,11 +8,13 @@ Route::get('/', function () {
 });
 
 Route::view('dashboard', 'dashboard')->name('dashboard');
+Route::view('biodata', 'biodata')->name('biodata');
 
 Route::get('umum/register/', Register::class);
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+
+//Route::view('dashboard', 'dashboard')
+//    ->middleware(['auth', 'verified'])
+//    ->name('dashboard');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
