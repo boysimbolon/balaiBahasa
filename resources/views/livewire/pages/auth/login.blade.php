@@ -28,7 +28,11 @@ new #[Layout('layouts.guest')] class extends Component
 <div>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
-
+    @if (session()->has('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
     <form wire:submit="login">
         <div class="text-center mb-5">
             <h1 class="font-bold text-2xl mb-1">Universitas Advent Indonesia</h1>
@@ -37,18 +41,18 @@ new #[Layout('layouts.guest')] class extends Component
 
         <!-- NIM / No Peserta -->
         <div>
-{{--            <x-input-label for="email" :value="__('NIM')" />--}}
-            <x-text-input wire:model="form.username" id="username" class="block mt-1 w-full" type="text" name="username" placeholder="NIM / No Peserta" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('form.username')" class="mt-2" />
+            <x-input-label for="email" :value="__('NIM')" />
+            <x-text-input wire:model="form.no_Peserta" id="no_Peserta" class="block mt-1 w-full" type="text" name="no_Peserta" placeholder="NIM / No Peserta" required autofocus autocomplete="no_Peserta" />
+            <x-input-error :messages="$errors->get('form.no_Peserta')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-{{--            <x-input-label for="password" :value="__('Password')" />--}}
+            <x-input-label for="pin" :value="__('Pin')" />
 
-            <x-text-input wire:model="form.password" id="password" class="block mt-1 w-full" type="password" name="password" placeholder="Password" required autocomplete="current-password" />
+            <x-text-input wire:model="form.pin" id="pin" class="block mt-1 w-full" type="password" name="pin" placeholder="PIN" required autocomplete="current-password" />
 
-            <x-input-error :messages="$errors->get('form.password')" class="mt-2" />
+            <x-input-error :messages="$errors->get('form.pin')" class="mt-2" />
         </div>
 
         <!-- Remember Me -->
@@ -61,8 +65,8 @@ new #[Layout('layouts.guest')] class extends Component
 
         <!-- Forgot Password & Log In -->
         <div class="flex flex-col items-start gap-2 mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}" wire:navigate>
+            @if (Route::has('pin.request'))
+                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('pin.request') }}" wire:navigate>
                     {{ __('Forgot your password?') }}
                 </a>
             @endif

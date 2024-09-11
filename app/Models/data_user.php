@@ -21,7 +21,6 @@ class data_user extends Model
         'jenis_kelamin' ,
         'instansi' ,
         'num_telp' ,
-        'email' ,
         'Pendidikan' ,
         'thn_lulus' ,
         'kewarganegaraan' ,

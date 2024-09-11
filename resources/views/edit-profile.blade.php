@@ -1,177 +1,179 @@
 <x-app-layout>
     <div class="p-5 h-full">
-        <h2 class="text-xl">Edit Profil</h2>
-        <div class="bg-white drop-shadow-lg w-3/4 mt-1 rounded p-5 flex flex-col gap-4">
-            <div class="flex flex-col gap-10">
-                <!-- Nama -->
-                <div class="h-11 flex items-center">
-                    <div class="w-full">
-                        <label for="name">Nama</label>
-                        <input wire:model="nama" id="nama" class="block mt-1 w-1/2 rounded" placeholder="Nama" type="text" name="nama" required autofocus autocomplete="nama"/>
-                        <x-input-error :messages="$errors->get('nama')" class="mt-2"/>
+        <x-heading-page>Edit Profil</x-heading-page>
+        <div class="bg-white drop-shadow-lg w-full xl:w-2/3 mt-1 rounded p-5">
+            <form action="" class="flex flex-col gap-4">
+                <div class="flex flex-col gap-10">
+                    <!-- Nama -->
+                    <div class="h-11 flex items-center">
+                        <div class="w-full">
+                            <x-input-label for="tmpt_lahir" :value="__('Nama')"/>
+                            <input wire:model="nama" id="nama" class="block mt-1 w-full rounded" placeholder="Nama" type="text" name="nama" required autofocus autocomplete="nama"/>
+                            <x-input-error :messages="$errors->get('nama')" class="mt-2"/>
+                        </div>
+                    </div>
+                    <div class="h-11 flex items-center gap-5">
+                        <!-- Tempat Lahir -->
+                        <div class="w-1/2">
+                            <x-input-label for="tmpt_lahir" :value="__('Tempat Lahir')"/>
+                            <input wire:model="tmpt_lahir" id="tmpt_lahir" class="block mt-1 w-full rounded" placeholder="Tempat Lahir" type="text" name="tmpt_lahir" required autofocus autocomplete="tmpt_lahir"/>
+                            <x-input-error :messages="$errors->get('tmpt_lahir')" class="mt-2"/>
+                        </div>
+                        <!-- Tanggal Lahir -->
+                        <div class="w-1/2">
+                            <x-input-label for="tgl_lahir" :value="__('Tanggal Lahir')"/>
+                            <input wire:model="tgl_lahir" id="tgl_lahir" class="block mt-1 w-full rounded" type="date" name="tgl_lahir"  required autofocus autocomplete="tgl_lahir"/>
+                            <x-input-error :messages="$errors->get('tgl_lahir')" class="mt-2"/>
+                        </div>
+                    </div>
+                    <!-- Alamat -->
+                    <div class="h-11 flex items-center">
+                        <div class="w-full">
+                            <x-input-label for="alamat" :value="__('Alamat')"/>
+                            <input wire:model="alamat" id="alamat" class="block mt-1 w-full rounded" placeholder="Alamat" type="text" name="alamat" required autofocus autocomplete="alamat"/>
+                            <x-input-error :messages="$errors->get('alamat')" class="mt-2"/>
+                        </div>
+                    </div>
+                    <div class="h-11 flex items-between gap-5">
+                        <!-- NIDN -->
+                        <div class="w-1/2">
+                            <x-input-label for="NIDN" :value="__('NIDN')"/>
+                            <input wire:model="NIDN" id="NIDN" class="block mt-1 w-full rounded" placeholder="NIDN" type="text" name="NIDN" autofocus autocomplete="DIDN"/>
+                            <x-input-error :messages="$errors->get('name')" class="mt-2"/>
+                        </div>
+                        <!-- Pekerjaan -->
+                        <div class="w-1/2">
+                            <x-input-label for="pekerjaan" :value="__('Pekerjaan')"/>
+                            <select wire:model="pekerjaan" id="pekerjaan" name="pekerjaan" class="block mt-1 w-full rounded" required autofocus>
+                                <option value="" disabled>Pilih Pekerjaan</option>
+                                <option value="Pelajar">Pelajar</option>
+                                <option value="Mahasiswa">Mahasiswa</option>
+                                <option value="Guru">Guru</option>
+                                <option value="Dosen">Dosen</option>
+                                <option value="Pegawai Negeri Sipil (PNS)">Pegawai Negeri Sipil (PNS)</option>
+                                <option value="Tentara Nasional Indonesia (TNI)">Tentara Nasional Indonesia (TNI)</option>
+                                <option value="Kepolisian RI (POLRI)">Kepolisian RI (POLRI)</option>
+                                <option value="Karyawan Swasta">Karyawan Swasta</option>
+                                <option value="Wirausaha">Wirausaha</option>
+                                <option value="Belum/Tidak Bekerja">Belum/Tidak Bekerja</option>
+                            </select>
+                            <x-input-error :messages="$errors->get('pekerjaan')" class="mt-2"/>
+                        </div>
+                    </div>
+                    <!-- Jenis Kelamin -->
+                    <div class="h-11 flex items-center">
+                        <div>
+                            <x-input-label for="jenis_kelamin" :value="__('Jenis Kelamin')"/>
+                            <div class="flex items-center justify-between mt-1">
+                                <div class="w-1/2 flex items-center gap-1">
+                                    <input type="radio" wire:model="jenis_kelamin" id="laki_laki" name="jenis_kelamin" value="L" class="block rounded" required autofocus>
+                                    <label for="laki_laki">Laki-Laki</label>
+                                </div>
+                                <div class="w-1/2 flex items-center gap-1">
+                                    <input type="radio" wire:model="jenis_kelamin" id="perempuan" name="jenis_kelamin" value="P" class="block rounded" required autofocus>
+                                    <label for="perempuan">Perempuan</label>
+                                </div>
+                            </div>
+                            <x-input-error :messages="$errors->get('jenis_kelamin')" class="mt-2"/>
+                        </div>
+                    </div>
+                    <!-- Instansi -->
+                    <div class="h-11 flex items-center">
+                        <div class="w-full">
+                            <x-input-label for="instansi" :value="__('Instansi')"/>
+                            <input wire:model="instansi" id="instansi" class="block mt-1 w-full rounded" placeholder="Instansi" type="text" name="instansi" required autofocus autocomplete="instansi"/>
+                            <x-input-error :messages="$errors->get('instansi')" class="mt-2"/>
+                        </div>
+                    </div>
+                    <div class="h-11 flex items-between gap-5">
+                        <!-- Telepon -->
+                        <div class="w-1/2">
+                            <p class="w-full">
+                                <x-input-label for="num_telp" :value="__('Nomor Telepon')"/>
+                                <input wire:model="num_telp" id="num_telp" class="block mt-1 w-full rounded" placeholder="No Telepon" type="text" inputmode="numeric" name="num_telp" required autofocus autocomplete="num_telp"/>
+                                <x-input-error :messages="$errors->get('num_telp')" class="mt-2"/>
+                            </p>
+                        </div>
+                        <!-- Email Address -->
+                        <div class="w-1/2">
+                            <p class="w-full">
+                                <x-input-label for="email" :value="__('Email')"/>
+                                <input wire:model="email" id="email" class="block mt-1 w-full rounded" placeholder="Email" type="email" name="email" required autocomplete="email"/>
+                                <x-input-error :messages="$errors->get('email')" class="mt-2"/>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="h-11 flex items-between gap-5">
+                        <!-- Pendidikan -->
+                        <div class="w-1/2">
+                            <x-input-label for="pendidikan" :value="__('Pendidikan')"/>
+                            <select wire:model="Pendidikan" id="Pendidikan" name="Pendidikan" class="block mt-1 w-full rounded" required autofocus>
+                                <option value="" disabled>Pilih Pendidikan</option>
+                                <option value="Tidak/Belum Sekolah">Tidak/Belum Sekolah</option>
+                                <option value="Belum Tamat SD/Sederajat">Belum Tamat SD/Sederajat</option>
+                                <option value="Tamat SD/Sederajat">Tamat SD/Sederajat</option>
+                                <option value="SLTP/Sederajat">SLTP/Sederajat</option>
+                                <option value="SLTA/Sederajat">SLTA/Sederajat</option>
+                                <option value="D-I/II">D-I/II</option>
+                                <option value="D-III">D-III</option>
+                                <option value="D-IV">D-IV</option>
+                                <option value="S1">S1</option>
+                                <option value="S2">S2</option>
+                                <option value="S3">S3</option>
+                            </select>
+                            <x-input-error :messages="$errors->get('Pendidikan')" class="mt-2"/>
+                        </div>
+                        <!-- Tahun Lulus -->
+                        <div class="w-1/2">
+                            <x-input-label for="thn_lulus" :value="__('Tahun Lulus')"/>
+                            <select wire:model="thn_lulus" id="thn_lulus" name="thn_lulus" class="block mt-1 w-full rounded" required autofocus>
+                                <option value="">Pilih Tahun Lulus</option>
+                                @foreach (range(date('Y'), date('Y') - 50) as $year)
+                                    <option value="{{ $year }}">{{ $year }}</option>
+                                @endforeach
+                            </select>
+                            <x-input-error :messages="$errors->get('tahun_lulus')" class="mt-2"/>
+                        </div>
+                    </div>
+                    <div class="h-11 flex items-between gap-5">
+                        <!-- Kewarganegaraan -->
+                        <div class="w-1/2">
+                            <x-input-label for="kewarganegaraan" :value="__('Kewarganegaraan')"/>
+                            <input wire:model="kewarganegaraan" id="kewarganegaraan" class="block mt-1 w-full rounded" type="text" name="kewarganegaraan" required autofocus autocomplete="kewarganegaraan" placeholder="Kewarganegaraan"/>
+                            <x-input-error :messages="$errors->get('kewarganegaraan')" class="mt-2"/>
+                        </div>
+                        <!-- Bahasa -->
+                        <div class="w-1/2">
+                            <x-input-label for="bhs_seharian" :value="__('Bahasa Sehari')"/>
+                            <select wire:model="bhs_seharian" id="bhs_seharian" name="bhs_seharian" class="block mt-1 w-full rounded" required autofocus>
+                                <option value="" disabled>Pilih Bahasa</option>
+                                <option value="Indonesian">Indonesia</option>
+                                <option value="Malay">Malaysia</option>
+                                <option value="English">English</option>
+                                <option value="Thailand">Thailand</option>
+                                <option value="Japanase">Jepang</option>
+                                <option value="Korean">Korean</option>
+                            </select>
+                            <x-input-error :messages="$errors->get('bhs_seharian')" class="mt-2"/>
+                        </div>
+                    </div>
+                    <div class="h-fit flex items-between gap-5 py-3">
+                        <div class="w-1/2">
+                            <x-input-label for="pasFoto" :value="__('Pas Foto')"/>
+                            <input wire:model="pasFoto" id="pasFoto" class="block mt-1 w-full" type="file" name="pasFoto" required
+                                   autofocus accept="image/jpeg, image/png, image/jpg"/>
+                            <x-input-error :messages="$errors->get('pasFoto')" class="mt-2"/>
+                        </div>
+                        <div class="w-1/2">
+                            <x-input-label for="ktp" :value="__('KTP')"/>
+                            <input wire:model="ktp" id="ktp" class="block mt-1 w-full" type="file" name="ktp" required autofocus
+                                   accept="image/jpeg, image/png, image/jpg"/>
+                            <x-input-error :messages="$errors->get('ktp')" class="mt-2"/>
+                        </div>
                     </div>
                 </div>
-                <div class="h-11 flex items-center gap-5">
-                    <!-- Tempat Lahir -->
-                    <div class="w-1/2">
-                        <x-input-label for="tmpt_lahir" :value="__('Tempat Lahir')"/>
-                        <input wire:model="tmpt_lahir" id="tmpt_lahir" class="block mt-1 w-full rounded" placeholder="Tempat Lahir" type="text" name="tmpt_lahir" required autofocus autocomplete="tmpt_lahir"/>
-                        <x-input-error :messages="$errors->get('tmpt_lahir')" class="mt-2"/>
-                    </div>
-                    <!-- Tanggal Lahir -->
-                    <div class="w-1/2">
-                        <x-input-label for="tgl_lahir" :value="__('Tanggal Lahir')"/>
-                        <input wire:model="tgl_lahir" id="tgl_lahir" class="block mt-1 w-full rounded" type="date" name="tgl_lahir"  required autofocus autocomplete="tgl_lahir"/>
-                        <x-input-error :messages="$errors->get('tgl_lahir')" class="mt-2"/>
-                    </div>
-                </div>
-                <div class="h-11 flex items-center">
-                    <p class="w-full flex items-center gap-10">
-                        <span class="w-1/5">Tempat Lahir</span>
-                        <span class="flex items-center gap-5">
-                            :
-                            <span>Bandung</span>
-                        </span>
-                    </p>
-                </div>
-                <div class="h-11 flex items-center">
-                    <p class="w-full flex items-center gap-10">
-                        <span class="w-1/5">Tanggal Lahir</span>
-                        <span class="flex items-center gap-5">
-                            :
-                            <span>1971-12-28</span>
-                        </span>
-                    </p>
-                </div>
-                <div class="h-11 flex items-center">
-                    <p class="w-full flex items-center gap-10">
-                        <span class="w-1/5">Jenis Kelamin</span>
-                        <span class="flex items-center gap-5">
-                            :
-                            <span>Laki-Laki</span>
-                        </span>
-                    </p>
-                </div>
-                <div class="h-11 flex items-center">
-                    <p class="w-full flex items-center gap-10">
-                        <span class="w-1/5">Alamat</span>
-                        <span class="flex items-center gap-5">
-                            :
-                            <span>Jl. Diponegoro No. 123, Bandung</span>
-                        </span>
-                    </p>
-                </div>
-                <div class="h-11 flex items-center">
-                    <p class="w-full flex items-center gap-10">
-                        <span class="w-1/5">Pekerjaan</span>
-                        <span class="flex items-center gap-5">
-                            :
-                            <span>Mahasiswa</span>
-                        </span>
-                    </p>
-                </div>
-                <div class="h-11 flex items-center">
-                    <p class="w-full flex items-center gap-10">
-                        <span class="w-1/5">NIDN</span>
-                        <span class="flex items-center gap-5">
-                            :
-                            <span></span>
-                        </span>
-                    </p>
-                </div>
-                <div class="h-11 flex items-center">
-                    <p class="w-full flex items-center gap-10">
-                        <span class="w-1/5">Instansi</span>
-                        <span class="flex items-center gap-5">
-                            :
-                            <span>Universitas Padjadjaran</span>
-                        </span>
-                    </p>
-                </div>
-                <div class="h-11 flex items-center">
-                    <p class="w-full flex items-center gap-10">
-                        <span class="w-1/5">Telepon</span>
-                        <span class="flex items-center gap-5">
-                            :
-                            <span>08123456789</span>
-                        </span>
-                    </p>
-                </div>
-                <div class="h-11 flex items-center">
-                    <p class="w-full flex items-center gap-10">
-                        <span class="w-1/5">Email</span>
-                        <span class="flex items-center gap-5">
-                            :
-                            <span>johndoe@example.com</span>
-                        </span>
-                    </p>
-                </div>
-                <div class="h-11 flex items-center">
-                    <p class="w-full flex items-center gap-10">
-                        <span class="w-1/5">Pendidikan</span>
-                        <span class="flex items-center gap-5">
-                            :
-                            <span>S1</span>
-                        </span>
-                    </p>
-                </div>
-                <div class="h-11 flex items-center">
-                    <p class="w-full flex items-center gap-10">
-                        <span class="w-1/5">Tahun Pendidikan</span>
-                        <span class="flex items-center gap-5">
-                            :
-                            <span>2024</span>
-                        </span>
-                    </p>
-                </div>
-                <div class="h-11 flex items-center">
-                    <p class="w-full flex items-center gap-10">
-                        <span class="w-1/5">Kewarganegaraan</span>
-                        <span class="flex items-center gap-5">
-                            :
-                            <span>Indonesia</span>
-                        </span>
-                    </p>
-                </div>
-                <div class="h-11 flex items-center">
-                    <p class="w-full flex items-center gap-10">
-                        <span class="w-1/5">Bahasa</span>
-                        <span class="flex items-center gap-5">
-                            :
-                            <span>Indonesia</span>
-                        </span>
-                    </p>
-                </div>
-                <div class="h-fit flex items-center py-3">
-                    <p class="w-full flex items-center gap-10">
-                        <span class="w-1/5 h-fit">Foto</span>
-                        <span class="flex items-center gap-5">
-                            :
-                            <span>
-                                <img src="https://picsum.photos/200/300" alt="" class="rounded-xl">
-                            </span>
-                        </span>
-                    </p>
-                </div>
-                <div class="h-fit flex items-center py-3">
-                    <p class="w-full flex items-center gap-10">
-                        <span class="w-1/5 h-fit">KTP</span>
-                        <span class="flex items-center gap-5">
-                            :
-                            <span>
-                                <img src="https://picsum.photos/300/200" alt="" class="rounded-xl">
-                            </span>
-                        </span>
-                    </p>
-                </div>
-            </div>
-            <button class="flex justify-start mt-5 bg-primary w-fit p-2 rounded text-white gap-1" wire:click="{{ route('edit_profile') }}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                </svg>
-                Edit
-            </button>
+                <button type="submit" class="w-1/3 mt-5 bg-green-500 py-2 mx-auto rounded text-sm hover:font-semibold text-white hover:scale-105 hover:transition-all hover:duration-300 hover:ease-in-out">Save</button>
+            </form>
         </div>
     </div>
 </x-app-layout>
