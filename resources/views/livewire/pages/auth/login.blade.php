@@ -48,7 +48,7 @@ new #[Layout('layouts.guest')] class extends Component
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="pin" :value="__('Pin')" />
+            <x-input-label for="pin" :value="__('PIN')" />
 
             <x-text-input wire:model="form.pin" id="pin" class="block mt-1 w-full" type="password" name="pin" placeholder="PIN" required autocomplete="current-password" />
 
