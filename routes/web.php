@@ -2,19 +2,24 @@
 
 use App\Livewire\Forms\Register;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
 
 Route::get('/', function () {
     return redirect()->route('login');
 })->name('login');
-Route::get('umum/register/', Register::class);
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
 
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
-use Illuminate\Support\Facades\Mail;
+Route::view('dashboard', 'dashboard')->name('dashboard');
+Route::view('biodata', 'biodata')->name('biodata');
+Route::view('edit_profile', 'edit-profile')->name('edit_profile');
+Route::get('umum/register/', Register::class);
+
+//Route::view('dashboard', 'dashboard')
+//    ->middleware(['auth', 'verified'])
+//    ->name('dashboard');
+
+//Route::view('profile', 'profile')
+//    ->middleware(['auth'])
+//    ->name('profile');
 
 Route::get('/test-email', function () {
     Mail::raw('This is a test email.', function ($message) {
@@ -23,7 +28,5 @@ Route::get('/test-email', function () {
     });
     return 'Test email sent!';
 });
-
-
 
 require __DIR__.'/auth.php';
