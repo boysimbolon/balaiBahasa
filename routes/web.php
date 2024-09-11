@@ -11,6 +11,7 @@ Route::get('/', function () {
 Route::view('dashboard', 'dashboard')->name('dashboard');
 Route::view('biodata', 'biodata')->name('biodata');
 Route::view('edit_profile', 'edit-profile')->name('edit_profile');
+Route::view('change_password', 'change-password')->name('change_password');
 Route::get('umum/register/', Register::class);
 
 //Route::view('dashboard', 'dashboard')

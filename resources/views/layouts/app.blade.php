@@ -29,10 +29,10 @@
 
             <!-- Navbar Heading -->
             <div class="ml-5 flex items-center gap-3">
-                <div class="w-10 h-10">
+                <a href="{{ route('dashboard') }}" class="w-10 h-10">
                     <img src="Logo-Unai.png" alt="Unai Logo" class="aspect-square">
-                </div>
-                <h1 class="text-2xl font-semibold">Balai Bahasa UNAI</h1>
+                </a>
+                <a href="{{ route('dashboard') }}" class="text-2xl font-semibold">Balai Bahasa UNAI</a>
             </div>
         </nav>
 

@@ -43,7 +43,7 @@ new class extends Component
             </a>
 
             <!-- Profile -->
-            <li class="flex items-center justify-between h-14 px-5 hover:bg-secondary hover:text-black  {{ Route::is('biodata') || Route::is('edit_profile') ? 'bg-secondary text-black' : 'text-white' }}">
+            <li class="flex items-center justify-between h-14 px-5 hover:bg-secondary hover:text-black  {{ Route::is('biodata') || Route::is('edit_profile') || Route::is('change_password') ? 'bg-secondary text-black' : 'text-white' }}">
                 <div class="flex items-center gap-2 w-fit">
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" class="bi bi-person" viewBox="0 0 16 16">
@@ -70,7 +70,7 @@ new class extends Component
                 </a>
 
                 <!-- Change Password -->
-                <a href="">
+                <a href="{{ route('change_password') }}">
                     <li class="flex items-center justify-between h-14 px-5 text-white hover:bg-secondary hover:text-black">
                         <div class="flex items-center gap-2 w-fit">
                             <div class="w-6"></div>
