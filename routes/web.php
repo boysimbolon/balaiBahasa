@@ -14,6 +14,7 @@ Route::view('edit_profile', 'edit-profile')->name('edit_profile');
 Route::view('change_password', 'change-password')->name('change_password');
 Route::view('e3_schedule', 'e3-schedule')->name('e3_schedule');
 Route::view('toefl_schedule', 'toefl-schedule')->name('toefl_schedule');
+Route::view('history', 'history')->name('history');
 Route::get('umum/register/', Register::class);
 
 //Route::view('dashboard', 'dashboard')

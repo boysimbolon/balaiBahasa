@@ -119,8 +119,8 @@ new class extends Component
             </ul>
 
             <!-- History -->
-            <a href="">
-                <li class="flex items-center h-14 px-5 text-white hover:bg-secondary hover:text-black">
+            <a href="{{ route('history') }}">
+                <li class="flex items-center h-14 px-5 hover:bg-secondary hover:text-black {{ Route::is('history') ? 'bg-secondary text-black' : 'text-white' }}">
                     <div class="flex items-center gap-2">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" class="bi bi-clock" viewBox="0 0 16 16">

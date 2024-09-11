@@ -41,7 +41,7 @@
             <livewire:layout.navigation />
 
             <!-- Page Content -->
-            <main class="pt-20 bg-neutral-100 min-h-screen w-full transition-spacing duration-700 ease-in-out z-0" id="mainContent">
+            <main class="pt-20 bg-neutral-100 min-h-screen transition-spacing duration-700 ease-in-out z-0 {{ Route::is('history') ? 'w-fit md:w-full' : 'w-full' }}" id="mainContent">
                 {{ $slot }}
             </main>
         </div>
