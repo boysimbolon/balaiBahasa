@@ -81,7 +81,7 @@ new class extends Component
             </ul>
 
             <!-- Type Test -->
-            <li class="flex items-center justify-between h-14 px-5 text-white hover:bg-secondary hover:text-black">
+            <li class="flex items-center justify-between h-14 px-5 hover:bg-secondary hover:text-black  {{ Route::is('e3_schedule') ? 'bg-secondary text-black' : 'text-white' }}">
                 <div class="flex items-center gap-2">
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" class="bi bi-bookmark" viewBox="0 0 16 16">
@@ -98,7 +98,7 @@ new class extends Component
             <!-- Type Test Dropdown -->
             <ul class="hidden" id="typeDropdown">
                 <!-- E3 -->
-                <a href="">
+                <a href="{{ route('e3_schedule') }}">
                     <li class="flex items-center justify-between h-14 px-5 text-white hover:bg-secondary hover:text-black">
                         <div class="flex items-center gap-2 w-fit">
                             <div class="w-6"></div>

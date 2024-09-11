@@ -12,6 +12,7 @@ Route::view('dashboard', 'dashboard')->name('dashboard');
 Route::view('biodata', 'biodata')->name('biodata');
 Route::view('edit_profile', 'edit-profile')->name('edit_profile');
 Route::view('change_password', 'change-password')->name('change_password');
+Route::view('e3_schedule', 'e3-schedule')->name('e3_schedule');
 Route::get('umum/register/', Register::class);
 
 //Route::view('dashboard', 'dashboard')
