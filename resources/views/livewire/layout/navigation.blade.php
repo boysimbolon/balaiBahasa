@@ -16,7 +16,7 @@ new class extends Component
     }
 }; ?>
 
-<aside id="sidebar" class="bg-primary w-60 h-screen pt-20 flex flex-col fixed top-0 bottom-0 -left-60 transition duration-700 ease-in-out">
+<aside id="sidebar" class="bg-primary w-60 h-screen pt-20 flex flex-col fixed top-0 bottom-0 -left-60 transition duration-700 ease-in-out z-10">
     <!-- User Photo -->
     <div class="mt-5 w-60 h-fit flex flex-col items-center gap-2">
         <div class="w-28">
@@ -81,7 +81,7 @@ new class extends Component
             </ul>
 
             <!-- Type Test -->
-            <li class="flex items-center justify-between h-14 px-5 hover:bg-secondary hover:text-black  {{ Route::is('e3_schedule') ? 'bg-secondary text-black' : 'text-white' }}">
+            <li class="flex items-center justify-between h-14 px-5 hover:bg-secondary hover:text-black  {{ Route::is('e3_schedule') || Route::is('toefl_schedule') ? 'bg-secondary text-black' : 'text-white' }}">
                 <div class="flex items-center gap-2">
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" class="bi bi-bookmark" viewBox="0 0 16 16">
@@ -108,7 +108,7 @@ new class extends Component
                 </a>
 
                 <!-- TOEFL -->
-                <a href="">
+                <a href="{{ route('toefl_schedule') }}">
                     <li class="flex items-center justify-between h-14 px-5 text-white hover:bg-secondary hover:text-black">
                         <div class="flex items-center gap-2 w-fit">
                             <div class="w-6"></div>
