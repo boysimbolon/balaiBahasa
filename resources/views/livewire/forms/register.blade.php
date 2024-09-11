@@ -1,28 +1,33 @@
 
 <div>
+    @if (session()->has('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
     <form wire:submit.prevent="save">
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Nama')"/>
-            <input wire:model="nama" id="nama" class="block mt-1 w-full" type="text" name="nama" required
+            <x-text-input wire:model="nama" id="nama" class="block mt-1 w-full" type="text" name="nama" required
                           autofocus autocomplete="nama"/>
             <x-input-error :messages="$errors->get('nama')" class="mt-2"/>
         </div>
         <div>
             <x-input-label for="nik" :value="__('NIK')"/>
-            <input wire:model="nik" id="nik" class="block mt-1 w-full" type="number" name="nik" required
+            <x-text-input wire:model="nik" id="nik" class="block mt-1 w-full" type="number" name="nik" required
                           autofocus autocomplete="nik"/>
             <x-input-error :messages="$errors->get('nik')" class="mt-2"/>
         </div>
         <div>
             <x-input-label for="tmpt_lahir" :value="__('Tempat Lahir')"/>
-            <input wire:model="tmpt_lahir" id="tmpt_lahir" class="block mt-1 w-full" type="text"
+            <x-text-input wire:model="tmpt_lahir" id="tmpt_lahir" class="block mt-1 w-full" type="text"
                           name="tmpt_lahir" required autofocus autocomplete="tmpt_lahir"/>
             <x-input-error :messages="$errors->get('tmpt_lahir')" class="mt-2"/>
         </div>
         <div>
             <x-input-label for="tgl_lahir" :value="__('Tanggal Lahir')"/>
-            <input wire:model="tgl_lahir" id="tgl_lahir" class="block mt-1 w-full" type="date" name="tgl_lahir"
+            <x-text-input wire:model="tgl_lahir" id="tgl_lahir" class="block mt-1 w-full" type="date" name="tgl_lahir"
                           required autofocus autocomplete="tgl_lahir"/>
             <x-input-error :messages="$errors->get('tgl_lahir')" class="mt-2"/>
         </div>
@@ -46,13 +51,13 @@
 
         <div>
             <x-input-label for="NIDN" :value="__('NIDN')"/>
-            <input wire:model="NIDN" id="NIDN" class="block mt-1 w-full" type="text" name="NIDN" autofocus
+            <x-text-input wire:model="NIDN" id="NIDN" class="block mt-1 w-full" type="text" name="NIDN" autofocus
                           autocomplete="DIDN"/>
             <x-input-error :messages="$errors->get('name')" class="mt-2"/>
         </div>
         <div>
             <x-input-label for="alamat" :value="__('Alamat')"/>
-            <input wire:model="alamat" id="alamat" class="block mt-1 w-full" type="text" name="alamat" required
+            <x-text-input wire:model="alamat" id="alamat" class="block mt-1 w-full" type="text" name="alamat" required
                           autofocus autocomplete="alamat"/>
             <x-input-error :messages="$errors->get('alamat')" class="mt-2"/>
         </div>
@@ -70,26 +75,26 @@
 
         <div>
             <x-input-label for="instansi" :value="__('Instansi')"/>
-            <input wire:model="instansi" id="instansi" class="block mt-1 w-full" type="text" name="instansi"
+            <x-text-input wire:model="instansi" id="instansi" class="block mt-1 w-full" type="text" name="instansi"
                           required autofocus autocomplete="instansi"/>
             <x-input-error :messages="$errors->get('name')" class="mt-2"/>
         </div>
         <div>
             <x-input-label for="num_telp" :value="__('Nomor Telepon')"/>
-            <input wire:model="num_telp" id="num_telp" class="block mt-1 w-full" type="number" name="num_telp"
+            <x-text-input wire:model="num_telp" id="num_telp" class="block mt-1 w-full" type="number" name="num_telp"
                           required autofocus autocomplete="num_telp"/>
             <x-input-error :messages="$errors->get('num_telp')" class="mt-2"/>
         </div>
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')"/>
-            <input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required
+            <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required
                           autocomplete="email"/>
             <x-input-error :messages="$errors->get('email')" class="mt-2"/>
         </div>
         {{--  wrong it must use option      --}}
         <div>
-            <x-input-label for="pendidikan" :value="__('Pendidikan')"/>
+            <x-input-label for="Pendidikan" :value="__('Pendidikan')"/>
             <select wire:model="Pendidikan" id="Pendidikan" name="Pendidikan" class="block mt-1 w-full" required
                     autofocus>
                 <option value="">Pilih Pendidikan</option>
@@ -120,7 +125,7 @@
         </div>
         <div>
             <x-input-label for="kewarganegaraan" :value="__('Kewarganegaraan')"/>
-            <input wire:model="kewarganegaraan" id="kewarganegaraan" class="block mt-1 w-full" type="text"
+            <x-text-input wire:model="kewarganegaraan" id="kewarganegaraan" class="block mt-1 w-full" type="text"
                           name="kewarganegaraan" required autofocus autocomplete="kewarganegaraan"/>
             <x-input-error :messages="$errors->get('kewarganegaraan')" class="mt-2"/>
         </div>
@@ -139,31 +144,35 @@
             <x-input-error :messages="$errors->get('bhs_seharian')" class="mt-2"/>
         </div>
         <div>
-{{--            @if($pasFoto)--}}
-{{--                <img class="rounded w-10 h-10 m-2 block" src="{{$pasFoto->temporaryUrl()}}"--}}
-{{--            @endif--}}
+            @if($pasFoto)
+                <img class="rounded w-10 h-10 m-2 block" src="{{$pasFoto->temporaryUrl()}}"
+            @endif
             <x-input-label for="pasFoto" :value="__('Pas Foto')"/>
-            <input wire:model="pasFoto" id="pasFoto" class="block mt-1 w-full" type="file" name="pasFoto" required
+            <x-text-input wire:model="pasFoto" id="pasFoto" class="block mt-1 w-full" type="file" name="pasFoto" required
                    autofocus accept="image/jpeg, image/png, image/jpg"/>
+            <div wire:loading wire:target="pasFoto">Uploading...</div>
             <x-input-error :messages="$errors->get('pasFoto')" class="mt-2"/>
         </div>
         <div>
-{{--            @if($ktp)--}}
-{{--                <img class="rounded w-10 h-10 m-2 block" src="{{$ktp->temporaryUrl()}}"--}}
-{{--            @endif--}}
+            @if($ktp)
+                <img class="rounded w-10 h-10 m-2 block" src="{{$ktp->temporaryUrl()}}"
+            @endif
             <x-input-label for="ktp" :value="__('KTP')"/>
-            <input wire:model="ktp" id="ktp" class="block mt-1 w-full" type="file" name="ktp" required autofocus
+            <x-text-input wire:model="ktp" id="ktp" class="block mt-1 w-full" type="file" name="ktp" required autofocus
                    accept="image/jpeg, image/png, image/jpg"/>
             <x-input-error :messages="$errors->get('ktp')" class="mt-2"/>
+            <div wire:loading wire:target="ktp">Uploading...</div>
         </div>
 
 
         <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none
-            focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}" wire:navigate>
-                {{ __('Sudah Memiliki Akun?') }}
+            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}" wire:navigate>
+                {{ __('Already registered?') }}
             </a>
-            <button type="submit">Register</button>
+
+            <x-primary-button class="ms-4">
+                {{ __('Register') }}
+            </x-primary-button>
         </div>
     </form>
 

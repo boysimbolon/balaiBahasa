@@ -27,7 +27,7 @@ return new class extends Migration
             $table->enum('jenis_kelamin',['Laki-Laki','Perempuan']);
             $table->string('instansi');
             $table->string('num_telp',20);
-            $table->string('email');
+//            $table->string('email');
             $table->enum('Pendidikan',['Tidak/Belum Sekolah','Belum Tamat SD/Sederajat','Tamat SD/Sederajat','SLTP/Sederajat','SLTA/Sederajat','D-I/II','D-III','D-IV','S1','S2','S3']);
             $table->string('thn_lulus');
             $table->string('kewarganegaraan');
