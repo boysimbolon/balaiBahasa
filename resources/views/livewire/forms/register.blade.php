@@ -16,20 +16,20 @@
                 <!-- Name -->
                 <div class="mb-1">
                     <x-input-label for="name" :value="__('Nama')"/>
-                    <x-text-input wire:model="nama" id="nama" class="block mt-1 w-full" type="text" name="nama" required autofocus autocomplete="nama"/>
+                    <x-text-input wire:model="nama" id="nama" class="block mt-1 w-full" type="text" name="nama" placeholder="Nama" required autofocus autocomplete="nama"/>
                     <x-input-error :messages="$errors->get('nama')" class="mt-2"/>
                 </div>
                 <!-- NIK -->
                 <div class="mb-1">
                     <x-input-label for="nik" :value="__('NIK')"/>
-                    <x-text-input wire:model="nik" id="nik" class="block mt-1 w-full" type="number" name="nik" required autofocus autocomplete="nik"/>
+                    <x-text-input wire:model="nik" id="nik" class="block mt-1 w-full" type="text" name="nik" placeholder="NIK" inputmode="numeric" required autofocus autocomplete="nik"/>
                     <x-input-error :messages="$errors->get('nik')" class="mt-2"/>
                 </div>
                 <div class="flex gap-5 justify-between mb-1">
                     <!-- Tempat Lahir -->
                     <div class="w-1/2">
                         <x-input-label for="tmpt_lahir" :value="__('Tempat Lahir')"/>
-                        <x-text-input wire:model="tmpt_lahir" id="tmpt_lahir" class="block mt-1 w-full" type="text" name="tmpt_lahir" required autofocus autocomplete="tmpt_lahir"/>
+                        <x-text-input wire:model="tmpt_lahir" id="tmpt_lahir" class="block mt-1 w-full" type="text" name="tmpt_lahir" placeholder="Tempat Lahir" required autofocus autocomplete="tmpt_lahir"/>
                         <x-input-error :messages="$errors->get('tmpt_lahir')" class="mt-2"/>
                     </div>
                     <!-- Tanggal Lahir -->
@@ -42,20 +42,20 @@
                 <!-- Alamat -->
                 <div class="mb-1">
                     <x-input-label for="alamat" :value="__('Alamat')"/>
-                    <x-text-input wire:model="alamat" id="alamat" class="block mt-1 w-full" type="text" name="alamat" required autofocus autocomplete="alamat"/>
+                    <x-text-input wire:model="alamat" id="alamat" class="block mt-1 w-full" type="text" name="alamat" placeholder="Alamat" required autofocus autocomplete="alamat"/>
                     <x-input-error :messages="$errors->get('alamat')" class="mt-2"/>
                 </div>
                 <div class="flex gap-5 justify-between mb-1">
                     <!-- NIDN -->
                     <div>
                         <x-input-label for="NIDN" :value="__('NIDN')"/>
-                        <x-text-input wire:model="NIDN" id="NIDN" class="block mt-1 w-full" type="text" name="NIDN" autofocus autocomplete="NIDN"/>
+                        <x-text-input wire:model="NIDN" id="NIDN" class="block mt-1 w-full" type="text" name="NIDN" placeholder="NIDN" autofocus autocomplete="NIDN"/>
                         <x-input-error :messages="$errors->get('name')" class="mt-2"/>
                     </div>
                     <!-- Pekerjaan -->
                     <div>
                         <x-input-label for="pekerjaan" :value="__('Pekerjaan')"/>
-                        <select wire:model="pekerjaan" id="pekerjaan" name="pekerjaan" class="block mt-1 w-full rounded" required autofocus>
+                        <select wire:model="pekerjaan" id="pekerjaan" name="pekerjaan" class="block mt-1 w-full rounded" placeholder="Pekerjaan" required autofocus>
                             <option value="" disabled>Pilih Pekerjaan</option>
                             <option value="Pelajar">Pelajar</option>
                             <option value="Mahasiswa">Mahasiswa</option>
@@ -89,7 +89,7 @@
                 <!-- Instansi -->
                 <div class="mb-1">
                     <x-input-label for="instansi" :value="__('Instansi')"/>
-                    <x-text-input wire:model="instansi" id="instansi" class="block mt-1 w-full" type="text" name="instansi" required autofocus autocomplete="instansi"/>
+                    <x-text-input wire:model="instansi" id="instansi" class="block mt-1 w-full" type="text" name="instansi" placeholder="Instansi" required autofocus autocomplete="instansi"/>
                     <x-input-error :messages="$errors->get('name')" class="mt-2"/>
                 </div>
             </div>
@@ -97,13 +97,13 @@
                 <!-- Nomor Telepon -->
                 <div class="mb-1">
                     <x-input-label for="num_telp" :value="__('Nomor Telepon')"/>
-                    <x-text-input wire:model="num_telp" id="num_telp" class="block mt-1 w-full" type="number" name="num_telp" required autofocus autocomplete="num_telp"/>
+                    <x-text-input wire:model="num_telp" id="num_telp" class="block mt-1 w-full" type="number" name="num_telp" placeholder="No Telepon" required autofocus autocomplete="num_telp"/>
                     <x-input-error :messages="$errors->get('num_telp')" class="mt-2"/>
                 </div>
                 <!-- Email Address -->
                 <div class="mb-1">
                     <x-input-label for="email" :value="__('Email')"/>
-                    <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required autocomplete="email"/>
+                    <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" placeholder="Email" required autocomplete="email"/>
                     <x-input-error :messages="$errors->get('email')" class="mt-2"/>
                 </div>
                 <!-- Pendidikan -->
@@ -140,7 +140,7 @@
                     <!-- Kewarganegaraan -->
                     <div class="w-1/2">
                         <x-input-label for="kewarganegaraan" :value="__('Kewarganegaraan')"/>
-                        <x-text-input wire:model="kewarganegaraan" id="kewarganegaraan" class="block mt-1 w-full" type="text" name="kewarganegaraan" required autofocus autocomplete="kewarganegaraan"/>
+                        <x-text-input wire:model="kewarganegaraan" id="kewarganegaraan" class="block mt-1 w-full" type="text" name="kewarganegaraan" placeholder="Kewarganegaraan" required autofocus autocomplete="kewarganegaraan"/>
                         <x-input-error :messages="$errors->get('kewarganegaraan')" class="mt-2"/>
                     </div>
                     <!-- Bahasa -->
