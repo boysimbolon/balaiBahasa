@@ -28,7 +28,12 @@
             </div>
 
             <!-- Navbar Heading -->
-            <h1 class="ml-5 text-2xl font-semibold">Balai Bahasa UNAI</h1>
+            <div class="ml-5 flex items-center gap-3">
+                <div class="w-10 h-10">
+                    <img src="Logo-Unai.png" alt="Unai Logo" class="aspect-square">
+                </div>
+                <h1 class="text-2xl font-semibold">Balai Bahasa UNAI</h1>
+            </div>
         </nav>
 
         <div class="min-h-screen flex">

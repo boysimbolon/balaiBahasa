@@ -20,9 +20,9 @@ new class extends Component
     <!-- User Photo -->
     <div class="mt-5 w-60 h-fit flex flex-col items-center gap-2">
         <div class="w-28">
-            <img src="https://picsum.photos/100" alt="" class="size-28 rounded-xl">
+            <img src="https://picsum.photos/150/200" alt="" class="size-fit rounded-xl">
         </div>
-        <h1 class="text-xl font-bold">John Doe</h1>
+        <h1 class="text-xl font-bold text-white">John Doe</h1>
     </div>
 
     <!-- Navigation -->
@@ -43,7 +43,7 @@ new class extends Component
             </a>
 
             <!-- Profile -->
-            <li class="flex items-center justify-between h-14 px-5 hover:bg-secondary hover:text-black  {{ Route::is('biodata') ? 'bg-secondary text-black' : 'text-white' }}">
+            <li class="flex items-center justify-between h-14 px-5 hover:bg-secondary hover:text-black  {{ Route::is('biodata') || Route::is('edit_profile') ? 'bg-secondary text-black' : 'text-white' }}">
                 <div class="flex items-center gap-2 w-fit">
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" class="bi bi-person" viewBox="0 0 16 16">
