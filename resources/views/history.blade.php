@@ -4,7 +4,7 @@
         <div class="bg-white drop-shadow-lg w-fit md:w-full mt-1 rounded p-5 flex flex-col gap-4">
             <table class="w-full">
                 <tr class="bg-primary text-white text-left rounded h-8">
-                    <th class="p-2" rowspan="2">Jenis Ujian</th>
+                    <th class="p-2" rowspan="2">Tanggal</th>
                     <th class="p-2" rowspan="2">Lokasi</th>
                     <th class="p-2 text-center" colspan="4">Nilai</th>
                     <th class="p-2" rowspan="2">No Sert</th>

@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="p-5 h-full">
         <x-heading-page>TOEFL</x-heading-page>
-        <div class="bg-white drop-shadow-lg w-full mt-1 rounded p-5 flex flex-col gap-4">
+        <div class="bg-white drop-shadow-lg w-fit md:w-full mt-1 rounded p-5 flex flex-col gap-4">
             <!-- Your Schedule -->
             <div>
                 <h3 class="text-xl mb-2">Jadwal Anda</h3>

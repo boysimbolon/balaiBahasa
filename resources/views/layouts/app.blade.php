@@ -19,7 +19,7 @@
     </head>
     <body class="font-sans antialiased h-screen">
         <!-- Navbar -->
-        <nav class="fixed h-20 w-screen drop-shadow-lg bg-white flex items-center z-20">
+        <nav class="fixed h-20 w-full md:w-screen drop-shadow-lg bg-white flex items-center z-20">
             <!-- Menu -->
             <div id="menuIcon" class="w-[72px] h-full flex items-center justify-center bg-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-list hover:cursor-pointer" viewBox="0 0 16 16">
@@ -41,7 +41,7 @@
             <livewire:layout.navigation />
 
             <!-- Page Content -->
-            <main class="pt-20 bg-neutral-100 min-h-screen transition-spacing duration-700 ease-in-out z-0 {{ Route::is('history') ? 'w-fit md:w-full' : 'w-full' }}" id="mainContent">
+            <main class="pt-20 bg-neutral-100 min-h-screen transition-spacing duration-700 ease-in-out z-0 {{ Route::is('history') || Route::is('e3_schedule') || Route::is('toefl_schedule') ? 'w-fit md:w-full' : 'w-full' }}" id="mainContent">
                 {{ $slot }}
             </main>
         </div>

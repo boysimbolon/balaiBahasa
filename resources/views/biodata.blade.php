@@ -4,114 +4,111 @@
         <div class="flex flex-col xl:flex-row gap-5">
             <div class="bg-white drop-shadow-lg w-full order-2 xl:order-1 xl:w-2/3 mt-1 rounded p-5 flex flex-col gap-4">
                 <div class="divide-y-2">
-                    <div class="h-11 flex items-center">
-                        <p class="w-full flex items-center gap-10 text-nowrap">
-                            <span class="w-1/5 font-semibold">Tempat Lahir</span>
-                            <span class="flex items-center gap-5">
-                            :
-                            <span>Bandung</span>
-                        </span>
+                    <div class="min-h-11 max-h-fit flex items-center">
+                        <p class="w-full flex items-center gap-10 text-nowrap justify-between md:justify-normal">
+                            <span class="w-1/2 md:w-1/5 font-semibold">Tempat Lahir</span>
+                            <span class="w-1/2 flex items-center gap-5 justify-end md:justify-normal">
+                                <span class="hidden md:block">:</span>
+                                Bandung
+                            </span>
                         </p>
                     </div>
-                    <div class="h-11 flex items-center">
-                        <p class="w-full flex items-center gap-10 text-nowrap">
-                            <span class="w-1/5 font-semibold">Tanggal Lahir</span>
-                            <span class="flex items-center gap-5">
-                            :
-                            <span>1971-12-28</span>
-                        </span>
+                    <div class="min-h-11 max-h-fit flex items-center">
+                        <p class="w-full flex items-center gap-10 text-nowrap justify-between md:justify-normal">
+                            <span class="w-1/2 md:w-1/5 font-semibold">Tanggal Lahir</span>
+                            <span class="w-1/2 flex items-center gap-5 justify-end md:justify-normal">
+                                <span class="hidden md:block">:</span>
+                                1971-12-28
+                            </span>
                         </p>
                     </div>
-                    <div class="h-11 flex items-center">
-                        <p class="w-full flex items-center gap-10 text-nowrap">
-                            <span class="w-1/5 font-semibold">Jenis Kelamin</span>
-                            <span class="flex items-center gap-5">
-                            :
-                            <span>Laki-Laki</span>
-                        </span>
+                    <div class="min-h-11 max-h-fit flex items-center">
+                        <p class="w-full flex items-center gap-10 text-nowrap justify-between md:justify-normal">
+                            <span class="w-1/2 md:w-1/5 font-semibold">Jenis Kelamin</span>
+                            <span class="w-1/2 flex items-center gap-5 justify-end md:justify-normal">
+                                <span class="hidden md:block">:</span>
+                                Laki-Laki
+                            </span>
                         </p>
                     </div>
-                    <div class="h-11 flex items-center">
-                        <p class="w-full flex items-center gap-10 text-nowrap">
-                            <span class="w-1/5 font-semibold">Alamat</span>
-                            <span class="flex items-center gap-5">
-                            :
-                            <span>Jl. Diponegoro No. 123, Bandung</span>
-                        </span>
+                    <div class="min-h-11 max-h-fit max-h-fit flex items-center">
+                        <p class="w-full flex items-center gap-10 text-nowrap justify-between md:justify-normal">
+                            <span class="w-1/2 md:w-1/5 font-semibold">Alamat</span>
+                            <span class="w-1/2 md:w-fit flex items-center gap-5 text-right md:text-left text-wrap">
+                                <span class="hidden md:block">:</span>
+                                Jl. Diponegoro No. 123, Bandung
+                            </span>
                         </p>
                     </div>
-                    <div class="h-11 flex items-center">
-                        <p class="w-full flex items-center gap-10 text-nowrap">
-                            <span class="w-1/5 font-semibold">Pekerjaan</span>
-                            <span class="flex items-center gap-5">
-                            :
-                            <span>Mahasiswa</span>
-                        </span>
+                    <div class="min-h-11 max-h-fit flex items-center">
+                        <p class="w-full flex items-center gap-10 text-nowrap justify-between md:justify-normal">
+                            <span class="w-1/2 md:w-1/5 font-semibold">Pekerjaan</span>
+                            <span class="w-1/2 flex items-center gap-5 justify-end md:justify-normal">
+                                <span class="hidden md:block">:</span>
+                                Mahasiswa
+                            </span>
                         </p>
                     </div>
-                    <div class="h-11 flex items-center">
-                        <p class="w-full flex items-center gap-10 text-nowrap">
-                            <span class="w-1/5 font-semibold">NIDN</span>
-                            <span class="flex items-center gap-5">
-                            :
-                            <span></span>
-                        </span>
+                    <div class="min-h-11 max-h-fit flex items-center">
+                        <p class="w-full flex items-center gap-10 text-nowrap justify-between md:justify-normal">
+                            <span class="w-1/2 md:w-1/5 font-semibold">NIDN</span>
+                            <span class="w-1/2 flex items-center gap-5 justify-end md:justify-normal">
+                                <span class="hidden md:block">:</span>
+                            </span>
                         </p>
                     </div>
-                    <div class="h-11 flex items-center">
-                        <p class="w-full flex items-center gap-10 text-nowrap">
-                            <span class="w-1/5 font-semibold">Instansi</span>
-                            <span class="flex items-center gap-5">
-                            :
-                            <span>Universitas Padjadjaran</span>
-                        </span>
+                    <div class="min-h-11 max-h-fit flex items-center">
+                        <p class="w-full flex items-center gap-10 text-nowrap justify-between md:justify-normal">
+                            <span class="w-1/2 md:w-1/5 font-semibold">Instansi</span>
+                            <span class="w-1/2 flex items-center gap-5 justify-end md:justify-normal">
+                                <span class="hidden md:block">:</span>
+                                Universitas Padjadjaran
+                            </span>
                         </p>
                     </div>
-                    <div class="h-11 flex items-center">
-                        <p class="w-full flex items-center gap-10 text-nowrap">
-                            <span class="w-1/5 font-semibold">Pendidikan</span>
-                            <span class="flex items-center gap-5">
-                            :
-                            <span>S1</span>
-                        </span>
+                    <div class="min-h-11 max-h-fit flex items-center">
+                        <p class="w-full flex items-center gap-10 text-nowrap justify-between md:justify-normal">
+                            <span class="w-1/2 md:w-1/5 font-semibold">Pendidikan</span>
+                            <span class="w-1/2 flex items-center gap-5 justify-end md:justify-normal">
+                                <span class="hidden md:block">:</span>
+                                S1
+                            </span>
                         </p>
                     </div>
-                    <div class="h-11 flex items-center">
-                        <p class="w-full flex items-center gap-10 text-nowrap">
-                            <span class="w-1/5 font-semibold">Tahun Pendidikan</span>
-                            <span class="flex items-center gap-5">
-                            :
-                            <span>2024</span>
-                        </span>
+                    <div class="min-h-11 max-h-fit flex items-center">
+                        <p class="w-full flex items-center gap-10 text-nowrap justify-between md:justify-normal">
+                            <span class="w-1/2 md:w-1/5 font-semibold">Tahun Pendidikan</span>
+                            <span class="w-1/2 flex items-center gap-5 justify-end md:justify-normal">
+                                <span class="hidden md:block">:</span>
+                                2024
+                            </span>
                         </p>
                     </div>
-                    <div class="h-11 flex items-center">
-                        <p class="w-full flex items-center gap-10 text-nowrap">
-                            <span class="w-1/5 font-semibold">Kewarganegaraan</span>
-                            <span class="flex items-center gap-5">
-                            :
-                            <span>Indonesia</span>
-                        </span>
+                    <div class="min-h-11 max-h-fit flex items-center">
+                        <p class="w-full flex items-center gap-10 text-nowrap justify-between md:justify-normal">
+                            <span class="w-1/2 md:w-1/5 font-semibold">Kewarganegaraan</span>
+                            <span class="w-1/2 flex items-center gap-5 justify-end md:justify-normal">
+                                <span class="hidden md:block">:</span>
+                                Indonesia
+                            </span>
                         </p>
                     </div>
-                    <div class="h-11 flex items-center">
-                        <p class="w-full flex items-center gap-10 text-nowrap">
-                            <span class="w-1/5 font-semibold">Bahasa</span>
-                            <span class="flex items-center gap-5">
-                            :
-                            <span>Indonesia</span>
-                        </span>
+                    <div class="min-h-11 max-h-fit flex items-center">
+                        <p class="w-full flex items-center gap-10 text-nowrap justify-between md:justify-normal">
+                            <span class="w-1/2 md:w-1/5 font-semibold">Bahasa</span>
+                            <span class="w-1/2 flex items-center gap-5 justify-end md:justify-normal">
+                                <span class="hidden md:block">:</span>
+                                Indonesia
+                            </span>
                         </p>
                     </div>
-                    <div class="h-fit flex items-center py-3">
-                        <p class="w-full flex items-center gap-10 text-nowrap">
-                            <span class="w-1/5 h-fit font-semibold">KTP</span>
-                            <span class="flex items-center gap-5">
-                            :
-                            <span>
+                    <div class="min-h-11 max-h-fit flex items-center py-3">
+                        <p class="w-full flex items-center gap-10 text-nowrap justify-between md:justify-normal">
+                            <span class="w-1/2 md:w-1/5 font-semibold">KTP</span>
+                            <span class="w-1/2 flex items-center gap-5 justify-end md:justify-normal">
+                                <span class="hidden md:block">:</span>
                                 <img src="https://picsum.photos/300/200" alt="" class="rounded-xl">
                             </span>
-                        </span>
                         </p>
                     </div>
                 </div>
@@ -124,16 +121,14 @@
                             <h1 class="text-xl font-bold">John Doe</h1>
                             <p class="text-center">(0123456789)</p>
                         </div>
-
                     </div>
-                    <div class="h-11 flex items-center">
+                    <div class="min-h-11 max-h-fit flex items-center">
                         <p class="w-full flex items-center justify-between text-nowrap">
                             <span class="font-semibold">Telepon</span>
                             <span>08123456789</span>
-                            </span>
                         </p>
                     </div>
-                    <div class="h-11 flex items-center w-full">
+                    <div class="min-h-11 max-h-fit flex items-center w-full">
                         <p class="w-full flex items-center justify-between text-nowrap">
                             <span class="font-semibold">Email</span>
                             <span class="text-wrap">johndoe@example.com</span>

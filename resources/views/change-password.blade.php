@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="p-5 h-full">
         <x-heading-page>Ganti Password</x-heading-page>
-        <div class="bg-white drop-shadow-lg w-full md:w-2/3 mt-1 rounded p-5">
+        <div class="bg-white drop-shadow-lg w-full xl:w-2/3 mt-1 rounded p-5">
             <form action="" class="flex flex-col gap-4">
                 <div>
                     <div class="flex md:items-center justify-between flex-col md:flex-row">
