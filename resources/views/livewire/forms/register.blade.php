@@ -1,7 +1,7 @@
 <div>
     <div class="text-center pt-5">
-        <h1 class="font-bold text-3xl mb-1">Registrasi</h1>
-        <h3 class="font-light text-xl">Balai Bahasa</h3>
+        <h1 class="font-bold text-xl md:text-2xl mb-1">Registrasi</h1>
+        <h3 class="font-light text-lg md:text-xl">Balai Bahasa</h3>
     </div>
 
     @if (session()->has('message'))
@@ -10,9 +10,9 @@
         </div>
     @endif
 
-    <form wire:submit.prevent="save" class="flex flex-col items-center gap-2 p-5">
-        <div class="flex divide-x-2">
-            <div class="w-1/2 px-5">
+    <form wire:submit.prevent="save" class="flex flex-col items-center gap-2 md:p-5">
+        <div class="flex md:divide-x-2 flex-col md:flex-row">
+            <div class="md:w-1/2 px-5">
                 <!-- Name -->
                 <div class="mb-1">
                     <x-input-label for="name" :value="__('Nama')"/>
@@ -25,15 +25,15 @@
                     <x-text-input wire:model="nik" id="nik" class="block mt-1 w-full" type="text" name="nik" placeholder="NIK" inputmode="numeric" required autofocus autocomplete="nik"/>
                     <x-input-error :messages="$errors->get('nik')" class="mt-2"/>
                 </div>
-                <div class="flex gap-5 justify-between mb-1">
+                <div class="md:flex gap-5 md:justify-between mb-1">
                     <!-- Tempat Lahir -->
-                    <div class="w-1/2">
+                    <div class="md:w-1/2">
                         <x-input-label for="tmpt_lahir" :value="__('Tempat Lahir')"/>
                         <x-text-input wire:model="tmpt_lahir" id="tmpt_lahir" class="block mt-1 w-full" type="text" name="tmpt_lahir" placeholder="Tempat Lahir" required autofocus autocomplete="tmpt_lahir"/>
                         <x-input-error :messages="$errors->get('tmpt_lahir')" class="mt-2"/>
                     </div>
                     <!-- Tanggal Lahir -->
-                    <div class="w-1/2">
+                    <div class="md:w-1/2">
                         <x-input-label for="tgl_lahir" :value="__('Tanggal Lahir')"/>
                         <x-text-input wire:model="tgl_lahir" id="tgl_lahir" class="block mt-1 w-full" type="date" name="tgl_lahir" required autofocus autocomplete="tgl_lahir"/>
                         <x-input-error :messages="$errors->get('tgl_lahir')" class="mt-2"/>
@@ -45,15 +45,15 @@
                     <x-text-input wire:model="alamat" id="alamat" class="block mt-1 w-full" type="text" name="alamat" placeholder="Alamat" required autofocus autocomplete="alamat"/>
                     <x-input-error :messages="$errors->get('alamat')" class="mt-2"/>
                 </div>
-                <div class="flex gap-5 justify-between mb-1">
+                <div class="md:flex gap-5 md:justify-between mb-1">
                     <!-- NIDN -->
-                    <div>
+                    <div class="w-full md:w-1/2">
                         <x-input-label for="NIDN" :value="__('NIDN')"/>
                         <x-text-input wire:model="NIDN" id="NIDN" class="block mt-1 w-full" type="text" name="NIDN" placeholder="NIDN" autofocus autocomplete="NIDN"/>
                         <x-input-error :messages="$errors->get('name')" class="mt-2"/>
                     </div>
                     <!-- Pekerjaan -->
-                    <div>
+                    <div class="w-full md:w-1/2">
                         <x-input-label for="pekerjaan" :value="__('Pekerjaan')"/>
                         <select wire:model="pekerjaan" id="pekerjaan" name="pekerjaan" class="block mt-1 w-full rounded" placeholder="Pekerjaan" required autofocus>
                             <option value="" disabled>Pilih Pekerjaan</option>
@@ -93,7 +93,7 @@
                     <x-input-error :messages="$errors->get('name')" class="mt-2"/>
                 </div>
             </div>
-            <div class="w-1/2 px-5">
+            <div class="md:w-1/2 px-5">
                 <!-- Nomor Telepon -->
                 <div class="mb-1">
                     <x-input-label for="num_telp" :value="__('Nomor Telepon')"/>
@@ -136,15 +136,15 @@
                     </select>
                     <x-input-error :messages="$errors->get('tahun_lulus')" class="mt-2"/>
                 </div>
-                <div class="flex gap-5 justify-between mb-1">
+                <div class="md:flex gap-5 md:justify-between mb-1">
                     <!-- Kewarganegaraan -->
-                    <div class="w-1/2">
+                    <div class="md:w-1/2">
                         <x-input-label for="kewarganegaraan" :value="__('Kewarganegaraan')"/>
                         <x-text-input wire:model="kewarganegaraan" id="kewarganegaraan" class="block mt-1 w-full" type="text" name="kewarganegaraan" placeholder="Kewarganegaraan" required autofocus autocomplete="kewarganegaraan"/>
                         <x-input-error :messages="$errors->get('kewarganegaraan')" class="mt-2"/>
                     </div>
                     <!-- Bahasa -->
-                    <div class="w-1/2">
+                    <div class="md:w-1/2">
                         <x-input-label for="bhs_seharian" :value="__('Bahasa Sehari')"/>
                         <select wire:model="bhs_seharian" id="bhs_seharian" name="bhs_seharian" class="block mt-1 w-full rounded" required autofocus>
                             <option value="" disabled>Pilih Bahasa</option>

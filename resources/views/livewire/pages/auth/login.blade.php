@@ -35,8 +35,8 @@ new #[Layout('layouts.guest')] class extends Component
     @endif
     <form wire:submit="login">
         <div class="text-center mb-5">
-            <h1 class="font-bold text-2xl mb-1">Universitas Advent Indonesia</h1>
-            <h3 class="font-light text-xl">Balai Bahasa</h3>
+            <h1 class="font-bold text-xl md:text-2xl mb-1">Universitas Advent Indonesia</h1>
+            <h3 class="font-light text-lg md:text-xl">Balai Bahasa</h3>
         </div>
 
         <!-- NIM / No Peserta -->
