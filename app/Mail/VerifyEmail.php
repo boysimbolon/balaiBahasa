@@ -5,38 +5,30 @@ use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
-class VerifyEmail extends Mailable implements ShouldQueue
+class VerifyEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
+    public $no_Peserta;
+    public $password;
+    public $token;
 
-    /**
-     * Create a new message instance.
-     *
-     * @param \App\Models\User $user
-     */
-    public function __construct(User $user)
+    public function __construct($no_Peserta, $password, $token)
     {
-        $this->user = $user;
+        $this->no_Peserta = $no_Peserta;
+        $this->token = $token;
+        $this->password = $password;
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
     public function build()
     {
-        return $this->markdown('livewire.auth.verify-email') // Pastikan path view ini benar
-        ->with([
-            'user' => $this->user,
-            'url' => route('verification.verify', [
-                'id' => $this->user->id,
-                'hash' => sha1($this->user->getEmailForVerification()), // Menggunakan hash dari email
-            ]),
-        ]);
+        return $this->markdown('emails.verify-email')
+            ->with([
+                'no_Peserta' => $this->no_Peserta,
+                'password' => $this->password,
+                'verificationUrl' => route('verification.verify', ['token' => $this->token]),
+            ]);
     }
+
 }

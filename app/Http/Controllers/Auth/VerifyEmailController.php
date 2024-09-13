@@ -1,27 +1,31 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Auth\Events\Verified;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class VerifyEmailController extends Controller
 {
     /**
-     * Mark the authenticated user's email address as verified.
+     * Mark the user's email address as verified.
      */
-    public function __invoke(EmailVerificationRequest $request): RedirectResponse
+    public function verify($token): RedirectResponse
     {
-        if ($request->user()->hasVerifiedEmail()) {
-            return redirect()->intended(route('dashboard', absolute: false).'?verified=1');
-        }
+        // Temukan pengguna berdasarkan token
+        $user = User::where('email_verification_token', $token)->first();
 
-        if ($request->user()->markEmailAsVerified()) {
-            event(new Verified($request->user()));
-        }
+        if ($user) {
+            if ($user->hasVerifiedEmail()) {
+                return redirect()->route('dashboard')->with('status', 'Email already verified.');
+            }
 
-        return redirect()->intended(route('dashboard', absolute: false).'?verified=1');
+            $user->markEmailAsVerified();
+            $user->email_verification_token = null; // Hapus token setelah verifikasi
+            $user->save();
+            return redirect()->route('dashboard')->with('message', 'Email verified successfully.');
+        }
+        return redirect()->route('login')->with('message', 'Invalid verification link.');
     }
 }

@@ -36,11 +36,17 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'mahasiswa' => [
+            'driver' => 'session',
+            'provider' => 'mahasiswa',
+        ],
+        'user' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
     ],
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -59,17 +65,18 @@ return [
     |
     */
 
+
     'providers' => [
+        'mahasiswa' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Mahasiswa::class,
+        ],
         'users' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'model' => App\Models\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
+
 
     /*
     |--------------------------------------------------------------------------

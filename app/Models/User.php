@@ -10,7 +10,8 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
-
+    protected $connection = 'mysql';
+    protected $table = 'data_users';
     /**
      * The attributes that are mass assignable.
      *
@@ -19,6 +20,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'no_Peserta',
         'pin',
+        'email_verification_token',
         'email'
     ];
 
@@ -30,6 +32,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'pin',
         'remember_token',
+        'email_verification_token'
     ];
 
     /**

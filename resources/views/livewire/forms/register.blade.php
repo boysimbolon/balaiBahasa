@@ -144,9 +144,9 @@
             <x-input-error :messages="$errors->get('bhs_seharian')" class="mt-2"/>
         </div>
         <div>
-            @if($pasFoto)
-                <img class="rounded w-10 h-10 m-2 block" src="{{$pasFoto->temporaryUrl()}}"
-            @endif
+{{--            @if($pasFoto)--}}
+{{--                <img class="rounded w-10 h-10 m-2 block" src="{{$pasFoto->temporaryUrl()}}"--}}
+{{--            @endif--}}
             <x-input-label for="pasFoto" :value="__('Pas Foto')"/>
             <x-text-input wire:model="pasFoto" id="pasFoto" class="block mt-1 w-full" type="file" name="pasFoto" required
                    autofocus accept="image/jpeg, image/png, image/jpg"/>
@@ -154,9 +154,9 @@
             <x-input-error :messages="$errors->get('pasFoto')" class="mt-2"/>
         </div>
         <div>
-            @if($ktp)
-                <img class="rounded w-10 h-10 m-2 block" src="{{$ktp->temporaryUrl()}}"
-            @endif
+{{--            @if($ktp)--}}
+{{--                <img class="rounded w-10 h-10 m-2 block" src="{{$ktp->temporaryUrl()}}"--}}
+{{--            @endif--}}
             <x-input-label for="ktp" :value="__('KTP')"/>
             <x-text-input wire:model="ktp" id="ktp" class="block mt-1 w-full" type="file" name="ktp" required autofocus
                    accept="image/jpeg, image/png, image/jpg"/>

@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 class data_user extends Model
 {
     use HasFactory,Notifiable;
+    protected $connection = 'mysql';
     protected $table = 'data_users';
     protected $fillable = [
         'nama',

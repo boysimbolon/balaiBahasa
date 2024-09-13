@@ -18,14 +18,19 @@ Route::middleware('guest')->group(function () {
         ->name('password.reset');
 });
 
+// Routes for email verification and authentication
 Route::middleware('auth')->group(function () {
-    Volt::route('verify-email', 'pages.auth.verify-email')
-        ->name('verification.notice');
+    // Verification Notice Route
+    Route::get('/', function () {
+        return view('livewire.pages.auth.login');
+    })->name('verification.notice');
 
-    Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
-        ->middleware(['signed', 'throttle:6,1'])
-        ->name('verification.verify');
-
-    Volt::route('confirm-password', 'pages.auth.confirm-password')
-        ->name('password.confirm');
+    // Email Verification Route
+    // Confirm Password Route
+    Route::get('confirm-password', function () {
+        return view('auth.confirm-password'); // Or use Volt::route() if appropriate
+    })->name('password.confirm');
 });
+    Route::get('verify-email/{token}', [VerifyEmailController::class, 'verify'])
+        ->middleware('throttle:6,1')
+        ->name('verification.verify');
