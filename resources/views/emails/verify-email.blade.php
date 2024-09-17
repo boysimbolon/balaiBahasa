@@ -1,19 +1,25 @@
 @component('mail::message')
     # Verifikasi Akun Anda
 
-    Terima kasih telah mendaftar! Berikut adalah informasi akun Anda:
+    Terima kasih telah mendaftar di **{{ config('app.name') }}**! Berikut adalah informasi akun Anda:
 
-    - **No Peserta**: #{{ $no_Peserta }}
-    - **Password**: #{{ $password }}
+    @component('mail::panel')
+        - **No Peserta**: {{ $no_Peserta }}
+        - **Password**: {{ $password }}
+    @endcomponent
 
-    Klik tombol di bawah ini untuk memverifikasi email Anda dan mengaktifkan akun.
+    Silakan klik tombol di bawah ini untuk memverifikasi email Anda dan mengaktifkan akun Anda:
 
     @component('mail::button', ['url' => $verificationUrl])
         Verifikasi Email
     @endcomponent
-    Atau Klik link ini untuk aktivasi
 
-    #{{$verificationUrl}}
-    Terima kasih,
-    {{ config('app.name') }}
+    Atau Anda juga dapat mengklik tautan berikut untuk melakukan aktivasi:
+
+    [{{ $verificationUrl }}]({{ $verificationUrl }})
+
+    Terima kasih telah bergabung dengan kami!
+
+    Salam hangat,
+    **{{ config('app.name') }}**
 @endcomponent

@@ -62,9 +62,9 @@ class Login extends Component
 
         // Redirect ke halaman sesuai role
         if (Auth::guard('user')->check()) {
-            return redirect()->route('user.dashboard'); // Redirect ke dashboard umum
+            return "Takut"; // Redirect ke dashboard umum
         } elseif (Auth::guard('mahasiswa')->check()) {
-            return redirect()->route('mahasiswa.dashboard'); // Redirect ke dashboard mahasiswa
+            return "Mahasiswa"; // Redirect ke dashboard mahasiswa
         }
     }
 
@@ -86,7 +86,7 @@ class Login extends Component
     protected function authenticateUser(): bool
     {
         $user = User::where('no_Peserta', trim($this->no_Peserta))->first();
-        if ($user && Hash::check($this->pin, $user->pin)) {
+        if ($user && Hash::check($this->pin, $user->pin) && $user->email_verified_at !=null) {
             Auth::guard('user')->login($user, $this->remember);
             return true;
         }
@@ -101,11 +101,17 @@ class Login extends Component
     protected function authenticateMahasiswa(): bool
     {
         $mahasiswa = Mahasiswa::where('nim', trim($this->no_Peserta))->first();
-        $paswd = trim($mahasiswa->paswd );
-        if ($mahasiswa && $this->pin == $paswd) {
-            Auth::guard('mahasiswa')->login($mahasiswa, $this->remember);
-            return true;
+
+        // Cek apakah data mahasiswa ditemukan
+        if ($mahasiswa) {
+            $paswd = trim($mahasiswa->paswd);
+            // Cek apakah password tidak null dan cocok dengan inputan
+            if (!is_null($paswd) && $this->pin == $paswd) {
+                Auth::guard('mahasiswa')->login($mahasiswa, $this->remember);
+                return true;
+            }
         }
+        // Jika tidak ada mahasiswa yang ditemukan atau password tidak cocok
         return false;
     }
 

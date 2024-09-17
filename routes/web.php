@@ -12,16 +12,5 @@ Route::get('/', function () {
 Route::get('umum/register/', Register::class);
 
 
-// Route untuk mahasiswa
-// Route untuk mahasiswa
-Route::view('/mahasiswa', 'home')
-    ->middleware(['auth', 'mahasiswa']) // Middleware mahasiswa
-    ->name('mahasiswa.dashboard'); // Nama rute mahasiswa dashboard
-
-// Route untuk user umum
-Route::view('/user', 'home')
-    ->middleware(['auth', 'user', 'verified']) // Middleware user umum
-    ->name('user.dashboard'); // Nama rute user dashboard
-
 
 require __DIR__.'/auth.php';
