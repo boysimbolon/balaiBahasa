@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class DashboardController extends Controller
+{
+    /**
+     * Menampilkan halaman dashboard untuk user setelah login.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index()
+    {
+        // Kamu bisa menambahkan logika di sini, seperti mengambil data dari database, dll.
+        // Misalnya: $user = Auth::user();
+
+        return view('dashboard');
+    }
+}

@@ -20,6 +20,6 @@ class EnsureMahasiswa
             return $next($request);
         }
 
-        return redirect('/'); // Arahkan ke halaman lain jika bukan mahasiswa
+//        return redirect('/'); // Arahkan ke halaman lain jika bukan mahasiswa
     }
 }

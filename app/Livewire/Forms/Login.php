@@ -59,14 +59,14 @@ class Login extends Component
 
         // Regenerasi session untuk mencegah fixation attacks
         session()->regenerate();
-
-        // Redirect ke halaman sesuai role
-        if (Auth::guard('user')->check()) {
-            return "Takut"; // Redirect ke dashboard umum
-        } elseif (Auth::guard('mahasiswa')->check()) {
-            return "Mahasiswa"; // Redirect ke dashboard mahasiswa
+        if (Auth::guard('mahasiswa')->check()) {
+            return redirect()->intended(route('mhs.dashboard'));
+        } elseif (Auth::guard('user')->check()) {
+            return redirect()->intended(route('usr.dashboard'));
         }
     }
+
+
 
     /**
      * Authenticate the user or mahasiswa.

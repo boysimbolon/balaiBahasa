@@ -20,6 +20,6 @@ class EnsureUser
             return $next($request);
         }
 
-        return redirect('/'); // Arahkan ke halaman lain jika bukan user umum
+//        return redirect('/'); // Arahkan ke halaman lain jika bukan user umum
     }
 }
