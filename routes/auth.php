@@ -19,8 +19,8 @@ Route::middleware('guest')->group(function () {
     Volt::route('reset-password/{token}', 'pages.auth.reset-password')
         ->name('password.reset');
 });
-Route::get('/mhs',DashboardMhs::class)->middleware('mahasiswa');
-Route::get('/user',DashboardUser::class)->middleware('user');
+Route::get('/mhs',DashboardMhs::class)->middleware('mahasiswa')->name('dashboard-mhs');
+Route::get('/user',DashboardUser::class)->middleware('user')->name('dashboard-user');
 
 // Routes for email verification and authentication
 Route::middleware('auth')->group(function () {
