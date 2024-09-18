@@ -14,6 +14,13 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'primary': '#40A2E3',
+                'secondary': '#FFF6E9'
+            },
+            transitionProperty: {
+                'spacing': 'margin',
+            }
         },
     },
 

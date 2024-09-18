@@ -22,7 +22,7 @@
                 <!-- NIK -->
                 <div class="mb-1">
                     <x-input-label for="nik" :value="__('NIK')"/>
-                    <x-text-input wire:model="nik" id="nik" class="block mt-1 w-full" type="number" name="nik" required autofocus autocomplete="nik"/>
+                    <x-text-input wire:model="nik" id="nik" class="block mt-1 w-full" type="text" name="nik" inputmode="numeric" required autofocus autocomplete="nik"/>
                     <x-input-error :messages="$errors->get('nik')" class="mt-2"/>
                 </div>
                 <div class="md:flex gap-5 md:justify-between mb-1">

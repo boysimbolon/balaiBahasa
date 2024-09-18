@@ -16,7 +16,7 @@
 
         <!-- NIM / No Peserta -->
         <div>
-            <x-input-label for="no_Peserta" :value="__('NIM')" />
+            <x-input-label for="no_Peserta" :value="__('No Peserta')" />
             <x-text-input wire:model="no_Peserta" id="no_Peserta" class="block mt-1 w-full" type="text" name="no_Peserta" placeholder="NIM / No Peserta" inputmode="numeric" required autofocus autocomplete="off" />
             <x-input-error :messages="$errors->get('no_Peserta')" class="mt-2" />
         </div>
