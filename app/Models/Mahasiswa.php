@@ -12,6 +12,7 @@ class Mahasiswa extends Model implements AuthenticatableContract
 
     // Tentukan nama tabel jika berbeda dari konvensi Laravel
     protected $table = 'tm_mhs';
+    protected $guarded = 'mahasiswa';
     protected $connection = 'sqlsrv';
     // Kolom yang dapat diisi secara massal
     protected $fillable = ['nim', 'paswd'];

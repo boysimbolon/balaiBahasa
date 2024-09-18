@@ -16,10 +16,10 @@ class EnsureUser
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && Auth::user() instanceof \App\Models\User) {
-            return $next($request);
+        if (Auth::guard('user')) {
+               return $next($request);
         }
 
-//        return redirect('/'); // Arahkan ke halaman lain jika bukan user umum
-    }
+        return redirect()->route('login')->with('message', 'Akses hanya untuk Umum.');
+   }
 }

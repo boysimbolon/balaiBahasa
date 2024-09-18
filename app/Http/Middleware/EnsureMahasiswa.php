@@ -16,10 +16,11 @@ class EnsureMahasiswa
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && Auth::user() instanceof \App\Models\Mahasiswa) {
+        // Menggunakan guard 'mahasiswa'
+        if (Auth::guard('mahasiswa')) {
             return $next($request);
         }
 
-//        return redirect('/'); // Arahkan ke halaman lain jika bukan mahasiswa
+        return redirect()->route('login')->with('message', 'Akses hanya untuk Mahasiswa.');
     }
 }

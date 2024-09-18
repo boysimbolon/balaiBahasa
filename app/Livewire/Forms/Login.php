@@ -60,9 +60,9 @@ class Login extends Component
         // Regenerasi session untuk mencegah fixation attacks
         session()->regenerate();
         if (Auth::guard('mahasiswa')->check()) {
-            return redirect()->intended(route('mhs.dashboard'));
+            return redirect()->to('/mhs');
         } elseif (Auth::guard('user')->check()) {
-            return redirect()->intended(route('usr.dashboard'));
+            return redirect()->to('/user');
         }
     }
 
