@@ -38,7 +38,7 @@ class Login extends Component
     public function login()
     {
         // Validasi input
-        $validated = $this->validate();
+        $this->validate();
 
         // Pastikan login tidak dibatasi oleh rate limiter
         $this->ensureIsNotRateLimited();
@@ -58,15 +58,15 @@ class Login extends Component
         RateLimiter::clear($this->throttleKey());
 
         // Regenerasi session untuk mencegah fixation attacks
-        session()->regenerate();
+            session()->regenerate();
+
+        // Redirect sesuai dengan guard yang aktif
         if (Auth::guard('mahasiswa')->check()) {
             return redirect()->to('/mhs');
         } elseif (Auth::guard('user')->check()) {
             return redirect()->to('/user');
         }
     }
-
-
 
     /**
      * Authenticate the user or mahasiswa.
@@ -86,7 +86,7 @@ class Login extends Component
     protected function authenticateUser(): bool
     {
         $user = User::where('no_Peserta', trim($this->no_Peserta))->first();
-        if ($user && Hash::check($this->pin, $user->pin) && $user->email_verified_at !=null) {
+        if ($user && Hash::check($this->pin, $user->pin) && $user->email_verified_at !== null) {
             Auth::guard('user')->login($user, $this->remember);
             return true;
         }
@@ -103,14 +103,11 @@ class Login extends Component
         $mahasiswa = Mahasiswa::where('nim', trim($this->no_Peserta))->first();
 
         // Cek apakah data mahasiswa ditemukan
-        if ($mahasiswa) {
-            $paswd = trim($mahasiswa->paswd);
-            // Cek apakah password tidak null dan cocok dengan inputan
-            if (!is_null($paswd) && $this->pin == $paswd) {
-                Auth::guard('mahasiswa')->login($mahasiswa, $this->remember);
-                return true;
-            }
+        if ($mahasiswa && $this->pin == trim($mahasiswa->paswd)) {
+            Auth::guard('mahasiswa')->login($mahasiswa, $this->remember);
+            return true;
         }
+
         // Jika tidak ada mahasiswa yang ditemukan atau password tidak cocok
         return false;
     }

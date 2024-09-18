@@ -38,7 +38,7 @@ return [
     'guards' => [
         'mahasiswa' => [
             'driver' => 'session',
-            'provider' => 'mahasiswa',
+            'provider' => 'mahasiswas',
         ],
         'user' => [
             'driver' => 'session',
@@ -77,7 +77,7 @@ return [
     */
 
     'providers' => [
-        'mahasiswa' => [
+        'mahasiswas' => [
             'driver' => 'eloquent',
             'model' => App\Models\Mahasiswa::class,
         ],

@@ -16,7 +16,7 @@ class EnsureUser
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::guard('user')) {
+        if (Auth::guard('user')->check()) {
                return $next($request);
         }
 

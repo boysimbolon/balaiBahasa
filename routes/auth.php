@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Livewire\DashboardMhs;
+use App\Livewire\DashboardUser;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -17,6 +19,8 @@ Route::middleware('guest')->group(function () {
     Volt::route('reset-password/{token}', 'pages.auth.reset-password')
         ->name('password.reset');
 });
+Route::get('/mhs',DashboardMhs::class)->middleware('mahasiswa');
+Route::get('/user',DashboardUser::class)->middleware('user');
 
 // Routes for email verification and authentication
 Route::middleware('auth')->group(function () {

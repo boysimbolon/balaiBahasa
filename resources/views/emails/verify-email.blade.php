@@ -1,5 +1,5 @@
 @component('mail::message')
-    # Verifikasi Akun Anda
+    # Verifikasi Email
 
     Terima kasih telah mendaftar di **{{ config('app.name') }}**! Berikut adalah informasi akun Anda:
 

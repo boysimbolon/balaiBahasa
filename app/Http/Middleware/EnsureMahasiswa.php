@@ -17,10 +17,10 @@ class EnsureMahasiswa
     public function handle($request, Closure $next)
     {
         // Menggunakan guard 'mahasiswa'
-        if (Auth::guard('mahasiswa')) {
+        if (Auth::guard('mahasiswa')->check()) {
             return $next($request);
         }
 
-        return redirect()->route('login')->with('message', 'Akses hanya untuk Mahasiswa.');
+        return redirect()->route('login')->withErrors(['message' => 'Akses hanya untuk Mahasiswa.']);
     }
 }
