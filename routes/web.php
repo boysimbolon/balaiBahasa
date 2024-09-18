@@ -20,6 +20,18 @@ Route::get('/mhs/biodata', function () {
 Route::get('/mhs/biodata_edit', function () {
     return view('livewire.edit-profile-mhs');
 })->name('edit-profile-mhs');
+Route::get('/mhs/change_password', function () {
+    return view('livewire.change-password-mhs');
+})->name('change-password-mhs');
+Route::get('/mhs/e3_schedules', function () {
+    return view('livewire.e3-schedule-mhs');
+})->name('e3-schedule-mhs');
+Route::get('/mhs/toefl_schedules', function () {
+    return view('livewire.toefl-schedule-mhs');
+})->name('toefl-schedule-mhs');
+Route::get('/mhs/history-mhs', function () {
+    return view('livewire.history-mhs');
+})->name('history-mhs');
 Route::get('/user',DashboardUser::class)->middleware(['user']);
 
 require __DIR__.'/auth.php';
