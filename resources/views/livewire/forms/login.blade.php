@@ -9,16 +9,21 @@
     @endif
 
     <form wire:submit.prevent="login"> <!-- Gunakan wire:submit.prevent -->
-        <!-- No Peserta -->
+        <div class="text-center mb-5">
+            <h1 class="font-bold text-xl md:text-2xl mb-1">Universitas Advent Indonesia</h1>
+            <h3 class="font-light text-lg md:text-xl">Balai Bahasa</h3>
+        </div>
+
+        <!-- NIM / No Peserta -->
         <div>
-            <x-input-label for="no_Peserta" :value="__('NIM')" />
-            <x-text-input wire:model="no_Peserta" id="no_Peserta" class="block mt-1 w-full" type="text" name="no_Peserta" placeholder="NIM / No Peserta" required autofocus autocomplete="off" />
+            <x-input-label for="no_Peserta" :value="__('No Peserta')" />
+            <x-text-input wire:model="no_Peserta" id="no_Peserta" class="block mt-1 w-full" type="text" name="no_Peserta" placeholder="NIM / No Peserta" inputmode="numeric" required autofocus autocomplete="off" />
             <x-input-error :messages="$errors->get('no_Peserta')" class="mt-2" />
         </div>
 
         <!-- PIN -->
         <div class="mt-4">
-            <x-input-label for="pin" :value="__('Pin')" />
+            <x-input-label for="pin" :value="__('PIN')" />
             <x-text-input wire:model="pin" id="pin" class="block mt-1 w-full" type="password" name="pin" placeholder="PIN" required autocomplete="current-password" />
             <x-input-error :messages="$errors->get('pin')" class="mt-2" />
         </div>
