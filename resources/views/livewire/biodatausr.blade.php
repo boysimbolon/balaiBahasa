@@ -109,7 +109,7 @@
                                 <span class="w-1/2 md:w-1/5 font-semibold">KTP</span>
                                 <span class="w-1/2 flex items-center gap-5 justify-end md:justify-normal">
                                 <span class="hidden md:block">:</span>
-                                <img src="{{ asset('storage/' . $users->ktp) }}" alt="" class="rounded-xl">
+                                <img src="{{ asset('storage/' . $users->ktp) }}" alt="" width="300" height="200" class="rounded-xl">
                             </span>
                             </p>
                         </div>
@@ -118,7 +118,7 @@
                 <div class="w-full order-1 xl:order-2 xl:w-1/3">
                     <div class="bg-white drop-shadow-lg h-fit mt-1 rounded p-5">
                         <div class="flex items-center flex-col gap-4 mb-5">
-                            <img src="{{ asset('storage/' . $users->pasFoto) }}" alt="" class="rounded-xl">
+                            <img src="{{ asset('storage/' . $users->pasFoto) }}" width="200" height="300" alt="" class="rounded-xl">
                             <div class="text-center">
                                 <h1 class="text-xl font-bold">{{$users->nama}}</h1>
                                 <p class="text-center">{{$users->no_Peserta}}</p>

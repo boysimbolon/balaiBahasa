@@ -2,6 +2,10 @@
 
 use App\Livewire\Actions\Logout;
 use Livewire\Volt\Component;
+use App\Models\data_user;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+//use Livewire\Component;
 
 new class extends Component
 {
@@ -14,15 +18,30 @@ new class extends Component
 
         $this->redirect('/', navigate: true);
     }
+
+    public $users,$email;
+
+    public function mount()
+    {
+        // Pastikan Auth user tersedia dan memiliki no_Peserta
+        $authUser = Auth::guard('user')->user();
+        if ($authUser && $authUser->no_Peserta) {
+            $this->users = data_user::where('no_Peserta', $authUser->no_Peserta)->first();
+            $this->email = user::where('no_Peserta',$authUser->no_Peserta)->select('email')->first();
+        } else {
+            // Handle jika tidak ada user atau no_Peserta
+            $this->users = null;
+        }
+    }
 }; ?>
 
 <aside id="sidebar" class="bg-primary w-60 h-screen pt-20 flex flex-col fixed top-0 bottom-0 -left-60 transition duration-700 ease-in-out z-10 overflow-auto">
     <!-- User Photo -->
     <div class="mt-5 w-60 h-fit flex flex-col items-center gap-2">
         <div class="w-28">
-            <img src="https://picsum.photos/150/200" alt="" class="size-fit rounded-xl">
+            <img src="{{ asset('storage/' . $users->pasFoto) }}" alt="" width="150" height="200" class="size-fit rounded-xl">
         </div>
-        <h1 class="text-xl font-bold text-white">John Doe</h1>
+        <h1 class="text-xl font-bold text-white">{{ $users->nama }}</h1>
     </div>
 
     <!-- Navigation -->
@@ -44,7 +63,7 @@ new class extends Component
                 </a>
             @elseif(Auth::guard('user')->check())
                 <a href="{{ route('dashboard-user') }}">
-                <li class="flex items-center gap-2 h-14 px-5 hover:bg-secondary hover:text-black {{ Route::is('dashboard-mhs') ? 'bg-secondary text-black' : 'text-white' }}">
+                <li class="flex items-center gap-2 h-14 px-5 hover:bg-secondary hover:text-black {{ Route::is('dashboard-user') ? 'bg-secondary text-black' : 'text-white' }}">
                     <div class="flex items-center gap-2">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" class="bi bi-grid" viewBox="0 0 16 16">
@@ -57,7 +76,7 @@ new class extends Component
             </a>
             @endif
             <!-- Profile -->
-            <li class="flex items-center justify-between h-14 px-5 hover:bg-secondary hover:text-black  {{ Route::is('biodata-mhs') || Route::is('edit-profile-mhs') || Route::is('change-password-mhs') ? 'bg-secondary text-black' : 'text-white' }}">
+            <li class="flex items-center justify-between h-14 px-5 hover:bg-secondary hover:text-black  {{ Route::is('biodata-mhs') || Route::is('edit-profile-mhs') || Route::is('change-password-mhs') || Route::is('biodata-user') || Route::is('change-password-user') ? 'bg-secondary text-black' : 'text-white' }}">
                 <div class="flex items-center gap-2 w-fit">
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" class="bi bi-person" viewBox="0 0 16 16">
