@@ -44,23 +44,23 @@ Route::prefix('user')->middleware(['user'])->group(function () {
     Route::get('/biodata', Biodatausr::class)->name('biodata-user');
 
     Route::get('/biodata_edit', function () {
-        return view('livewire.edit-profile-mhs');
+        return view('livewire.editprofile');
     })->name('edit-profile-user');
 
     Route::get('/change_password', function () {
-        return view('livewire.change-password-mhs');
+        return view('livewire.changepassword');
     })->name('change-password-user');
 
     Route::get('/e3_schedules', function () {
-        return view('livewire.e3-schedule-mhs');
+        return view('livewire.e3schedule');
     })->name('e3-schedule-user');
 
     Route::get('/toefl_schedules', function () {
-        return view('livewire.toefl-schedule-mhs');
+        return view('livewire.toeflschedule');
     })->name('toefl-schedule-user');
 
     Route::get('/history-mhs', function () {
-        return view('livewire.history-mhs');
+        return view('livewire.history');
     })->name('history-user');
 });
 

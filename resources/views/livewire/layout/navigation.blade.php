@@ -85,7 +85,7 @@ new class extends Component
                     </div>
                     <p class="text-lg">Profile</p>
                 </div>
-                <svg onclick="openProfileDropdown()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-caret-down-fill hover:cursor-pointer" viewBox="0 0 16 16" id="caret1">
+                <svg onclick="openProfileDropdown()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-caret-down-fill hover:cursor-pointer transition-transform duration-300 ease-in-out" viewBox="0 0 16 16" id="caret1">
                     <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
                 </svg>
             </li>
@@ -135,7 +135,7 @@ new class extends Component
             </ul>
 
             <!-- Type Test -->
-            <li class="flex items-center justify-between h-14 px-5 hover:bg-secondary hover:text-black  {{ Route::is('e3-schedule-mhs') || Route::is('toefl-schedule-mhs') ? 'bg-secondary text-black' : 'text-white' }}">
+            <li class="flex items-center justify-between h-14 px-5 hover:bg-secondary hover:text-black  {{ Route::is('e3-schedule-mhs') || Route::is('toefl-schedule-mhs') || Route::is('e3-schedule-user') || Route::is('toefl-schedule-user') ? 'bg-secondary text-black' : 'text-white' }}">
                 <div class="flex items-center gap-2">
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" class="bi bi-bookmark" viewBox="0 0 16 16">
@@ -144,52 +144,51 @@ new class extends Component
                     </div>
                     <p class="text-lg text-nowrap">Pilih Jenis Tes</p>
                 </div>
-                <svg onclick="openTypeDropdown()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-caret-down-fill hover:cursor-pointer" viewBox="0 0 16 16" id="caret2">
+                <svg onclick="openTypeDropdown()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-caret-down-fill hover:cursor-pointer transition-transform duration-300 ease-in-out" viewBox="0 0 16 16" id="caret2">
                     <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
                 </svg>
             </li>
 
             <!-- Type Test Dropdown -->
             <ul class="hidden" id="typeDropdown">
-                <!-- E3 -->
                 @if(Auth::guard('mahasiswa')->check())
-                <a href="{{ route('e3-schedule-mhs') }}">
-                    <li class="flex items-center justify-between h-14 px-5 text-white hover:bg-secondary hover:text-black">
-                        <div class="flex items-center gap-2 w-fit">
-                            <div class="w-6"></div>
-                            <p class="text-lg">E3</p>
-                        </div>
-                    </li>
-                </a>
-
-                <!-- TOEFL -->
-                <a href="{{ route('toefl-schedule-mhs') }}">
-                    <li class="flex items-center justify-between h-14 px-5 text-white hover:bg-secondary hover:text-black">
-                        <div class="flex items-center gap-2 w-fit">
-                            <div class="w-6"></div>
-                            <p class="text-lg">TOEFL</p>
-                        </div>
-                    </li>
-                </a>
+                    <!-- E3 -->
+                    <a href="{{ route('e3-schedule-mhs') }}">
+                        <li class="flex items-center justify-between h-14 px-5 text-white hover:bg-secondary hover:text-black">
+                            <div class="flex items-center gap-2 w-fit">
+                                <div class="w-6"></div>
+                                <p class="text-lg">E3</p>
+                            </div>
+                        </li>
+                    </a>
+                    <!-- TOEFL -->
+                    <a href="{{ route('toefl-schedule-mhs') }}">
+                        <li class="flex items-center justify-between h-14 px-5 text-white hover:bg-secondary hover:text-black">
+                            <div class="flex items-center gap-2 w-fit">
+                                <div class="w-6"></div>
+                                <p class="text-lg">TOEFL</p>
+                            </div>
+                        </li>
+                    </a>
                 @elseif(Auth::guard('user')->check())
-                <a href="{{ route('e3-schedule-user') }}">
-                    <li class="flex items-center justify-between h-14 px-5 text-white hover:bg-secondary hover:text-black">
-                        <div class="flex items-center gap-2 w-fit">
-                            <div class="w-6"></div>
-                            <p class="text-lg">E3</p>
-                        </div>
-                    </li>
-                </a>
-
-                <!-- TOEFL -->
-                <a href="{{ route('toefl-schedule-user') }}">
-                    <li class="flex items-center justify-between h-14 px-5 text-white hover:bg-secondary hover:text-black">
-                        <div class="flex items-center gap-2 w-fit">
-                            <div class="w-6"></div>
-                            <p class="text-lg">TOEFL</p>
-                        </div>
-                    </li>
-                </a>
+                    <!-- E3 -->
+                    <a href="{{ route('e3-schedule-user') }}">
+                        <li class="flex items-center justify-between h-14 px-5 text-white hover:bg-secondary hover:text-black">
+                            <div class="flex items-center gap-2 w-fit">
+                                <div class="w-6"></div>
+                                <p class="text-lg">E3</p>
+                            </div>
+                        </li>
+                    </a>
+                    <!-- TOEFL -->
+                    <a href="{{ route('toefl-schedule-user') }}">
+                        <li class="flex items-center justify-between h-14 px-5 text-white hover:bg-secondary hover:text-black">
+                            <div class="flex items-center gap-2 w-fit">
+                                <div class="w-6"></div>
+                                <p class="text-lg">TOEFL</p>
+                            </div>
+                        </li>
+                    </a>
                 @endif
             </ul>
             @if(Auth::guard('mahasiswa')->check())
@@ -209,7 +208,7 @@ new class extends Component
                 </a>
             @elseif(Auth::guard('user')->check())
                 <a href="{{ route('history-user') }}">
-                    <li class="flex items-center h-14 px-5 hover:bg-secondary hover:text-black {{ Route::is('history-mhs') ? 'bg-secondary text-black' : 'text-white' }}">
+                    <li class="flex items-center h-14 px-5 hover:bg-secondary hover:text-black {{ Route::is('history-user') ? 'bg-secondary text-black' : 'text-white' }}">
                         <div class="flex items-center gap-2">
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" class="bi bi-clock" viewBox="0 0 16 16">

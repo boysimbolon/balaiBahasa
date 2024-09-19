@@ -41,7 +41,7 @@
             <livewire:layout.navigation />
 
             <!-- Page Content -->
-            <main class="pt-20 bg-neutral-100 min-h-screen transition-spacing duration-700 ease-in-out z-0 {{ Route::is('history-mhs') || Route::is('e3-schedule-mhs') || Route::is('toefl-schedule-mhs') ? 'w-fit md:w-full' : 'w-full' }}" id="mainContent">
+            <main class="pt-20 bg-neutral-100 min-h-screen transition-spacing duration-700 ease-in-out z-0 {{ Route::is('history-mhs') || Route::is('e3-schedule-mhs') || Route::is('toefl-schedule-mhs') || Route::is('e3-schedule-user') || Route::is('toefl-schedule-user') || Route::is('history-user') ? 'w-fit md:w-full' : 'w-full' }}" id="mainContent">
                 {{ $slot }}
             </main>
         </div>
