@@ -16,20 +16,20 @@
                 <!-- Name -->
                 <div class="mb-1">
                     <x-input-label for="name" :value="__('Nama')"/>
-                    <x-text-input wire:model="nama" id="nama" class="block mt-1 w-full" type="text" name="nama" placeholder="Nama" required autofocus autocomplete="nama"/>
+                    <x-text-input wire:model="nama" id="nama" class="block mt-1 w-full" type="text" name="nama" required autofocus autocomplete="nama"/>
                     <x-input-error :messages="$errors->get('nama')" class="mt-2"/>
                 </div>
                 <!-- NIK -->
                 <div class="mb-1">
                     <x-input-label for="nik" :value="__('NIK')"/>
-                    <x-text-input wire:model="nik" id="nik" class="block mt-1 w-full" type="text" name="nik" placeholder="NIK" inputmode="numeric" required autofocus autocomplete="nik"/>
+                    <x-text-input wire:model="nik" id="nik" class="block mt-1 w-full" type="text" name="nik" inputmode="numeric" required autofocus autocomplete="nik"/>
                     <x-input-error :messages="$errors->get('nik')" class="mt-2"/>
                 </div>
                 <div class="md:flex gap-5 md:justify-between mb-1">
                     <!-- Tempat Lahir -->
                     <div class="md:w-1/2">
                         <x-input-label for="tmpt_lahir" :value="__('Tempat Lahir')"/>
-                        <x-text-input wire:model="tmpt_lahir" id="tmpt_lahir" class="block mt-1 w-full" type="text" name="tmpt_lahir" placeholder="Tempat Lahir" required autofocus autocomplete="tmpt_lahir"/>
+                        <x-text-input wire:model="tmpt_lahir" id="tmpt_lahir" class="block mt-1 w-full" type="text" name="tmpt_lahir" required autofocus autocomplete="tmpt_lahir"/>
                         <x-input-error :messages="$errors->get('tmpt_lahir')" class="mt-2"/>
                     </div>
                     <!-- Tanggal Lahir -->
@@ -40,22 +40,22 @@
                     </div>
                 </div>
                 <!-- Alamat -->
-                <div class="mb-1">
+                <div>
                     <x-input-label for="alamat" :value="__('Alamat')"/>
-                    <x-text-input wire:model="alamat" id="alamat" class="block mt-1 w-full" type="text" name="alamat" placeholder="Alamat" required autofocus autocomplete="alamat"/>
+                    <x-text-input wire:model="alamat" id="alamat" class="block mt-1 w-full" type="text" name="alamat" required autofocus autocomplete="alamat"/>
                     <x-input-error :messages="$errors->get('alamat')" class="mt-2"/>
                 </div>
                 <div class="md:flex gap-5 md:justify-between mb-1">
                     <!-- NIDN -->
                     <div class="w-full md:w-1/2">
                         <x-input-label for="NIDN" :value="__('NIDN')"/>
-                        <x-text-input wire:model="NIDN" id="NIDN" class="block mt-1 w-full" type="text" name="NIDN" placeholder="NIDN" autofocus autocomplete="NIDN"/>
+                        <x-text-input wire:model="NIDN" id="NIDN" class="block mt-1 w-full" type="text" name="NIDN" autofocus autocomplete="DIDN"/>
                         <x-input-error :messages="$errors->get('name')" class="mt-2"/>
                     </div>
                     <!-- Pekerjaan -->
                     <div class="w-full md:w-1/2">
                         <x-input-label for="pekerjaan" :value="__('Pekerjaan')"/>
-                        <select wire:model="pekerjaan" id="pekerjaan" name="pekerjaan" class="block mt-1 w-full rounded" placeholder="Pekerjaan" required autofocus>
+                        <select wire:model="pekerjaan" id="pekerjaan" name="pekerjaan" class="block mt-1 w-full rounded" required autofocus>
                             <option value="" disabled>Pilih Pekerjaan</option>
                             <option value="Pelajar">Pelajar</option>
                             <option value="Mahasiswa">Mahasiswa</option>
@@ -89,7 +89,7 @@
                 <!-- Instansi -->
                 <div class="mb-1">
                     <x-input-label for="instansi" :value="__('Instansi')"/>
-                    <x-text-input wire:model="instansi" id="instansi" class="block mt-1 w-full" type="text" name="instansi" placeholder="Instansi" required autofocus autocomplete="instansi"/>
+                    <x-text-input wire:model="instansi" id="instansi" class="block mt-1 w-full" type="text" name="instansi" required autofocus autocomplete="instansi"/>
                     <x-input-error :messages="$errors->get('name')" class="mt-2"/>
                 </div>
             </div>
@@ -97,20 +97,20 @@
                 <!-- Nomor Telepon -->
                 <div class="mb-1">
                     <x-input-label for="num_telp" :value="__('Nomor Telepon')"/>
-                    <x-text-input wire:model="num_telp" id="num_telp" class="block mt-1 w-full" type="number" name="num_telp" placeholder="No Telepon" required autofocus autocomplete="num_telp"/>
+                    <x-text-input wire:model="num_telp" id="num_telp" class="block mt-1 w-full" type="number" name="num_telp" required autofocus autocomplete="num_telp"/>
                     <x-input-error :messages="$errors->get('num_telp')" class="mt-2"/>
                 </div>
                 <!-- Email Address -->
                 <div class="mb-1">
                     <x-input-label for="email" :value="__('Email')"/>
-                    <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" placeholder="Email" required autocomplete="email"/>
+                    <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required autocomplete="email"/>
                     <x-input-error :messages="$errors->get('email')" class="mt-2"/>
                 </div>
                 <!-- Pendidikan -->
                 <div class="mb-1">
                     <x-input-label for="Pendidikan" :value="__('Pendidikan')"/>
                     <select wire:model="Pendidikan" id="Pendidikan" name="Pendidikan" class="block mt-1 w-full rounded" required autofocus>
-                        <option value="" disabled>Pilih Pendidikan</option>
+                        <option value="">Pilih Pendidikan</option>
                         <option value="Tidak/Belum Sekolah">Tidak/Belum Sekolah</option>
                         <option value="Belum Tamat SD/Sederajat">Belum Tamat SD/Sederajat</option>
                         <option value="Tamat SD/Sederajat">Tamat SD/Sederajat</option>
@@ -140,14 +140,14 @@
                     <!-- Kewarganegaraan -->
                     <div class="md:w-1/2">
                         <x-input-label for="kewarganegaraan" :value="__('Kewarganegaraan')"/>
-                        <x-text-input wire:model="kewarganegaraan" id="kewarganegaraan" class="block mt-1 w-full" type="text" name="kewarganegaraan" placeholder="Kewarganegaraan" required autofocus autocomplete="kewarganegaraan"/>
+                        <x-text-input wire:model="kewarganegaraan" id="kewarganegaraan" class="block mt-1 w-full" type="text" name="kewarganegaraan" required autofocus autocomplete="kewarganegaraan"/>
                         <x-input-error :messages="$errors->get('kewarganegaraan')" class="mt-2"/>
                     </div>
                     <!-- Bahasa -->
                     <div class="md:w-1/2">
                         <x-input-label for="bhs_seharian" :value="__('Bahasa Sehari')"/>
                         <select wire:model="bhs_seharian" id="bhs_seharian" name="bhs_seharian" class="block mt-1 w-full rounded" required autofocus>
-                            <option value="" disabled>Pilih Bahasa</option>
+                            <option value="">Pilih Bahasa</option>
                             <option value="Indonesian">Indonesia</option>
                             <option value="Malay">Malaysia</option>
                             <option value="English">English</option>
@@ -158,32 +158,42 @@
                         <x-input-error :messages="$errors->get('bhs_seharian')" class="mt-2"/>
                     </div>
                 </div>
+                <!-- Foto -->
                 <div class="mb-1">
-                    @if($pasFoto)
-                        <img class="rounded w-10 h-10 m-2 block" src="{{$pasFoto->temporaryUrl()}}"
-                    @endif
+                    {{--            @if($pasFoto)--}}
+                    {{--                <img class="rounded w-10 h-10 m-2 block" src="{{$pasFoto->temporaryUrl()}}"--}}
+                    {{--            @endif--}}
                     <x-input-label for="pasFoto" :value="__('Pas Foto')"/>
                     <x-text-input wire:model="pasFoto" id="pasFoto" class="block mt-1 w-full rounded-none shadow-none" type="file" name="pasFoto" required autofocus accept="image/jpeg, image/png, image/jpg"/>
                     <div wire:loading wire:target="pasFoto">Uploading...</div>
                     <x-input-error :messages="$errors->get('pasFoto')" class="mt-2"/>
                 </div>
+                <!-- KTP -->
                 <div class="mb-1">
-                    @if($ktp)
-                        <img class="rounded w-10 h-10 m-2 block" src="{{$ktp->temporaryUrl()}}"
-                    @endif
+                    {{--            @if($ktp)--}}
+                    {{--                <img class="rounded w-10 h-10 m-2 block" src="{{$ktp->temporaryUrl()}}"--}}
+                    {{--            @endif--}}
                     <x-input-label for="ktp" :value="__('KTP')"/>
                     <x-text-input wire:model="ktp" id="ktp" class="block mt-1 w-full rounded-none shadow-none" type="file" name="ktp" required autofocus accept="image/jpeg, image/png, image/jpg"/>
-                    <div wire:loading wire:target="ktp">Uploading...</div>
                     <x-input-error :messages="$errors->get('ktp')" class="mt-2"/>
+                    <div wire:loading wire:target="ktp">Uploading...</div>
                 </div>
             </div>
         </div>
+        <!-- Registration Button -->
         <x-primary-button class="w-1/2 mt-5">
-            {{ __('Registrasi') }}
+            {{ __('Register') }}
         </x-primary-button>
-        <!-- Registration -->
         <div class="text-sm text-center mt-4">
             <p>Sudah memiliki akun? <a class="text-blue-500 hover:text-blue-700 hover:underline" href="{{ route('login') }}" wire:navigate>{{ __('Login') }}</a></p>
         </div>
+{{--        <div class="flex items-center justify-end mt-4">--}}
+{{--            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}" wire:navigate>--}}
+{{--                {{ __('Already registered?') }}--}}
+{{--            </a>--}}
+
+{{--            --}}
+{{--        </div>--}}
     </form>
+
 </div>

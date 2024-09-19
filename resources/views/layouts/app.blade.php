@@ -8,7 +8,7 @@
         <title>UNAI - Balai Bahasa</title>
 
         <!-- Favicon -->
-        <link rel="icon" href="Logo-Unai.png">
+        <link rel="icon" href="{{ asset('favicon.ico') }}">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -29,10 +29,10 @@
 
             <!-- Navbar Heading -->
             <div class="ml-5 flex items-center gap-3">
-                <a href="{{ route('dashboard') }}" class="w-10 h-10">
-                    <img src="Logo-Unai.png" alt="Unai Logo" class="aspect-square">
+                <a href="{{ route('dashboard-mhs') }}" class="w-10 h-10">
+                    <img src="{{ asset('Logo-Unai.png') }}" alt="Unai Logo" class="aspect-square">
                 </a>
-                <a href="{{ route('dashboard') }}" class="text-2xl font-semibold">Balai Bahasa UNAI</a>
+                <a href="{{ route('dashboard-mhs') }}" class="text-2xl font-semibold">Balai Bahasa UNAI</a>
             </div>
         </nav>
 
@@ -41,7 +41,7 @@
             <livewire:layout.navigation />
 
             <!-- Page Content -->
-            <main class="pt-20 bg-neutral-100 min-h-screen transition-spacing duration-700 ease-in-out z-0 {{ Route::is('history') || Route::is('e3_schedule') || Route::is('toefl_schedule') ? 'w-fit md:w-full' : 'w-full' }}" id="mainContent">
+            <main class="pt-20 bg-neutral-100 min-h-screen transition-spacing duration-700 ease-in-out z-0 {{ Route::is('history-mhs') || Route::is('e3-schedule-mhs') || Route::is('toefl-schedule-mhs') ? 'w-fit md:w-full' : 'w-full' }}" id="mainContent">
                 {{ $slot }}
             </main>
         </div>

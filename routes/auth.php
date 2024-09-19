@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Livewire\DashboardMhs;
+use App\Livewire\DashboardUser;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -17,15 +19,22 @@ Route::middleware('guest')->group(function () {
     Volt::route('reset-password/{token}', 'pages.auth.reset-password')
         ->name('password.reset');
 });
+Route::get('/mhs',DashboardMhs::class)->middleware('mahasiswa')->name('dashboard-mhs');
+Route::get('/user',DashboardUser::class)->middleware('user')->name('dashboard-user');
 
+// Routes for email verification and authentication
 Route::middleware('auth')->group(function () {
-    Volt::route('verify-email', 'pages.auth.verify-email')
-        ->name('verification.notice');
+    // Verification Notice Route
+    Route::get('/', function () {
+        return view('livewire.pages.auth.login');
+    })->name('verification.notice');
 
-    Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
-        ->middleware(['signed', 'throttle:6,1'])
-        ->name('verification.verify');
-
-    Volt::route('confirm-password', 'pages.auth.confirm-password')
-        ->name('password.confirm');
+    // Email Verification Route
+    // Confirm Password Route
+    Route::get('confirm-password', function () {
+        return view('auth.confirm-password'); // Or use Volt::route() if appropriate
+    })->name('password.confirm');
 });
+    Route::get('verify-email/{token}', [VerifyEmailController::class, 'verify'])
+        ->middleware('throttle:6,1')
+        ->name('verification.verify');

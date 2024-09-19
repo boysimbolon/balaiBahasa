@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use App\Mail\VerifyEmail;
 use App\Models\data_user;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -33,6 +34,7 @@ class Register extends Component
     public $ktp;
     public $no_Peserta = '';
     public $password = '';
+    public $token ='';
 
     protected $rules = [
         'nama' => ['required', 'string', 'max:100'],
@@ -63,20 +65,22 @@ class Register extends Component
     {
         $validated = $this->validate();
 
-        // Men-generate username dan password
+        // Generate no_Peserta dan password
         do {
-            $username = substr(str_shuffle('0123456789'), 0, 8); // Panjang username diubah ke 8 digit
-        } while (User::where('no_Peserta', $username)->exists());
+            $this->no_Peserta = substr(str_shuffle('0123456789'), 0, 8); // Panjang 8 digit
+        } while (User::where('no_Peserta', $this->no_Peserta)->exists());
 
-        $password = substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 6);
-        $validated['no_Peserta'] = $username;
-        $validated['password'] = Hash::make($password);
+        $this->password = substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 6);
 
-        // Simpan file
+        // Simpan file pasFoto dan KTP
         $pasFotoPath = $this->pasFoto->store('pasFoto', 'public');
         $ktpPath = $this->ktp->store('ktp', 'public');
+        $this->token = Str::random(32);
 
-        // Tambahkan path file ke dalam array data yang tervalidasi
+        // Tambahkan path file ke data yang tervalidasi
+        $validated['no_Peserta'] = $this->no_Peserta;
+        $validated['token'] = $this->token;
+        $validated['password'] = Hash::make($this->password);
         $validated['pasFoto'] = $pasFotoPath;
         $validated['ktp'] = $ktpPath;
 
@@ -84,25 +88,25 @@ class Register extends Component
         $user = User::create([
             'no_Peserta' => $validated['no_Peserta'],
             'email' => $validated['email'],
-            'pin' => $validated['password'], // Menyimpan password yang sudah di-hash
+            'email_verification_token'=>$validated['token'],
+            'pin' => $validated['password'], // Simpan password yang sudah di-hash
         ]);
 
         // Generate token untuk verifikasi email
-        $token = Str::random(32);
-        session(['email_verification_token' => $token]);
 
         // Kirim email verifikasi
-        Mail::to($this->email)->send(new \App\Mail\VerifyEmail($user));
+        Mail::to($user->email)->send(new VerifyEmail($this->no_Peserta, $this->password, $this->token));
 
         // Simpan data user tambahan ke tabel data_users
         data_user::create($validated);
 
-        // Reset field form setelah berhasil menyimpan
+        // Reset semua field form
         $this->reset([
             'nama', 'nik', 'tmpt_lahir', 'tgl_lahir', 'pekerjaan', 'NIDN', 'alamat', 'jenis_kelamin', 'instansi',
             'num_telp', 'email', 'Pendidikan', 'thn_lulus', 'kewarganegaraan', 'bhs_seharian', 'pasFoto', 'ktp'
         ]);
 
+        // Berikan feedback sukses
         session()->flash('message', 'Registrasi berhasil. Silakan cek email untuk verifikasi.');
 
         // Redirect ke halaman login setelah registrasi
