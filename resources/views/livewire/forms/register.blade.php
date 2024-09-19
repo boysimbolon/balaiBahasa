@@ -76,11 +76,11 @@
                     <x-input-label for="jenis_kelamin" :value="__('Jenis Kelamin')"/>
                     <div class="flex items-center justify-between mt-1">
                         <div class="w-1/2 flex items-center gap-1">
-                            <input type="radio" wire:model="jenis_kelamin" id="laki_laki" name="jenis_kelamin" value="L" class="block rounded" required autofocus>
+                            <input type="radio" wire:model="jenis_kelamin" id="laki_laki" name="jenis_kelamin" value="Laki-Laki" class="block rounded" autofocus>
                             <label for="laki_laki">Laki-Laki</label>
                         </div>
                         <div class="w-1/2 flex items-center gap-1">
-                            <input type="radio" wire:model="jenis_kelamin" id="perempuan" name="jenis_kelamin" value="P" class="block rounded" required autofocus>
+                            <input type="radio" wire:model="jenis_kelamin" id="perempuan" name="jenis_kelamin" value="Perempuan" class="block rounded" autofocus>
                             <label for="perempuan">Perempuan</label>
                         </div>
                     </div>

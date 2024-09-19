@@ -30,18 +30,18 @@ new class extends Component
         <div>
             <!-- Dashboard -->
             @if(Auth::guard('mahasiswa')->check())
-            <a href="{{ route('dashboard-mhs') }}">
-                <li class="flex items-center gap-2 h-14 px-5 hover:bg-secondary hover:text-black {{ Route::is('dashboard-mhs') ? 'bg-secondary text-black' : 'text-white' }}">
-                    <div class="flex items-center gap-2">
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" class="bi bi-grid" viewBox="0 0 16 16">
-                                <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/>
-                            </svg>
+                <a href="{{ route('dashboard-mhs') }}">
+                    <li class="flex items-center gap-2 h-14 px-5 hover:bg-secondary hover:text-black {{ Route::is('dashboard-mhs') ? 'bg-secondary text-black' : 'text-white' }}">
+                        <div class="flex items-center gap-2">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" class="bi bi-grid" viewBox="0 0 16 16">
+                                    <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/>
+                                </svg>
+                            </div>
+                            <p class="text-lg">Dashboard</p>
                         </div>
-                        <p class="text-lg">Dashboard</p>
-                    </div>
-                </li>
-            </a>
+                    </li>
+                </a>
             @elseif(Auth::guard('user')->check())
                 <a href="{{ route('dashboard-user') }}">
                 <li class="flex items-center gap-2 h-14 px-5 hover:bg-secondary hover:text-black {{ Route::is('dashboard-mhs') ? 'bg-secondary text-black' : 'text-white' }}">
@@ -75,43 +75,43 @@ new class extends Component
             <ul class="hidden" id="profileDropdown">
                 <!-- Biodata -->
                 @if(Auth::guard('mahasiswa')->check())
-                <a href="{{ route('biodata-mhs') }}">
-                    <li class="flex items-center justify-between h-14 px-5 text-white hover:bg-secondary hover:text-black">
-                        <div class="flex items-center gap-2 w-fit">
-                            <div class="w-6"></div>
-                            <p class="text-lg">Biodata</p>
-                        </div>
-                    </li>
-                </a>
+                    <a href="{{ route('biodata-mhs') }}">
+                        <li class="flex items-center justify-between h-14 px-5 text-white hover:bg-secondary hover:text-black">
+                            <div class="flex items-center gap-2 w-fit">
+                                <div class="w-6"></div>
+                                <p class="text-lg">Biodata</p>
+                            </div>
+                        </li>
+                    </a>
 
-                <!-- Change Password -->
-                <a href="{{ route('change-password-mhs') }}">
-                    <li class="flex items-center justify-between h-14 px-5 text-white hover:bg-secondary hover:text-black">
-                        <div class="flex items-center gap-2 w-fit">
-                            <div class="w-6"></div>
-                            <p class="text-lg">Ganti Password</p>
-                        </div>
-                    </li>
-                </a>
+                    <!-- Change Password -->
+                    <a href="{{ route('change-password-mhs') }}">
+                        <li class="flex items-center justify-between h-14 px-5 text-white hover:bg-secondary hover:text-black">
+                            <div class="flex items-center gap-2 w-fit">
+                                <div class="w-6"></div>
+                                <p class="text-lg">Ganti Password</p>
+                            </div>
+                        </li>
+                    </a>
                 @elseif(Auth::guard('user')->check())
-                <a href="{{ route('biodata-user') }}">
-                    <li class="flex items-center justify-between h-14 px-5 text-white hover:bg-secondary hover:text-black">
-                        <div class="flex items-center gap-2 w-fit">
-                            <div class="w-6"></div>
-                            <p class="text-lg">Biodata</p>
-                        </div>
-                    </li>
-                </a>
+                    <a href="{{ route('biodata-user') }}">
+                        <li class="flex items-center justify-between h-14 px-5 text-white hover:bg-secondary hover:text-black">
+                            <div class="flex items-center gap-2 w-fit">
+                                <div class="w-6"></div>
+                                <p class="text-lg">Biodata</p>
+                            </div>
+                        </li>
+                    </a>
 
-                <!-- Change Password -->
-                <a href="{{ route('change-password-user') }}">
-                    <li class="flex items-center justify-between h-14 px-5 text-white hover:bg-secondary hover:text-black">
-                        <div class="flex items-center gap-2 w-fit">
-                            <div class="w-6"></div>
-                            <p class="text-lg">Ganti Password</p>
-                        </div>
-                    </li>
-                </a>
+                    <!-- Change Password -->
+                    <a href="{{ route('change-password-user') }}">
+                        <li class="flex items-center justify-between h-14 px-5 text-white hover:bg-secondary hover:text-black">
+                            <div class="flex items-center gap-2 w-fit">
+                                <div class="w-6"></div>
+                                <p class="text-lg">Ganti Password</p>
+                            </div>
+                        </li>
+                    </a>
                 @endif
             </ul>
 
@@ -174,34 +174,34 @@ new class extends Component
                 @endif
             </ul>
             @if(Auth::guard('mahasiswa')->check())
-            <!-- History -->
-            <a href="{{ route('history-mhs') }}">
-                <li class="flex items-center h-14 px-5 hover:bg-secondary hover:text-black {{ Route::is('history-mhs') ? 'bg-secondary text-black' : 'text-white' }}">
-                    <div class="flex items-center gap-2">
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" class="bi bi-clock" viewBox="0 0 16 16">
-                                <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
-                                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
-                            </svg>
+                <!-- History -->
+                <a href="{{ route('history-mhs') }}">
+                    <li class="flex items-center h-14 px-5 hover:bg-secondary hover:text-black {{ Route::is('history-mhs') ? 'bg-secondary text-black' : 'text-white' }}">
+                        <div class="flex items-center gap-2">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" class="bi bi-clock" viewBox="0 0 16 16">
+                                    <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+                                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
+                                </svg>
+                            </div>
+                            <p class="text-lg">History</p>
                         </div>
-                        <p class="text-lg">History</p>
-                    </div>
-                </li>
-            </a>
+                    </li>
+                </a>
             @elseif(Auth::guard('user')->check())
-            <a href="{{ route('history-user') }}">
-                <li class="flex items-center h-14 px-5 hover:bg-secondary hover:text-black {{ Route::is('history-mhs') ? 'bg-secondary text-black' : 'text-white' }}">
-                    <div class="flex items-center gap-2">
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" class="bi bi-clock" viewBox="0 0 16 16">
-                                <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
-                                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
-                            </svg>
+                <a href="{{ route('history-user') }}">
+                    <li class="flex items-center h-14 px-5 hover:bg-secondary hover:text-black {{ Route::is('history-mhs') ? 'bg-secondary text-black' : 'text-white' }}">
+                        <div class="flex items-center gap-2">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" class="bi bi-clock" viewBox="0 0 16 16">
+                                    <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+                                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
+                                </svg>
+                            </div>
+                            <p class="text-lg">History</p>
                         </div>
-                        <p class="text-lg">History</p>
-                    </div>
-                </li>
-            </a>
+                    </li>
+                </a>
             @endif
         </div>
         <!-- Log Out -->

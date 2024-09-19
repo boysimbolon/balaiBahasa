@@ -24,7 +24,7 @@ class VerifyEmailController extends Controller
             $user->markEmailAsVerified();
             $user->email_verification_token = null; // Hapus token setelah verifikasi
             $user->save();
-            return redirect()->route('dashboard')->with('message', 'Email verified successfully.');
+            return redirect()->route('login')->with('message', 'Email verified successfully.');
         }
         return redirect()->route('login')->with('message', 'Invalid verification link.');
     }
