@@ -12,13 +12,11 @@ class Logout
      */
     public function __invoke(): void
     {
-
-        if (auth()->guard('mahasiswa')->check()) {
-            auth()->guard('mahasiswa')->logout();
-        } elseif (auth()->guard('user')->check()) {
-            auth()->guard('user')->logout();
+        if (Auth::guard('mhs')->check()) {
+            Auth::guard('mhs')->logout();
+        } elseif (Auth::guard('user')->check()) {
+            Auth::guard('user')->logout();
         }
-
         session()->invalidate();
         session()->regenerateToken();
     }

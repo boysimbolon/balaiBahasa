@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use App\Livewire\Actions\Logout;
 use App\Models\Mahasiswa;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -35,7 +36,7 @@ class Login extends Component
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function login()
+    public function login(Logout $log)
     {
         // Validasi input
         $this->validate();
@@ -61,7 +62,7 @@ class Login extends Component
             session()->regenerate();
 
         // Redirect sesuai dengan guard yang aktif
-        if (Auth::guard('mahasiswa')->check()) {
+        if (Auth::guard('mhs')->check()) {
             return redirect()->to('/mhs');
         } elseif (Auth::guard('user')->check()) {
             return redirect()->to('/user');
@@ -87,7 +88,8 @@ class Login extends Component
     {
         $user = User::where('no_Peserta', trim($this->no_Peserta))->first();
         if ($user && Hash::check($this->pin, $user->pin) && $user->email_verified_at !== null) {
-            Auth::guard('user')->login($user, $this->remember);
+            auth('mhs')->logout();
+            auth('user')->login($user, $this->remember);
             return true;
         }
         return false;
@@ -103,8 +105,9 @@ class Login extends Component
         $mahasiswa = Mahasiswa::where('nim', trim($this->no_Peserta))->first();
 
         // Cek apakah data mahasiswa ditemukan
-        if ($mahasiswa && $this->pin == trim($mahasiswa->paswd)) {
-            Auth::guard('mahasiswa')->login($mahasiswa, $this->remember);
+        if (trim($mahasiswa) && ($this->pin == trim($mahasiswa->paswd))) {
+            auth('user')->logout();
+            auth('mhs')->login($mahasiswa, $this->remember);
             return true;
         }
 

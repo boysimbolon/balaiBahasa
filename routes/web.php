@@ -1,17 +1,17 @@
 <?php
 
 use App\Http\Controllers\Auth\VerifyEmailController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\MahasiswaController;
+
 use App\Livewire\Biodatausr;
 use App\Livewire\DashboardMhs;
 use App\Livewire\DashboardUser;
+use App\Livewire\Forms\Login;
 use App\Livewire\Forms\Register;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 // Grouping routes for mahasiswa with prefix and middleware
-Route::prefix('mhs')->middleware(['mahasiswa'])->group(function () {
+Route::prefix('mhs')->middleware(['mhs'])->group(function () {
     Route::get('/', DashboardMhs::class)->name('dashboard-mhs');
 
     Route::get('/biodata', function () {

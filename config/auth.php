@@ -36,9 +36,9 @@ return [
     */
 
     'guards' => [
-        'mahasiswa' => [
+        'mhs' => [
             'driver' => 'session',
-            'provider' => 'mahasiswas',
+            'provider' => 'mahasiswa',
         ],
         'user' => [
             'driver' => 'session',
@@ -47,10 +47,6 @@ return [
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
-        ],
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
         ],
         'api' => [
             'driver' => 'token',
@@ -77,7 +73,7 @@ return [
     */
 
     'providers' => [
-        'mahasiswas' => [
+        'mahasiswa' => [
             'driver' => 'eloquent',
             'model' => App\Models\Mahasiswa::class,
         ],

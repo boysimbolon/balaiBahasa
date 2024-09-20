@@ -3,24 +3,23 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
 class EnsureMahasiswa
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
-        // Menggunakan guard 'mahasiswa'
-        if (!Auth::guard('mahasiswa')->check()) {
+        if (Auth::guard('mhs')->check()) {
             return $next($request);
         }
 
-        return redirect()->route('login')->withErrors(['message' => 'Akses hanya untuk Mahasiswa.']);
+        return redirect()->route('login')->with('message', 'Akses hanya untuk mahasiswa.');
     }
 }

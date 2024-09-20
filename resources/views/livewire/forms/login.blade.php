@@ -2,16 +2,17 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    @if (session()->has('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
-        </div>
-    @endif
+
 
     <form wire:submit.prevent="login"> <!-- Gunakan wire:submit.prevent -->
         <div class="text-center mb-5">
             <h1 class="font-bold text-xl md:text-2xl mb-1">Universitas Advent Indonesia</h1>
             <h3 class="font-light text-lg md:text-xl">Balai Bahasa</h3>
+            @if (session()->has('message'))
+                <div class="w-full bg-green-700 py-2 rounded">
+                    {{ session('message') }}
+                </div>
+            @endif
         </div>
 
         <!-- NIM / No Peserta -->

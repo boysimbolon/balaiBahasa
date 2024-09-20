@@ -12,8 +12,6 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middleware = [
-//        \App\Http\Middleware\TrustHosts::class,
-//        \App\Http\Middleware\TrustProxies::class,
         \Illuminate\Http\Middleware\SetCacheHeaders::class,
         \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
         \Illuminate\Session\Middleware\StartSession::class,
@@ -31,10 +29,9 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
-//        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'mahasiswa' => \App\Http\Middleware\EnsureMahasiswa::class,
+        'mhs' => \App\Http\Middleware\EnsureMahasiswa::class,
         'user' => \App\Http\Middleware\EnsureUser::class,
         'admin' => \App\Http\Middleware\EnsureAdmin::class,
     ];
