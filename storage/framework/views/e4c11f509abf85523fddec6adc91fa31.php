@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 ?>
 
 <div>
-    <!--[if BLOCK]><![endif]--><?php if(Auth::guard('mhs')->check()): ?>
+    <!--[if BLOCK]><![endif]--><?php if(auth()->guard('mhs')->name === 'mhs'): ?>
         <aside id="sidebar" class="bg-primary w-60 h-screen pt-20 flex flex-col fixed top-0 bottom-0 -left-60 transition duration-700 ease-in-out z-10 overflow-auto">
             <!-- User Photo -->
             <div class="mt-5 w-60 h-fit flex flex-col items-center gap-2">

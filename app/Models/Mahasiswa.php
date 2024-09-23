@@ -15,33 +15,4 @@ class Mahasiswa extends Authenticatable
     // Tentukan koneksi database yang digunakan (misalnya SQL Server)
     protected $connection = 'sqlsrv';
 
-    // Kolom yang dapat diisi secara massal
-    protected $fillable = ['nim', 'paswd'];
-
-    // Kolom yang disembunyikan dari hasil array dan JSON
-    protected $hidden = ['paswd'];
-
-    // Atur atribut yang harus di-cast jika diperlukan
-    protected $casts = [
-        // 'nim' => 'string', // Contoh casting jika diperlukan
-    ];
-
-    /**
-     * Karena semua data di tabel ini adalah mahasiswa,
-     * metode ini selalu mengembalikan true.
-     */
-    public function isMahasiswa()
-    {
-        return true;
-    }
-
-    /**
-     * Override metode untuk mendapatkan password
-     *
-     * @return string
-     */
-    public function getAuthPassword()
-    {
-        return $this->paswd; // Menggunakan kolom 'paswd' sebagai password
-    }
 }

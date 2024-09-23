@@ -16,7 +16,8 @@ class EnsureMahasiswa
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::guard('mhs') == true) {
+        if (\auth()->guard('mhs')->name === 'mhs') {
+//            dd(\auth()->guard('mhs'));
             return $next($request);
         }
 
