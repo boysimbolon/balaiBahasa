@@ -8,9 +8,9 @@
         @csrf
         <div class="text-center mb-5">
             <h1 class="font-bold text-xl md:text-2xl mb-1">Universitas Advent Indonesia</h1>
-            <h3 class="font-light text-lg md:text-xl">Balai Bahasa</h3>
+            <h3 class="font-light text-lg md:text-xl mb-1">Balai Bahasa</h3>
             @if (session()->has('message'))
-                <div class="w-full bg-green-700 py-2 rounded">
+                <div class="w-full bg-green-600 p-2 rounded text-white">
                     {{ session('message') }}
                 </div>
             @endif
