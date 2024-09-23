@@ -18,23 +18,26 @@ new class extends Component
         redirect()->route('login')->with('message', 'Berhasil Logout.');
     }
 
-    public $data;
+    public $data,$auth;
 
     public function mount()
     {
-        // Pastikan Auth user tersedia dan memiliki no_Peserta
+
+//        dd(session('guard'));
+        // Pastikan Auth user t ersedia dan memiliki no_Peserta
         $authUser = Auth::guard('user')->user();
         if ($authUser && $authUser->no_Peserta) {
             $this->data = data_user::where('no_Peserta', $authUser->no_Peserta)->first();
-        } else {
-            // Handle jika   tidak ada user atau no_Peserta
-            $this->data = null;
+            $this->auth = 'user';
+        } elseif(session('guard') === "mhs") {
+            $this->data = session('atribut');
+            $this->auth = 'mhs';
         }
     }
 };
 ?>
 <div>
-    @if(auth()->guard('mhs')->name === 'mhs')
+    @if($auth == "mhs")
         <aside id="sidebar" class="bg-primary w-60 h-screen pt-20 flex flex-col fixed top-0 bottom-0 -left-60 transition duration-700 ease-in-out z-10 overflow-auto">
             <!-- User Photo -->
             <div class="mt-5 w-60 h-fit flex flex-col items-center gap-2">
@@ -169,7 +172,7 @@ new class extends Component
 
         </aside>
 
-    @elseif(Auth::guard('user')->check())
+    @elseif($auth =='user')
         <aside id="sidebar" class="bg-primary w-60 h-screen pt-20 flex flex-col fixed top-0 bottom-0 -left-60 transition duration-700 ease-in-out z-10 overflow-auto">
             <!-- User Photo -->
             <div class="mt-5 w-60 h-fit flex flex-col items-center gap-2">

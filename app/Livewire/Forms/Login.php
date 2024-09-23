@@ -23,19 +23,11 @@ class Login extends Component
         'pin' => ['required', 'string'],
     ];
 
-    /**
-     * Render the component view.
-     */
     public function render()
     {
         return view('livewire.forms.login');
     }
 
-    /**
-     * Attempt to authenticate the user or mahasiswa.
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
     public function login(Logout $log)
     {
         // Validasi input
@@ -59,30 +51,29 @@ class Login extends Component
         RateLimiter::clear($this->throttleKey());
 
         // Regenerasi session untuk mencegah fixation attacks
-            session()->regenerate();
-        // Redirect sesuai dengan guard yang aktif
+        session()->regenerate();
+
+        // Redirect sesuai dengan guard yang aktif dan lempar data
         if (Auth::guard('mhs')->check()) {
-            return redirect()->route('dashboard-mhs');
+            // Redirect ke dashboard mahasiswa dengan nim
+            return redirect()->route('dashboard-mhs')->with([
+                'atribut' => auth('mhs')->user(),
+                'guard' => 'mhs',
+            ]);
         } elseif (Auth::guard('user')->check()) {
-            return redirect()->route('dashboard-user');
+            // Redirect ke dashboard user dengan no_Peserta
+            return redirect()->route('dashboard-user')->with([
+                'no_Peserta' => auth('user')->user()->no_Peserta,
+                'guard' => 'user',
+            ]);
         }
     }
 
-    /**
-     * Authenticate the user or mahasiswa.
-     *
-     * @return bool
-     */
     protected function authenticate(): bool
     {
         return $this->authenticateUser() || $this->authenticateMahasiswa();
     }
 
-    /**
-     * Authenticate the user.
-     *
-     * @return bool
-     */
     protected function authenticateUser(): bool
     {
         $user = User::where('no_Peserta', trim($this->no_Peserta))->first();
@@ -94,34 +85,19 @@ class Login extends Component
         return false;
     }
 
-    /**
-     * Authenticate the mahasiswa.
-     *
-     * @return bool
-     */
     protected function authenticateMahasiswa(): bool
     {
-        // Mencari mahasiswa berdasarkan NIM
         $mahasiswa = Mahasiswa::where('nim', trim($this->no_Peserta))->first();
 
-        // Cek apakah data mahasiswa ditemukan
         if ($mahasiswa && ($this->pin === trim($mahasiswa->paswd))) {
-            // Logout pengguna lain jika ada
-            auth('mhs')->logout();
-            // Login mahasiswa menggunakan objek mahasiswa
+            auth('user')->logout();
             auth('mhs')->login($mahasiswa);
             return true;
         }
 
-        // Jika tidak ada mahasiswa yang ditemukan atau password tidak cocok
         return false;
     }
 
-    /**
-     * Ensure the authentication request is not rate limited.
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
     protected function ensureIsNotRateLimited(): void
     {
         if (RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
@@ -136,9 +112,6 @@ class Login extends Component
         }
     }
 
-    /**
-     * Get the rate limiting throttle key.
-     */
     protected function throttleKey(): string
     {
         return Str::lower(trim($this->no_Peserta)) . '|' . request()->ip();

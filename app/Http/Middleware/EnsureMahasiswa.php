@@ -16,11 +16,10 @@ class EnsureMahasiswa
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (\auth()->guard('mhs')->name === 'mhs') {
-//            dd(\auth()->guard('mhs'));
+        $token = session('guard');
+        if ($token == 'mhs') {
             return $next($request);
         }
-
         return redirect()->route('login')->with('message', 'Akses hanya untuk mahasiswa.');
     }
 }
