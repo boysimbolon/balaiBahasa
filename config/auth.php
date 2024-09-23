@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => env('AUTH_GUARD', 'web'),
+        'guard' => env('AUTH_GUARD', 'mhs'),
         'passwords' => 'users',
     ],
 
@@ -38,7 +38,7 @@ return [
     'guards' => [
         'mhs' => [
             'driver' => 'session',
-            'provider' => 'mahasiswa',
+            'provider' => 'mhsw',
         ],
         'user' => [
             'driver' => 'session',
@@ -73,7 +73,7 @@ return [
     */
 
     'providers' => [
-        'mahasiswa' => [
+        'mhsw' => [
             'driver' => 'eloquent',
             'model' => App\Models\Mahasiswa::class,
         ],

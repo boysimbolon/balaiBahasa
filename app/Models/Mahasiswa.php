@@ -5,13 +5,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class Mahasiswa extends Authenticatable // Ubah dari Model menjadi Authenticatable
+class Mahasiswa extends Authenticatable
 {
     use HasFactory, Notifiable;
 
     // Tentukan nama tabel yang digunakan oleh model ini
     protected $table = 'tm_mhs';
-
+    protected $guard ='mhs';
     // Tentukan koneksi database yang digunakan (misalnya SQL Server)
     protected $connection = 'sqlsrv';
 
@@ -20,6 +20,11 @@ class Mahasiswa extends Authenticatable // Ubah dari Model menjadi Authenticatab
 
     // Kolom yang disembunyikan dari hasil array dan JSON
     protected $hidden = ['paswd'];
+
+    // Atur atribut yang harus di-cast jika diperlukan
+    protected $casts = [
+        // 'nim' => 'string', // Contoh casting jika diperlukan
+    ];
 
     /**
      * Karena semua data di tabel ini adalah mahasiswa,
@@ -30,8 +35,13 @@ class Mahasiswa extends Authenticatable // Ubah dari Model menjadi Authenticatab
         return true;
     }
 
-    // Atur atribut yang harus di-cast jika diperlukan
-    protected $casts = [
-        // 'nim' => 'string', // Contoh casting jika diperlukan
-    ];
+    /**
+     * Override metode untuk mendapatkan password
+     *
+     * @return string
+     */
+    public function getAuthPassword()
+    {
+        return $this->paswd; // Menggunakan kolom 'paswd' sebagai password
+    }
 }

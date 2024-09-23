@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('data_users', function (Blueprint $table) {
+        Schema::connection('mydb')->create('data_users', function (Blueprint $table) {
             $table->id();
             // Definisikan kolom 'no_Peserta' terlebih dahulu
             $table->char('no_Peserta', 8);

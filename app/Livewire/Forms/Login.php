@@ -60,12 +60,11 @@ class Login extends Component
 
         // Regenerasi session untuk mencegah fixation attacks
             session()->regenerate();
-
         // Redirect sesuai dengan guard yang aktif
         if (Auth::guard('mhs')->check()) {
-            return redirect()->to('/mhs');
+            return redirect()->route('dashboard-mhs');
         } elseif (Auth::guard('user')->check()) {
-            return redirect()->to('/user');
+            return redirect()->route('dashboard-user');
         }
     }
 
@@ -102,12 +101,15 @@ class Login extends Component
      */
     protected function authenticateMahasiswa(): bool
     {
+        // Mencari mahasiswa berdasarkan NIM
         $mahasiswa = Mahasiswa::where('nim', trim($this->no_Peserta))->first();
 
         // Cek apakah data mahasiswa ditemukan
-        if (trim($mahasiswa) && ($this->pin == trim($mahasiswa->paswd))) {
-            auth('user')->logout();
-            auth('mhs')->login($mahasiswa, $this->remember);
+        if ($mahasiswa && ($this->pin === trim($mahasiswa->paswd))) {
+            // Logout pengguna lain jika ada
+            auth('mhs')->logout();
+            // Login mahasiswa menggunakan objek mahasiswa
+            auth('mhs')->login($mahasiswa);
             return true;
         }
 

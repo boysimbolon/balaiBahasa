@@ -20,6 +20,7 @@ Route::middleware('guest')->group(function () {
         ->name('password.reset');
 });
 
+
 // Routes for email verification and authentication
 Route::middleware('auth')->group(function () {
     // Verification Notice Route

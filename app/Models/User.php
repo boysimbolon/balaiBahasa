@@ -10,8 +10,8 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
-    protected $connection = 'mysql';
-//    protected $guarded = 'user';
+    protected $connection = 'mydb';
+    protected $guard = 'user';
     protected $table = 'users';
     /**
      * The attributes that are mass assignable.

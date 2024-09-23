@@ -14,7 +14,7 @@ return new class extends Migration
 //        Schema::table('data_users', function (Blueprint $table) {
 //            $table->dropColumn('email'); // Menghapus kolom 'alamat'
 //        });
-        Schema::table('users', function (Blueprint $table) {
+        Schema::connection('mydb')->table('users', function (Blueprint $table) {
             $table->string('email'); // Menghapus kolom 'alamat'
         });
 
@@ -25,7 +25,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::connection('mydb')->table('users', function (Blueprint $table) {
             //
         });
     }

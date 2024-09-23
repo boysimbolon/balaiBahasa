@@ -13,7 +13,7 @@ class AddEmailVerificationTokenToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::connection('mydb')->table('users', function (Blueprint $table) {
             $table->string('email_verification_token')->nullable()->after('pin');
         });
     }
@@ -25,7 +25,7 @@ class AddEmailVerificationTokenToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::connection('mydb')->table('users', function (Blueprint $table) {
             $table->dropColumn('email_verification_token');
         });
     }
