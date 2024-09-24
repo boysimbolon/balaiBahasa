@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Livewire\Biodatausr;
 use App\Livewire\DashboardMhs;
 use App\Livewire\DashboardUser;
+use App\Livewire\EditBiodataUser;
 use App\Livewire\Forms\Login;
 use App\Livewire\Forms\Register;
 use Illuminate\Support\Facades\Auth;
@@ -16,10 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('user')->middleware('user')->group(function () {
     Route::get('/', DashboardUser::class)->name('dashboard-user');
     Route::get('/biodata', Biodatausr::class)->name('biodata-user');
-
-    Route::get('/biodata_edit', function () {
-        return view('livewire.editprofile');
-    })->name('edit-profile-user');
+    Route::get('/biodata_edit', EditBiodataUser::class)->name('edit-profile-user');
 
     Route::get('/change_password', function () {
         return view('livewire.changepassword');

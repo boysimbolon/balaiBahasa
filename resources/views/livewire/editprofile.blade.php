@@ -15,7 +15,7 @@
                         <div class="h-11 flex items-center">
                             <div class="w-full">
                                 <x-input-label for="tmpt_lahir" :value="__('Nama')"/>
-                                <input wire:model="nama" id="nama" class="block mt-1 w-full rounded" placeholder="Nama" type="text" name="nama" required autofocus autocomplete="nama"/>
+                                <input wire:model="nama" id="nama" class="block mt-1 w-full rounded" placeholder="Nama" type="text" name="nama" required autofocus autocomplete="nama" value="{{ $users->nama }}"/>
                                 <x-input-error :messages="$errors->get('nama')" class="mt-2"/>
                             </div>
                         </div>
@@ -23,13 +23,13 @@
                             <!-- Tempat Lahir -->
                             <div class="w-1/2">
                                 <x-input-label for="tmpt_lahir" :value="__('Tempat Lahir')"/>
-                                <input wire:model="tmpt_lahir" id="tmpt_lahir" class="block mt-1 w-full rounded" placeholder="Tempat Lahir" type="text" name="tmpt_lahir" required autofocus autocomplete="tmpt_lahir"/>
+                                <input wire:model="tmpt_lahir" id="tmpt_lahir" class="block mt-1 w-full rounded" placeholder="Tempat Lahir" type="text" name="tmpt_lahir" required autofocus autocomplete="tmpt_lahir" value="{{ $users->tmpt_lahir }}"/>
                                 <x-input-error :messages="$errors->get('tmpt_lahir')" class="mt-2"/>
                             </div>
                             <!-- Tanggal Lahir -->
                             <div class="w-1/2">
                                 <x-input-label for="tgl_lahir" :value="__('Tanggal Lahir')"/>
-                                <input wire:model="tgl_lahir" id="tgl_lahir" class="block mt-1 w-full rounded" type="date" name="tgl_lahir"  required autofocus autocomplete="tgl_lahir"/>
+                                <input wire:model="tgl_lahir" id="tgl_lahir" class="block mt-1 w-full rounded" type="date" name="tgl_lahir"  required autofocus autocomplete="tgl_lahir" value="{{ $users->tgl_lahir }}"/>
                                 <x-input-error :messages="$errors->get('tgl_lahir')" class="mt-2"/>
                             </div>
                         </div>
