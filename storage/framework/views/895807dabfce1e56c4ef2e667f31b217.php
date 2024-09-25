@@ -19,7 +19,7 @@
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes([]); ?>E3 (English Entrance/Exit Exam) <?php echo $__env->renderComponent(); ?>
+<?php $component->withAttributes([]); ?>TOEFL <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal93ae7e49b3b5cc9833352ed00e3f3a0f)): ?>
 <?php $attributes = $__attributesOriginal93ae7e49b3b5cc9833352ed00e3f3a0f; ?>
@@ -42,25 +42,18 @@
                             <th class="p-2">Waktu Pilih</th>
                         </tr>
                         <tr class="border-y">
-                            <td class="p-2">English Entrance Exam</td>
-                            <td class="p-2">Rabu, 14 Agustus 2024</td>
+                            <td class="p-2">TOEFL</td>
+                            <td class="p-2">Kamis, 15 Agustus 2024</td>
                             <td class="p-2">08:00</td>
                             <td class="p-2">Lab CBT</td>
                             <td class="p-2">Minggu, 11 Agustus 2024</td>
                         </tr>
-                        <tr>
-                            <td class="p-2">English Exit Exam</td>
-                            <td class="p-2">Rabu, 11 Desember 2024</td>
-                            <td class="p-2">10:00</td>
-                            <td class="p-2">Lab Komputer 1</td>
-                            <td class="p-2">Minggu, 8 Desember 2024</td>
-                        </tr>
                     </table>
                 </div>
 
-                <!-- Entrance Exam Schedule -->
+                <!-- TOEFL Schedule -->
                 <div>
-                    <h3 class="text-xl mb-2">Jadwal English Entrance Exam</h3>
+                    <h3 class="text-xl mb-2">Jadwal TOEFL</h3>
                     <table class="w-full rounded">
                         <tr class="bg-primary text-white text-left">
                             <th class="p-2">Tanggal</th>
@@ -71,8 +64,8 @@
                             <th class="p-2"></th>
                         </tr>
                         <tr class="border-y">
-                            <td class="p-2">Rabu, 14 Agustus 2024</td>
-                            <td class="p-2">10:00</td>
+                            <td class="p-2">Kamis, 15 Agustus 2024</td>
+                            <td class="p-2">08:00</td>
                             <td class="p-2">Lab CBT</td>
                             <td class="p-2">50</td>
                             <td class="p-2">50</td>
@@ -80,9 +73,9 @@
                                 Penuh
                             </td>
                         </tr>
-                        <tr>
-                            <td class="p-2">Rabu, 14 Agustus 2024</td>
-                            <td class="p-2">13:00</td>
+                        <tr class="border-y">
+                            <td class="p-2">Kamis, 15 Agustus 2024</td>
+                            <td class="p-2">10:00</td>
                             <td class="p-2">Lab CBT</td>
                             <td class="p-2">50</td>
                             <td class="p-2">20</td>
@@ -90,37 +83,12 @@
                                 <button class="bg-primary text-white py-2 px-4 rounded">Pilih</button>
                             </td>
                         </tr>
-                    </table>
-                </div>
-
-                <!-- Exit Exam Schedule -->
-                <div>
-                    <h3 class="text-xl mb-2">Jadwal English Exit Exam</h3>
-                    <table class="w-full rounded">
-                        <tr class="bg-primary text-white text-left">
-                            <th class="p-2">Tanggal</th>
-                            <th class="p-2">Jam</th>
-                            <th class="p-2">Lokasi</th>
-                            <th class="p-2">Kuota</th>
-                            <th class="p-2">Jumlah</th>
-                            <th class="p-2"></th>
-                        </tr>
                         <tr class="border-y">
-                            <td class="p-2">Rabu, 14 Agustus 2024</td>
-                            <td class="p-2">10:00</td>
-                            <td class="p-2">Lab CBT</td>
-                            <td class="p-2">50</td>
-                            <td class="p-2">50</td>
-                            <td class="p-2">
-                                Penuh
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="p-2">Rabu, 14 Agustus 2024</td>
+                            <td class="p-2">Kamis, 15 Agustus 2024</td>
                             <td class="p-2">13:00</td>
                             <td class="p-2">Lab CBT</td>
                             <td class="p-2">50</td>
-                            <td class="p-2">20</td>
+                            <td class="p-2">0</td>
                             <td class="p-2">
                                 <button class="bg-primary text-white py-2 px-4 rounded">Pilih</button>
                             </td>
@@ -140,4 +108,4 @@
 <?php unset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54); ?>
 <?php endif; ?>
 </div>
-<?php /**PATH E:\Balai_Bahasa\Balai_Bahasa\resources\views/livewire/e3-schedule-mhs.blade.php ENDPATH**/ ?>
+<?php /**PATH E:\Balai_Bahasa\Balai_Bahasa\resources\views/livewire/toefl-schedule-mhs.blade.php ENDPATH**/ ?>

@@ -10,7 +10,7 @@
                                 <span class="w-1/2 md:w-1/5 font-semibold">Tempat Lahir</span>
                                 <span class="w-1/2 flex items-center gap-5 justify-end md:justify-normal">
                                 <span class="hidden md:block">:</span>
-                                Bandung
+                                {{$data['temp_lahir']}}
                             </span>
                             </p>
                         </div>
@@ -19,7 +19,7 @@
                                 <span class="w-1/2 md:w-1/5 font-semibold">Tanggal Lahir</span>
                                 <span class="w-1/2 flex items-center gap-5 justify-end md:justify-normal">
                                 <span class="hidden md:block">:</span>
-                                1971-12-28
+                                {{$data['tgl_lahir']}}
                             </span>
                             </p>
                         </div>
@@ -28,7 +28,11 @@
                                 <span class="w-1/2 md:w-1/5 font-semibold">Jenis Kelamin</span>
                                 <span class="w-1/2 flex items-center gap-5 justify-end md:justify-normal">
                                 <span class="hidden md:block">:</span>
-                                Laki-Laki
+                                @if($data['sex'] == 'L')
+                                    Laki-laki
+                                    @else
+                                    Perempuan
+                                @endif
                             </span>
                             </p>
                         </div>
@@ -37,7 +41,7 @@
                                 <span class="w-1/2 md:w-1/5 font-semibold">Alamat</span>
                                 <span class="w-1/2 md:w-fit flex items-center gap-5 text-right md:text-left text-wrap">
                                 <span class="hidden md:block">:</span>
-                                Jl. Diponegoro No. 123, Bandung
+                                {{$alamat}}
                             </span>
                             </p>
                         </div>
@@ -63,7 +67,7 @@
                                 <span class="w-1/2 md:w-1/5 font-semibold">Instansi</span>
                                 <span class="w-1/2 flex items-center gap-5 justify-end md:justify-normal">
                                 <span class="hidden md:block">:</span>
-                                Universitas Padjadjaran
+                                Universitas Advent Indonesia
                             </span>
                             </p>
                         </div>
@@ -116,23 +120,24 @@
                 </div>
                 <div class="w-full order-1 xl:order-2 xl:w-1/3">
                     <div class="bg-white drop-shadow-lg h-fit mt-1 rounded p-5">
-                        <div class="flex items-center flex-col gap-4 mb-5">
-                            <img src="https://picsum.photos/200/300" alt="" class="rounded-xl">
+                        <div class="flex items-
+                        center flex-col gap-4 mb-5">
+                            <img src="{{'https://online.unai.edu/mhs/'.$foto}}" alt="" class="rounded-xl">
                             <div class="text-center">
-                                <h1 class="text-xl font-bold">John Doe</h1>
-                                <p class="text-center">(0123456789)</p>
+                                <h1 class="text-xl font-bold">{{$data['nama']}}</h1>
+                                <p class="text-center">{{$data['nim']}}</p>
                             </div>
                         </div>
                         <div class="min-h-11 max-h-fit flex items-center">
                             <p class="w-full flex items-center justify-between text-nowrap">
                                 <span class="font-semibold">Telepon</span>
-                                <span>08123456789</span>
+                                <span>{{$data['notelp']}}</span>
                             </p>
                         </div>
                         <div class="min-h-11 max-h-fit flex items-center w-full">
                             <p class="w-full flex items-center justify-between text-nowrap">
                                 <span class="font-semibold">Email</span>
-                                <span class="text-wrap">johndoe@example.com</span>
+                                <span class="text-wrap">{{$data['email']}}</span>
                             </p>
                         </div>
                     </div>

@@ -4,7 +4,7 @@
 
 
 
-    <form wire:submit.prevent="login"> <!-- Gunakan wire:submit.prevent -->
+    <form wire:submit.prevent="Login"> <!-- Gunakan wire:submit.prevent -->
         @csrf
         <div class="text-center mb-5">
             <h1 class="font-bold text-xl md:text-2xl mb-1">Universitas Advent Indonesia</h1>

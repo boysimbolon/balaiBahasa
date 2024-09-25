@@ -12,10 +12,12 @@ class Logout
      */
     public function __invoke(): void
     {
-        if (Auth::guard('mhs')->check()) {
+        if (session('guard') == 'mhs') {
             Auth::guard('mhs')->logout();
+            Session::flush();
         } elseif (Auth::guard('user')->check()) {
             Auth::guard('user')->logout();
+            Session::flush();
         }
         session()->invalidate();
         session()->regenerateToken();

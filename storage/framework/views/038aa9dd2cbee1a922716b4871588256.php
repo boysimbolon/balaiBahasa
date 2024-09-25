@@ -23,13 +23,13 @@
 
 
 
-    <form wire:submit.prevent="login"> <!-- Gunakan wire:submit.prevent -->
+    <form wire:submit.prevent="Login"> <!-- Gunakan wire:submit.prevent -->
         <?php echo csrf_field(); ?>
         <div class="text-center mb-5">
             <h1 class="font-bold text-xl md:text-2xl mb-1">Universitas Advent Indonesia</h1>
-            <h3 class="font-light text-lg md:text-xl">Balai Bahasa</h3>
+            <h3 class="font-light text-lg md:text-xl mb-1">Balai Bahasa</h3>
             <!--[if BLOCK]><![endif]--><?php if(session()->has('message')): ?>
-                <div class="w-full bg-green-700 py-2 rounded">
+                <div class="w-full bg-green-600 p-2 rounded text-white">
                     <?php echo e(session('message')); ?>
 
                 </div>

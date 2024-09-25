@@ -39,10 +39,7 @@ Route::prefix('user')->middleware('user')->group(function () {
 
 Route::prefix('mhs')->middleware('mhs')->group(function () {
     Route::get('/', DashboardMhs::class)->name('dashboard-mhs');
-
-    Route::get('/biodata', function () {
-        return view('livewire.biodata-mhs');
-    })->name('biodata-mhs');
+    Route::get('/biodata', \App\Livewire\Biodatamhs::class)->name('biodata-mhs');
 
     Route::get('/biodata_edit', function () {
         return view('livewire.edit-profile-mhs');

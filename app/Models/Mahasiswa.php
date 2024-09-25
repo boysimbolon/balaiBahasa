@@ -7,12 +7,13 @@ use Illuminate\Notifications\Notifiable;
 
 class Mahasiswa extends Authenticatable
 {
-    use HasFactory, Notifiable;
-
-    // Tentukan nama tabel yang digunakan oleh model ini
-    protected $table = 'tm_mhs';
-    protected $guard ='mhs';
-    // Tentukan koneksi database yang digunakan (misalnya SQL Server)
+    protected $table = 'tm_mhs'; // Nama tabel di database
     protected $connection = 'sqlsrv';
+    protected $primaryKey = 'nirm'; // Primary key adalah nim
+
+    public $incrementing = false; // Matikan auto increment
+
+    protected $keyType = 'string'; // Pastikan primary key bertipe string
 
 }
+

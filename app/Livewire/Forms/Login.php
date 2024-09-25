@@ -28,7 +28,7 @@ class Login extends Component
         return view('livewire.forms.login');
     }
 
-    public function login(Logout $log)
+    public function Login()
     {
         // Validasi input
         $this->validate();
@@ -56,16 +56,11 @@ class Login extends Component
         // Redirect sesuai dengan guard yang aktif dan lempar data
         if (Auth::guard('mhs')->check()) {
             // Redirect ke dashboard mahasiswa dengan nim
-            return redirect()->route('dashboard-mhs')->with([
-                'atribut' => auth('mhs')->user(),
-                'guard' => 'mhs',
-            ]);
+            session([ 'atribut' => auth('mhs')->user(),'guard' => 'mhs',]);
+            return redirect()->route('dashboard-mhs');
         } elseif (Auth::guard('user')->check()) {
             // Redirect ke dashboard user dengan no_Peserta
-            return redirect()->route('dashboard-user')->with([
-                'no_Peserta' => auth('user')->user()->no_Peserta,
-                'guard' => 'user',
-            ]);
+            return redirect()->route('dashboard-user');
         }
     }
 
