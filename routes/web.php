@@ -49,9 +49,7 @@ Route::prefix('mhs')->middleware('mhs')->group(function () {
         return view('livewire.change-password-mhs');
     })->name('change-password-mhs');
 
-    Route::get('/e3_schedules', function () {
-        return view('livewire.e3-schedule-mhs');
-    })->name('e3-schedule-mhs');
+    Route::get('/e3_schedules', \App\Livewire\E3schedule::class)->name('e3-schedule-mhs');
 
     Route::get('/toefl_schedules', function () {
         return view('livewire.toefl-schedule-mhs');

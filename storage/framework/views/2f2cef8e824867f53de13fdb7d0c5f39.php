@@ -36,28 +36,22 @@
                     <table class="w-full rounded">
                         <tr class="bg-primary text-white text-left">
                             <th class="p-2">Jenis Ujian</th>
-                            <th class="p-2">Tanggal</th>
+                            <th class="p-2">Tanggal UJian</th>
                             <th class="p-2">Jam</th>
                             <th class="p-2">Lokasi</th>
-                            <th class="p-2">Waktu Pilih</th>
+                            <th class="p-2">Waktu Pesan</th>
                         </tr>
-                        <tr class="border-y">
-                            <td class="p-2">English Entrance Exam</td>
-                            <td class="p-2">Rabu, 14 Agustus 2024</td>
-                            <td class="p-2">08:00</td>
-                            <td class="p-2">Lab CBT</td>
-                            <td class="p-2">Minggu, 11 Agustus 2024</td>
-                        </tr>
-                        <tr>
-                            <td class="p-2">English Exit Exam</td>
-                            <td class="p-2">Rabu, 11 Desember 2024</td>
-                            <td class="p-2">10:00</td>
-                            <td class="p-2">Lab Komputer 1</td>
-                            <td class="p-2">Minggu, 8 Desember 2024</td>
-                        </tr>
+                        <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $pesan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $psn =>$data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <tr class="border-y">
+                                <td class="p-2"><?php echo e($data->listujian->tipeujian->jenis_ujian); ?></td>
+                                <td class="p-2"><?php echo e($tgl[$psn]); ?></td>
+                                <td class="p-2"><?php echo e($jm[$psn]); ?></td>
+                                <td class="p-2"><?php echo e($data->listruangan->nama_ruangan); ?></td>
+                                <td class="p-2"><?php echo e($created[$psn]); ?></td>
+                            </tr>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
                     </table>
                 </div>
-
                 <!-- Entrance Exam Schedule -->
                 <div>
                     <h3 class="text-xl mb-2">Jadwal English Entrance Exam</h3>
@@ -70,26 +64,24 @@
                             <th class="p-2">Jumlah</th>
                             <th class="p-2"></th>
                         </tr>
-                        <tr class="border-y">
-                            <td class="p-2">Rabu, 14 Agustus 2024</td>
-                            <td class="p-2">10:00</td>
-                            <td class="p-2">Lab CBT</td>
-                            <td class="p-2">50</td>
-                            <td class="p-2">50</td>
-                            <td class="p-2">
-                                Penuh
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="p-2">Rabu, 14 Agustus 2024</td>
-                            <td class="p-2">13:00</td>
-                            <td class="p-2">Lab CBT</td>
-                            <td class="p-2">50</td>
-                            <td class="p-2">20</td>
-                            <td class="p-2">
-                                <button class="bg-primary text-white py-2 px-4 rounded">Pilih</button>
-                            </td>
-                        </tr>
+                        <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $tanggal; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $tgl): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <!--[if BLOCK]><![endif]--><?php if($kapasitas[$index]->id_jenis_ujian == 1): ?>
+                            <tr class="border-y">
+                                <td class="p-2"><?php echo e($tgl); ?></td>
+                                <td class="p-2"><?php echo e($jam[$index]); ?></td>
+                                <td class="p-2"><?php echo e($ruangan[$index]->listruangan->nama_ruangan); ?></td>
+                                <td class="p-2"><?php echo e($kapasitas[$index]->listruangan->kapasitas); ?></td>
+                                <td class="p-2"><?php echo e($kuota); ?></td>
+                                <td class="p-2">
+                                    <!--[if BLOCK]><![endif]--><?php if($kapasitas[$index]->listruangan->kapasitas <= $kuota): ?>
+                                    Penuh
+                                    <?php else: ?>
+                                    <button class="bg-primary text-white py-2 px-4 rounded">Pilih</button>
+                                    <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+                                </td>
+                            </tr>
+                            <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
                     </table>
                 </div>
 
@@ -105,26 +97,24 @@
                             <th class="p-2">Jumlah</th>
                             <th class="p-2"></th>
                         </tr>
-                        <tr class="border-y">
-                            <td class="p-2">Rabu, 14 Agustus 2024</td>
-                            <td class="p-2">10:00</td>
-                            <td class="p-2">Lab CBT</td>
-                            <td class="p-2">50</td>
-                            <td class="p-2">50</td>
-                            <td class="p-2">
-                                Penuh
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="p-2">Rabu, 14 Agustus 2024</td>
-                            <td class="p-2">13:00</td>
-                            <td class="p-2">Lab CBT</td>
-                            <td class="p-2">50</td>
-                            <td class="p-2">20</td>
-                            <td class="p-2">
-                                <button class="bg-primary text-white py-2 px-4 rounded">Pilih</button>
-                            </td>
-                        </tr>
+                        <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $tanggal; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $tgl): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <!--[if BLOCK]><![endif]--><?php if($kapasitas[$index]->id_jenis_ujian == 2): ?>
+                                <tr class="border-y">
+                                    <td class="p-2"><?php echo e($tgl); ?></td>
+                                    <td class="p-2"><?php echo e($jam[$index]); ?></td>
+                                    <td class="p-2"><?php echo e($ruangan[$index]->listruangan->nama_ruangan); ?></td>
+                                    <td class="p-2"><?php echo e($kapasitas[$index]->listruangan->kapasitas); ?></td>
+                                    <td class="p-2"><?php echo e($kuota); ?></td>
+                                    <td class="p-2">
+                                        <!--[if BLOCK]><![endif]--><?php if($kapasitas[$index]->listruangan->kapasitas <= $kuota): ?>
+                                            Penuh
+                                        <?php else: ?>
+                                            <button class="bg-primary text-white py-2 px-4 rounded">Pilih</button>
+                                        <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+                                    </td>
+                                </tr>
+                            <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
                     </table>
                 </div>
             </div>

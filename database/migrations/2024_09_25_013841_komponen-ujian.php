@@ -23,9 +23,11 @@ return new class extends Migration
             $table->string('jenis_ujian');
             $table->timestamps();
         });
+
         Schema::connection('mydb')->create('list_ujian', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_jenis_ujian')->constrained('tipe_ujian')->onDelete('cascade');
+            $table->foreignId('id_ruangan')->constrained('list_ruangan')->onDelete('cascade');
             $table->date('tanggal');
             $table->time('jam');
             $table->string('status');

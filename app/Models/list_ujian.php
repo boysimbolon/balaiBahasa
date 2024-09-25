@@ -12,6 +12,7 @@ class list_ujian extends Model
     protected $connection = 'mydb';
     protected $fillable = [
         'id_jenis_ujian',
+        'id_ruangan',
         'tanggal',
         'jam',
         'status'
@@ -25,5 +26,9 @@ class list_ujian extends Model
     public function tipeUjian()
     {
         return $this->belongsTo(tipe_ujian::class, 'id_jenis_ujian');
+    }
+    public function listruangan()
+    {
+        return $this->belongsTo(list_ruangan::class, 'id_ruangan');
     }
 }

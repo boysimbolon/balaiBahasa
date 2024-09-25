@@ -17,17 +17,16 @@ class pesan_ujian extends Model
         'id_ujian',
         'status'
     ];
-    public function ruangan(){
+    public function listruangan(){
         return $this->belongsTo(list_ruangan::class,'id_ruangan');
     }
-    public function ujian(){
+    public function listujian(){
         return $this->belongsTo(list_ujian::class,'id_ujian');
     }
     public function history(){
         return $this->hasOne(history::class,'id_pesanan');
     }
     protected $hidden = [
-        'created_at',
         'updated_at'
     ];
 }
