@@ -9,13 +9,16 @@
                 </a>
             </div>
             <div class="bg-white drop-shadow-lg w-full xl:w-2/3 mt-1 rounded p-5">
-                <form action="" class="flex flex-col gap-4">
+                <form wire:submit.prevent="editProfile" method="POST" enctype="multipart/form-data" class="flex flex-col gap-4">
+                    @csrf
+                    @method('PUT')
+
                     <div class="flex flex-col gap-10">
                         <!-- Nama -->
                         <div class="h-11 flex items-center">
                             <div class="w-full">
                                 <x-input-label for="tmpt_lahir" :value="__('Nama')"/>
-                                <input wire:model="nama" id="nama" class="block mt-1 w-full rounded" placeholder="Nama" type="text" name="nama" required autofocus autocomplete="nama" value="{{ $users->nama }}"/>
+                                <input wire:model="nama" id="nama" class="block mt-1 w-full rounded" placeholder="Nama" type="text" name="nama" required autofocus autocomplete="nama"/>
                                 <x-input-error :messages="$errors->get('nama')" class="mt-2"/>
                             </div>
                         </div>
@@ -23,13 +26,13 @@
                             <!-- Tempat Lahir -->
                             <div class="w-1/2">
                                 <x-input-label for="tmpt_lahir" :value="__('Tempat Lahir')"/>
-                                <input wire:model="tmpt_lahir" id="tmpt_lahir" class="block mt-1 w-full rounded" placeholder="Tempat Lahir" type="text" name="tmpt_lahir" required autofocus autocomplete="tmpt_lahir" value="{{ $users->tmpt_lahir }}"/>
+                                <input wire:model="tmpt_lahir" id="tmpt_lahir" class="block mt-1 w-full rounded" placeholder="Tempat Lahir" type="text" name="tmpt_lahir" required autofocus autocomplete="tmpt_lahir"/>
                                 <x-input-error :messages="$errors->get('tmpt_lahir')" class="mt-2"/>
                             </div>
                             <!-- Tanggal Lahir -->
                             <div class="w-1/2">
                                 <x-input-label for="tgl_lahir" :value="__('Tanggal Lahir')"/>
-                                <input wire:model="tgl_lahir" id="tgl_lahir" class="block mt-1 w-full rounded" type="date" name="tgl_lahir"  required autofocus autocomplete="tgl_lahir" value="{{ $users->tgl_lahir }}"/>
+                                <input wire:model="tgl_lahir" id="tgl_lahir" class="block mt-1 w-full rounded" type="date" name="tgl_lahir"  required autofocus autocomplete="tgl_lahir"/>
                                 <x-input-error :messages="$errors->get('tgl_lahir')" class="mt-2"/>
                             </div>
                         </div>
@@ -45,7 +48,7 @@
                             <!-- NIDN -->
                             <div class="w-1/2">
                                 <x-input-label for="NIDN" :value="__('NIDN')"/>
-                                <input wire:model="NIDN" id="NIDN" class="block mt-1 w-full rounded" placeholder="NIDN" type="text" name="NIDN" autofocus autocomplete="DIDN"/>
+                                <input wire:model="NIDN" id="NIDN" class="block mt-1 w-full rounded" placeholder="NIDN" type="text" name="NIDN" autofocus autocomplete="NIDN"/>
                                 <x-input-error :messages="$errors->get('name')" class="mt-2"/>
                             </div>
                             <!-- Pekerjaan -->
@@ -53,16 +56,9 @@
                                 <x-input-label for="pekerjaan" :value="__('Pekerjaan')"/>
                                 <select wire:model="pekerjaan" id="pekerjaan" name="pekerjaan" class="block mt-1 w-full rounded" required autofocus>
                                     <option value="" disabled>Pilih Pekerjaan</option>
-                                    <option value="Pelajar">Pelajar</option>
-                                    <option value="Mahasiswa">Mahasiswa</option>
-                                    <option value="Guru">Guru</option>
-                                    <option value="Dosen">Dosen</option>
-                                    <option value="Pegawai Negeri Sipil (PNS)">Pegawai Negeri Sipil (PNS)</option>
-                                    <option value="Tentara Nasional Indonesia (TNI)">Tentara Nasional Indonesia (TNI)</option>
-                                    <option value="Kepolisian RI (POLRI)">Kepolisian RI (POLRI)</option>
-                                    <option value="Karyawan Swasta">Karyawan Swasta</option>
-                                    <option value="Wirausaha">Wirausaha</option>
-                                    <option value="Belum/Tidak Bekerja">Belum/Tidak Bekerja</option>
+                                    @foreach(['Pelajar', 'Mahasiswa', 'Guru', 'Dosen', 'Pegawai Negeri Sipil (PNS)', 'Tentara Nasional Indonesia (TNI)', 'Kepolisian RI (POLRI)', 'Karyawan Swasta', 'Wirausaha', 'Belum/Tidak Bekerja'] as $pekerjaan)
+                                        <option value="{{ $pekerjaan }}" {{ $pekerjaan === $users->pekerjaan ? 'selected' : '' }}>{{ $pekerjaan }}</option>
+                                    @endforeach
                                 </select>
                                 <x-input-error :messages="$errors->get('pekerjaan')" class="mt-2"/>
                             </div>
@@ -73,11 +69,11 @@
                                 <x-input-label for="jenis_kelamin" :value="__('Jenis Kelamin')"/>
                                 <div class="flex items-center justify-between mt-1">
                                     <div class="w-1/2 flex items-center gap-1">
-                                        <input type="radio" wire:model="jenis_kelamin" id="laki_laki" name="jenis_kelamin" value="L" class="block rounded" required autofocus>
+                                        <input type="radio" wire:model="jenis_kelamin" id="laki_laki" name="jenis_kelamin" value="Laki-Laki" class="block rounded" required autofocus>
                                         <label for="laki_laki">Laki-Laki</label>
                                     </div>
                                     <div class="w-1/2 flex items-center gap-1">
-                                        <input type="radio" wire:model="jenis_kelamin" id="perempuan" name="jenis_kelamin" value="P" class="block rounded" required autofocus>
+                                        <input type="radio" wire:model="jenis_kelamin" id="perempuan" name="jenis_kelamin" value="Perempuan" class="block rounded" required autofocus>
                                         <label for="perempuan">Perempuan</label>
                                     </div>
                                 </div>
@@ -116,17 +112,9 @@
                                 <x-input-label for="pendidikan" :value="__('Pendidikan')"/>
                                 <select wire:model="Pendidikan" id="Pendidikan" name="Pendidikan" class="block mt-1 w-full rounded" required autofocus>
                                     <option value="" disabled>Pilih Pendidikan</option>
-                                    <option value="Tidak/Belum Sekolah">Tidak/Belum Sekolah</option>
-                                    <option value="Belum Tamat SD/Sederajat">Belum Tamat SD/Sederajat</option>
-                                    <option value="Tamat SD/Sederajat">Tamat SD/Sederajat</option>
-                                    <option value="SLTP/Sederajat">SLTP/Sederajat</option>
-                                    <option value="SLTA/Sederajat">SLTA/Sederajat</option>
-                                    <option value="D-I/II">D-I/II</option>
-                                    <option value="D-III">D-III</option>
-                                    <option value="D-IV">D-IV</option>
-                                    <option value="S1">S1</option>
-                                    <option value="S2">S2</option>
-                                    <option value="S3">S3</option>
+                                    @foreach(['Tidak/Belum Sekolah', 'Belum Tamat SD/Sederajat', 'Tamat SD/Sederajat', 'SLTP/Sederajat', 'SLTA/Sederajat', 'D-I/II', 'D-III', 'D-IV', 'S1', 'S2', 'S3'] as $Pendidikan)
+                                        <option value="{{ $Pendidikan }}" {{ $Pendidikan === $users->Pendidikan ? 'selected' : '' }}>{{ $Pendidikan }}</option>
+                                    @endforeach
                                 </select>
                                 <x-input-error :messages="$errors->get('Pendidikan')" class="mt-2"/>
                             </div>
@@ -134,9 +122,9 @@
                             <div class="w-1/2">
                                 <x-input-label for="thn_lulus" :value="__('Tahun Lulus')"/>
                                 <select wire:model="thn_lulus" id="thn_lulus" name="thn_lulus" class="block mt-1 w-full rounded" required autofocus>
-                                    <option value="">Pilih Tahun Lulus</option>
+                                    <option value="" disabled>Pilih Tahun Lulus</option>
                                     @foreach (range(date('Y'), date('Y') - 50) as $year)
-                                        <option value="{{ $year }}">{{ $year }}</option>
+                                        <option value="{{ $year }}" {{ $year == $users->thn_lulus ? 'selected' : '' }}>{{ $year }}</option>
                                     @endforeach
                                 </select>
                                 <x-input-error :messages="$errors->get('tahun_lulus')" class="mt-2"/>
@@ -154,6 +142,9 @@
                                 <x-input-label for="bhs_seharian" :value="__('Bahasa Sehari')"/>
                                 <select wire:model="bhs_seharian" id="bhs_seharian" name="bhs_seharian" class="block mt-1 w-full rounded" required autofocus>
                                     <option value="" disabled>Pilih Bahasa</option>
+                                    @foreach(['Indonesian', 'Malay', 'English', 'Thailand', 'Japanase', 'Korean'] as $bhs_seharian)
+                                        <option value="{{ $bhs_seharian }}" {{ $bhs_seharian === $users->bhs_seharian ? 'selected' : '' }}>{{ $bhs_seharian }}</option>
+                                    @endforeach
                                     <option value="Indonesian">Indonesia</option>
                                     <option value="Malay">Malaysia</option>
                                     <option value="English">English</option>
@@ -167,14 +158,12 @@
                         <div class="h-fit flex flex-col md:flex-row items-between gap-5 md:py-3">
                             <div class="w-full md:w-1/2">
                                 <x-input-label for="pasFoto" :value="__('Pas Foto')"/>
-                                <input wire:model="pasFoto" id="pasFoto" class="block mt-1 w-full" type="file" name="pasFoto" required
-                                       autofocus accept="image/jpeg, image/png, image/jpg"/>
+                                <input wire:model.defer="pasFoto" id="pasFoto" class="block mt-1 w-full" type="file" name="pasFoto" autofocus accept="image/jpeg, image/png, image/jpg"/>
                                 <x-input-error :messages="$errors->get('pasFoto')" class="mt-2"/>
                             </div>
                             <div class="w-full md:w-1/2">
                                 <x-input-label for="ktp" :value="__('KTP')"/>
-                                <input wire:model="ktp" id="ktp" class="block mt-1 w-full" type="file" name="ktp" required autofocus
-                                       accept="image/jpeg, image/png, image/jpg"/>
+                                <input wire:model="ktp" id="ktp" class="block mt-1 w-full" type="file" name="ktp" autofocus accept="image/jpeg, image/png, image/jpg"/>
                                 <x-input-error :messages="$errors->get('ktp')" class="mt-2"/>
                             </div>
                         </div>
