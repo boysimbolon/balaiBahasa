@@ -1,0 +1,2 @@
+<h2 class="text-2xl mb-3 font-bold"><?php echo e($slot); ?></h2>
+<?php /**PATH C:\Users\Acer\Documents\Universitas Advent Indonesia\Labor\balai_bahasa\balaiBahasa\resources\views\components\heading-page.blade.php ENDPATH**/ ?>

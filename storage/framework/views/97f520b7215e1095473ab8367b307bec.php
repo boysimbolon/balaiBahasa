@@ -14,4 +14,4 @@
             $__env->endSlot();
         }
         ?>
-    <?php echo $__env->renderComponent(); ?><?php /**PATH E:\Balai_Bahasa\Balai_Bahasa\storage\framework\views/4943bc92ebba41e8b0e508149542e0ad.blade.php ENDPATH**/ ?>
+    <?php echo $__env->renderComponent(); ?><?php /**PATH C:\Users\Acer\Documents\Universitas Advent Indonesia\Labor\balai_bahasa\balaiBahasa\storage\framework\views/4943bc92ebba41e8b0e508149542e0ad.blade.php ENDPATH**/ ?>

@@ -1,0 +1,2 @@
+<img src="Logo-Unai.png" alt="Unai Logo" class="aspect-square size-32">
+<?php /**PATH C:\Users\Acer\Documents\Universitas Advent Indonesia\Labor\balai_bahasa\balaiBahasa\resources\views\components\application-logo.blade.php ENDPATH**/ ?>

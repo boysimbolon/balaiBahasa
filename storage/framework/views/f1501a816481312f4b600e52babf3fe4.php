@@ -11,4 +11,4 @@
 
     </body>
 </html>
-<?php /**PATH E:\Balai_Bahasa\Balai_Bahasa\resources\views/components/layouts/app.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\Users\Acer\Documents\Universitas Advent Indonesia\Labor\balai_bahasa\balaiBahasa\resources\views/components/layouts/app.blade.php ENDPATH**/ ?>
