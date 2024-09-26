@@ -22,7 +22,7 @@ class E3schedule extends Component
          });
          if(auth('user')->check()) {
              $this->pesan = pesan_ujian::with('listruangan', 'listujian.tipeUjian')
-                 ->where('id_user', '=', auth('user')->user()->no_Peserta)->get();
+                 ->where('id_user', '=', auth('user')->user()->id)->get();
              $this->tgl = $this->pesan->map(function($item){
                  return \Carbon\Carbon::parse($item->listujian->tanggal)->translatedFormat('l, d F Y');
              });

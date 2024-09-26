@@ -1,29 +1,32 @@
 <div>
     <x-app-layout>
         <div class="p-5 h-full">
-            <x-heading-page>TOEFL</x-heading-page>
+            <x-heading-page>TOEFL (Test of English as a Foreign Language)</x-heading-page>
             <div class="bg-white drop-shadow-lg w-fit md:w-full mt-1 rounded p-5 flex flex-col gap-4">
-                <!-- Your Schedule -->
+                <!-- Your TOEFL Schedule -->
                 <div>
                     <h3 class="text-xl mb-2">Jadwal Anda</h3>
                     <table class="w-full rounded">
                         <tr class="bg-primary text-white text-left">
                             <th class="p-2">Jenis Ujian</th>
-                            <th class="p-2">Tanggal</th>
+                            <th class="p-2">Tanggal UJian</th>
                             <th class="p-2">Jam</th>
                             <th class="p-2">Lokasi</th>
-                            <th class="p-2">Waktu Pilih</th>
+                            <th class="p-2">Waktu Pesan</th>
                         </tr>
-                        <tr class="border-y">
-                            <td class="p-2">TOEFL</td>
-                            <td class="p-2">Kamis, 15 Agustus 2024</td>
-                            <td class="p-2">08:00</td>
-                            <td class="p-2">Lab CBT</td>
-                            <td class="p-2">Minggu, 11 Agustus 2024</td>
-                        </tr>
+                        @foreach($pesan as $psn =>$data)
+                            @if($data->listujian->id_jenis_ujian == 3)
+                                <tr class="border-y">
+                                    <td class="p-2">{{$data->listujian->tipeujian->jenis_ujian}}</td>
+                                    <td class="p-2">{{$tgl[$psn]}}</td>
+                                    <td class="p-2">{{$jm[$psn]}}</td>
+                                    <td class="p-2">{{$data->listruangan->nama_ruangan}}</td>
+                                    <td class="p-2">{{$created[$psn]}}</td>
+                                </tr>
+                            @endif
+                        @endforeach
                     </table>
                 </div>
-
                 <!-- TOEFL Schedule -->
                 <div>
                     <h3 class="text-xl mb-2">Jadwal TOEFL</h3>
@@ -36,36 +39,24 @@
                             <th class="p-2">Jumlah</th>
                             <th class="p-2"></th>
                         </tr>
-                        <tr class="border-y">
-                            <td class="p-2">Kamis, 15 Agustus 2024</td>
-                            <td class="p-2">08:00</td>
-                            <td class="p-2">Lab CBT</td>
-                            <td class="p-2">50</td>
-                            <td class="p-2">50</td>
-                            <td class="p-2">
-                                Penuh
-                            </td>
-                        </tr>
-                        <tr class="border-y">
-                            <td class="p-2">Kamis, 15 Agustus 2024</td>
-                            <td class="p-2">10:00</td>
-                            <td class="p-2">Lab CBT</td>
-                            <td class="p-2">50</td>
-                            <td class="p-2">20</td>
-                            <td class="p-2">
-                                <button class="bg-primary text-white py-2 px-4 rounded">Pilih</button>
-                            </td>
-                        </tr>
-                        <tr class="border-y">
-                            <td class="p-2">Kamis, 15 Agustus 2024</td>
-                            <td class="p-2">13:00</td>
-                            <td class="p-2">Lab CBT</td>
-                            <td class="p-2">50</td>
-                            <td class="p-2">0</td>
-                            <td class="p-2">
-                                <button class="bg-primary text-white py-2 px-4 rounded">Pilih</button>
-                            </td>
-                        </tr>
+                        @foreach($tanggal as $index => $tgl)
+                            @if($kapasitas[$index]->id_jenis_ujian == 3)
+                                <tr class="border-y">
+                                    <td class="p-2">{{ $tgl }}</td>
+                                    <td class="p-2">{{ $jam[$index] }}</td>
+                                    <td class="p-2">{{ $ruangan[$index]->listruangan->nama_ruangan }}</td>
+                                    <td class="p-2">{{ $kapasitas[$index]->listruangan->kapasitas }}</td>
+                                    <td class="p-2">{{ $kuota }}</td>
+                                    <td class="p-2">
+                                        @if($kapasitas[$index]->listruangan->kapasitas <= $kuota)
+                                            Penuh
+                                        @else
+                                            <button class="bg-primary text-white py-2 px-4 rounded">Pilih</button>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
                     </table>
                 </div>
             </div>
