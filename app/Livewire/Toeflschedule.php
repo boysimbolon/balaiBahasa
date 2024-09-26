@@ -53,9 +53,13 @@ class Toeflschedule extends Component
     public function render()
     {
         if(auth('user')->check()){
-            return view('livewire.toeflschedule');
+            return view('livewire.toeflschedule', [
+                'title' => 'Jadwal TOEFL'
+            ]);
         }elseif(session('guard') == 'mhs'){
-            return view('livewire.toefl-schedule-mhs');
+            return view('livewire.toefl-schedule-mhs', [
+                'title' => 'Jadwal TOEFL'
+            ]);
         }
     }
 }

@@ -60,6 +60,7 @@ class Biodatamhs extends Component
     public function render()
     {
         return view('livewire.biodata-mhs', [
+            'title' => 'Biodata Mahasiswa',
             'data' => $this->data,
             'foto' => $this->foto,
             'alamat' => $this->alamat

@@ -8,6 +8,8 @@ class History extends Component
 {
     public function render()
     {
-        return view('livewire.history');
+        return view('livewire.history', [
+            'title' => 'History'
+        ]);
     }
 }

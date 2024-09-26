@@ -1,3 +1,4 @@
+@section('title', $title)
 <div>
     <x-app-layout>
         <div class="p-5 h-full">

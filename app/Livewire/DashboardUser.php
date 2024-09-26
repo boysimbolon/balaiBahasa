@@ -12,6 +12,8 @@ class DashboardUser extends Component
 
     public function render()
     {
-        return view('livewire.dashboard-user');
+        return view('livewire.dashboard-user', [
+            'title' => 'Dashboard'
+        ]);
     }
 }

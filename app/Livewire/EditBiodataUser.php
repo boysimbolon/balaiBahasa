@@ -49,6 +49,7 @@ class EditBiodataUser extends Component
     public function render()
     {
         return view('livewire.editprofile', [
+            'title' => 'Edit Biodata',
             'users' => $this->users,
             'email' => $this->email
         ]);

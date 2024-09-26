@@ -26,6 +26,10 @@ class Biodatausr extends Component
 
     public function render()
     {
-        return view('livewire.biodatausr', ['users' => $this->users,'email'=>$this->email]);
+        return view('livewire.biodatausr', [
+            'title' => 'Biodata User',
+            'users' => $this->users,
+            'email' => $this->email
+        ]);
     }
 }

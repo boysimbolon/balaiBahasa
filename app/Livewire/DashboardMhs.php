@@ -11,6 +11,8 @@ class DashboardMhs extends Component
     public function render()
     {
         // Kembalikan view jika mahasiswa terautentikasi
-        return view('livewire.dashboard-mhs');
+        return view('livewire.dashboard-mhs', [
+            'title' => 'Dashboard Mahasiswa',
+        ]);
     }
 }

@@ -1,3 +1,4 @@
+@section('title', $title)
 <div>
     <x-app-layout>
         <div class="p-5 h-full">
@@ -9,7 +10,7 @@
                     <table class="w-full rounded">
                         <tr class="bg-primary text-white text-left">
                             <th class="p-2">Jenis Ujian</th>
-                            <th class="p-2">Tanggal UJian</th>
+                            <th class="p-2">Tanggal Ujian</th>
                             <th class="p-2">Jam</th>
                             <th class="p-2">Lokasi</th>
                             <th class="p-2">Waktu Pesan</th>

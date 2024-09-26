@@ -8,6 +8,8 @@ class Changepassword extends Component
 {
     public function render()
     {
-        return view('livewire.changepassword');
+        return view('livewire.changepassword', [
+            'title' => 'Ganti Password'
+        ]);
     }
 }

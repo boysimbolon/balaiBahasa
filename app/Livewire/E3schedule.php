@@ -53,9 +53,13 @@ class E3schedule extends Component
     public function render()
     {
         if(auth('user')->check()){
-        return view('livewire.e3schedule');
+            return view('livewire.e3schedule', [
+                'title' => 'Jadwal 3E'
+            ]);
         }elseif(session('guard') == 'mhs'){
-            return view('livewire.e3-schedule-mhs');
+            return view('livewire.e3-schedule-mhs', [
+                'title' => 'Jadwal 3E'
+            ]);
         }
     }
 }
