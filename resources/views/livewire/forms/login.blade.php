@@ -1,8 +1,7 @@
+@section('title', $title)
 <div>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
-
-
 
     <form wire:submit.prevent="Login"> <!-- Gunakan wire:submit.prevent -->
         @csrf

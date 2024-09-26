@@ -25,7 +25,9 @@ class Login extends Component
 
     public function render()
     {
-        return view('livewire.forms.login');
+        return view('livewire.forms.login', [
+            'title' => 'Login'
+        ]);
     }
 
     public function Login()
