@@ -89,7 +89,8 @@ class Register extends Component
             'no_Peserta' => $validated['no_Peserta'],
             'email' => $validated['email'],
             'email_verification_token'=>$validated['token'],
-            'pin' => $validated['password'], // Simpan password yang sudah di-hash
+            'pin' => $validated['password'], // Simpan password yang sudah di-hash,
+            'isAdmin'=>0
         ]);
 
         // Generate token untuk verifikasi email
