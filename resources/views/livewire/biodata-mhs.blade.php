@@ -108,15 +108,15 @@
                             </span>
                             </p>
                         </div>
-                        <div class="min-h-11 max-h-fit flex items-center py-3">
-                            <p class="w-full flex items-center gap-10 text-nowrap justify-between md:justify-normal">
-                                <span class="w-1/2 md:w-1/5 font-semibold">KTP</span>
-                                <span class="w-1/2 flex items-center gap-5 justify-end md:justify-normal">
-                                <span class="hidden md:block">:</span>
-                                <img src="https://picsum.photos/300/200" alt="" class="rounded-xl">
-                            </span>
-                            </p>
-                        </div>
+{{--                        <div class="min-h-11 max-h-fit flex items-center py-3">--}}
+{{--                            <p class="w-full flex items-center gap-10 text-nowrap justify-between md:justify-normal">--}}
+{{--                                <span class="w-1/2 md:w-1/5 font-semibold">KTP</span>--}}
+{{--                                <span class="w-1/2 flex items-center gap-5 justify-end md:justify-normal">--}}
+{{--                                <span class="hidden md:block">:</span>--}}
+{{--                                <img src="https://picsum.photos/300/200" alt="" class="rounded-xl">--}}
+{{--                            </span>--}}
+{{--                            </p>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
                 <div class="w-full order-1 xl:order-2 xl:w-1/3">
