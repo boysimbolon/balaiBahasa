@@ -6,14 +6,11 @@ use App\Livewire\Biodatamhs;
 use App\Livewire\Biodatausr;
 use App\Livewire\DashboardMhs;
 use App\Livewire\DashboardUser;
+use App\Livewire\E3schedule;
 use App\Livewire\EditBiodataUser;
-use App\Livewire\Forms\Login;
-use App\Livewire\Forms\Register;
 use App\Livewire\HistoryMhs;
-use Illuminate\Support\Facades\Auth;
+use App\Livewire\Toeflschedule;
 use Illuminate\Support\Facades\Route;
-
-// Grouping routes for mahasiswa with prefix and middleware
 
 // Grouping routes for user with prefix and middleware
 Route::prefix('user')->middleware('user')->group(function () {
@@ -25,16 +22,16 @@ Route::prefix('user')->middleware('user')->group(function () {
         return view('livewire.changepassword');
     })->name('change-password-user');
 
-    Route::get('/e3_schedules',\App\Livewire\E3schedule::class)->name('e3-schedule-user');
+    Route::get('/e3_schedules',E3schedule::class)->name('e3-schedule-user');
 
-    Route::get('/toefl_schedules',\App\Livewire\Toeflschedule::class)->name('toefl-schedule-user');
+    Route::get('/toefl_schedules',Toeflschedule::class)->name('toefl-schedule-user');
 
     Route::get('/history-mhs', function () {
         return view('livewire.history');
     })->name('history-user');
 });
 
-
+// Grouping routes for mahasiswa with prefix and middleware
 Route::prefix('mhs')->middleware('mhs')->group(function () {
     Route::get('/', DashboardMhs::class)->name('dashboard-mhs');
     Route::get('/biodata', Biodatamhs::class)->name('biodata-mhs');
@@ -48,13 +45,15 @@ Route::prefix('mhs')->middleware('mhs')->group(function () {
         return view('livewire.change-password-mhs');
     })->name('change-password-mhs');
 
-    Route::get('/e3_schedules', \App\Livewire\E3schedule::class)->name('e3-schedule-mhs');
+    Route::get('/e3_schedules', E3schedule::class)->name('e3-schedule-mhs');
 
-    Route::get('/toefl_schedules',\App\Livewire\Toeflschedule::class)->name('toefl-schedule-mhs');
+    Route::get('/toefl_schedules',Toeflschedule::class)->name('toefl-schedule-mhs');
 });
+
+// Grouping routes for admin with prefix and middleware
 Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/', DashboardMhs::class)->name('dashboard-admin');
-    Route::get('/biodata', \App\Livewire\Biodatamhs::class)->name('biodata-admin');
+    Route::get('/biodata', Biodatamhs::class)->name('biodata-admin');
 
     Route::get('/biodata_edit', function () {
         return view('livewire.edit-profile-mhs');
@@ -64,9 +63,9 @@ Route::prefix('admin')->middleware('admin')->group(function () {
         return view('livewire.change-password-mhs');
     })->name('change-password-admin');
 
-    Route::get('/e3_schedules', \App\Livewire\E3schedule::class)->name('e3-schedule-admin');
+    Route::get('/e3_schedules', E3schedule::class)->name('e3-schedule-admin');
 
-    Route::get('/toefl_schedules',\App\Livewire\Toeflschedule::class)->name('toefl-schedule-admin');
+    Route::get('/toefl_schedules',Toeflschedule::class)->name('toefl-schedule-admin');
 
     Route::get('/history-mhs', function () {
         return view('livewire.history-mhs');
