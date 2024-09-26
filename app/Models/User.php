@@ -11,7 +11,6 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
     protected $connection = 'mydb';
-    protected $guard = 'user';
     protected $table = 'users';
     /**
      * The attributes that are mass assignable.
@@ -34,7 +33,8 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'pin',
         'remember_token',
-        'email_verification_token'
+        'email_verification_token',
+        'isAdmin'
     ];
 
     /**

@@ -53,6 +53,26 @@ Route::prefix('mhs')->middleware('mhs')->group(function () {
         return view('livewire.history-mhs');
     })->name('history-mhs');
 });
+Route::prefix('admin')->middleware('admin')->group(function () {
+    Route::get('/', DashboardMhs::class)->name('dashboard-admin');
+    Route::get('/biodata', \App\Livewire\Biodatamhs::class)->name('biodata-admin');
+
+    Route::get('/biodata_edit', function () {
+        return view('livewire.edit-profile-mhs');
+    })->name('edit-profile-admin');
+
+    Route::get('/change_password', function () {
+        return view('livewire.change-password-mhs');
+    })->name('change-password-admin');
+
+    Route::get('/e3_schedules', \App\Livewire\E3schedule::class)->name('e3-schedule-admin');
+
+    Route::get('/toefl_schedules',\App\Livewire\Toeflschedule::class)->name('toefl-schedule-admin');
+
+    Route::get('/history-mhs', function () {
+        return view('livewire.history-mhs');
+    })->name('history-admin');
+});
 
 
 require __DIR__.'/auth.php';

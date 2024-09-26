@@ -61,6 +61,9 @@ class Login extends Component
         } elseif (Auth::guard('user')->check()) {
             // Redirect ke dashboard user dengan no_Peserta
             return redirect()->route('dashboard-user');
+        }elseif(Auth::guard('admin')->check()){
+            // Redirect ke dashboard admin dengan no_Peserta
+            return redirect()->route('dashboard-admin');
         }
     }
 
@@ -72,9 +75,15 @@ class Login extends Component
     protected function authenticateUser(): bool
     {
         $user = User::where('no_Peserta', trim($this->no_Peserta))->first();
-        if ($user && Hash::check($this->pin, $user->pin) && $user->email_verified_at !== null) {
+        if ($user && Hash::check($this->pin, $user->pin) && $user->email_verified_at !== null && $user->isAdmin == '0') {
             auth('mhs')->logout();
+            auth('admin')->logout();
             auth('user')->login($user, $this->remember);
+            return true;
+        } elseif ($user && Hash::check($this->pin, $user->pin) && $user->email_verified_at !== null && $user->isAdmin == '1') {
+            auth('mhs')->logout();
+            auth('user')->logout();
+            auth('admin')->login($user, $this->remember);
             return true;
         }
         return false;
@@ -86,6 +95,7 @@ class Login extends Component
 
         if ($mahasiswa && ($this->pin === trim($mahasiswa->paswd))) {
             auth('user')->logout();
+            auth('admin')->logout();
             auth('mhs')->login($mahasiswa);
             return true;
         }

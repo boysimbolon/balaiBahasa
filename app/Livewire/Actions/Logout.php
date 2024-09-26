@@ -18,6 +18,9 @@ class Logout
         } elseif (Auth::guard('user')->check()) {
             Auth::guard('user')->logout();
             Session::flush();
+        }elseif (Auth::guard('admin')->check()) {
+            Auth::guard('admin')->logout();
+            Session::flush();
         }
         session()->invalidate();
         session()->regenerateToken();

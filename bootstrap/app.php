@@ -17,7 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'mhs' => EnsureMahasiswa::class,
             'user' => EnsureUser::class,
-            'admins' =>EnsureAdmin::class
+            'admin' =>EnsureAdmin::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
