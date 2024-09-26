@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
             <!-- User Photo -->
             <div class="mt-5 w-60 h-fit flex flex-col items-center gap-2">
                 <div class="w-28">
-                    <img src="<?php echo e('https://online.unai.edu/mhs/'.$foto); ?>" alt="" class="size-fit rounded-xl">
+                    <img src="<?php echo e('https://online.unai.edu/mhs/'.$foto); ?>" alt="" width="150" height="200"  class="size-fit rounded-xl">
                 </div>
                 <h1 class="text-xl font-bold text-white">
                     <?php echo e(trim($data->nama)); ?>
@@ -29,13 +29,11 @@ use Illuminate\Support\Facades\Auth;
                 <div>
                     <!-- Dashboard -->
                     <a href="<?php echo e(route('dashboard-mhs')); ?>">
-                        <li class="flex items-center gap-2 h-14 px-5 hover:bg-secondary <?php echo e(Route::is('dashboard-mhs') ? 'bg-secondary' : 'text-white'); ?>">
+                        <li class="flex items-center gap-2 h-14 px-5 hover:bg-secondary text-white <?php echo e(Route::is('dashboard-mhs') ? 'bg-secondary' : 'text-white'); ?>">
                             <div class="flex items-center gap-2">
                                 <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white"
-                                         class="bi bi-grid" viewBox="0 0 16 16">
-                                        <path
-                                            d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="bi bi-grid" viewBox="0 0 16 16">
+                                        <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/>
                                     </svg>
                                 </div>
                                 <p class="text-lg">Dashboard</p>
@@ -44,23 +42,17 @@ use Illuminate\Support\Facades\Auth;
                     </a>
 
                     <!-- Profile -->
-                    <li class="flex items-center justify-between h-14 px-5 hover:bg-secondary  <?php echo e(Route::is('biodata-mhs') || Route::is('biodata-user')  ||  Route::is('edit-profile-mhs') ||  Route::is('edit-profile-user') || Route::is('change-password-mhs') || Route::is('change-password-user')  ? 'bg-secondary' : 'text-white'); ?>">
+                    <li class="flex items-center justify-between h-14 px-5 hover:bg-secondary text-white <?php echo e(Route::is('biodata-mhs') || Route::is('biodata-user')  ||  Route::is('edit-profile-mhs') ||  Route::is('edit-profile-user') || Route::is('change-password-mhs') || Route::is('change-password-user')  ? 'bg-secondary' : 'text-white'); ?>">
                         <div class="flex items-center gap-2 w-fit">
                             <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white"
-                                     class="bi bi-person" viewBox="0 0 16 16">
-                                    <path
-                                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="bi bi-person" viewBox="0 0 16 16">
+                                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
                                 </svg>
                             </div>
                             <p class="text-lg">Profile</p>
                         </div>
-                        <svg onclick="openProfileDropdown()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                             fill="white"
-                             class="bi bi-caret-down-fill hover:cursor-pointer transition-transform duration-300 ease-in-out"
-                             viewBox="0 0 16 16" id="caret1">
-                            <path
-                                d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                        <svg onclick="openProfileDropdown()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-caret-down-fill hover:cursor-pointer transition-transform duration-300 ease-in-out" viewBox="0 0 16 16" id="caret1">
+                            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
                         </svg>
                     </li>
 
@@ -77,34 +69,28 @@ use Illuminate\Support\Facades\Auth;
                         </a>
 
                         <!-- Change Password -->
-                        <a href="<?php echo e(route('change-password-mhs')); ?>">
-                            <li class="flex items-center justify-between h-14 px-5 text-white hover:bg-secondary">
-                                <div class="flex items-center gap-2 w-fit">
-                                    <div class="w-6"></div>
-                                    <p class="text-lg">Ganti Password</p>
-                                </div>
-                            </li>
-                        </a>
+
+
+
+
+
+
+
+
                     </ul>
 
                     <!-- Type Test -->
-                    <li class="flex items-center justify-between h-14 px-5 hover:bg-secondary  <?php echo e(Route::is('e3-schedule-mhs') || Route::is('toefl-schedule-mhs') || Route::is('e3-schedule-user') || Route::is('toefl-schedule-user') ? 'bg-secondary' : 'text-white'); ?>">
+                    <li class="flex items-center justify-between h-14 px-5 hover:bg-secondary text-white <?php echo e(Route::is('e3-schedule-mhs') || Route::is('toefl-schedule-mhs') || Route::is('e3-schedule-user') || Route::is('toefl-schedule-user') ? 'bg-secondary' : 'text-white'); ?>">
                         <div class="flex items-center gap-2">
                             <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white"
-                                     class="bi bi-bookmark" viewBox="0 0 16 16">
-                                    <path
-                                        d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="bi bi-bookmark" viewBox="0 0 16 16">
+                                    <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"/>
                                 </svg>
                             </div>
                             <p class="text-lg text-nowrap">Pilih Jenis Tes</p>
                         </div>
-                        <svg onclick="openTypeDropdown()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                             fill="white"
-                             class="bi bi-caret-down-fill hover:cursor-pointer transition-transform duration-300 ease-in-out"
-                             viewBox="0 0 16 16" id="caret2">
-                            <path
-                                d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                        <svg onclick="openTypeDropdown()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-caret-down-fill hover:cursor-pointer transition-transform duration-300 ease-in-out" viewBox="0 0 16 16" id="caret2">
+                            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
                         </svg>
                     </li>
 
@@ -131,13 +117,11 @@ use Illuminate\Support\Facades\Auth;
                     </ul>
                     <!-- History -->
                     <a href="<?php echo e(route('history-mhs')); ?>">
-                        <li class="flex items-center h-14 px-5 hover:bg-secondary <?php echo e(Route::is('history-mhs') ? 'bg-secondary' : 'text-white'); ?>">
+                        <li class="flex items-center h-14 px-5 hover:bg-secondary text-white <?php echo e(Route::is('history-mhs') ? 'bg-secondary' : 'text-white'); ?>">
                             <div class="flex items-center gap-2">
                                 <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white"
-                                         class="bi bi-clock" viewBox="0 0 16 16">
-                                        <path
-                                            d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="bi bi-clock" viewBox="0 0 16 16">
+                                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
                                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
                                     </svg>
                                 </div>
@@ -147,16 +131,13 @@ use Illuminate\Support\Facades\Auth;
                     </a>
                 </div>
                 <!-- Log Out -->
-                <li class="flex items-center h-14 px-5 text-white hover:bg-secondary hover:cursor-pointer"
-                    wire:click="logout">
+                <li class="flex items-center h-14 px-5 text-white hover:bg-secondary hover:cursor-pointer" wire:click="logout">
                     <div class="flex items-center gap-2 w-fit">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white"
                                  class="bi bi-box-arrow-left" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                      d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"/>
-                                <path fill-rule="evenodd"
-                                      d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
+                                <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"/>
+                                <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
                             </svg>
                         </div>
                         <p class="text-lg text-nowrap">Log Out</p>

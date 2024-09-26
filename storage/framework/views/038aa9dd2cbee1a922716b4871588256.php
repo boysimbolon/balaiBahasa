@@ -1,3 +1,4 @@
+<?php $__env->startSection('title', $title); ?>
 <div>
     <!-- Session Status -->
     <?php if (isset($component)) { $__componentOriginal7c1bf3a9346f208f66ee83b06b607fb5 = $component; } ?>
@@ -20,8 +21,6 @@
 <?php $component = $__componentOriginal7c1bf3a9346f208f66ee83b06b607fb5; ?>
 <?php unset($__componentOriginal7c1bf3a9346f208f66ee83b06b607fb5); ?>
 <?php endif; ?>
-
-
 
     <form wire:submit.prevent="Login"> <!-- Gunakan wire:submit.prevent -->
         <?php echo csrf_field(); ?>

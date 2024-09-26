@@ -1,3 +1,4 @@
+<?php $__env->startSection('title', $title); ?>
 <div>
     <?php if (isset($component)) { $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal9ac128a9029c0e4701924bd2d73d7f54 = $attributes; } ?>
@@ -137,22 +138,21 @@
                             </span>
                             </p>
                         </div>
-                        <div class="min-h-11 max-h-fit flex items-center py-3">
-                            <p class="w-full flex items-center gap-10 text-nowrap justify-between md:justify-normal">
-                                <span class="w-1/2 md:w-1/5 font-semibold">KTP</span>
-                                <span class="w-1/2 flex items-center gap-5 justify-end md:justify-normal">
-                                <span class="hidden md:block">:</span>
-                                <img src="https://picsum.photos/300/200" alt="" class="rounded-xl">
-                            </span>
-                            </p>
-                        </div>
+
+
+
+
+
+
+
+
+
                     </div>
                 </div>
                 <div class="w-full order-1 xl:order-2 xl:w-1/3">
                     <div class="bg-white drop-shadow-lg h-fit mt-1 rounded p-5">
-                        <div class="flex items-
-                        center flex-col gap-4 mb-5">
-                            <img src="<?php echo e('https://online.unai.edu/mhs/'.$foto); ?>" alt="" class="rounded-xl">
+                        <div class="flex items-center flex-col gap-4 mb-5">
+                            <img src="<?php echo e('https://online.unai.edu/mhs/'.$foto); ?>" alt="" width="200" height="300" class="rounded-xl">
                             <div class="text-center">
                                 <h1 class="text-xl font-bold"><?php echo e($data['nama']); ?></h1>
                                 <p class="text-center"><?php echo e($data['nim']); ?></p>

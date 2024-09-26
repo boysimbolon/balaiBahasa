@@ -22,7 +22,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'no_Peserta',
         'pin',
         'email_verification_token',
-        'email'
+        'email',
+        'is_admin'
     ];
 
     /**
@@ -34,7 +35,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'pin',
         'remember_token',
         'email_verification_token',
-        'isAdmin'
+        'is_admin'
     ];
 
     /**
