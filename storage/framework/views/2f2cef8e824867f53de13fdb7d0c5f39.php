@@ -1,3 +1,4 @@
+<?php $__env->startSection('title', $title); ?>
 <div>
     <?php if (isset($component)) { $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal9ac128a9029c0e4701924bd2d73d7f54 = $attributes; } ?>
@@ -42,13 +43,15 @@
                             <th class="p-2">Waktu Pesan</th>
                         </tr>
                         <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $pesan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $psn =>$data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <tr class="border-y">
-                                <td class="p-2"><?php echo e($data->listujian->tipeujian->jenis_ujian); ?></td>
-                                <td class="p-2"><?php echo e($tgl[$psn]); ?></td>
-                                <td class="p-2"><?php echo e($jm[$psn]); ?></td>
-                                <td class="p-2"><?php echo e($data->listruangan->nama_ruangan); ?></td>
-                                <td class="p-2"><?php echo e($created[$psn]); ?></td>
-                            </tr>
+                            <!--[if BLOCK]><![endif]--><?php if($data->listujian->id_jenis_ujian != '3'): ?>
+                                <tr class="border-y">
+                                    <td class="p-2"><?php echo e($data->listujian->tipeujian->jenis_ujian); ?></td>
+                                    <td class="p-2"><?php echo e($tgl[$psn]); ?></td>
+                                    <td class="p-2"><?php echo e($jm[$psn]); ?></td>
+                                    <td class="p-2"><?php echo e($data->listruangan->nama_ruangan); ?></td>
+                                    <td class="p-2"><?php echo e($created[$psn]); ?></td>
+                                </tr>
+                            <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
                     </table>
                 </div>

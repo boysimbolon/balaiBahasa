@@ -16,13 +16,15 @@
                             <th class="p-2">Waktu Pesan</th>
                         </tr>
                         @foreach($pesan as $psn =>$data)
-                            <tr class="border-y">
-                                <td class="p-2">{{$data->listujian->tipeujian->jenis_ujian}}</td>
-                                <td class="p-2">{{$tgl[$psn]}}</td>
-                                <td class="p-2">{{$jm[$psn]}}</td>
-                                <td class="p-2">{{$data->listruangan->nama_ruangan}}</td>
-                                <td class="p-2">{{$created[$psn]}}</td>
-                            </tr>
+                            @if($data->listujian->id_jenis_ujian != '3')
+                                <tr class="border-y">
+                                    <td class="p-2">{{$data->listujian->tipeujian->jenis_ujian}}</td>
+                                    <td class="p-2">{{$tgl[$psn]}}</td>
+                                    <td class="p-2">{{$jm[$psn]}}</td>
+                                    <td class="p-2">{{$data->listruangan->nama_ruangan}}</td>
+                                    <td class="p-2">{{$created[$psn]}}</td>
+                                </tr>
+                            @endif
                         @endforeach
                     </table>
                 </div>

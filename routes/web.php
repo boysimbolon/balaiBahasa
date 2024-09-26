@@ -8,6 +8,7 @@ use App\Livewire\DashboardMhs;
 use App\Livewire\DashboardUser;
 use App\Livewire\E3schedule;
 use App\Livewire\EditBiodataUser;
+use App\Livewire\History;
 use App\Livewire\HistoryMhs;
 use App\Livewire\Toeflschedule;
 use Illuminate\Support\Facades\Route;
@@ -26,9 +27,7 @@ Route::prefix('user')->middleware('user')->group(function () {
 
     Route::get('/toefl_schedules',Toeflschedule::class)->name('toefl-schedule-user');
 
-    Route::get('/history-mhs', function () {
-        return view('livewire.history');
-    })->name('history-user');
+    Route::get('/history-user', History::class)->name('history-user');
 });
 
 // Grouping routes for mahasiswa with prefix and middleware
