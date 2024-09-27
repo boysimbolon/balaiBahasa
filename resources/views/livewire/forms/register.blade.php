@@ -12,7 +12,7 @@
     </div>
 
     <div class="text-center mb-5">
-        <h1 class="font-bold text-2xl md:text-2xl mb-1">Registrasi</h1>
+        <h1 class="font-bold text-2xl md:text-2xl mb-1">Form Registrasi</h1>
         <h3 class="font-light text-lg md:text-xl mb-1">Balai Bahasa</h3>
         @if (session()->has('message'))
             <div class="alert alert-success">
