@@ -3,18 +3,18 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
+    <div class="text-center mb-5">
+        <h1 class="font-bold text-2xl md:text-2xl mb-1">Universitas Advent Indonesia</h1>
+        <h3 class="font-light text-lg md:text-xl mb-1">Balai Bahasa</h3>
+        @if (session()->has('message'))
+            <div class="w-full bg-green-600 p-2 rounded text-white">
+                {{ session('message') }}
+            </div>
+        @endif
+    </div>
+
     <form wire:submit.prevent="Login"> <!-- Gunakan wire:submit.prevent -->
         @csrf
-        <div class="text-center mb-5">
-            <h1 class="font-bold text-xl md:text-2xl mb-1">Universitas Advent Indonesia</h1>
-            <h3 class="font-light text-lg md:text-xl mb-1">Balai Bahasa</h3>
-            @if (session()->has('message'))
-                <div class="w-full bg-green-600 p-2 rounded text-white">
-                    {{ session('message') }}
-                </div>
-            @endif
-        </div>
-
         <!-- NIM / No Peserta -->
         <div>
             <x-input-label for="no_Peserta" :value="__('No Peserta')" />
@@ -24,8 +24,8 @@
 
         <!-- PIN -->
         <div class="mt-4">
-            <x-input-label for="pin" :value="__('PIN')" />
-            <x-text-input wire:model="pin" id="pin" class="block mt-1 w-full" type="password" name="pin" placeholder="PIN" required autocomplete="current-password" />
+            <x-input-label for="pin" :value="__('Password')" />
+            <x-text-input wire:model="pin" id="pin" class="block mt-1 w-full" type="password" name="pin" placeholder="Password" required autocomplete="current-password" />
             <x-input-error :messages="$errors->get('pin')" class="mt-2" />
         </div>
 
@@ -38,15 +38,15 @@
         </div>
 
         <!-- Forgot Password & Log In -->
-        <div class="flex flex-col items-start gap-2 mt-4">
+        <div class="flex flex-col items-start gap-2 mt-8">
             @if (Route::has('pin.request'))
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('pin.request') }}" wire:navigate>
                     {{ __('Forgot your PIN?') }}
                 </a>
             @endif
 
-            <x-primary-button class="w-full">
-                {{ __('Log in') }}
+            <x-primary-button class="w-full py-3">
+                {{ __('Login') }}
             </x-primary-button>
         </div>
     </form>

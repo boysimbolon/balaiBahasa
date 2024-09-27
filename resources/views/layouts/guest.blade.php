@@ -18,14 +18,14 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col justify-center items-center bg-gray-100 p-5 xl:p-20">
-            <div>
-                <a href="/" wire:navigate>
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-            </div>
+        <div class="min-h-screen flex flex-col justify-center items-center bg-gray-200 p-5 xl:p-20">
+{{--            <div>--}}
+{{--                <a href="/" wire:navigate>--}}
+{{--                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />--}}
+{{--                </a>--}}
+{{--            </div>--}}
 
-            <div class="mt-6 px-6 py-4 bg-white shadow-md rounded">
+            <div class="mt-6 p-5 bg-white shadow-md rounded-xl md:w-2/3 lg:w-1/4 {{ Route::is('register') ? 'lg:w-1/2' : '' }}">
                 {{ $slot }}
             </div>
         </div>

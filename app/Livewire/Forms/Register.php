@@ -58,7 +58,9 @@ class Register extends Component
 
     public function render()
     {
-        return view('livewire.forms.register');
+        return view('livewire.forms.register', [
+            'title' => 'Register'
+        ]);
     }
 
     public function save()
