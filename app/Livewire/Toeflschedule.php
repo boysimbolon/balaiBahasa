@@ -109,7 +109,7 @@ class Toeflschedule extends Component
             session()->flash('message', 'Pesan Ujian Berhasil');
             $this->mount();
         } else {
-            session()->flash('message', 'Kuota Ujian Penuh');
+            session()->flash('error', 'Kuota Ujian Penuh');
         }
     }
 }

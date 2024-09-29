@@ -22,19 +22,19 @@
 <?php unset($__componentOriginal7c1bf3a9346f208f66ee83b06b607fb5); ?>
 <?php endif; ?>
 
+    <div class="text-center mb-5">
+        <h1 class="font-bold text-2xl md:text-2xl mb-1">Universitas Advent Indonesia</h1>
+        <h3 class="font-light text-lg md:text-xl mb-1">Balai Bahasa</h3>
+        <!--[if BLOCK]><![endif]--><?php if(session()->has('message')): ?>
+            <div class="w-full bg-green-600 p-2 rounded text-white">
+                <?php echo e(session('message')); ?>
+
+            </div>
+        <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+    </div>
+
     <form wire:submit.prevent="Login"> <!-- Gunakan wire:submit.prevent -->
         <?php echo csrf_field(); ?>
-        <div class="text-center mb-5">
-            <h1 class="font-bold text-xl md:text-2xl mb-1">Universitas Advent Indonesia</h1>
-            <h3 class="font-light text-lg md:text-xl mb-1">Balai Bahasa</h3>
-            <!--[if BLOCK]><![endif]--><?php if(session()->has('message')): ?>
-                <div class="w-full bg-green-600 p-2 rounded text-white">
-                    <?php echo e(session('message')); ?>
-
-                </div>
-            <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
-        </div>
-
         <!-- NIM / No Peserta -->
         <div>
             <?php if (isset($component)) { $__componentOriginale3da9d84bb64e4bc2eeebaafabfb2581 = $component; } ?>
@@ -103,14 +103,14 @@
         <div class="mt-4">
             <?php if (isset($component)) { $__componentOriginale3da9d84bb64e4bc2eeebaafabfb2581 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginale3da9d84bb64e4bc2eeebaafabfb2581 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.input-label','data' => ['for' => 'pin','value' => __('PIN')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.input-label','data' => ['for' => 'pin','value' => __('Password')]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('input-label'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['for' => 'pin','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(__('PIN'))]); ?>
+<?php $component->withAttributes(['for' => 'pin','value' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(__('Password'))]); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginale3da9d84bb64e4bc2eeebaafabfb2581)): ?>
@@ -123,14 +123,14 @@
 <?php endif; ?>
             <?php if (isset($component)) { $__componentOriginal18c21970322f9e5c938bc954620c12bb = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal18c21970322f9e5c938bc954620c12bb = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.text-input','data' => ['wire:model' => 'pin','id' => 'pin','class' => 'block mt-1 w-full','type' => 'password','name' => 'pin','placeholder' => 'PIN','required' => true,'autocomplete' => 'current-password']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.text-input','data' => ['wire:model' => 'pin','id' => 'pin','class' => 'block mt-1 w-full','type' => 'password','name' => 'pin','placeholder' => 'Password','required' => true,'autocomplete' => 'current-password']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('text-input'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['wire:model' => 'pin','id' => 'pin','class' => 'block mt-1 w-full','type' => 'password','name' => 'pin','placeholder' => 'PIN','required' => true,'autocomplete' => 'current-password']); ?>
+<?php $component->withAttributes(['wire:model' => 'pin','id' => 'pin','class' => 'block mt-1 w-full','type' => 'password','name' => 'pin','placeholder' => 'Password','required' => true,'autocomplete' => 'current-password']); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal18c21970322f9e5c938bc954620c12bb)): ?>
@@ -172,7 +172,7 @@
         </div>
 
         <!-- Forgot Password & Log In -->
-        <div class="flex flex-col items-start gap-2 mt-4">
+        <div class="flex flex-col items-start gap-2 mt-8">
             <!--[if BLOCK]><![endif]--><?php if(Route::has('pin.request')): ?>
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="<?php echo e(route('pin.request')); ?>" wire:navigate>
                     <?php echo e(__('Forgot your PIN?')); ?>
@@ -182,15 +182,15 @@
 
             <?php if (isset($component)) { $__componentOriginald411d1792bd6cc877d687758b753742c = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginald411d1792bd6cc877d687758b753742c = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.primary-button','data' => ['class' => 'w-full']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.primary-button','data' => ['class' => 'w-full py-3']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('primary-button'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['class' => 'w-full']); ?>
-                <?php echo e(__('Log in')); ?>
+<?php $component->withAttributes(['class' => 'w-full py-3']); ?>
+                <?php echo e(__('Login')); ?>
 
              <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>

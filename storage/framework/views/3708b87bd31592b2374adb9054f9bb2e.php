@@ -28,5 +28,5 @@ foreach ($attributes->all() as $__key => $__value) {
 
 unset($__defined_vars); ?>
 
-<input <?php echo e($disabled ? 'disabled' : ''); ?> <?php echo $attributes->merge(['class' => 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md']); ?>>
+<input <?php echo e($disabled ? 'disabled' : ''); ?> <?php echo $attributes->merge(['class' => 'border-black focus:border-indigo-500 focus:ring-indigo-500 rounded-md']); ?>>
 <?php /**PATH E:\Balai_Bahasa\Balai_Bahasa\resources\views/components/text-input.blade.php ENDPATH**/ ?>
