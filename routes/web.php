@@ -18,11 +18,10 @@ Route::prefix('user')->middleware('user')->group(function () {
     Route::get('/', DashboardUser::class)->name('dashboard-user');
     Route::get('/biodata', Biodatausr::class)->name('biodata-user');
     Route::get('/biodata_edit', EditBiodataUser::class)->name('edit-profile-user');
-
     Route::get('/change_password', function () {
         return view('livewire.changepassword');
     })->name('change-password-user');
-
+    Route::get('/pembayaran', \App\Livewire\Pembayaran::class)->name('payment');
     Route::get('/e3_schedules',E3schedule::class)->name('e3-schedule-user');
 
     Route::get('/toefl_schedules',Toeflschedule::class)->name('toefl-schedule-user');
@@ -35,17 +34,8 @@ Route::prefix('mhs')->middleware('mhs')->group(function () {
     Route::get('/', DashboardMhs::class)->name('dashboard-mhs');
     Route::get('/biodata', Biodatamhs::class)->name('biodata-mhs');
     Route::get('/history-mhs', HistoryMhs::class)->name('history-mhs');
-
-    Route::get('/biodata_edit', function () {
-        return view('livewire.edit-profile-mhs');
-    })->name('edit-profile-mhs');
-
-    Route::get('/change_password', function () {
-        return view('livewire.change-password-mhs');
-    })->name('change-password-mhs');
-
     Route::get('/e3_schedules', E3schedule::class)->name('e3-schedule-mhs');
-
+    Route::get('/pembayaran', \App\Livewire\Pembayaran::class)->name('payment-mhs');
     Route::get('/toefl_schedules',Toeflschedule::class)->name('toefl-schedule-mhs');
 });
 

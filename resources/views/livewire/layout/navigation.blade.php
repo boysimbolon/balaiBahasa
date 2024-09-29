@@ -151,6 +151,19 @@ new class extends Component {
                         </a>
                     </ul>
                     <!-- History -->
+                    <a href="{{ route('payment-mhs') }}">
+                        <li class="flex items-center h-14 px-5 hover:bg-secondary text-white {{ Route::is('payment-mhs') ? 'bg-secondary' : 'text-white' }}">
+                            <div class="flex items-center gap-2">
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="bi bi-clock" viewBox="0 0 16 16">
+                                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+                                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
+                                    </svg>
+                                </div>
+                                <p class="text-lg">Pembayaran</p>
+                            </div>
+                        </li>
+                    </a>
                     <a href="{{ route('history-mhs') }}">
                         <li class="flex items-center h-14 px-5 hover:bg-secondary text-white {{ Route::is('history-mhs') ? 'bg-secondary' : 'text-white' }}">
                             <div class="flex items-center gap-2">
@@ -299,6 +312,20 @@ new class extends Component {
                             </li>
                         </a>
                     </ul>
+
+                    <a href="{{ route('payment') }}">
+                        <li class="flex items-center h-14 px-5 hover:bg-secondary text-white {{ Route::is('payment-mhs') ? 'bg-secondary' : 'text-white' }}">
+                            <div class="flex items-center gap-2">
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="bi bi-clock" viewBox="0 0 16 16">
+                                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+                                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
+                                    </svg>
+                                </div>
+                                <p class="text-lg">Pembayaran</p>
+                            </div>
+                        </li>
+                    </a>
                     <!-- History -->
                     <a href="{{ route('history-user') }}">
                         <li class="flex items-center h-14 px-5 hover:bg-secondary hover:text-black {{ Route::is('history-user') ? 'bg-secondary text-black' : 'text-white' }}">

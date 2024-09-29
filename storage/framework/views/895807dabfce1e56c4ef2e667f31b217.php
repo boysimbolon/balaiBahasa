@@ -10,6 +10,12 @@
 <?php $attributes = $attributes->except(\App\View\Components\AppLayout::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
+        <!--[if BLOCK]><![endif]--><?php if(session()->has('message')): ?>
+            <div class="w-full bg-green-600 p-2 rounded text-white">
+                <?php echo e(session('message')); ?>
+
+            </div>
+        <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
         <div class="p-5 h-full">
             <?php if (isset($component)) { $__componentOriginal93ae7e49b3b5cc9833352ed00e3f3a0f = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal93ae7e49b3b5cc9833352ed00e3f3a0f = $attributes; } ?>
@@ -31,31 +37,32 @@
 <?php unset($__componentOriginal93ae7e49b3b5cc9833352ed00e3f3a0f); ?>
 <?php endif; ?>
             <div class="bg-white drop-shadow-lg w-fit md:w-full mt-1 rounded p-5 flex flex-col gap-4">
-                <!-- Your TOEFL Schedule -->
+                <!-- Your Schedule -->
                 <div>
                     <h3 class="text-xl mb-2">Jadwal Anda</h3>
                     <table class="w-full rounded">
                         <tr class="bg-primary text-white text-left">
                             <th class="p-2">Jenis Ujian</th>
-                            <th class="p-2">Tanggal UJian</th>
+                            <th class="p-2">Tanggal Ujian</th>
                             <th class="p-2">Jam</th>
                             <th class="p-2">Lokasi</th>
                             <th class="p-2">Waktu Pesan</th>
                         </tr>
-                        <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $pesan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $psn =>$data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <!--[if BLOCK]><![endif]--><?php if($data->listujian->id_jenis_ujian == 3): ?>
+                        <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $pesan->sortBy([['listujian.tipeujian.jenis_ujian', 'asc'], ['listujian.tanggal', 'asc'],['listujian.jam','asc']]); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $psn => $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <!--[if BLOCK]><![endif]--><?php if(isset($data->listujian->id_jenis_ujian) && $data->listujian->id_jenis_ujian == '3' && $data->status=='1'): ?>
                                 <tr class="border-y">
                                     <td class="p-2"><?php echo e($data->listujian->tipeujian->jenis_ujian); ?></td>
-                                    <td class="p-2"><?php echo e($tgl[$psn]); ?></td>
-                                    <td class="p-2"><?php echo e($jm[$psn]); ?></td>
+                                    <td class="p-2"><?php echo e($tgl[$psn] ?? 'N/A'); ?></td>
+                                    <td class="p-2"><?php echo e($jm[$psn] ?? 'N/A'); ?></td>
                                     <td class="p-2"><?php echo e($data->listruangan->nama_ruangan); ?></td>
-                                    <td class="p-2"><?php echo e($created[$psn]); ?></td>
+                                    <td class="p-2"><?php echo e($created[$psn] ?? 'N/A'); ?></td>
                                 </tr>
                             <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
                     </table>
                 </div>
-                <!-- TOEFL Schedule -->
+
+                <!-- Entrance Exam Schedule -->
                 <div>
                     <h3 class="text-xl mb-2">Jadwal TOEFL</h3>
                     <table class="w-full rounded">
@@ -63,30 +70,45 @@
                             <th class="p-2">Tanggal</th>
                             <th class="p-2">Jam</th>
                             <th class="p-2">Lokasi</th>
-                            <th class="p-2">Kuota</th>
-                            <th class="p-2">Jumlah</th>
+                            <th class="p-2">Kapasitas</th>
+                            <th class="p-2">Sisa Kuota</th>
                             <th class="p-2"></th>
                         </tr>
-                        <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $tanggal; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $tgl): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <!--[if BLOCK]><![endif]--><?php if($kapasitas[$index]->id_jenis_ujian == 3): ?>
+                        <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $tanggal->sort(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $tgl): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <!--[if BLOCK]><![endif]--><?php if(isset($jenis[$index]) && $jenis[$index]->id_jenis_ujian == '3'): ?>
                                 <tr class="border-y">
                                     <td class="p-2"><?php echo e($tgl); ?></td>
-                                    <td class="p-2"><?php echo e($jam[$index]); ?></td>
-                                    <td class="p-2"><?php echo e($ruangan[$index]->listruangan->nama_ruangan); ?></td>
-                                    <td class="p-2"><?php echo e($kapasitas[$index]->listruangan->kapasitas); ?></td>
-                                    <td class="p-2"><?php echo e($kuota); ?></td>
+                                    <td class="p-2"><?php echo e($jam[$index] ?? 'N/A'); ?></td>
+                                    <td class="p-2"><?php echo e($ruangan[$index]->listruangan->nama_ruangan ?? 'N/A'); ?></td>
+                                    <td class="p-2"><?php echo e($kapasitas[$index] ?? 'N/A'); ?></td>
+                                    <td class="p-2"><?php echo e($kuota[$index] ?? 'N/A'); ?></td>
                                     <td class="p-2">
-                                        <!--[if BLOCK]><![endif]--><?php if($kapasitas[$index]->listruangan->kapasitas <= $kuota): ?>
+                                        <?php
+                                            $statusPesan = $pesan->firstWhere('id_ujian', $jenis[$index]->id);
+                                        ?>
+                                        <?php if($kuota[$index] == 0): ?>
                                             Penuh
+                                        <?php elseif($kuota[$index] > 0 && !$statusPesan): ?>
+                                            <button class="bg-primary text-white py-2 px-4 rounded"
+                                                    wire:click="pesan(<?php echo e($jenis[$index]->id); ?>, <?php echo e($kapasitas[$index]); ?>)"
+                                                    wire:confirm="Apakah Anda yakin ingin memilih jadwal ini?">Pilih</button>
                                         <?php else: ?>
-                                            <button class="bg-primary text-white py-2 px-4 rounded">Pilih</button>
+                                            <!--[if BLOCK]><![endif]--><?php if($statusPesan): ?>
+                                                <!--[if BLOCK]><![endif]--><?php if($statusPesan->status == "1"): ?>
+                                                    Done
+                                                <?php else: ?>
+                                                    Bayar
+                                                <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+                                            <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
                                         <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
                                     </td>
+
                                 </tr>
                             <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
                     </table>
                 </div>
+
             </div>
         </div>
      <?php echo $__env->renderComponent(); ?>

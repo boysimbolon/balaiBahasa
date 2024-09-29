@@ -1,3 +1,4 @@
+<?php $__env->startSection('title', $title); ?>
 <div>
     <?php if (isset($component)) { $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal9ac128a9029c0e4701924bd2d73d7f54 = $attributes; } ?>
@@ -36,7 +37,7 @@
                     <table class="w-full rounded">
                         <tr class="bg-primary text-white text-left">
                             <th class="p-2">Jenis Ujian</th>
-                            <th class="p-2">Tanggal UJian</th>
+                            <th class="p-2">Tanggal Ujian</th>
                             <th class="p-2">Jam</th>
                             <th class="p-2">Lokasi</th>
                             <th class="p-2">Waktu Pesan</th>
