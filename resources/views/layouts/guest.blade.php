@@ -25,7 +25,7 @@
 {{--                </a>--}}
 {{--            </div>--}}
 
-            <div class="mt-6 p-5 bg-white shadow-md rounded-xl md:w-2/3 lg:w-1/4 {{ Route::is('register') ? 'lg:w-1/2' : '' }}">
+            <div class="mt-6 p-5 bg-white shadow-md rounded-xl md:w-2/3 lg:w-1/2 {{ request()->is('login*') ? 'lg:w-1/4' : '' }}">
                 {{ $slot }}
             </div>
         </div>
