@@ -14,7 +14,7 @@ use App\Livewire\Toeflschedule;
 use Illuminate\Support\Facades\Route;
 
 // Grouping routes for user with prefix and middleware
-Route::prefix('user')->middleware('user')->group(function () {
+Route::prefix('user')->middleware('auth.user')->group(function () {
     Route::get('/', DashboardUser::class)->name('dashboard-user');
     Route::get('/biodata', Biodatausr::class)->name('biodata-user');
     Route::get('/biodata_edit', EditBiodataUser::class)->name('edit-profile-user');
@@ -30,7 +30,7 @@ Route::prefix('user')->middleware('user')->group(function () {
 });
 
 // Grouping routes for mahasiswa with prefix and middleware
-Route::prefix('mhs')->middleware('mhs')->group(function () {
+Route::prefix('mhs')->middleware('auth.mhs')->group(function () {
     Route::get('/', DashboardMhs::class)->name('dashboard-mhs');
     Route::get('/biodata', Biodatamhs::class)->name('biodata-mhs');
     Route::get('/history-mhs', HistoryMhs::class)->name('history-mhs');

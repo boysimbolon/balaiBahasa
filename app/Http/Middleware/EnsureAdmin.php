@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;
 
 class EnsureAdmin
@@ -16,10 +17,12 @@ class EnsureAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::guard('admin')) {
+        if (Auth::guard('admin')->check()) {
             return $next($request);
         }
-
-        return redirect()->route('login')->with('message', 'Akses hanya untuk Umum.');
+        else{
+            Session::flush();
+            return redirect()->route('login')->with('message', 'Akses hanya untuk Umum.');
+        }
     }
 }

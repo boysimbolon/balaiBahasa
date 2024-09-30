@@ -54,7 +54,8 @@ class Login extends Component
 
         // Regenerasi session untuk mencegah fixation attacks
         session()->regenerate();
-
+        session()->invalidate();
+        session()->regenerateToken();
         // Redirect sesuai dengan guard yang aktif dan lempar data
         if (Auth::guard('mhs')->check()) {
             // Redirect ke dashboard mahasiswa dengan nim
@@ -78,14 +79,14 @@ class Login extends Component
     {
         $user = User::where('no_Peserta', trim($this->no_Peserta))->first();
         if ($user && Hash::check($this->pin, $user->pin) && $user->email_verified_at !== null && $user->is_admin == '0') {
-            auth('mhs')->logout();
-            auth('admin')->logout();
-            auth('user')->login($user, $this->remember);
+            Auth::guard('mhs')->logout();
+            Auth::guard('admin')->logout();
+            Auth::guard('user')->login($user, $this->remember);
             return true;
         } elseif ($user && Hash::check($this->pin, $user->pin) && $user->email_verified_at !== null && $user->is_admin == '1') {
-            auth('mhs')->logout();
-            auth('user')->logout();
-            auth('admin')->login($user, $this->remember);
+            Auth::guard('mhs')->logout();
+            Auth::guard('user')->logout();
+            Auth::guard('admin')->login($user, $this->remember);
             return true;
         }
         return false;
