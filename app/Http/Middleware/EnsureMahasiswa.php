@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;
 
 class EnsureMahasiswa
@@ -19,7 +20,9 @@ class EnsureMahasiswa
         $token = session('guard');
         if ($token == 'mhs') {
             return $next($request);
+        }else{
+            Session::flush();
+            return redirect()->route('login')->with('message', 'Akses hanya untuk mahasiswa.');
         }
-        return redirect()->route('login')->with('message', 'Akses hanya untuk mahasiswa.');
     }
 }
