@@ -106,12 +106,13 @@ class Login extends Component
 
     protected function ensureIsNotRateLimited(): void
     {
+        if (RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             $seconds = RateLimiter::availableIn($this->throttleKey());
 
             throw ValidationException::withMessages([
                 'no_Peserta' => trans('auth.throttle', [
                     'seconds' => $seconds,
-                    'minutes' =>g ceil($seconds / 60),
+                    'minutes' => ceil($seconds / 60),
                 ]),
             ]);
         }
