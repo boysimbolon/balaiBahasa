@@ -25,7 +25,7 @@
 
 
 
-            <div class="mt-6 p-5 bg-white shadow-md rounded-xl md:w-2/3 lg:w-1/4 <?php echo e(Route::is('register') ? 'lg:w-1/2' : ''); ?>">
+            <div class="mt-6 p-5 bg-white shadow-md rounded-xl md:w-2/3 lg:w-1/2 <?php echo e(request()->is('login*') ? 'lg:w-1/4' : ''); ?>">
                 <?php echo e($slot); ?>
 
             </div>

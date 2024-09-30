@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::connection('mydb')->table('users', function (Blueprint $table) {
             $table->string('is_admin',1)->default('1'); // Contoh menambahkan kolom string
         });
     }

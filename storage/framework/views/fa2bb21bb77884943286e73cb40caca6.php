@@ -1,28 +1,24 @@
 <?php $__env->startComponent('mail::message'); ?>
-    # Verifikasi Email
+    <div style="text-align: center; font-family: Arial, sans-serif; color: #333;">
+        <h1 style="color: #4CAF50;">Verifikasi Email</h1>
+        <p>Terima kasih telah mendaftar di <strong><?php echo e(config('app.name')); ?></strong>! Berikut adalah informasi akun Anda:</p>
 
-    Terima kasih telah mendaftar di **<?php echo e(config('app.name')); ?>**! Berikut adalah informasi akun Anda:
+        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 5px; margin: 20px 0;">
+            <p><strong>No Peserta:</strong> <?php echo e($no_Peserta); ?></p>
+            <p><strong>Password:</strong> <?php echo e($password); ?></p>
+        </div>
 
-    <?php $__env->startComponent('mail::panel'); ?>
-        - **No Peserta**: <?php echo e($no_Peserta); ?>
+        <p>Silakan klik tombol di bawah ini untuk memverifikasi email Anda dan mengaktifkan akun Anda:</p>
 
-        - **Password**: <?php echo e($password); ?>
+        <?php $__env->startComponent('mail::button', ['url' => $verificationUrl, 'color' => 'success']); ?>
+            Verifikasi Email
+        <?php echo $__env->renderComponent(); ?>
 
-    <?php echo $__env->renderComponent(); ?>
+        <p>Atau Anda juga dapat mengklik tautan berikut untuk melakukan aktivasi:</p>
+        <p><a href="<?php echo e($verificationUrl); ?>" style="color: #4CAF50;"><?php echo e($verificationUrl); ?></a></p>
 
-    Silakan klik tombol di bawah ini untuk memverifikasi email Anda dan mengaktifkan akun Anda:
-
-    <?php $__env->startComponent('mail::button', ['url' => $verificationUrl]); ?>
-        Verifikasi Email
-    <?php echo $__env->renderComponent(); ?>
-
-    Atau Anda juga dapat mengklik tautan berikut untuk melakukan aktivasi:
-
-    [<?php echo e($verificationUrl); ?>](<?php echo e($verificationUrl); ?>)
-
-    Terima kasih telah bergabung dengan kami!
-
-    Salam hangat,
-    **<?php echo e(config('app.name')); ?>**
+        <p>Terima kasih telah bergabung dengan kami!</p>
+        <p>Salam hangat,<br><strong><?php echo e(config('app.name')); ?></strong></p>
+    </div>
 <?php echo $__env->renderComponent(); ?>
 <?php /**PATH E:\Balai_Bahasa\Balai_Bahasa\resources\views/emails/verify-email.blade.php ENDPATH**/ ?>

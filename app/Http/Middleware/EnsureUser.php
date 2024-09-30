@@ -17,7 +17,7 @@ class EnsureUser
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::guard('user')) {
+        if (Auth::guard('user')->check()) {
             return $next($request);
         }else{
             Session::flush();

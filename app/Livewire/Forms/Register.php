@@ -46,16 +46,15 @@ class Register extends Component
         'alamat' => ['required', 'string'],
         'jenis_kelamin' => ['required', 'in:Perempuan,Laki-Laki'],
         'instansi' => ['required', 'string'],
-        'num_telp' => ['required', 'string'],
+        'num_telp' => ['required', 'numeric'],
         'email' => ['required', 'email', 'max:255', 'unique:users,email'],
         'Pendidikan' => ['required', 'string'],
         'thn_lulus' => ['required', 'string'],
         'kewarganegaraan' => ['required', 'string'],
         'bhs_seharian' => ['required', 'string'],
-        'pasFoto' => ['required', 'image'],
-        'ktp' => ['required', 'image'],
+        'pasFoto' => ['required', 'image', 'mimes:jpg,jpeg,png', 'max:1024'],
+        'ktp' => ['required', 'image', 'mimes:jpg,jpeg,png', 'max:1024'],
     ];
-
     public function render()
     {
         return view('livewire.forms.register', [
@@ -69,11 +68,14 @@ class Register extends Component
 
         // Generate no_Peserta dan password
         do {
-            $this->no_Peserta = substr(str_shuffle('0123456789'), 0, 8); // Panjang 8 digit
+        $tahun = date('Y');
+        $fix = '9';
+        $base = $tahun . $fix;
+        $autoInc = str_pad(User::where('no_Peserta', 'like', $base . '%')->count() + 1, 3, '0', STR_PAD_LEFT);
+        $this->no_Peserta = $base . $autoInc;
         } while (User::where('no_Peserta', $this->no_Peserta)->exists());
-
         $this->password = substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 6);
-
+        dd($this->password, $this->no_Peserta);
         // Simpan file pasFoto dan KTP
         $pasFotoPath = $this->pasFoto->store('pasFoto', 'public');
         $ktpPath = $this->ktp->store('ktp', 'public');

@@ -19,7 +19,7 @@ class Login extends Component
     public $remember = false;
 
     protected $rules = [
-        'no_Peserta' => ['required', 'string', 'max:8'],
+        'no_Peserta' => ['required', 'string', 'digits:7'],
         'pin' => ['required', 'string'],
     ];
 
@@ -54,8 +54,6 @@ class Login extends Component
 
         // Regenerasi session untuk mencegah fixation attacks
         session()->regenerate();
-        session()->invalidate();
-        session()->regenerateToken();
         // Redirect sesuai dengan guard yang aktif dan lempar data
         if (Auth::guard('mhs')->check()) {
             // Redirect ke dashboard mahasiswa dengan nim
@@ -108,13 +106,12 @@ class Login extends Component
 
     protected function ensureIsNotRateLimited(): void
     {
-        if (RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             $seconds = RateLimiter::availableIn($this->throttleKey());
 
             throw ValidationException::withMessages([
                 'no_Peserta' => trans('auth.throttle', [
                     'seconds' => $seconds,
-                    'minutes' => ceil($seconds / 60),
+                    'minutes' =>g ceil($seconds / 60),
                 ]),
             ]);
         }

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('kapasitas');
             $table->timestamps();
         });
+
         Schema::connection('mydb')->create('tipe_ujian', function (Blueprint $table) {
             $table->id();
             $table->string('jenis_ujian');
@@ -33,15 +34,17 @@ return new class extends Migration
             $table->string('status');
             $table->timestamps();
         });
+
         Schema::connection('mydb')->create('pesan_ujian', function (Blueprint $table) {
             $table->id();
             $table->string('id_user')->nullable();
             $table->string('nim')->nullable();
-            $table->foreignId('id_ruangan')->constrained('list_ruangan')->onDelete('cascade');
-            $table->foreignId('id_ujian')->constrained('list_ujian')->onDelete('cascade');
+            $table->foreignId('id_ruangan')->constrained('list_ruangan');
+            $table->foreignId('id_ujian')->constrained('list_ujian'); // Mengubah cascade menjadi restrict
             $table->boolean('status');
             $table->timestamps();
         });
+
         Schema::connection('mydb')->create('history', function (Blueprint $table) {
             $table->id();
             $table->string('id_user')->nullable();
@@ -62,6 +65,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::connection('mydb')->dropIfExists('history');
+        Schema::connection('mydb')->dropIfExists('pesan_ujian');
+        Schema::connection('mydb')->dropIfExists('list_ujian');
+        Schema::connection('mydb')->dropIfExists('tipe_ujian');
+        Schema::connection('mydb')->dropIfExists('list_ruangan');
     }
 };
