@@ -19,7 +19,7 @@ class Login extends Component
     public $remember = false;
 
     protected $rules = [
-        'no_Peserta' => ['required', 'string', 'digits:7'],
+        'no_Peserta' => ['required', 'string', 'min:7','max:8'],
         'pin' => ['required', 'string'],
     ];
 

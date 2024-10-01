@@ -75,7 +75,6 @@ class Register extends Component
         $this->no_Peserta = $base . $autoInc;
         } while (User::where('no_Peserta', $this->no_Peserta)->exists());
         $this->password = substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), 0, 6);
-        dd($this->password, $this->no_Peserta);
         // Simpan file pasFoto dan KTP
         $pasFotoPath = $this->pasFoto->store('pasFoto', 'public');
         $ktpPath = $this->ktp->store('ktp', 'public');
@@ -94,7 +93,7 @@ class Register extends Component
             'email' => $validated['email'],
             'email_verification_token'=>$validated['token'],
             'pin' => $validated['password'], // Simpan password yang sudah di-hash,
-            'is_admin'=>'0'
+            'is_admin'=>'1'
         ]);
 
         // Generate token untuk verifikasi email
