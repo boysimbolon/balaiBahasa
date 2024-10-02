@@ -54,8 +54,8 @@ new class extends Component {
                 <div class="multinav-scroll" style="height: 97%;">
                     <!-- sidebar menu-->
                     <ul class="sidebar-menu" data-widget="tree">
-                        <li class="treeview">
-                            <a href="#">
+                        <li class="treeview {{ Route::currentRouteName() == 'dashboard-mhs' ? 'active menu-open' : '' }}">
+                            <a href="{{ route('dashboard-mhs') }}">
                                 <i data-feather="home"></i>
                                 <span>Dashboard</span>
                             </a>
