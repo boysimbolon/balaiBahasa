@@ -57,7 +57,11 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     Route::get('/tipe_ujian',CreateTipeUjian::class)->name('CreateTipeUjian');
     Route::get('/tipe_ujian',TipeUjian::class)->name('ListTipeUjian');
-
+    Route::get('/biodata', Biodatausr::class)->name('biodataadmin');
+    Route::get('/biodata_edit', EditBiodataUser::class)->name('edit-profile-admin');
+    Route::get('/change_password', function () {
+        return view('livewire.changepassword');
+    })->name('change-password-admin');
     Route::get('/history-mhs', function () {
         return view('livewire.history-mhs');
     })->name('history-admin');

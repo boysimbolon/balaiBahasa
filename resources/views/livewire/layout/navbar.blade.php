@@ -91,14 +91,14 @@ new class extends Component {
                         <div id="dropdownDivider-2" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 drop-shadow-lg" aria-labelledby="dropdownDividerButton">
                                 <li>
-                                    <a href="#" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <a href="{{route('biodata-mhs')}}" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                         <i class="fa fa-user-circle-o me-3 text-xl" aria-hidden="true"> </i> My Profile
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" wire:click="logout">
+                                    <div class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" wire:click="logout">
                                         <i class="fa-solid fa-right-from-bracket me-3 text-xl"></i> </i> Logout
-                                    </a>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
@@ -106,17 +106,17 @@ new class extends Component {
                         <div id="dropdownDivider-2" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 drop-shadow-lg" aria-labelledby="dropdownDividerButton">
                                 <li>
-                                    <a href="#" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <a href="{{route('biodata-user')}}" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                         <i class="fa fa-user-circle-o me-3 text-xl" aria-hidden="true"> </i> My Profile
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-nowrap">
+                                    <a href="{{route('change-password-user')}}" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-nowrap">
                                         <i class="fa fa-key me-3 text-xl" aria-hidden="true"> </i> Ganti Password
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" wire:click="logout">
+                                    <a class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" wire:click="logout">
                                         <i class="fa fa-right-from-bracket me-3 text-xl"></i> </i> Logout
                                     </a>
                                 </li>
@@ -126,12 +126,12 @@ new class extends Component {
                         <div id="dropdownDivider-2" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 drop-shadow-lg" aria-labelledby="dropdownDividerButton">
                                 <li>
-                                    <a href="#" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <a href="{{route('bioadataadmin')}}" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                         <i class="fa fa-user-circle-o me-3 text-xl" aria-hidden="true"> </i> My Profile
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-nowrap">
+                                    <a href="{{route('edit-profile-admin')}}" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-nowrap">
                                         <i class="fa fa-key me-3 text-xl" aria-hidden="true"> </i> Ganti Password
                                     </a>
                                 </li>
