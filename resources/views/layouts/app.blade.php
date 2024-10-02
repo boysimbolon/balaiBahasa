@@ -31,25 +31,20 @@
 <body class="hold-transition light-skin sidebar-mini theme-primary fixed-manu">
     <div class="wrapper">
         <header class="main-header">
-            <div class="flex items-center logo-box justify-start">
-                <!-- Logo -->
-                <a href="index.html" class="logo flex gap-2">
-                    <!-- logo-->
-                    <div class="logo-mini w-40">
-                        <span class="light-logo"><img src="images/Logo-Unai.png" alt="logo"></span>
-                        <span class="dark-logo"><img src="images/Logo-Unai.png" alt="logo"></span>
-                    </div>
-                    <div class="logo-lg text-nowrap">
-                        <span class="light-logo">Balai Bahasa</span>
-                        <span class="dark-logo">Balai Bahasa</span>
-                    </div>
-                </a>
-            </div>
+            <livewire:layout.logo />
             <!-- Header Navbar -->
             <livewire:layout.navbar />
         </header>
 
         <livewire:layout.navigation />
+
+        <div class="content-wrapper">
+            <div>
+                <section class="content">
+                    {{ $slot }}
+                </section>
+            </div>
+        </div>
     </div>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.8/jquery.slimscroll.min.js"></script>
@@ -57,6 +52,7 @@
     <script src="js/vendors.min.js"></script>
     <script src="js/pages/chat-popup.js"></script>
     <script src="assets/icons/feather-icons/feather.min.js"></script>
+    <script src="assets/vendor_components/datatable/datatables.min.js"></script>
     <script src="assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
     <script src="assets/vendor_components/fullcalendar-6/dist/index.global.js"></script>
 
@@ -65,6 +61,7 @@
     <script src="js/demo.js"></script>
     <script src="js/template.js"></script>
     <script src="js/pages/dashboard.js"></script>
+    <script src="js/pages/app-contact.js"></script>
 
     <script>
         feather.replace();
