@@ -7,7 +7,7 @@
                     <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 items-center">
                         <div><img src="../../../images/svg-icon/color-svg/custom-14.svg" alt=""></div>
                         <div class="col-span-1 lg:col-span-3">
-                            <div class="text-3xl xl:text-4xl text-primary mb-15">Hello {{ $data->nama }}, Welcome Back!</div>
+                            <div class="text-3xl xl:text-4xl text-primary mb-15">Hello <b>{{ $data->nama }}</b>, Welcome Back!</div>
                             <p class="text-dark text-lg mb-0">
                                 Your course Overcoming the fear of public speaking was completed by 11 New users this week!
                             </p>
