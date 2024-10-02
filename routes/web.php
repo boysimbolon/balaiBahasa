@@ -14,6 +14,9 @@ use App\Livewire\E3schedule;
 use App\Livewire\EditBiodataUser;
 use App\Livewire\History;
 use App\Livewire\HistoryMhs;
+use App\Livewire\ListUjian;
+use App\Livewire\RuanganUjian;
+use App\Livewire\TipeUjian;
 use App\Livewire\Toeflschedule;
 use Illuminate\Support\Facades\Route;
 
@@ -47,10 +50,13 @@ Route::prefix('mhs')->middleware('mhs')->group(function () {
 Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/', DashboardAdmin::class)->name('dashboard-admin');
     Route::get('/Ruangan', CreateRuangan::class)->name('CreateRuangan');
+    Route::get('/Ruangan', RuanganUjian::class)->name('ListRuangan');
 
     Route::get('/Ujian', CreateUjian::class)->name('CreateUjian');
+    Route::get('/Ujian', ListUjian::class)->name('ListUjian');
 
     Route::get('/tipe_ujian',CreateTipeUjian::class)->name('CreateTipeUjian');
+    Route::get('/tipe_ujian',TipeUjian::class)->name('ListTipeUjian');
 
     Route::get('/history-mhs', function () {
         return view('livewire.history-mhs');
