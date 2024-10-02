@@ -1,0 +1,69 @@
+.rotate90{
+  rotate: 90deg;
+}
+.box {
+  margin-bottom: 20px;
+}
+
+.box .cartoon {
+  position: absolute;
+  bottom: -10px;
+  right: 30px;
+  animation: bounce-effect 5s infinite ease-in;
+}
+.rtl .box .cartoon {
+    position: absolute;
+    bottom: -10px;
+    left: 10px;
+    right: auto;
+    animation: bounce-effect 5s infinite ease-in;
+}
+@keyframes bounce-effect {
+  0% {
+    transform: translateY(0);
+    transition: 0.5s;
+  }
+  50% {
+    transform: translateY(-5px);
+    transition: 0.5s;
+  }
+  100% {
+    transform: translateY(0);
+    transition: 0.5s;
+  }
+}
+@keyframes round {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.media-box:hover .fill-icon i{
+  position: absolute;
+  margin-left: -12px;
+  animation: tada 1.5s ease infinite;
+}
+
+.bg-stripes-blue {
+    background-color: #60a5fa1a;
+    background-image: linear-gradient(135deg,#3b82f680 10%,#0000 0,#0000 50%,#3b82f680 0,#3b82f680 60%,#0000 0,#0000);
+    background-size: 7.07px 7.07px;
+}
+
+
+.left-side-section::-webkit-scrollbar {
+    width: 5px;
+    height: 0px;
+}
+.left-side-section::-webkit-scrollbar-thumb {
+    background-color: #CDC5EA;
+    border-radius: 20px;
+}
+.left-side-section::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(205,197,234,0);
+}

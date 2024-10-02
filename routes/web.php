@@ -57,5 +57,4 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     })->name('history-admin');
 });
 
-
 require __DIR__.'/auth.php';

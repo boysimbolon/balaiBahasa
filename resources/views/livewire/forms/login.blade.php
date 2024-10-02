@@ -17,14 +17,14 @@
         @csrf
         <!-- NIM / No Peserta -->
         <div>
-            <x-input-label for="no_Peserta" :value="__('No Peserta')" />
+            <label for="no_Peserta" class="block font-medium text-sm text-gray-700">No Peserta</label>
             <x-text-input wire:model="no_Peserta" id="no_Peserta" class="block mt-1 w-full" type="text" name="no_Peserta" placeholder="NIM / No Peserta" inputmode="numeric" required autofocus autocomplete="off" />
             <x-input-error :messages="$errors->get('no_Peserta')" class="mt-2" />
         </div>
 
         <!-- PIN -->
         <div class="mt-4">
-            <x-input-label for="pin" :value="__('Password')" />
+            <label for="pin" class="block font-medium text-sm text-gray-700">Password</label>
             <x-text-input wire:model="pin" id="pin" class="block mt-1 w-full" type="password" name="pin" placeholder="Password" required autocomplete="current-password" />
             <x-input-error :messages="$errors->get('pin')" class="mt-2" />
         </div>
