@@ -1,17 +1,16 @@
-@section('title', $title)
 
 <div>
     <form wire:submit.prevent="save">
         @csrf
         <div>
             <label for="nama_ruangan">Nama Ruangan</label>
-            <x-text-input type="text" id="nama_ruangan" wire:model="nama_ruangan">
+            <input type="text" id="nama_ruangan" wire:model="nama_ruangan">
             @error('nama_ruangan') <span class="error">{{ $message }}</span> @enderror
         </div>
 
         <div>
             <label for="kapasitas">Kapasitas</label>
-            <x-text-input type="number" id="kapasitas" wire:model="kapasitas">
+            <input type="number" id="kapasitas" wire:model="kapasitas">
             @error('kapasitas') <span class="error">{{ $message }}</span> @enderror
         </div>
 
