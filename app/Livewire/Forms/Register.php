@@ -68,8 +68,8 @@ class Register extends Component
 
         // Generate no_Peserta dan password
         do {
-        $tahun = date('Y');
-        $fix = '9';
+        $tahun = date('y');
+        $fix = '99';
         $base = $tahun . $fix;
         $autoInc = str_pad(User::where('no_Peserta', 'like', $base . '%')->count() + 1, 3, '0', STR_PAD_LEFT);
         $this->no_Peserta = $base . $autoInc;

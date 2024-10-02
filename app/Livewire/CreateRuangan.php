@@ -12,7 +12,10 @@ class CreateRuangan extends Component
 
     public function render()
     {
-        return view('livewire.create-ruangan');
+        return view('livewire.create-ruangan',
+        [
+            'title' => 'Tambah Ruangan'
+        ]);
     }
 
     public function save()

@@ -10,7 +10,9 @@ class CreateTipeUjian extends Component
     public $jenis_ujian;
     public function render()
     {
-        return view('livewire.create-tipe-ujian');
+        return view('livewire.create-tipe-ujian',[
+            'title' => 'Tambah Tipe Ujian'
+        ]);
     }
     public function save(){
         $this->validate([
