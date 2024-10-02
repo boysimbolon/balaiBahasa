@@ -69,12 +69,12 @@ new class extends Component {
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="treeview">
+                                <li>
                                     <a href="{{ route('e3-schedule-mhs') }}">
                                         <i class="icon-Bookmark"><span class="path1"></span><span class="path2"></span></i>E3
                                     </a>
                                 </li>
-                                <li class="treeview">
+                                <li>
                                     <a href="{{ route('toefl-schedule-mhs') }}">
                                         <i class="icon-Bookmark"><span class="path1"></span><span class="path2"></span></i>TOEFL
                                     </a>
@@ -104,7 +104,7 @@ new class extends Component {
                             </a>
                         </li>
                         <li class="treeview">
-                            <a>
+                            <a href="#">
                                 <i data-feather="bookmark"></i>
                                 <span>Pilih Jenis Tes</span>
                                 <span class="pull-right-container">
@@ -112,12 +112,12 @@ new class extends Component {
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="treeview">
+                                <li>
                                     <a href="{{ route('e3-schedule-user') }}">
                                         <i class="icon-Bookmark"><span class="path1"></span><span class="path2"></span></i>E3
                                     </a>
                                 </li>
-                                <li class="treeview">
+                                <li>
                                     <a href="{{ route('toefl-schedule-user') }}">
                                         <i class="icon-Bookmark"><span class="path1"></span><span class="path2"></span></i>TOEFL
                                     </a>
