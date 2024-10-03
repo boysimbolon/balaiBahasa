@@ -54,13 +54,13 @@ new class extends Component {
                 <div class="multinav-scroll" style="height: 97%;">
                     <!-- sidebar menu-->
                     <ul class="sidebar-menu" data-widget="tree">
-                        <li class="{{ Route::currentRouteName() == 'dashboard-mhs' ? 'active menu-open' : '' }}">
+                        <li class="{{ Route::currentRouteName() == 'dashboard-mhs' ? 'active' : '' }}">
                             <a href="{{ route('dashboard-mhs') }}">
                                 <i data-feather="home"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        <li class="treeview {{ Route::currentRouteName() == 'e3-schedule-mhs' || Route::currentRouteName() == 'toefl-schedule-mhs' ? 'active menu-open' : '' }}">
+                        <li class="treeview {{ Route::currentRouteName() == 'e3-schedule-mhs' || Route::currentRouteName() == 'toefl-schedule-mhs' ? 'active' : '' }}">
                             <a href="#">
                                 <i data-feather="bookmark"></i>
                                 <span>Pilih Jenis Tes</span>
@@ -81,7 +81,7 @@ new class extends Component {
                                 </li>
                             </ul>
                         </li>
-                        <li class="{{ Route::currentRouteName() == 'history-mhs' ? 'active menu-open' : '' }}">
+                        <li class="{{ Route::currentRouteName() == 'history-mhs' ? 'active' : '' }}">
                             <a href="{{ route('history-mhs') }}">
                                 <i data-feather="clock"></i>
                                 <span>History</span>
@@ -97,7 +97,7 @@ new class extends Component {
                 <div class="multinav-scroll" style="height: 97%;">
                     <!-- sidebar menu-->
                     <ul class="sidebar-menu" data-widget="tree">
-                        <li class="{{ Route::currentRouteName() == 'dashboard-user' ? 'active menu-open' : '' }}">
+                        <li class="{{ Route::currentRouteName() == 'dashboard-user' ? 'active' : '' }}">
                             <a href="{{ route('dashboard-user') }}">
                                 <i data-feather="home"></i>
                                 <span>Dashboard</span>
@@ -146,7 +146,7 @@ new class extends Component {
                 <div class="multinav-scroll" style="height: 97%;">
                     <!-- sidebar menu-->
                     <ul class="sidebar-menu" data-widget="tree">
-                        <li class="{{ Route::currentRouteName() == 'dashboard-admin' ? 'active menu-open' : '' }}">
+                        <li class="{{ Route::currentRouteName() == 'dashboard-admin' ? 'active' : '' }}">
                             <a href="{{ route('dashboard-admin') }}">
                                 <i data-feather="home"></i>
                                 <span>Dashboard</span>

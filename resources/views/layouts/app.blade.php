@@ -15,7 +15,7 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Scripts -->
-{{--    @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <!-- Vendors Style-->
     <link rel="stylesheet" href="{{ asset('css/vendors_css.css')}}">
@@ -48,19 +48,18 @@
     </div>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.8/jquery.slimscroll.min.js"></script>
-
-    <!-- Vendor JS -->
     <script src="{{ asset('js/vendors.min.js') }}"></script>
     <script src="{{ asset('js/pages/chat-popup.js') }}"></script>
     <script src="{{ asset('assets/icons/feather-icons/feather.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor_components/datatable/datatables.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor_components/datatable/datatables.js') }}"></script>
     <script src="{{ asset('assets/vendor_components/apexcharts-bundle/dist/apexcharts.js') }}"></script>
     <script src="{{ asset('assets/vendor_components/fullcalendar-6/dist/index.global.js') }}"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="{{ asset('js/tailwind.min.js') }}"></script>
     <script src="{{ asset('js/demo.js') }}"></script>
     <script src="{{ asset('js/template.js') }}"></script>
     <script src="{{ asset('js/pages/dashboard.js') }}"></script>
     <script src="{{ asset('js/pages/app-contact.js') }}"></script>
-
     <script>
         feather.replace();
     </script>
