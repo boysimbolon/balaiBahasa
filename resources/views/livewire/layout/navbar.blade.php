@@ -89,9 +89,9 @@ new class extends Component {
                                 </a>
                             </li>
                             <li>
-                                <div class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" wire:click="logout">
+                                <a class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" wire:click="logout">
                                     <i class="fa-solid fa-right-from-bracket me-3 text-xl"> </i> Logout
-                                </div>
+                                </a>
                             </li>
                         @elseif($auth == 'user')
                             <li>
@@ -105,9 +105,9 @@ new class extends Component {
                                 </a>
                             </li>
                             <li>
-                                <div class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" wire:click="logout">
+                                <a class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" wire:click="logout">
                                     <i class="fa-solid fa-right-from-bracket me-3 text-xl"> </i> Logout
-                                </div>
+                                </a>
                             </li>
                         @elseif($auth == 'admin')
                             <li>
