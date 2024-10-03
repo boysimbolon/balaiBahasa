@@ -60,7 +60,7 @@ new class extends Component {
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        <li class="treeview">
+                        <li class="treeview {{ Route::currentRouteName() == 'e3-schedule-mhs' || 'toefl-schedule-mhs' ? 'active menu-open' : '' }}">
                             <a>
                                 <i data-feather="bookmark"></i>
                                 <span>Pilih Jenis Tes</span>
@@ -123,6 +123,12 @@ new class extends Component {
                                     </a>
                                 </li>
                             </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i data-feather="credit-card"></i>
+                                <span>Pembayaran</span>
+                            </a>
                         </li>
                         <li class="treeview">
                             <a href="{{ route('history-user') }}">

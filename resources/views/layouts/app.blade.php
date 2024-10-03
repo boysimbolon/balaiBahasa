@@ -18,15 +18,15 @@
 {{--    @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
 
     <!-- Vendors Style-->
-    <link rel="stylesheet" href="css/vendors_css.css">
+    <link rel="stylesheet" href="{{ asset('css/vendors_css.css')}}">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/tailwind.min.css">
+    <link rel="stylesheet" href="{{ asset('css/tailwind.min.css')}}">
 
     <!-- Style-->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/skin_color.css">
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/skin_color.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css')}}">
 </head>
 <body class="hold-transition light-skin sidebar-mini theme-primary fixed-manu">
     <div class="wrapper">
@@ -48,20 +48,18 @@
     </div>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.8/jquery.slimscroll.min.js"></script>
-    <!-- Vendor JS -->
-    <script src="js/vendors.min.js"></script>
-    <script src="js/pages/chat-popup.js"></script>
-    <script src="assets/icons/feather-icons/feather.min.js"></script>
-    <script src="assets/vendor_components/datatable/datatables.min.js"></script>
-    <script src="assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
-    <script src="assets/vendor_components/fullcalendar-6/dist/index.global.js"></script>
 
-    <script src="js/tailwind.min.js"></script>
-    <!-- EduAdmin App -->
-    <script src="js/demo.js"></script>
-    <script src="js/template.js"></script>
-    <script src="js/pages/dashboard.js"></script>
-    <script src="js/pages/app-contact.js"></script>
+    <!-- Vendor JS -->
+    <script src="{{ asset('js/vendors.min.js') }}"></script>
+    <script src="{{ asset('js/pages/chat-popup.js') }}"></script>
+    <script src="{{ asset('assets/icons/feather-icons/feather.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor_components/datatable/datatables.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor_components/apexcharts-bundle/dist/apexcharts.js') }}"></script>
+    <script src="{{ asset('assets/vendor_components/fullcalendar-6/dist/index.global.js') }}"></script>
+    <script src="{{ asset('js/demo.js') }}"></script>
+    <script src="{{ asset('js/template.js') }}"></script>
+    <script src="{{ asset('js/pages/dashboard.js') }}"></script>
+    <script src="{{ asset('js/pages/app-contact.js') }}"></script>
 
     <script>
         feather.replace();

@@ -52,8 +52,8 @@ new class extends Component {
         <a href="{{ route('dashboard-mhs') }}" class="logo flex gap-2">
             <!-- logo-->
             <div class="logo-mini w-40">
-                <span class="light-logo"><img src="images/Logo-Unai.png" alt="logo"></span>
-                <span class="dark-logo"><img src="images/Logo-Unai.png" alt="logo"></span>
+                <span class="light-logo"><img src="{{ asset('images/Logo-Unai.png') }}" alt="logo"></span>
+                <span class="dark-logo"><img src="{{ asset('images/Logo-Unai.png') }}" alt="logo"></span>
             </div>
             <div class="logo-lg text-nowrap">
                 <span class="light-logo">Balai Bahasa</span>
@@ -64,8 +64,8 @@ new class extends Component {
         <a href="{{ route('dashboard-user') }}" class="logo flex gap-2">
             <!-- logo-->
             <div class="logo-mini w-40">
-                <span class="light-logo"><img src="images/Logo-Unai.png" alt="logo"></span>
-                <span class="dark-logo"><img src="images/Logo-Unai.png" alt="logo"></span>
+                <span class="light-logo"><img src="{{ asset('images/Logo-Unai.png') }}" alt="logo"></span>
+                <span class="dark-logo"><img src="{{ asset('images/Logo-Unai.png') }}" alt="logo"></span>
             </div>
             <div class="logo-lg text-nowrap">
                 <span class="light-logo">Balai Bahasa</span>
@@ -76,8 +76,8 @@ new class extends Component {
         <a href="{{ route('dashboard-admin') }}" class="logo flex gap-2">
             <!-- logo-->
             <div class="logo-mini w-40">
-                <span class="light-logo"><img src="images/Logo-Unai.png" alt="logo"></span>
-                <span class="dark-logo"><img src="images/Logo-Unai.png" alt="logo"></span>
+                <span class="light-logo"><img src="{{ asset('images/Logo-Unai.png') }}" alt="logo"></span>
+                <span class="dark-logo"><img src="{{ asset('images/Logo-Unai.png') }}" alt="logo"></span>
             </div>
             <div class="logo-lg text-nowrap">
                 <span class="light-logo">Balai Bahasa</span>
