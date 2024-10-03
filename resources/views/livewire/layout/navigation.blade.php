@@ -54,14 +54,14 @@ new class extends Component {
                 <div class="multinav-scroll" style="height: 97%;">
                     <!-- sidebar menu-->
                     <ul class="sidebar-menu" data-widget="tree">
-                        <li class="treeview {{ Route::currentRouteName() == 'dashboard-mhs' ? 'active menu-open' : '' }}">
+                        <li class="{{ Route::currentRouteName() == 'dashboard-mhs' ? 'active menu-open' : '' }}">
                             <a href="{{ route('dashboard-mhs') }}">
                                 <i data-feather="home"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        <li class="treeview {{ Route::currentRouteName() == 'e3-schedule-mhs' || 'toefl-schedule-mhs' ? 'active menu-open' : '' }}">
-                            <a>
+                        <li class="treeview {{ Route::currentRouteName() == 'e3-schedule-mhs' || Route::currentRouteName() == 'toefl-schedule-mhs' ? 'active menu-open' : '' }}">
+                            <a href="#">
                                 <i data-feather="bookmark"></i>
                                 <span>Pilih Jenis Tes</span>
                                 <span class="pull-right-container">
@@ -81,7 +81,7 @@ new class extends Component {
                                 </li>
                             </ul>
                         </li>
-                        <li class="treeview">
+                        <li class="{{ Route::currentRouteName() == 'history-mhs' ? 'active menu-open' : '' }}">
                             <a href="{{ route('history-mhs') }}">
                                 <i data-feather="clock"></i>
                                 <span>History</span>
@@ -97,7 +97,7 @@ new class extends Component {
                 <div class="multinav-scroll" style="height: 97%;">
                     <!-- sidebar menu-->
                     <ul class="sidebar-menu" data-widget="tree">
-                        <li class="treeview {{ Route::currentRouteName() == 'dashboard-user' ? 'active menu-open' : '' }}">
+                        <li class="{{ Route::currentRouteName() == 'dashboard-user' ? 'active menu-open' : '' }}">
                             <a href="{{ route('dashboard-user') }}">
                                 <i data-feather="home"></i>
                                 <span>Dashboard</span>
@@ -124,13 +124,13 @@ new class extends Component {
                                 </li>
                             </ul>
                         </li>
-                        <li class="treeview">
+                        <li class="">
                             <a href="#">
                                 <i data-feather="credit-card"></i>
                                 <span>Pembayaran</span>
                             </a>
                         </li>
-                        <li class="treeview">
+                        <li class="">
                             <a href="{{ route('history-user') }}">
                                 <i data-feather="clock"></i>
                                 <span>History</span>
@@ -146,32 +146,32 @@ new class extends Component {
                 <div class="multinav-scroll" style="height: 97%;">
                     <!-- sidebar menu-->
                     <ul class="sidebar-menu" data-widget="tree">
-                        <li class="treeview {{ Route::currentRouteName() == 'dashboard-admin' ? 'active menu-open' : '' }}">
+                        <li class="{{ Route::currentRouteName() == 'dashboard-admin' ? 'active menu-open' : '' }}">
                             <a href="{{ route('dashboard-admin') }}">
                                 <i data-feather="home"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
                         <li class="header fs-10 m-0 text-uppercase">Manajemen Ujian</li>
-                        <li class="treeview">
+                        <li class="">
                             <a href="{{ route('ListRuangan') }}">
                                 <i data-feather="plus-circle"></i>
                                 <span>Ruangan</span>
                             </a>
                         </li>
-                        <li class="treeview">
+                        <li class="">
                             <a href="{{ route('ListUjian') }}">
                                 <i data-feather="edit"></i>
                                 <span>Ujian</span>
                             </a>
                         </li>
-                        <li class="treeview">
+                        <li class="">
                             <a href="{{ route('ListTipeUjian') }}">
                                 <i data-feather="tag"></i>
                                 <span>Tipe Ujian</span>
                             </a>
                         </li>
-                        <li class="treeview">
+                        <li class="">
                             <a href="#">
                                 <i data-feather="clock"></i>
                                 <span>History</span>
