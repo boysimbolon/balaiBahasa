@@ -81,6 +81,12 @@ new class extends Component {
                                 </li>
                             </ul>
                         </li>
+                        <li class="{{ Route::currentRouteName() == 'payment-mhs' ? 'active' : '' }}">
+                            <a href="{{ route('payment-mhs') }}">
+                                <i data-feather="credit-card"></i>
+                                <span>Pembayaran</span>
+                            </a>
+                        </li>
                         <li class="{{ Route::currentRouteName() == 'history-mhs' ? 'active' : '' }}">
                             <a href="{{ route('history-mhs') }}">
                                 <i data-feather="clock"></i>

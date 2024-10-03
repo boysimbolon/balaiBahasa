@@ -46,9 +46,7 @@ class Pembayaran extends Component
 
     public function render()
     {
-        $view = auth('user')->check() ? 'livewire.pembayaran':'livewire.pembayaran';
-
-        return view($view, [
+        return view('livewire.pembayaran', [
             'title' => 'Pembayaran'
         ]);
     }

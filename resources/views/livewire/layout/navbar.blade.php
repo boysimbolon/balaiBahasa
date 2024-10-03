@@ -89,7 +89,7 @@ new class extends Component {
                                 </a>
                             </li>
                             <li>
-                                <a class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" wire:click="logout">
+                                <a class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer" wire:click="logout">
                                     <i class="fa-solid fa-right-from-bracket me-3 text-xl"> </i> Logout
                                 </a>
                             </li>
@@ -105,7 +105,7 @@ new class extends Component {
                                 </a>
                             </li>
                             <li>
-                                <a class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" wire:click="logout">
+                                <a class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer" wire:click="logout">
                                     <i class="fa-solid fa-right-from-bracket me-3 text-xl"> </i> Logout
                                 </a>
                             </li>
@@ -121,7 +121,7 @@ new class extends Component {
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" wire:click="logout">
+                                <a href="#" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer" wire:click="logout">
                                     <i class="fa fa-right-from-bracket me-3 text-xl"></i> </i> Logout
                                 </a>
                             </li>
