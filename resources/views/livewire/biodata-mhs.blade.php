@@ -11,9 +11,9 @@
                     <p class="text-muted text-base my-10">({{ trim($data['nim']) }})</p>
 
                     <div class="text-start mt-3">
-                        <p class="text-muted mb-2 "><strong class="text-info">Telepon :</strong><span class="ms-2">{{ $data['notelp'] }}</span></p>
-                        <p class="text-muted mb-2 "><strong class="text-info">Email :</strong> <span class="ms-2 ">{{ $data['email'] }}</span></p>
-                        <p class="text-muted mb-1 "><strong class="text-info">Kewarganegaraan :</strong> <span class="ms-2">Indonesia</span></p>
+                        <p class="text-muted mb-2 flex justify-between"><strong class="text-info">Telepon</strong><span class="ms-2">{{ $data['notelp'] }}</span></p>
+                        <p class="text-muted mb-2 flex justify-between"><strong class="text-info">Email</strong> <span class="ms-2 ">{{ $data['email'] }}</span></p>
+                        <p class="text-muted mb-1 flex justify-between"><strong class="text-info">Kewarganegaraan</strong> <span class="ms-2">Indonesia</span></p>
                     </div>
                 </div>
             </div>
@@ -63,10 +63,6 @@
                         <a class="media media-single" href="#">
                             <span class="title text-mute">Tahun Pendidikan Pendidikan</span>
                             <span>2024</span>
-                        </a>
-                        <a class="media media-single" href="#">
-                            <span class="title text-mute">Bahasa</span>
-                            <span>Indonesia</span>
                         </a>
                         <a class="media media-single" href="#">
                             <span class="title text-mute">Bahasa</span>
