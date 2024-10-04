@@ -9,7 +9,7 @@ use Livewire\Component;
 class CreateUjian extends Component
 {
     public $id_jenis_ujian, $id_ruangan, $tanggal, $jam, $status;
-    public $JenisUjian, $ruangan, $no_modul, $enroll_key;
+    public $JenisUjian, $ruangan, $no_modul;
 
     public function mount()
     {
@@ -30,7 +30,6 @@ class CreateUjian extends Component
             'tanggal' => ['required', 'date'],
             'jam' => ['required', 'date_format:H:i'],
             'no_modul' => ['required', 'numeric'],
-            'enroll_key' => ['required', 'string']
     ];
 
     public function Save()
@@ -61,7 +60,7 @@ class CreateUjian extends Component
         Environtment::create([
             'id_ujian' => $ujian->id,
             'no_modul' => $this->no_modul,
-            'enroll_key' => $this->enroll_key,
+            'enroll_key' => "JEdsj1",
         ]);
 
         // Tampilkan pesan sukses

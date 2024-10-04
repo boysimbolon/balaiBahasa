@@ -26,23 +26,23 @@ class E3schedule extends Component
                 ->get();
         }
 
-        // Formatting Tanggal, Jam, dan Waktu Dibuat
+        // Format Tanggal, Jam, dan Waktu Dibuat
         $this->formatTanggalJamPesan();
 
         // Mendapatkan data tipe ujian, tanggal, dan jam ujian
-        // Mendapatkan data tipe ujian, tanggal, dan jam ujian
-        $this->jenis = list_ujian::with('tipeUjian')->get();
+        $this->jenis = list_ujian::with('tipeUjian', 'listruangan')->get();
 
         $this->tanggal = list_ujian::pluck('tanggal')
             ->map(fn($item) => \Carbon\Carbon::parse($item)->translatedFormat('l, d F Y'));
         $this->jam = list_ujian::pluck('jam')
             ->map(fn($item) => \Carbon\Carbon::parse($item)->translatedFormat('H:i'));
 
-        // Mengambil data kapasitas dan kuota
-        $Method = new Toeflschedule();
-        $Method->loadRuanganAndKapasitas();
-        $this->kapasitas = $Method->kapasitas;
-        $this->kuota = $Method->kuota;
+        // Mengambil data kapasitas dan kuota dari metode Toeflschedule
+        $method = new Toeflschedule();
+        $method->loadRuanganAndKapasitas();
+        $this->ruangan = list_ujian::with('listruangan')->get();
+        $this->kapasitas = $method->kapasitas;
+        $this->kuota = $method->kuota;
     }
 
     // Fungsi untuk format tanggal dan jam pesan
@@ -61,8 +61,7 @@ class E3schedule extends Component
         });
     }
 
-    // Fungsi untuk memuat data ruangan, kapasitas, dan kuota
-
+    // Render view berdasarkan tipe pengguna
     public function render()
     {
         $view = auth('user')->check() ? 'livewire.e3schedule' : 'livewire.e3-schedule-mhs';
@@ -72,22 +71,22 @@ class E3schedule extends Component
         ]);
     }
 
-    public function Pesan($id,$kapasitas)
+    // Fungsi untuk melakukan pemesanan ujian
+    public function Pesan($id, $kapasitas)
     {
-
         // Mengecek jumlah peserta saat ini untuk ujian tertentu
-        $jumlahPeserta = pesan_ujian::where('id_ujian', '=', $id["id"])->where('status',1)->count();
+        $jumlahPeserta = pesan_ujian::where('id_ujian', '=', $id["id"])->where('status', 1)->count();
 
-        if ($jumlahPeserta <= $kapasitas) {
+        if ($jumlahPeserta < $kapasitas) {
             pesan_ujian::create([
-                'id_ujian' =>  $id["id"],
+                'id_ujian' => $id["id"],
                 'id_user' => auth('user')->user()->id ?? null,
                 'nim' => trim(session('atribut')->nim) ?? null, // jika user memiliki nim
-                'id_ruangan'=> $id["id_ruangan"],
-                'status' => 0 // Ubah status menjadi aktif setelah pemesanan
+                'id_ruangan' => $id["id_ruangan"],
+                'status' => 0 // Status awal saat pesan dibuat
             ]);
             session()->flash('message', 'Pesan Ujian Berhasil');
-            $this->mount();
+            return redirect()->route('e3-schedule-mhs');
         } else {
             session()->flash('message', 'Kuota Ujian Penuh');
         }

@@ -1,3 +1,4 @@
+@section('title', $title)
 <div>
-    {{-- The whole world belongs to you. --}}
+     <a href="{{route('CreateUjian')}}" class="text-blue-500">Create List Ujian</a>
 </div>

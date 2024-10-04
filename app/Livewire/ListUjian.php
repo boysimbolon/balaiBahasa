@@ -13,6 +13,6 @@ class ListUjian extends Component
     }
     public function render()
     {
-        return view('livewire.list-ujian');
+        return view('livewire.list-ujian', ['title'=>'List Ujian']);
     }
 }

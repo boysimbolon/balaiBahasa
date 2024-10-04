@@ -1,3 +1,4 @@
+@section('title', $title)
 <div>
-    {{-- If your happiness depends on money, you will never be happy with yourself. --}}
+    <a href="{{route('CreateRuangan')}}" class="text-blue-500">Create Ruangan</a>
 </div>

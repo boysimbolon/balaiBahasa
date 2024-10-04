@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::connection('mydb')->create('environtment_ujian', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('id_ujian')->constrained('list_ujian');
-            $table->string('no_modul');
-            $table->string('enroll_key');
-            $table->timestamps();
+        Schema::connection('mydb')->table('environtment_ujian', function (Blueprint $table) {
+            $table->string('enroll_key')->change();  // Ubah tipe data kolom enroll_key menjadi string
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::connection('mydb')->table('environtment_ujian', function (Blueprint $table) {
+            //
+        });
     }
 };
