@@ -49,13 +49,13 @@ Route::prefix('mhs')->middleware('mhs')->group(function () {
 // Grouping routes for admin with prefix and middleware
 Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/', DashboardAdmin::class)->name('dashboard-admin');
-    Route::get('/Ruangan', CreateRuangan::class)->name('CreateRuangan');
+    Route::get('/CreateRuangan', CreateRuangan::class)->name('CreateRuangan');
     Route::get('/Ruangan', RuanganUjian::class)->name('ListRuangan');
 
-    Route::get('/Ujian', CreateUjian::class)->name('CreateUjian');
+    Route::get('/CreateUjian', CreateUjian::class)->name('CreateUjian');
     Route::get('/Ujian', ListUjian::class)->name('ListUjian');
 
-    Route::get('/tipe_ujian',CreateTipeUjian::class)->name('CreateTipeUjian');
+    Route::get('/Createtipe_ujian',CreateTipeUjian::class)->name('CreateTipeUjian');
     Route::get('/tipe_ujian',TipeUjian::class)->name('ListTipeUjian');
     Route::get('/biodata', Biodatausr::class)->name('biodataadmin');
     Route::get('/biodata_edit', EditBiodataUser::class)->name('edit-profile-admin');

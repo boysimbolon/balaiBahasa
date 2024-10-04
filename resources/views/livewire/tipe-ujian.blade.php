@@ -1,3 +1,3 @@
 <div>
-    {{-- Close your eyes. Count to one. That is how long forever feels. --}}
+    <a href="{{route('CreateTipeUjian')}}" class="text-blue-500">Create Tipe Ujian</a>
 </div>
