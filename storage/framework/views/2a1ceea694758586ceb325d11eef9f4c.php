@@ -1,7 +1,7 @@
 <?php $attributes ??= new \Illuminate\View\ComponentAttributeBag;
 
 $__newAttributes = [];
-$__propNames = \Illuminate\View\ComponentAttributeBag::extractPropNames((['disabled' => false]));
+$__propNames = \Illuminate\View\ComponentAttributeBag::extractPropNames((['status']));
 
 foreach ($attributes->all() as $__key => $__value) {
     if (in_array($__key, $__propNames)) {
@@ -16,7 +16,7 @@ $attributes = new \Illuminate\View\ComponentAttributeBag($__newAttributes);
 unset($__propNames);
 unset($__newAttributes);
 
-foreach (array_filter((['disabled' => false]), 'is_string', ARRAY_FILTER_USE_KEY) as $__key => $__value) {
+foreach (array_filter((['status']), 'is_string', ARRAY_FILTER_USE_KEY) as $__key => $__value) {
     $$__key = $$__key ?? $__value;
 }
 
@@ -28,5 +28,10 @@ foreach ($attributes->all() as $__key => $__value) {
 
 unset($__defined_vars); ?>
 
-<input <?php echo e($disabled ? 'disabled' : ''); ?> <?php echo $attributes->merge(['class' => 'border-black focus:border-indigo-500 focus:ring-indigo-500 rounded-md']); ?>>
-<?php /**PATH C:\Users\Acer\Documents\Universitas Advent Indonesia\Labor\balai_bahasa\balaiBahasa\resources\views/components/text-input.blade.php ENDPATH**/ ?>
+<!--[if BLOCK]><![endif]--><?php if($status): ?>
+    <div <?php echo e($attributes->merge(['class' => 'font-medium text-sm text-green-600'])); ?>>
+        <?php echo e($status); ?>
+
+    </div>
+<?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+<?php /**PATH C:\Users\Acer\Documents\Universitas Advent Indonesia\Labor\balai_bahasa\balaiBahasa\resources\views/components/auth-session-status.blade.php ENDPATH**/ ?>

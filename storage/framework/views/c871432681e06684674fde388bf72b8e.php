@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
-        <title>UNAI - Balai Bahasa</title>
+        <title><?php echo $__env->yieldContent('title'); ?> - Balai Bahasa UNAI</title>
 
         <!-- Favicon -->
         <link rel="icon" href="Logo-Unai.png">
@@ -18,33 +18,14 @@
         <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
     </head>
     <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col justify-center items-center bg-gray-100 p-5 xl:p-20">
-            <div>
-                <a href="/" wire:navigate>
-                    <?php if (isset($component)) { $__componentOriginal8892e718f3d0d7a916180885c6f012e7 = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal8892e718f3d0d7a916180885c6f012e7 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.application-logo','data' => ['class' => 'w-20 h-20 fill-current text-gray-500']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('application-logo'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
-<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['class' => 'w-20 h-20 fill-current text-gray-500']); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginal8892e718f3d0d7a916180885c6f012e7)): ?>
-<?php $attributes = $__attributesOriginal8892e718f3d0d7a916180885c6f012e7; ?>
-<?php unset($__attributesOriginal8892e718f3d0d7a916180885c6f012e7); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginal8892e718f3d0d7a916180885c6f012e7)): ?>
-<?php $component = $__componentOriginal8892e718f3d0d7a916180885c6f012e7; ?>
-<?php unset($__componentOriginal8892e718f3d0d7a916180885c6f012e7); ?>
-<?php endif; ?>
-                </a>
-            </div>
+        <div class="min-h-screen flex flex-col justify-center items-center bg-gray-200 p-5 xl:p-20">
 
-            <div class="mt-6 px-6 py-4 bg-white shadow-md rounded">
+
+
+
+
+
+            <div class="mt-6 p-5 bg-white shadow-md rounded-xl md:w-2/3 lg:w-1/2 <?php echo e(request()->is('login*') ? 'lg:w-1/4' : ''); ?>">
                 <?php echo e($slot); ?>
 
             </div>

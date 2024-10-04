@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title><?php echo e($title ?? 'Page Title'); ?></title>
+        <title><?php echo $__env->yieldContent('title'); ?> - Balai Bahasa UNAI</title>
     </head>
     <body>
         <?php echo e($slot); ?>
