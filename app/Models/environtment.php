@@ -19,4 +19,8 @@ class environtment extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function environtmentUjian(){
+        return $this->belongsTo(list_ujian::class,'id_ujian','id');
+    }
 }

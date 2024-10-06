@@ -44,6 +44,12 @@ use Illuminate\Support\Facades\Auth;
                                 </li>
                             </ul>
                         </li>
+                        <li class="<?php echo e(Route::currentRouteName() == 'payment-mhs' ? 'active' : ''); ?>">
+                            <a href="<?php echo e(route('payment-mhs')); ?>">
+                                <i data-feather="credit-card"></i>
+                                <span>Pembayaran</span>
+                            </a>
+                        </li>
                         <li class="<?php echo e(Route::currentRouteName() == 'history-mhs' ? 'active' : ''); ?>">
                             <a href="<?php echo e(route('history-mhs')); ?>">
                                 <i data-feather="clock"></i>

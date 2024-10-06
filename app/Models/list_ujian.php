@@ -31,4 +31,8 @@ class list_ujian extends Model
     {
         return $this->belongsTo(list_ruangan::class, 'id_ruangan');
     }
+    public function environtmentUjian()
+    {
+        return $this->hasOne(environtment::class, 'id_ujian');
+    }
 }
