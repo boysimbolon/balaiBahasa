@@ -2,6 +2,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\data_user;
+use App\Models\Moodle;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -20,10 +22,26 @@ class VerifyEmailController extends Controller
             if ($user->hasVerifiedEmail()) {
                 return redirect()->route('dashboard')->with('status', 'Email already verified.');
             }
-
             $user->markEmailAsVerified();
             $user->email_verification_token = null; // Hapus token setelah verifikasi
             $user->save();
+            $data = data_user::where('no_Peserta',$user->no_Peserta)->first();
+            $namaArray = explode(" ", $data->nama);
+            // Mengambil nama depan (elemen pertama array)
+            $namaDepan = $namaArray[0];
+            // Mengambil nama belakang (elemen terakhir array)
+            $namaBelakang = $namaArray[count($namaArray) - 1];
+            Moodle::create([
+                'confirmed'=>'1',
+                'mnethostid'=>'3',
+                'username'=>$user->no_Peserta,
+                'password'=>$user->pin,
+                'firstname'=>$namaDepan,
+                'lastname'=>$namaBelakang,
+                'email'=>$data->email,
+                'city'=>$data->city ? $data->city:"Jakarta",
+                'country' =>'ID'
+            ]);
             return redirect()->route('login')->with('message', 'Email verified successfully.');
         }
         return redirect()->route('login')->with('message', 'Invalid verification link.');

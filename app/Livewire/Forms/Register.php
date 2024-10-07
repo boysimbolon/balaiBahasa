@@ -4,6 +4,7 @@ namespace App\Livewire\Forms;
 
 use App\Mail\VerifyEmail;
 use App\Models\data_user;
+use App\Models\Moodle;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -35,7 +36,7 @@ class Register extends Component
     public $no_Peserta = '';
     public $password = '';
     public $token ='';
-
+    public $city ='';
     protected $rules = [
         'nama' => ['required', 'string', 'max:100'],
         'nik' => ['required', 'digits:16', 'unique:data_users,nik'],
@@ -43,6 +44,7 @@ class Register extends Component
         'tgl_lahir' => ['required', 'date'],
         'pekerjaan' => ['required', 'string'],
         'NIDN' => ['nullable', 'string'],
+        'city'=>['required','string'],
         'alamat' => ['required', 'string'],
         'jenis_kelamin' => ['required', 'in:Perempuan,Laki-Laki'],
         'instansi' => ['required', 'string'],
@@ -95,9 +97,6 @@ class Register extends Component
             'pin' => $validated['password'], // Simpan password yang sudah di-hash,
             'is_admin'=>'1'
         ]);
-
-        // Generate token untuk verifikasi email
-
         // Kirim email verifikasi
         Mail::to($user->email)->send(new VerifyEmail($this->no_Peserta, $this->password, $this->token));
 

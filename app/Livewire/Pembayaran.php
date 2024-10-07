@@ -8,13 +8,14 @@ use Livewire\Component;
 use App\Livewire\Toeflschedule;
 class Pembayaran extends Component
 {
-    public $Data,$tgl,$jm,$created;
+    public $Data,$tgl,$jm,$created,$va;
 
     public function mount()
     {
         if (auth('user')->check()) {
             // Mengambil pesanan berdasarkan id_user
             $userId=auth('user')->user()->id;
+            $this->va='9881949'+auth('user')->user()->no_Peserta;
             $this->Data = pesan_ujian::with('listujian.listruangan', 'listujian.tipeUjian')
                 ->where('id_user', $userId)
                 ->get();

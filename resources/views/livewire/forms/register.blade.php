@@ -55,6 +55,12 @@
                 <x-text-input wire:model="alamat" id="alamat" class="block mt-1 w-full" type="text" name="alamat" required autofocus autocomplete="alamat"/>
                 <x-input-error :messages="$errors->get('alamat')" class="mt-2"/>
             </div>
+            <!-- CITY -->
+            <div class="mb-2">
+                <x-input-label for="kota" :value="__('Kota ')"/>
+                <x-text-input wire:model="city" id="kota" class="block mt-1 w-full" type="text" name="kota" required autofocus autocomplete="kota"/>
+                <x-input-error :messages="$errors->get('city')" class="mt-2"/>
+            </div>
             <div class="md:flex gap-5 md:justify-between">
                 <!-- NIDN -->
                 <div class="w-full md:w-1/2 mb-2">

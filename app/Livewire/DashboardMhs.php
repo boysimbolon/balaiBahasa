@@ -12,7 +12,7 @@ use Livewire\Component;
 
 class DashboardMhs extends Component
 {
-    public $data, $auth, $foto, $ujian, $hariSisa = [];
+    public $data, $auth, $foto, $ujian, $hariSisa = [],$enrollKey=[];
 
     public function mount()
     {
@@ -55,7 +55,6 @@ class DashboardMhs extends Component
         foreach ($this->ujian as $ujian) {
             if (!empty($ujian->listujian->tanggal)) {
                 $tanggalUjian = Carbon::parse($ujian->listujian->tanggal);
-
                 // Hitung sisa hari dengan membagi diffInHours dengan 24
                 $this->hariSisa[] = floor($tanggalUjian->diffInHours(Carbon::now()) / 24);
             } else {

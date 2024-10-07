@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Environtment;
 use App\Models\list_ujian;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class CreateUjian extends Component
@@ -55,12 +56,17 @@ class CreateUjian extends Component
             'jam' => $this->jam,
             'status' => 1,
         ]);
-
+        $enroll_key = DB::connection('mysql')
+            ->table('mdl_enrol')
+            ->where('courseid', trim($this->no_modul))
+            ->where('enrol', 'self')
+            ->limit(1)
+            ->first();
         // Simpan data environtment
         Environtment::create([
             'id_ujian' => $ujian->id,
             'no_modul' => $this->no_modul,
-            'enroll_key' => "JEdsj1",
+            'enroll_key' => $enroll_key,
         ]);
 
         // Tampilkan pesan sukses
@@ -78,6 +84,5 @@ class CreateUjian extends Component
         $this->jam = '';
         $this->status = '';
         $this->no_modul = '';
-        $this->enroll_key = '';
     }
 }

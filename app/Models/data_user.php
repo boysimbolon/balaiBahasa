@@ -28,6 +28,7 @@ class data_user extends Model
         'pasFoto',
         'ktp',
         'bhs_seharian',
-        'no_Peserta'
+        'no_Peserta',
+        'city'
     ];
 }
