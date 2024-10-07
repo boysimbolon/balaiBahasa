@@ -5,11 +5,8 @@
             {{ session('message') }}
         </div>
     @endif
-
     <h4 class="page-title text-2xl font-medium">E3 (English Entrance/Exit Exam)</h4>
-
     <div class="flex flex-col gap-x-4 mt-6">
-
         <div>
             <div class="box">
                 <div class="box-body">
@@ -49,7 +46,6 @@
                 </div>
             </div>
         </div>
-
         <div>
             <div class="box">
                 <div class="box-body">
@@ -155,6 +151,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 </x-app-layout>

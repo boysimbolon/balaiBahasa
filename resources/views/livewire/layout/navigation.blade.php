@@ -131,7 +131,7 @@ new class extends Component {
                             </ul>
                         </li>
                         <li class="">
-                            <a href="#">
+                            <a href="{{ route('payment') }}">
                                 <i data-feather="credit-card"></i>
                                 <span>Pembayaran</span>
                             </a>
