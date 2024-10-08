@@ -94,7 +94,7 @@ use Illuminate\Support\Facades\Auth;
                             </ul>
                         </li>
                         <li class="">
-                            <a href="#">
+                            <a href="<?php echo e(route('payment')); ?>">
                                 <i data-feather="credit-card"></i>
                                 <span>Pembayaran</span>
                             </a>
