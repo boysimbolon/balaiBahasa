@@ -9,12 +9,6 @@
 <?php $attributes = $attributes->except(\App\View\Components\AppLayout::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-    <!--[if BLOCK]><![endif]--><?php if(session()->has('message')): ?>
-        <div class="w-full bg-green-600 p-2 rounded text-white">
-            <?php echo e(session('message')); ?>
-
-        </div>
-    <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
     <h4 class="page-title text-2xl font-medium">E3 (English Entrance/Exit Exam)</h4>
     <div class="flex flex-col gap-x-4 mt-6">
         <div>
@@ -35,17 +29,28 @@
                             <tbody>
                             <!--[if BLOCK]><![endif]--><?php if($pesan->isEmpty()): ?>
                                 <tr class="border-y">
-                                    <td class="p-2" colspan="5">Belum ada jadwal</td>
+                                    <td class="p-2 text-center" colspan="5">Belum ada jadwal</td>
                                 </tr>
                             <?php else: ?>
-                                <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $pesan->sortBy([['listujian.tipeujian.jenis_ujian', 'asc'], ['listujian.tanggal', 'asc'], ['listujian.jam', 'asc']]); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $psn => $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <!--[if BLOCK]><![endif]--><?php if(isset($data->listujian->id_jenis_ujian) && $data->listujian->id_jenis_ujian != '3' && $data->status == '1'): ?>
+
+
+
+
+
+
+
+
+
+
+
+                                <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $pesan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $psn =>$data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <!--[if BLOCK]><![endif]--><?php if($data->listujian->id_jenis_ujian != '3'): ?>
                                         <tr class="border-y">
                                             <td class="p-2"><?php echo e($data->listujian->tipeujian->jenis_ujian); ?></td>
-                                            <td class="p-2"><?php echo e($tgl[$psn] ?? 'N/A'); ?></td>
-                                            <td class="p-2"><?php echo e($jm[$psn] ?? 'N/A'); ?></td>
+                                            <td class="p-2"><?php echo e($tgl[$psn]); ?></td>
+                                            <td class="p-2"><?php echo e($jm[$psn]); ?></td>
                                             <td class="p-2"><?php echo e($data->listruangan->nama_ruangan); ?></td>
-                                            <td class="p-2"><?php echo e($created[$psn] ?? 'N/A'); ?></td>
+                                            <td class="p-2"><?php echo e($created[$psn]); ?></td>
                                         </tr>
                                     <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
@@ -73,30 +78,46 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $tanggal->sort(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $tgl): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <!--[if BLOCK]><![endif]--><?php if(isset($jenis[$index]) && $jenis[$index]->id_jenis_ujian == '1'): ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $tanggal; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $tgl): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <!--[if BLOCK]><![endif]--><?php if($kapasitas[$index]->id_jenis_ujian == 1): ?>
                                     <tr class="border-y">
                                         <td class="p-2"><?php echo e($tgl); ?></td>
-                                        <td class="p-2"><?php echo e($jam[$index] ?? 'N/A'); ?></td>
-                                        <td class="p-2"><?php echo e($ruangan[$index]->listruangan->nama_ruangan ?? 'N/A'); ?></td>
-                                        <td class="p-2"><?php echo e($kapasitas[$index] ?? 'N/A'); ?></td>
-                                        <td class="p-2"><?php echo e($kuota[$index] ?? 'N/A'); ?></td>
+                                        <td class="p-2"><?php echo e($jam[$index]); ?></td>
+                                        <td class="p-2"><?php echo e($ruangan[$index]->listruangan->nama_ruangan); ?></td>
+                                        <td class="p-2"><?php echo e($kapasitas[$index]->listruangan->kapasitas); ?></td>
+                                        <td class="p-2"><?php echo e($kuota); ?></td>
                                         <td class="p-2">
-                                            <?php
-                                                $statusPesan = $pesan->firstWhere('id_ujian', $jenis[$index]->id);
-                                            ?>
-                                            <?php if($kuota[$index] == 0): ?>
+                                            <!--[if BLOCK]><![endif]--><?php if($kapasitas[$index]->listruangan->kapasitas <= $kuota): ?>
                                                 Penuh
-                                            <?php elseif($kuota[$index] > 0 && !$statusPesan): ?>
-                                                <button class="bg-primary text-white py-2 px-4 rounded" wire:click="Pesan(<?php echo e($jenis[$index]); ?>, <?php echo e($kapasitas[$index]); ?>)" wire:confirm="Apakah Anda yakin ingin memilih jadwal ini?">Pilih</button>
                                             <?php else: ?>
-                                                <!--[if BLOCK]><![endif]--><?php if($statusPesan): ?>
-                                                    <!--[if BLOCK]><![endif]--><?php if($statusPesan->status == "1"): ?>
-                                                        Done
-                                                    <?php else: ?>
-                                                        Bayar
-                                                    <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
-                                                <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+                                                <button class="bg-primary text-white py-2 px-4 rounded">Pilih</button>
                                             <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
                                         </td>
                                     </tr>
@@ -108,7 +129,6 @@
                 </div>
             </div>
         </div>
-
         <div>
             <div class="box">
                 <div class="box-body">
@@ -126,30 +146,46 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $tanggal->sort(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $tgl): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <?php if(isset($jenis[$index]) && $jenis[$index]->id_jenis_ujian == '2'): ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $tanggal; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $tgl): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <!--[if BLOCK]><![endif]--><?php if($kapasitas[$index]->id_jenis_ujian == 2): ?>
                                     <tr class="border-y">
                                         <td class="p-2"><?php echo e($tgl); ?></td>
-                                        <td class="p-2"><?php echo e($jam[$index] ?? 'N/A'); ?></td>
-                                        <td class="p-2"><?php echo e($ruangan[$index]->listruangan->nama_ruangan ?? 'N/A'); ?></td>
-                                        <td class="p-2"><?php echo e($kapasitas[$index] ?? 'N/A'); ?></td>
-                                        <td class="p-2"><?php echo e($kuota[$index] ?? 'N/A'); ?></td>
+                                        <td class="p-2"><?php echo e($jam[$index]); ?></td>
+                                        <td class="p-2"><?php echo e($ruangan[$index]->listruangan->nama_ruangan); ?></td>
+                                        <td class="p-2"><?php echo e($kapasitas[$index]->listruangan->kapasitas); ?></td>
+                                        <td class="p-2"><?php echo e($kuota); ?></td>
                                         <td class="p-2">
-                                            <?php
-                                                $statusPesan = $pesan->firstWhere('id_ujian', $jenis[$index]->id);
-                                            ?>
-                                            <?php if($kuota[$index] == 0): ?>
+                                            <!--[if BLOCK]><![endif]--><?php if($kapasitas[$index]->listruangan->kapasitas <= $kuota): ?>
                                                 Penuh
-                                            <?php elseif($kuota[$index] > 0 && !$statusPesan): ?>
-                                                <button class="bg-primary text-white py-2 px-4 rounded" wire:click="Pesan(<?php echo e($jenis[$index]); ?>, <?php echo e($kapasitas[$index]); ?>)" wire:confirm="Apakah Anda yakin ingin memilih jadwal ini?">Pilih</button>
                                             <?php else: ?>
-                                                <!--[if BLOCK]><![endif]--><?php if($statusPesan): ?>
-                                                    <!--[if BLOCK]><![endif]--><?php if($statusPesan->status == "1"): ?>
-                                                        Done
-                                                    <?php else: ?>
-                                                        Bayar
-                                                    <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
-                                                <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+                                                <button class="bg-primary text-white py-2 px-4 rounded">Pilih</button>
                                             <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
                                         </td>
                                     </tr>
@@ -172,4 +208,4 @@
 <?php $component = $__componentOriginal9ac128a9029c0e4701924bd2d73d7f54; ?>
 <?php unset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54); ?>
 <?php endif; ?>
-<?php /**PATH E:\Balai_Bahasa\Balai_Bahasa\resources\views/livewire/e3-schedule-mhs.blade.php ENDPATH**/ ?>
+<?php /**PATH E:\Balai_Bahasa\Balai_Bahasa\resources\views/livewire/e3schedule.blade.php ENDPATH**/ ?>

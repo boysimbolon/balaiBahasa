@@ -38,7 +38,7 @@ class VerifyEmailController extends Controller
                 'password'=>$user->pin,
                 'firstname'=>$namaDepan,
                 'lastname'=>$namaBelakang,
-                'email'=>$data->email,
+                'email'=>$user->email,
                 'city'=>$data->city ? $data->city:"Jakarta",
                 'country' =>'ID'
             ]);
