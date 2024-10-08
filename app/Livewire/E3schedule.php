@@ -64,7 +64,7 @@ class E3schedule extends Component
     // Render view berdasarkan tipe pengguna
     public function render()
     {
-        $view = auth('user')->check() ? 'livewire.e3schedule' : 'livewire.e3-schedule-mhs';
+        $view = 'livewire.e3-schedule-mhs';
 
         return view($view, [
             'title' => 'Jadwal 3E'
@@ -78,15 +78,30 @@ class E3schedule extends Component
         $jumlahPeserta = pesan_ujian::where('id_ujian', '=', $id["id"])->where('status', 1)->count();
 
         if ($jumlahPeserta < $kapasitas) {
-            pesan_ujian::create([
-                'id_ujian' => $id["id"],
-                'id_user' => auth('user')->user()->id ?? null,
-                'nim' => trim(session('atribut')->nim) ?? null, // jika user memiliki nim
-                'id_ruangan' => $id["id_ruangan"],
-                'status' => 0 // Status awal saat pesan dibuat
-            ]);
+            if(auth('user')->check())
+                {pesan_ujian::create([
+                    'id_ujian' => $id["id"],
+                    'id_user' => auth('user')->user()->id ,
+                    'nim' => null, // jika user memiliki nim
+                    'id_ruangan' => $id["id_ruangan"],
+                    'status' => 0 // Status awal saat pesan dibuat
+                ]);}
+            elseif(session('guard') == 'mhs'){
+                pesan_ujian::create([
+                    'id_ujian' => $id["id"],
+                    'id_user' => null ,
+                    'nim' => trim(session('atribut')->nim) ?? null, // jika user memiliki nim
+                    'id_ruangan' => $id["id_ruangan"],
+                    'status' => 0 // Status awal saat pesan dibuat
+                ]);
+            }
             session()->flash('message', 'Pesan Ujian Berhasil');
+            if(auth('user')->check()){
+                return redirect()->route('e3-schedule-user');
+            }
+            elseif (session('guard') == 'mhs'){
             return redirect()->route('e3-schedule-mhs');
+            }
         } else {
             session()->flash('message', 'Kuota Ujian Penuh');
         }

@@ -92,24 +92,38 @@ class Toeflschedule extends Component
         ]);
     }
 
-    public function Pesan($id,$kapasitas)
+    public function Pesan($id, $kapasitas)
     {
-
         // Mengecek jumlah peserta saat ini untuk ujian tertentu
-        $jumlahPeserta = pesan_ujian::where('id_ujian', '=', $id["id"])->count();
+        $jumlahPeserta = pesan_ujian::where('id_ujian', '=', $id["id"])->where('status', 1)->count();
 
-        if ($jumlahPeserta <= $kapasitas) {
-            pesan_ujian::create([
-                'id_ujian' =>  $id["id"],
-                'id_user' => auth('user')->user()->id ?? null,
-                'nim' => trim(session('atribut')->nim) ?? null, // jika user memiliki nim
-                'id_ruangan'=> $id["id_ruangan"],
-                'status' => 0 // Ubah status menjadi aktif setelah pemesanan
-            ]);
+        if ($jumlahPeserta < $kapasitas) {
+            if(auth('user')->check())
+            {pesan_ujian::create([
+                'id_ujian' => $id["id"],
+                'id_user' => auth('user')->user()->id ,
+                'nim' => null, // jika user memiliki nim
+                'id_ruangan' => $id["id_ruangan"],
+                'status' => 0 // Status awal saat pesan dibuat
+            ]);}
+            elseif(session('guard') == 'mhs'){
+                pesan_ujian::create([
+                    'id_ujian' => $id["id"],
+                    'id_user' => null ,
+                    'nim' => trim(session('atribut')->nim) ?? null, // jika user memiliki nim
+                    'id_ruangan' => $id["id_ruangan"],
+                    'status' => 0 // Status awal saat pesan dibuat
+                ]);
+            }
             session()->flash('message', 'Pesan Ujian Berhasil');
-            $this->mount();
+            if(auth('user')->check()){
+                return redirect()->route('e3-schedule-user');
+            }
+            elseif (session('guard') == 'mhs'){
+                return redirect()->route('e3-schedule-mhs');
+            }
         } else {
-            session()->flash('error', 'Kuota Ujian Penuh');
+            session()->flash('message', 'Kuota Ujian Penuh');
         }
     }
 }

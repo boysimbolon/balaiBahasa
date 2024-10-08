@@ -20,18 +20,7 @@ class DashboardAdmin extends Component
         // Pastikan Auth user t ersedia dan memiliki no_Peserta
         $authUser = Auth::guard('user')->user();
         $authAdmin = Auth::guard('admin')->user();
-        if ($authUser && $authUser->no_Peserta) {
-            $this->data = data_user::where('no_Peserta', $authUser->no_Peserta)->first();
-            $this->auth = 'user';
-        } elseif (session('guard') === "mhs") {
-            $this->data = session('atribut');
-            $fotos = DB::connection('sqlsrv')->table('tb_foto_mhs')->where('nim', trim($this->data->nim))->first();
-
-            $foto=trim($fotos->foto_url);
-            $foto = str_replace('../../photo/mhs/', '', $foto);
-            $this->foto = 'image.php?file=mhs/thumbnails/thumbnail.'.$foto;
-            $this->auth = 'mhs';
-        } elseif ($authAdmin && $authAdmin->no_Peserta) {
+        if ($authAdmin && $authAdmin->no_Peserta) {
             $this->data = data_user::where('no_Peserta', $authAdmin->no_Peserta)->first();
             $this->auth = 'admin';
         }

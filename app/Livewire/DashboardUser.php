@@ -3,7 +3,8 @@
 namespace App\Livewire;
 
 use App\Models\data_user;
-use App\Models\User;
+use App\Models\pesan_ujian;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -11,42 +12,48 @@ use Livewire\Component;
 
 class DashboardUser extends Component
 {
-    public $check = false;
-
-    public $data, $auth, $foto;
+    public $data, $auth, $foto, $ujian, $hariSisa = [];
 
     public function mount()
     {
-        if (!Auth::guard('user')->check()) {
+        // Validasi akses mahasiswa
+        if (!auth('user')->check()) {
             Session::flush();
-            return redirect()->route('login')->with('message', 'Akses hanya untuk Umum.');
+            return redirect()->route('login')->with('message', 'Akses hanya untuk mahasiswa.');
         }
 
-        // Pastikan Auth user t ersedia dan memiliki no_Peserta
-        $authUser = Auth::guard('user')->user();
-        $authAdmin = Auth::guard('admin')->user();
-        if ($authUser && $authUser->no_Peserta) {
-            $this->data = data_user::where('no_Peserta', $authUser->no_Peserta)->first();
-            $this->auth = 'user';
-        } elseif (session('guard') === "mhs") {
-            $this->data = session('atribut');
-            $fotos = DB::connection('sqlsrv')->table('tb_foto_mhs')->where('nim', trim($this->data->nim))->first();
-
-            $foto=trim($fotos->foto_url);
-            $foto = str_replace('../../photo/mhs/', '', $foto);
-            $this->foto = 'image.php?file=mhs/thumbnails/thumbnail.'.$foto;
-            $this->auth = 'mhs';
-        } elseif ($authAdmin && $authAdmin->no_Peserta) {
-            $this->data = data_user::where('no_Peserta', $authAdmin->no_Peserta)->first();
-            $this->auth = 'admin';
-        }
+        // Jika mahasiswa, ambil data atribut dan ujian
+        $this->data = auth('user')->user();
+        $this->ambilDataUjian();
     }
 
 
+    // Fungsi untuk mengambil data ujian dan menghitung sisa hari
+    private function ambilDataUjian()
+    {
+        $this->ujian = pesan_ujian::with('listujian.listruangan','listujian.tipeUjian','listujian.environtmentUjian')
+            ->where('id_user', $this->data->id)
+            ->where('status', 1)
+            ->get();
+
+        foreach ($this->ujian as $ujian) {
+            if (!empty($ujian->listujian->tanggal)) {
+                $tanggalUjian = Carbon::parse($ujian->listujian->tanggal);
+                // Hitung sisa hari dengan membagi diffInHours dengan 24
+                $this->hariSisa[] = floor($tanggalUjian->diffInHours(Carbon::now()) / 24);
+            } else {
+                // Tangani jika tidak ada tanggal ujian yang valid
+                $this->hariSisa[] = null; // Simpan null jika tidak ada data
+            }
+        }
+    }
+
     public function render()
     {
-        return view('livewire.dashboard-user', [
-                'title' => 'Dashboard'
+        // Render view dashboard mahasiswa
+        return view('livewire.dashboard-mhs', [
+            'title' => 'Dashboard Umum',
+            'hariSisa' => $this->hariSisa,
         ]);
     }
 }

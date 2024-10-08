@@ -12,7 +12,7 @@ use Livewire\Component;
 
 class DashboardMhs extends Component
 {
-    public $data, $auth, $foto, $ujian, $hariSisa = [],$enrollKey=[];
+    public $data, $auth, $foto, $ujian, $hariSisa = [];
 
     public function mount()
     {
@@ -24,27 +24,11 @@ class DashboardMhs extends Component
 
         // Jika mahasiswa, ambil data atribut dan ujian
         $this->data = session('atribut');
-        $this->ambilFotoMahasiswa();
         $this->ambilDataUjian();
         $this->auth = 'mhs';
     }
 
-    // Fungsi untuk mengambil foto mahasiswa
-    private function ambilFotoMahasiswa()
-    {
-        $fotos = DB::connection('sqlsrv')
-            ->table('tb_foto_mhs')
-            ->where('nim', trim($this->data->nim))
-            ->first();
 
-        if ($fotos) {
-            $foto = trim($fotos->foto_url);
-            $foto = str_replace('../../photo/mhs/', '', $foto);
-            $this->foto = 'image.php?file=mhs/thumbnails/thumbnail.' . $foto;
-        } else {
-            $this->foto = 'default_photo.jpg'; // Foto default jika tidak ada
-        }
-    }
     // Fungsi untuk mengambil data ujian dan menghitung sisa hari
     private function ambilDataUjian()
     {

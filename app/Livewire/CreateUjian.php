@@ -60,13 +60,15 @@ class CreateUjian extends Component
             ->table('mdl_enrol')
             ->where('courseid', trim($this->no_modul))
             ->where('enrol', 'self')
+            ->select('password')
             ->limit(1)
             ->first();
+
         // Simpan data environtment
         Environtment::create([
             'id_ujian' => $ujian->id,
             'no_modul' => $this->no_modul,
-            'enroll_key' => $enroll_key,
+            'enroll_key' => $enroll_key->password,
         ]);
 
         // Tampilkan pesan sukses
