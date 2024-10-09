@@ -1,10 +1,18 @@
 @section('title', $title)
+{{--@dd($admins)--}}
+{{--@dd($admins->pekerjaan)--}}
 <x-app-layout>
     <div class="flex items-center justify-between">
         <h4 class="page-title text-2xl font-medium">Edit Profil</h4>
-        <a href="{{ route('biodata-user') }}" class="waves-effect waves-light btn btn-light mb-5">
-            <i class="fa-solid fa-arrow-left"></i> Back
-        </a>
+        @if(Auth::guard('user')->check())
+            <a href="{{ route('biodata-user') }}" class="waves-effect waves-light btn btn-light mb-5">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </a>
+        @elseif(Auth::guard('admin')->check())
+            <a href="{{ route('biodataadmin') }}" class="waves-effect waves-light btn btn-light mb-5">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </a>
+        @endif
     </div>
     <div class="grid grid-cols-1 gap-4">
         <div>
@@ -57,9 +65,15 @@
                                     <label for="pekerjaan" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Pekerjaan</label>
                                     <select wire:model="pekerjaan" id="pekerjaan" name="pekerjaan" class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required autofocus>
                                         <option value="" disabled>Pilih Pekerjaan</option>
-                                        @foreach(['Pelajar', 'Mahasiswa', 'Guru', 'Dosen', 'Pegawai Negeri Sipil (PNS)', 'Tentara Nasional Indonesia (TNI)', 'Kepolisian RI (POLRI)', 'Karyawan Swasta', 'Wirausaha', 'Belum/Tidak Bekerja'] as $pekerjaan)
-                                            <option value="{{ $pekerjaan }}" {{ $pekerjaan === $users->pekerjaan ? 'selected' : '' }}>{{ $pekerjaan }}</option>
-                                        @endforeach
+                                        @if(Auth::guard('user')->check())
+                                            @foreach(['Pelajar', 'Mahasiswa', 'Guru', 'Dosen', 'Pegawai Negeri Sipil (PNS)', 'Tentara Nasional Indonesia (TNI)', 'Kepolisian RI (POLRI)', 'Karyawan Swasta', 'Wirausaha', 'Belum/Tidak Bekerja'] as $pekerjaan)
+                                                <option value="{{ $pekerjaan }}" {{ $pekerjaan === $users->pekerjaan ? 'selected' : '' }}>{{ $pekerjaan }}</option>
+                                            @endforeach
+                                        @elseif(Auth::guard('admin')->check())
+                                            @foreach(['Pelajar', 'Mahasiswa', 'Guru', 'Dosen', 'Pegawai Negeri Sipil (PNS)', 'Tentara Nasional Indonesia (TNI)', 'Kepolisian RI (POLRI)', 'Karyawan Swasta', 'Wirausaha', 'Belum/Tidak Bekerja'] as $pekerjaan)
+                                                <option value="{{ $pekerjaan }}" {{ $pekerjaan === $admins->pekerjaan ? 'selected' : '' }}>{{ $pekerjaan }}</option>
+                                            @endforeach
+                                        @endif
                                     </select>
                                     <x-input-error :messages="$errors->get('pekerjaan')" class="mt-2"/>
                                 </div>
@@ -115,9 +129,15 @@
                                     <label for="pendidikan" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Pendidikan</label>
                                     <select wire:model="Pendidikan" id="pendidikan" name="Pendidikan" class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required autofocus>
                                         <option value="" disabled>Pilih Pendidikan</option>
-                                        @foreach(['Tidak/Belum Sekolah', 'Belum Tamat SD/Sederajat', 'Tamat SD/Sederajat', 'SLTP/Sederajat', 'SLTA/Sederajat', 'D-I/II', 'D-III', 'D-IV', 'S1', 'S2', 'S3'] as $Pendidikan)
-                                            <option value="{{ $Pendidikan }}" {{ $Pendidikan === $users->Pendidikan ? 'selected' : '' }}>{{ $Pendidikan }}</option>
-                                        @endforeach
+                                        @if(Auth::guard('user')->check())
+                                            @foreach(['Tidak/Belum Sekolah', 'Belum Tamat SD/Sederajat', 'Tamat SD/Sederajat', 'SLTP/Sederajat', 'SLTA/Sederajat', 'D-I/II', 'D-III', 'D-IV', 'S1', 'S2', 'S3'] as $Pendidikan)
+                                                <option value="{{ $Pendidikan }}" {{ $Pendidikan === $users->Pendidikan ? 'selected' : '' }}>{{ $Pendidikan }}</option>
+                                            @endforeach
+                                        @elseif(Auth::guard('admin')->check())
+                                            @foreach(['Tidak/Belum Sekolah', 'Belum Tamat SD/Sederajat', 'Tamat SD/Sederajat', 'SLTP/Sederajat', 'SLTA/Sederajat', 'D-I/II', 'D-III', 'D-IV', 'S1', 'S2', 'S3'] as $Pendidikan)
+                                                <option value="{{ $Pendidikan }}" {{ $Pendidikan === $admins->Pendidikan ? 'selected' : '' }}>{{ $Pendidikan }}</option>
+                                            @endforeach
+                                        @endif
                                     </select>
                                     <x-input-error :messages="$errors->get('Pendidikan')" class="mt-2"/>
                                 </div>
@@ -127,9 +147,15 @@
                                     <label for="thn_lulus" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Tahun Lulus</label>
                                     <select wire:model="thn_lulus" id="thn_lulus" name="thn_lulus" class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required autofocus>
                                         <option value="" disabled>Pilih Tahun Lulus</option>
-                                        @foreach (range(date('Y'), date('Y') - 50) as $year)
-                                            <option value="{{ $year }}" {{ $year == $users->thn_lulus ? 'selected' : '' }}>{{ $year }}</option>
-                                        @endforeach
+                                        @if(Auth::guard('user')->check())
+                                            @foreach (range(date('Y'), date('Y') - 50) as $year)
+                                                <option value="{{ $year }}" {{ $year == $users->thn_lulus ? 'selected' : '' }}>{{ $year }}</option>
+                                            @endforeach
+                                        @elseif(Auth::guard('admin')->check())
+                                            @foreach (range(date('Y'), date('Y') - 50) as $year)
+                                                <option value="{{ $year }}" {{ $year == $admins->thn_lulus ? 'selected' : '' }}>{{ $year }}</option>
+                                            @endforeach
+                                        @endif
                                     </select>
                                     <x-input-error :messages="$errors->get('thn_lulus')" class="mt-2"/>
                                 </div>
@@ -148,9 +174,15 @@
                                     <label for="bhs_seharian" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Bahasa Sehari</label>
                                     <select wire:model="bhs_seharian" id="bhs_seharian" name="bhs_seharian" class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required autofocus>
                                         <option value="" disabled>Pilih Bahasa</option>
-                                        @foreach(['Indonesian', 'Malay', 'English', 'Thailand', 'Japanase', 'Korean'] as $bhs_seharian)
-                                            <option value="{{ $bhs_seharian }}" {{ $bhs_seharian === $users->bhs_seharian ? 'selected' : '' }}>{{ $bhs_seharian }}</option>
-                                        @endforeach
+                                        @if(Auth::guard('user')->check())
+                                            @foreach(['Indonesian', 'Malay', 'English', 'Thailand', 'Japanase', 'Korean'] as $bhs_seharian)
+                                                <option value="{{ $bhs_seharian }}" {{ $bhs_seharian === $users->bhs_seharian ? 'selected' : '' }}>{{ $bhs_seharian }}</option>
+                                            @endforeach
+                                        @elseif(Auth::guard('admin')->check())
+                                            @foreach(['Indonesian', 'Malay', 'English', 'Thailand', 'Japanase', 'Korean'] as $bhs_seharian)
+                                                <option value="{{ $bhs_seharian }}" {{ $bhs_seharian === $admins->bhs_seharian ? 'selected' : '' }}>{{ $bhs_seharian }}</option>
+                                            @endforeach
+                                        @endif
                                         <option value="Indonesian">Indonesia</option>
                                         <option value="Malay">Malaysia</option>
                                         <option value="English">English</option>

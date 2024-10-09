@@ -13,13 +13,14 @@ class EditBiodataUser extends Component
 {
     use WithFileUploads;
 
-    public $users, $email, $nama, $tmpt_lahir, $tgl_lahir, $pekerjaan;
+    public $users, $admins, $email, $nama, $tmpt_lahir, $tgl_lahir, $pekerjaan;
     public $NIDN, $alamat, $jenis_kelamin, $instansi, $num_telp, $Pendidikan;
     public $thn_lulus, $kewarganegaraan, $bhs_seharian, $pasFoto, $ktp;
 
     public function mount()
     {
         $authUser = Auth::guard('user')->user();
+        $authAdmin = Auth::guard('admin')->user();
 
         if ($authUser && $authUser->no_Peserta) {
             $this->users = data_user::where('no_Peserta', $authUser->no_Peserta)->first();
@@ -44,15 +45,47 @@ class EditBiodataUser extends Component
             $this->users = null;
             $this->email = null;
         }
+
+        if ($authAdmin && $authAdmin->no_Peserta) {
+            $this->admins = data_user::where('no_Peserta', $authAdmin->no_Peserta)->first();
+
+            // Initialize properties with current user data
+            $this->nama = $this->admins->nama;
+            $this->tmpt_lahir = $this->admins->tmpt_lahir;
+            $this->tgl_lahir = $this->admins->tgl_lahir;
+            $this->pekerjaan = $this->admins->pekerjaan;
+            $this->NIDN = $this->admins->NIDN;
+            $this->alamat = $this->admins->alamat;
+            $this->jenis_kelamin = $this->admins->jenis_kelamin;
+            $this->instansi = $this->admins->instansi;
+            $this->num_telp = $this->admins->num_telp;
+            $this->Pendidikan = $this->admins->Pendidikan;
+            $this->thn_lulus = $this->admins->thn_lulus;
+            $this->kewarganegaraan = $this->admins->kewarganegaraan;
+            $this->bhs_seharian = $this->admins->bhs_seharian;
+//            $this->pasFoto = $this->admins->pasFoto;
+            $this->email = User::where('no_Peserta', $authAdmin->no_Peserta)->value('email');
+        } else {
+            $this->admins = null;
+            $this->email = null;
+        }
     }
 
     public function render()
     {
-        return view('livewire.editprofile', [
-            'title' => 'Edit Biodata',
-            'users' => $this->users,
-            'email' => $this->email
-        ]);
+        if (Auth::guard('user')) {
+            return view('livewire.editprofile', [
+                'title' => 'Edit Biodata',
+                'users' => $this->users,
+                'email' => $this->email
+            ]);
+        } elseif (Auth::guard('admin')) {
+            return view('livewire.editprofile', [
+                'title' => 'Edit Biodata',
+                'admins' => $this->admins,
+                'email' => $this->email
+            ]);
+        }
     }
 
     public function editProfile()

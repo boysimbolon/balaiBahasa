@@ -22,7 +22,11 @@
                     </div>
                 </div>
             </div>
-            <a href="{{ route('edit-profile-user') }}" type="button" class="waves-effect waves-light w-p100 rounded-xl btn btn-primary text-center">Edit Profile</a>
+            @if(Auth::guard('user')->check())
+                <a href="{{ route('edit-profile-user') }}" type="button" class="waves-effect waves-light w-p100 rounded-xl btn btn-primary text-center">Edit Profile</a>
+            @elseif(Auth::guard('admin')->check())
+                <a href="{{ route('edit-profile-admin') }}" type="button" class="waves-effect waves-light w-p100 rounded-xl btn btn-primary text-center">Edit Profile</a>
+            @endif
         </div>
         <div class="col-span-2">
             <div class="box">
