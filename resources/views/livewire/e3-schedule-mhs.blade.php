@@ -25,7 +25,7 @@
                             <tbody>
                             @if($pesan->isEmpty())
                                 <tr class="border-y">
-                                    <td class="p-2" colspan="5">Belum ada jadwal</td>
+                                    <td class="p-2 text-center" colspan="5">Belum ada jadwal</td>
                                 </tr>
                             @else
                                 @foreach($pesan->sortBy([['listujian.tipeujian.jenis_ujian', 'asc'], ['listujian.tanggal', 'asc'], ['listujian.jam', 'asc']]) as $psn => $data)
