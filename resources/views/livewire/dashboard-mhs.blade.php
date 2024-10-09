@@ -1,5 +1,5 @@
 @section('title', $title)
-
+{{--@dd($data)--}}
 <x-app-layout>
     <div class="grid grid-cols-1 xl:grid-cols-4 gap-4 items-end">
         <div class="col-span-1 xl:col-span-3">
@@ -11,7 +11,7 @@
                         </div>
                         <div class="col-span-1 lg:col-span-3">
                             <div class="text-3xl xl:text-4xl text-primary mb-15">
-                                Hello <b>{{ $data->nama }}</b>, Welcome Back!
+                                Hello <b>{{ $data->nama ? $data->nama : $additionalData->nama }}</b>, Welcome Back!
                             </div>
                             <p class="text-dark text-lg mb-0">
                                 Your course Overcoming the fear of public speaking was completed by 11 new users this week!

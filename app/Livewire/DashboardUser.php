@@ -24,6 +24,16 @@ class DashboardUser extends Component
 
         // Jika mahasiswa, ambil data atribut dan ujian
         $this->data = auth('user')->user();
+
+        // Ambil data tambahan dari model data_user
+        $userData = data_user::find($this->data->id);
+        if ($userData) {
+            // Gabungkan data user dengan data yang ada
+            $this->data->additional_data = $userData; // Misalnya, jika ingin menambahkan data ke objek yang sudah ada
+            // Atau jika ingin menyimpan data ke array baru
+//             $this->data = array_merge((array)$this->data, (array)$userData);
+        }
+
         $this->ambilDataUjian();
     }
 
@@ -50,10 +60,13 @@ class DashboardUser extends Component
 
     public function render()
     {
+        $additionalData = $this->data->additional_data;
+
         // Render view dashboard mahasiswa
         return view('livewire.dashboard-mhs', [
             'title' => 'Dashboard Umum',
             'hariSisa' => $this->hariSisa,
+            'additionalData' => $additionalData,
         ]);
     }
 }
