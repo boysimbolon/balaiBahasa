@@ -165,7 +165,7 @@ new class extends Component {
                                 <span>Ruangan</span>
                             </a>
                         </li>
-                        <li class="">
+                        <li class="{{ Route::currentRouteName() == 'ListUjian' || Route::currentRouteName() == 'CreateUjian' ? 'active' : '' }}">
                             <a href="{{ route('ListUjian') }}">
                                 <i data-feather="edit"></i>
                                 <span>Ujian</span>

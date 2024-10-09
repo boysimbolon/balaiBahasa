@@ -4,7 +4,7 @@
     <div class="flex items-center justify-between">
         <h4 class="page-title text-2xl font-medium mb-0">List Ruangan</h4>
         <a href="{{ route('CreateRuangan') }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-base px-4 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-            <i class="fa-solid fa-plus"></i> Create Ruangan
+            <i class="fa-solid fa-plus"></i> <span class="hidden md:inline">Create Ruangan</span>
         </a>
     </div>
 
@@ -54,8 +54,5 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div>
-
     </div>
 </x-app-layout>
