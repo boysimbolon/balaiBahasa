@@ -13,13 +13,14 @@ class EditBiodataUser extends Component
 {
     use WithFileUploads;
 
-    public $users, $email, $nama, $tmpt_lahir, $tgl_lahir, $pekerjaan;
+    public $users, $admins, $email, $nama, $tmpt_lahir, $tgl_lahir, $pekerjaan;
     public $NIDN, $alamat, $jenis_kelamin, $instansi, $num_telp, $Pendidikan;
     public $thn_lulus, $kewarganegaraan, $bhs_seharian, $pasFoto, $ktp;
 
     public function mount()
     {
         $authUser = Auth::guard('user')->user();
+        $authAdmin = Auth::guard('admin')->user();
 
         if ($authUser && $authUser->no_Peserta) {
             $this->users = data_user::where('no_Peserta', $authUser->no_Peserta)->first();
@@ -38,21 +39,53 @@ class EditBiodataUser extends Component
             $this->thn_lulus = $this->users->thn_lulus;
             $this->kewarganegaraan = $this->users->kewarganegaraan;
             $this->bhs_seharian = $this->users->bhs_seharian;
-            $this->pasFoto = $this->users->pasFoto;
+//            $this->pasFoto = $this->users->pasFoto;
             $this->email = User::where('no_Peserta', $authUser->no_Peserta)->value('email');
         } else {
             $this->users = null;
+            $this->email = null;
+        }
+
+        if ($authAdmin && $authAdmin->no_Peserta) {
+            $this->admins = data_user::where('no_Peserta', $authAdmin->no_Peserta)->first();
+
+            // Initialize properties with current user data
+            $this->nama = $this->admins->nama;
+            $this->tmpt_lahir = $this->admins->tmpt_lahir;
+            $this->tgl_lahir = $this->admins->tgl_lahir;
+            $this->pekerjaan = $this->admins->pekerjaan;
+            $this->NIDN = $this->admins->NIDN;
+            $this->alamat = $this->admins->alamat;
+            $this->jenis_kelamin = $this->admins->jenis_kelamin;
+            $this->instansi = $this->admins->instansi;
+            $this->num_telp = $this->admins->num_telp;
+            $this->Pendidikan = $this->admins->Pendidikan;
+            $this->thn_lulus = $this->admins->thn_lulus;
+            $this->kewarganegaraan = $this->admins->kewarganegaraan;
+            $this->bhs_seharian = $this->admins->bhs_seharian;
+//            $this->pasFoto = $this->admins->pasFoto;
+            $this->email = User::where('no_Peserta', $authAdmin->no_Peserta)->value('email');
+        } else {
+            $this->admins = null;
             $this->email = null;
         }
     }
 
     public function render()
     {
-        return view('livewire.editprofile', [
-            'title' => 'Edit Biodata',
-            'users' => $this->users,
-            'email' => $this->email
-        ]);
+        if (Auth::guard('user')) {
+            return view('livewire.editprofile', [
+                'title' => 'Edit Biodata',
+                'users' => $this->users,
+                'email' => $this->email
+            ]);
+        } elseif (Auth::guard('admin')) {
+            return view('livewire.editprofile', [
+                'title' => 'Edit Biodata',
+                'admins' => $this->admins,
+                'email' => $this->email
+            ]);
+        }
     }
 
     public function editProfile()
@@ -73,8 +106,8 @@ class EditBiodataUser extends Component
             'thn_lulus' => 'required|string',
             'kewarganegaraan' => 'required|string',
             'bhs_seharian' => 'required|string',
-            'pasFoto' => 'nullable|image|max:2048',
-            'ktp' => 'nullable|image',
+//            'pasFoto' => 'nullable|image|max:1024',
+//            'ktp' => 'nullable|image|max:1024',
         ]);
 
         // Get the existing user data from the database
@@ -93,10 +126,8 @@ class EditBiodataUser extends Component
         }
 
         // Handle file uploads for pasFoto and ktp
-        $this->handleFileUpload($data_user, 'pasFoto', $updates);
-        $this->handleFileUpload($data_user, 'ktp', $updates);
-
-        dd($updates);
+//        $this->handleFileUpload($data_user, 'pasFoto', $updates);
+//        $this->handleFileUpload($data_user, 'ktp', $updates);
 
         // Update only if there are changes
         if (!empty($updates)) {
@@ -164,17 +195,17 @@ class EditBiodataUser extends Component
         }
     }
 
-    private function handleFileUpload($data_user, $field, &$updates)
-    {
-        if ($this->{$field}) {
-            // Delete the old file if it exists
-            if ($data_user->{$field}) {
-                Storage::disk('public')->delete($data_user->{$field});
-            }
-
-            // Store the new file
-            $path = $this->{$field}->store($field, 'public');
-            $updates[$field] = $path;
-        }
-    }
+//    private function handleFileUpload($data_user, $field, &$updates)
+//    {
+//        if ($this->{$field}) {
+//            // Delete the old file if it exists
+//            if ($data_user->{$field}) {
+//                Storage::disk('public')->delete($data_user->{$field});
+//            }
+//
+//            // Store the new file
+//            $path = $this->{$field}->store($field, 'public');
+//            $updates[$field] = $path;
+//        }
+//    }
 }

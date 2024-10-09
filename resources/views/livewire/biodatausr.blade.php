@@ -5,7 +5,12 @@
         <div class="lg:order-1">
             <div class="card text-center">
                 <div class="card-body">
-                    <img src="{{ asset('storage/' . $users->pasFoto) }}" class="bg-light w-100 h-100 rounded-full mx-auto avatar-lg img-thumbnail object-cover" alt="profile-image">
+                    @if(Auth::guard('user')->check())
+                        <img src="{{ asset('storage/' . $users->pasFoto) }}" class="bg-light w-100 h-100 rounded-full mx-auto avatar-lg img-thumbnail object-cover" alt="profile-image">
+                    @elseif(Auth::guard('admin')->check())
+                        <img src="{{ asset('storage/' . $users->pasFoto) }}" class="bg-light w-100 h-100 rounded-full mx-auto avatar-lg img-thumbnail object-cover object-top" alt="profile-image">
+                    @endif
+
 
                     <h4 class="mb-0 mt-2 text-2xl font-medium">{{ $users->nama }}</h4>
                     <p class="text-muted text-base my-10">{{ $users->no_Peserta }}</p>
@@ -17,7 +22,11 @@
                     </div>
                 </div>
             </div>
-            <a href="{{ route('edit-profile-user') }}" type="button" class="waves-effect waves-light w-p100 rounded-xl btn btn-primary text-center">Edit Profile</a>
+            @if(Auth::guard('user')->check())
+                <a href="{{ route('edit-profile-user') }}" type="button" class="waves-effect waves-light w-p100 rounded-xl btn btn-primary text-center">Edit Profile</a>
+            @elseif(Auth::guard('admin')->check())
+                <a href="{{ route('edit-profile-admin') }}" type="button" class="waves-effect waves-light w-p100 rounded-xl btn btn-primary text-center">Edit Profile</a>
+            @endif
         </div>
         <div class="col-span-2">
             <div class="box">
