@@ -159,7 +159,7 @@ new class extends Component {
                             </a>
                         </li>
                         <li class="header fs-10 m-0 text-uppercase">Manajemen Ujian</li>
-                        <li class="">
+                        <li class="{{ Route::currentRouteName() == 'ListRuangan' || Route::currentRouteName() == 'CreateRuangan' ? 'active' : '' }}">
                             <a href="{{ route('ListRuangan') }}">
                                 <i data-feather="plus-circle"></i>
                                 <span>Ruangan</span>
