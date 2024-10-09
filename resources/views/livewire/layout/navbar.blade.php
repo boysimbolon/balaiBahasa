@@ -95,12 +95,12 @@ new class extends Component {
                             </li>
                         @elseif($auth == 'user')
                             <li>
-                                <a href="{{route('biodata-user')}}" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                <a href="{{ route('biodata-user') }}" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                     <i class="fa fa-user-circle-o me-3 text-xl" aria-hidden="true"> </i> My Profile
                                 </a>
                             </li>
                             <li>
-                                <a href="{{route('edit-profile-user')}}" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-nowrap">
+                                <a href="{{ route('change-password-user') }}" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-nowrap">
                                     <i class="fa fa-key me-3 text-xl" aria-hidden="true"> </i> Ganti Password
                                 </a>
                             </li>
