@@ -29,10 +29,10 @@
                             <thead>
                             <tr class="border-b">
                                 <th>#</th>
-                                <th>Nama</th>
-                                <th>Instansi</th>
-                                <th>Email</th>
-                                <th>Status</th>
+                                <th class="text-start">Nama</th>
+                                <th class="text-start">Instansi</th>
+                                <th class="text-start">Email</th>
+                                <th class="text-start">Status</th>
                             </tr>
                             </thead>
                             <tbody class="text-fade">
@@ -232,10 +232,10 @@
                             <thead>
                             <tr class="border-b">
                                 <th>#</th>
-                                <th>Tanggal</th>
-                                <th>Tipe Ujian</th>
+                                <th class="text-start">Tanggal</th>
+                                <th class="text-start">Tipe Ujian</th>
                                 <th>Jam</th>
-                                <th>Lokasi</th>
+                                <th class="text-start">Lokasi</th>
                                 <th>Kuota</th>
                                 <th>Jumlah</th>
                             </tr>
