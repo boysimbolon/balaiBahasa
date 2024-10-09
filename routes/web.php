@@ -16,6 +16,7 @@ use App\Livewire\EditBiodataUser;
 use App\Livewire\History;
 use App\Livewire\HistoryMhs;
 use App\Livewire\ListUjian;
+use App\Livewire\Pembayaran;
 use App\Livewire\RuanganUjian;
 use App\Livewire\TipeUjian;
 use App\Livewire\Toeflschedule;
@@ -27,7 +28,7 @@ Route::prefix('user')->middleware('user')->group(function () {
     Route::get('/biodata', Biodatausr::class)->name('biodata-user');
     Route::get('/biodata_edit', EditBiodataUser::class)->name('edit-profile-user');
     Route::get('/change_password', Changepassword::class)->name('change-password-user');
-    Route::get('/pembayaran', \App\Livewire\Pembayaran::class)->name('payment');
+    Route::get('/pembayaran', Pembayaran::class)->name('payment');
     Route::get('/e3_schedules',E3schedule::class)->name('e3-schedule-user');
 
     Route::get('/toefl_schedules',Toeflschedule::class)->name('toefl-schedule-user');

@@ -20,8 +20,8 @@ class Biodatausr extends Component
             $this->users = data_user::where('no_Peserta', $authUser->no_Peserta)->first();
             $this->email = user::where('no_Peserta',$authUser->no_Peserta)->select('email')->first();
         } elseif($authAdmin && $authAdmin->no_Peserta) {
-            $this->users = data_user::where('no_Peserta', $authUser->no_Peserta)->first();
-            $this->email = user::where('no_Peserta',$authUser->no_Peserta)->select('email')->first();
+            $this->users = data_user::where('no_Peserta', $authAdmin->no_Peserta)->first();
+            $this->email = user::where('no_Peserta',$authAdmin->no_Peserta)->select('email')->first();
         }
     }
 

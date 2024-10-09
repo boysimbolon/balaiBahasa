@@ -38,7 +38,7 @@ class EditBiodataUser extends Component
             $this->thn_lulus = $this->users->thn_lulus;
             $this->kewarganegaraan = $this->users->kewarganegaraan;
             $this->bhs_seharian = $this->users->bhs_seharian;
-            $this->pasFoto = $this->users->pasFoto;
+//            $this->pasFoto = $this->users->pasFoto;
             $this->email = User::where('no_Peserta', $authUser->no_Peserta)->value('email');
         } else {
             $this->users = null;
@@ -73,8 +73,8 @@ class EditBiodataUser extends Component
             'thn_lulus' => 'required|string',
             'kewarganegaraan' => 'required|string',
             'bhs_seharian' => 'required|string',
-            'pasFoto' => 'nullable|image|max:2048',
-            'ktp' => 'nullable|image',
+//            'pasFoto' => 'nullable|image|max:1024',
+//            'ktp' => 'nullable|image|max:1024',
         ]);
 
         // Get the existing user data from the database
@@ -93,10 +93,8 @@ class EditBiodataUser extends Component
         }
 
         // Handle file uploads for pasFoto and ktp
-        $this->handleFileUpload($data_user, 'pasFoto', $updates);
-        $this->handleFileUpload($data_user, 'ktp', $updates);
-
-        dd($updates);
+//        $this->handleFileUpload($data_user, 'pasFoto', $updates);
+//        $this->handleFileUpload($data_user, 'ktp', $updates);
 
         // Update only if there are changes
         if (!empty($updates)) {
@@ -164,17 +162,17 @@ class EditBiodataUser extends Component
         }
     }
 
-    private function handleFileUpload($data_user, $field, &$updates)
-    {
-        if ($this->{$field}) {
-            // Delete the old file if it exists
-            if ($data_user->{$field}) {
-                Storage::disk('public')->delete($data_user->{$field});
-            }
-
-            // Store the new file
-            $path = $this->{$field}->store($field, 'public');
-            $updates[$field] = $path;
-        }
-    }
+//    private function handleFileUpload($data_user, $field, &$updates)
+//    {
+//        if ($this->{$field}) {
+//            // Delete the old file if it exists
+//            if ($data_user->{$field}) {
+//                Storage::disk('public')->delete($data_user->{$field});
+//            }
+//
+//            // Store the new file
+//            $path = $this->{$field}->store($field, 'public');
+//            $updates[$field] = $path;
+//        }
+//    }
 }

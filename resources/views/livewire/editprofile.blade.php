@@ -26,7 +26,7 @@
                                 <!-- Tempat Lahir -->
                                 <div class="w-full mb-2">
                                     <label for="tmpt_lahir" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Tempat Lahir</label>
-                                    <input wire:model="tmpt_lahir" type="text" id="tmpt_lahir" class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Tempat Lahir" type="text" name="tmpt_lahir" required autofocus autocomplete="tmpt_lahir">
+                                    <input wire:model="tmpt_lahir" type="text" id="tmpt_lahir" class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Tempat Lahir" name="tmpt_lahir" required autofocus autocomplete="tmpt_lahir">
                                     <x-input-error :messages="$errors->get('tmpt_lahir')" class="mt-2"/>
                                 </div>
                                 <!-- Tanggal Lahir -->
@@ -66,21 +66,25 @@
                             </div>
 
                             <!-- Jenis Kelamin -->
-                            <label for="jenis_kelamin" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Jenis Kelamin</label>
-                            <div class="flex gap-5 mb-2">
-                                <!-- Laki-Laki -->
-                                <div class="mb-2">
-                                    <input type="radio" wire:model="jenis_kelamin" name="jenis_kelamin" id="laki_laki" class="with-gap radio-col-primary" value="Laki-Laki" required autofocus>
-                                    <label for="laki_laki">Laki-Laki</label>
-                                </div>
+                            <div>
+                                <div>
+                                    <label for="jenis_kelamin" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Jenis Kelamin</label>
+                                    <div class="flex gap-5 mb-2">
+                                        <!-- Laki-Laki -->
+                                        <div class="mb-2">
+                                            <input type="radio" wire:model="jenis_kelamin" name="jenis_kelamin" id="laki_laki" class="with-gap radio-col-primary" value="Laki-Laki" required>
+                                            <label for="laki_laki">Laki-Laki</label>
+                                        </div>
 
-                                <!-- Perempuan -->
-                                <div class="mb-2">
-                                    <input type="radio" wire:model="jenis_kelamin" name="jenis_kelamin" id="perempuan" class="with-gap radio-col-primary" value="Perempuan" required autofocus>
-                                    <label for="perempuan">Perempuan</label>
+                                        <!-- Perempuan -->
+                                        <div class="mb-2">
+                                            <input type="radio" wire:model="jenis_kelamin" name="jenis_kelamin" id="perempuan" class="with-gap radio-col-primary" value="Perempuan" required>
+                                            <label for="perempuan">Perempuan</label>
+                                        </div>
+                                    </div>
+                                    <x-input-error :messages="$errors->get('jenis_kelamin')" class="mt-2"/>
                                 </div>
                             </div>
-                            <x-input-error :messages="$errors->get('jenis_kelamin')" class="mt-2"/>
 
                             <!-- Instansi -->
                             <div class="mb-2">
@@ -158,23 +162,25 @@
                                 </div>
                             </div>
 
-                            <div class="flex flex-col md:flex-row gap-5 justify-between mb-2">
-                                <!-- Pas Foto -->
-                                <div class="w-full mb-2">
-                                    <label for="pasFoto" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Pas Foto</label>
-                                    <input wire:model.defer="pasFoto" id="pasFoto" class="block w-full text-base text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" type="file" name="pasFoto" autofocus accept="image/jpeg, image/png, image/jpg">
-                                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300">Ukuran file maksimal: 1 MB. Format yang diperbolehkan: JPG, JPEG, PNG.</p>
-                                    <x-input-error :messages="$errors->get('pasFoto')" class="mt-2"/>
-                                </div>
+{{--                            <div class="flex flex-col md:flex-row gap-5 justify-between mb-2">--}}
+{{--                                <!-- Pas Foto -->--}}
+{{--                                <div class="w-full mb-2">--}}
+{{--                                    <label for="pasFoto" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Pas Foto</label>--}}
+{{--                                    <input wire:model.defer="pasFoto" id="pasFoto" class="block w-full text-base text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" type="file" name="pasFoto" autofocus accept="image/jpeg, image/png, image/jpg">--}}
+{{--                                    <input wire:model="pasFoto" id="pasFoto" type="file" name="pasFoto" accept="image/jpeg, image/png, image/jpg">--}}
+{{--                                    <div wire:loading wire:target="pasFoto">Uploading...</div>--}}
+{{--                                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300">Ukuran file maksimal: 1 MB. Format yang diperbolehkan: JPG, JPEG, PNG.</p>--}}
+{{--                                    <x-input-error :messages="$errors->get('pasFoto')" class="mt-2"/>--}}
+{{--                                </div>--}}
 
-                                <!-- Foto KTP -->
-                                <div class="w-full mb-2">
-                                    <label for="ktp" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Foto KTP</label>
-                                    <input wire:model.defer="ktp" id="ktp" class="block w-full text-base text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" type="file" name="ktp" autofocus accept="image/jpeg, image/png, image/jpg">
-                                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300">Ukuran file maksimal: 1 MB. Format yang diperbolehkan: JPG, JPEG, PNG.</p>
-                                    <x-input-error :messages="$errors->get('ktp')" class="mt-2"/>
-                                </div>
-                            </div>
+{{--                                <!-- Foto KTP -->--}}
+{{--                                <div class="w-full mb-2">--}}
+{{--                                    <label for="ktp" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Foto KTP</label>--}}
+{{--                                    <input wire:model="ktp" id="ktp" class="block w-full text-base text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" type="file" name="ktp" autofocus accept="image/jpeg, image/png, image/jpg">--}}
+{{--                                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300">Ukuran file maksimal: 1 MB. Format yang diperbolehkan: JPG, JPEG, PNG.</p>--}}
+{{--                                    <x-input-error :messages="$errors->get('ktp')" class="mt-2"/>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
                             <!-- Save Button -->
                             <div class="flex justify-center">

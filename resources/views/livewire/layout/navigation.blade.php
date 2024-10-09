@@ -171,18 +171,12 @@ new class extends Component {
                                 <span>Ujian</span>
                             </a>
                         </li>
-                        <li class="">
-                            <a href="{{ route('ListTipeUjian') }}">
-                                <i data-feather="tag"></i>
-                                <span>Tipe Ujian</span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="#">
-                                <i data-feather="clock"></i>
-                                <span>History</span>
-                            </a>
-                        </li>
+{{--                        <li class="">--}}
+{{--                            <a href="#">--}}
+{{--                                <i data-feather="clock"></i>--}}
+{{--                                <span>History</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
                     </ul>
                 </div>
             </div>

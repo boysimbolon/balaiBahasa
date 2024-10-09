@@ -5,7 +5,12 @@
         <div class="lg:order-1">
             <div class="card text-center">
                 <div class="card-body">
-                    <img src="{{ asset('storage/' . $users->pasFoto) }}" class="bg-light w-100 h-100 rounded-full mx-auto avatar-lg img-thumbnail object-cover" alt="profile-image">
+                    @if(Auth::guard('user')->check())
+                        <img src="{{ asset('storage/' . $users->pasFoto) }}" class="bg-light w-100 h-100 rounded-full mx-auto avatar-lg img-thumbnail object-cover" alt="profile-image">
+                    @elseif(Auth::guard('admin')->check())
+                        <img src="{{ asset('storage/' . $users->pasFoto) }}" class="bg-light w-100 h-100 rounded-full mx-auto avatar-lg img-thumbnail object-cover object-top" alt="profile-image">
+                    @endif
+
 
                     <h4 class="mb-0 mt-2 text-2xl font-medium">{{ $users->nama }}</h4>
                     <p class="text-muted text-base my-10">{{ $users->no_Peserta }}</p>
