@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 
 use App\Livewire\Biodatamhs;
 use App\Livewire\Biodatausr;
+use App\Livewire\Changepassword;
 use App\Livewire\CreateRuangan;
 use App\Livewire\CreateTipeUjian;
 use App\Livewire\CreateUjian;
@@ -25,9 +26,7 @@ Route::prefix('user')->middleware('user')->group(function () {
     Route::get('/', DashboardUser::class)->name('dashboard-user');
     Route::get('/biodata', Biodatausr::class)->name('biodata-user');
     Route::get('/biodata_edit', EditBiodataUser::class)->name('edit-profile-user');
-    Route::get('/change_password', function () {
-        return view('livewire.changepassword');
-    })->name('change-password-user');
+    Route::get('/change_password', Changepassword::class)->name('change-password-user');
     Route::get('/pembayaran', \App\Livewire\Pembayaran::class)->name('payment');
     Route::get('/e3_schedules',E3schedule::class)->name('e3-schedule-user');
 
