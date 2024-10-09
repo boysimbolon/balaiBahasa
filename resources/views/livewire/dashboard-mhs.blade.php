@@ -46,7 +46,8 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            @foreach($ujian as $index => $data)
+            @foreach($ujian as $index => $datas)
+                @if(isset($datas->listujian->environtmentUjian))
                 <div class="box bg-secondary-light pull-up border border-white" style="background-image: url('{{ asset('images/svg-icon/color-svg/st-1.svg') }}'); background-position: right bottom; background-repeat: no-repeat;">
                     <div class="box-body">
                         <div class="flex-grow-1">
@@ -63,9 +64,12 @@
                                     <span class="badge badge-primary"><i class="fa fa-clock-o"></i></span>
                                 </div>
                             </div>
-                            <a href="https://moodle.unai.edu/course/view.php?id={{ $data->listujian->environtmentUjian->no_modul }}" class="mt-25 mb-5 text-2xl text-blue-700">
-                                {{ $data->listujian->tipeUjian->jenis_ujian }}
-                            </a>
+
+                            {{-- Cek apakah $datas->listujian dan environtmentUjian tidak null --}}
+                                <a href="https://moodle.unai.edu/course/view.php?id={{ $datas->listujian->environtmentUjian->no_modul }}" class="mt-25 mb-5 text-2xl text-blue-700">
+                                    {{ $datas->listujian->tipeUjian->jenis_ujian }}
+                                </a>
+
                             @if($hariSisa[$index] > 0)
                                 <p class="text-fade mb-0 fs-12">{{ $hariSisa[$index] }} Days Left</p>
                             @elseif($hariSisa[$index] == 0)
@@ -73,10 +77,13 @@
                             @else
                                 <p class="text-fade mb-0 fs-12">Expired</p>
                             @endif
-                            <button onclick="salinText('{{ $data->listujian->environtmentUjian->enroll_key }}')" class="btn btn-primary mt-10">Copy Enroll Key</button>
+
+                            {{-- Cek apakah enroll_key ada --}}
+                                <button onclick="salinText('{{ $datas->listujian->environtmentUjian->enroll_key }}')" class="btn btn-primary mt-10">Copy Enroll Key</button>
                         </div>
                     </div>
                 </div>
+                @endif
             @endforeach
         </div>
     </div>

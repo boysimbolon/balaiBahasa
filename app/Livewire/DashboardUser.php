@@ -52,7 +52,7 @@ class DashboardUser extends Component
     {
         // Render view dashboard mahasiswa
         return view('livewire.dashboard-mhs', [
-            'title' => 'Dashboard Umum',
+            'title' => 'Dashboard Mahasiswa',
             'hariSisa' => $this->hariSisa,
         ]);
     }

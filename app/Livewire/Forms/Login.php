@@ -76,12 +76,12 @@ class Login extends Component
     protected function authenticateUser(): bool
     {
         $user = User::where('no_Peserta', trim($this->no_Peserta))->first();
-        if ($user && Hash::check($this->pin, $user->pin) && $user->email_verified_at !== null && $user->is_admin == '0') {
+        if ($user && Hash::check($this->pin, $user->pin) && $user->email_verified_at != null && $user->is_admin == '0') {
             Auth::guard('mhs')->logout();
             Auth::guard('admin')->logout();
             Auth::guard('user')->login($user, $this->remember);
             return true;
-        } elseif ($user && Hash::check($this->pin, $user->pin) && $user->email_verified_at !== null && $user->is_admin == '1') {
+        } elseif ($user && Hash::check($this->pin, $user->pin) && $user->email_verified_at != null && $user->is_admin == '1') {
             Auth::guard('mhs')->logout();
             Auth::guard('user')->logout();
             Auth::guard('admin')->login($user, $this->remember);

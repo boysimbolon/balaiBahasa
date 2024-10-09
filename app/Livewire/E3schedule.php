@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Http\Controllers\ApiController;
 use App\Models\list_ujian;
 use App\Models\pesan_ujian;
 use Livewire\Component;
@@ -76,24 +77,41 @@ class E3schedule extends Component
     {
         // Mengecek jumlah peserta saat ini untuk ujian tertentu
         $jumlahPeserta = pesan_ujian::where('id_ujian', '=', $id["id"])->where('status', 1)->count();
-
         if ($jumlahPeserta < $kapasitas) {
             if(auth('user')->check())
-                {pesan_ujian::create([
-                    'id_ujian' => $id["id"],
-                    'id_user' => auth('user')->user()->id ,
-                    'nim' => null, // jika user memiliki nim
-                    'id_ruangan' => $id["id_ruangan"],
-                    'status' => 0 // Status awal saat pesan dibuat
-                ]);}
+                {
+//                    pesan_ujian::create([
+//                    'id_ujian' => $id["id"],
+//                    'id_user' => auth('user')->user()->id ,
+//                    'nim' => null, // jika user memiliki nim
+//                    'id_ruangan' => $id["id_ruangan"],
+//                    'status' => 0 // Status awal saat pesan dibuat
+//                ]);
+//                    $data=collect($id)->map(function($item){
+//                        return [
+//                            (array) $item,
+//                            auth('user')->user()
+//                        ];
+//                    });
+                    $api = new ApiController();
+                    $api->create($id["id_jenis_ujian"],'user');
+                }
             elseif(session('guard') == 'mhs'){
-                pesan_ujian::create([
-                    'id_ujian' => $id["id"],
-                    'id_user' => null ,
-                    'nim' => trim(session('atribut')->nim) ?? null, // jika user memiliki nim
-                    'id_ruangan' => $id["id_ruangan"],
-                    'status' => 0 // Status awal saat pesan dibuat
-                ]);
+//                pesan_ujian::create([
+//                    'id_ujian' => $id["id"],
+//                    'id_user' => null ,
+//                    'nim' => trim(session('atribut')->nim) ?? null, // jika user memiliki nim
+//                    'id_ruangan' => $id["id_ruangan"],
+//                    'status' => 0 // Status awal saat pesan dibuat
+//                ]);
+//                $data=collect($id)->map(function($item){
+//                    return [
+//                        (array) $item,
+//                        session('atribut')
+//                    ];
+//                });
+                $api = new ApiController();
+                $api->create($id["id_jenis_ujian"],'mhs');
             }
             session()->flash('message', 'Pesan Ujian Berhasil');
             if(auth('user')->check()){

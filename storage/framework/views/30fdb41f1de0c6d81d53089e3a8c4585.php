@@ -55,7 +55,8 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $ujian; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $ujian; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $datas): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <!--[if BLOCK]><![endif]--><?php if(isset($datas->listujian->environtmentUjian)): ?>
                 <div class="box bg-secondary-light pull-up border border-white" style="background-image: url('<?php echo e(asset('images/svg-icon/color-svg/st-1.svg')); ?>'); background-position: right bottom; background-repeat: no-repeat;">
                     <div class="box-body">
                         <div class="flex-grow-1">
@@ -72,10 +73,13 @@
                                     <span class="badge badge-primary"><i class="fa fa-clock-o"></i></span>
                                 </div>
                             </div>
-                            <a href="https://moodle.unai.edu/course/view.php?id=<?php echo e($data->listujian->environtmentUjian->no_modul); ?>" class="mt-25 mb-5 text-2xl text-blue-700">
-                                <?php echo e($data->listujian->tipeUjian->jenis_ujian); ?>
 
-                            </a>
+                            
+                                <a href="https://moodle.unai.edu/course/view.php?id=<?php echo e($datas->listujian->environtmentUjian->no_modul); ?>" class="mt-25 mb-5 text-2xl text-blue-700">
+                                    <?php echo e($datas->listujian->tipeUjian->jenis_ujian); ?>
+
+                                </a>
+
                             <!--[if BLOCK]><![endif]--><?php if($hariSisa[$index] > 0): ?>
                                 <p class="text-fade mb-0 fs-12"><?php echo e($hariSisa[$index]); ?> Days Left</p>
                             <?php elseif($hariSisa[$index] == 0): ?>
@@ -83,10 +87,13 @@
                             <?php else: ?>
                                 <p class="text-fade mb-0 fs-12">Expired</p>
                             <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
-                            <button onclick="salinText('<?php echo e($data->listujian->environtmentUjian->enroll_key); ?>')" class="btn btn-primary mt-10">Copy Enroll Key</button>
+
+                            
+                                <button onclick="salinText('<?php echo e($datas->listujian->environtmentUjian->enroll_key); ?>')" class="btn btn-primary mt-10">Copy Enroll Key</button>
                         </div>
                     </div>
                 </div>
+                <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><!--[if ENDBLOCK]><![endif]-->
         </div>
     </div>

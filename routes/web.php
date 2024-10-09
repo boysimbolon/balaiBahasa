@@ -15,6 +15,7 @@ use App\Livewire\EditBiodataUser;
 use App\Livewire\History;
 use App\Livewire\HistoryMhs;
 use App\Livewire\ListUjian;
+use App\Livewire\Pembayaran;
 use App\Livewire\RuanganUjian;
 use App\Livewire\TipeUjian;
 use App\Livewire\Toeflschedule;
@@ -28,11 +29,9 @@ Route::prefix('user')->middleware('user')->group(function () {
     Route::get('/change_password', function () {
         return view('livewire.changepassword');
     })->name('change-password-user');
-    Route::get('/pembayaran', \App\Livewire\Pembayaran::class)->name('payment');
+    Route::get('/pembayaran', Pembayaran::class)->name('payment');
     Route::get('/e3_schedules',E3schedule::class)->name('e3-schedule-user');
-
     Route::get('/toefl_schedules',Toeflschedule::class)->name('toefl-schedule-user');
-
     Route::get('/history-user', History::class)->name('history-user');
 });
 
@@ -42,7 +41,7 @@ Route::prefix('mhs')->middleware('mhs')->group(function () {
     Route::get('/biodata', Biodatamhs::class)->name('biodata-mhs');
     Route::get('/history-mhs', HistoryMhs::class)->name('history-mhs');
     Route::get('/e3_schedules', E3schedule::class)->name('e3-schedule-mhs');
-    Route::get('/pembayaran', \App\Livewire\Pembayaran::class)->name('payment-mhs');
+    Route::get('/pembayaran', Pembayaran::class)->name('payment-mhs');
     Route::get('/toefl_schedules',Toeflschedule::class)->name('toefl-schedule-mhs');
 });
 
@@ -51,10 +50,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/', DashboardAdmin::class)->name('dashboard-admin');
     Route::get('/CreateRuangan', CreateRuangan::class)->name('CreateRuangan');
     Route::get('/Ruangan', RuanganUjian::class)->name('ListRuangan');
-
     Route::get('/CreateUjian', CreateUjian::class)->name('CreateUjian');
     Route::get('/Ujian', ListUjian::class)->name('ListUjian');
-
     Route::get('/Createtipe_ujian',CreateTipeUjian::class)->name('CreateTipeUjian');
     Route::get('/tipe_ujian',TipeUjian::class)->name('ListTipeUjian');
     Route::get('/biodata', Biodatausr::class)->name('biodataadmin');

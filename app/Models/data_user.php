@@ -14,6 +14,7 @@ class data_user extends Model
     protected $fillable = [
         'nama',
         'nik' ,
+        'va',
         'tmpt_lahir' ,
         'tgl_lahir' ,
         'pekerjaan' ,

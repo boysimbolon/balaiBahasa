@@ -41,6 +41,18 @@ return [
             'journal_mode' => null,
             'synchronous' => null,
         ],
+        'pmb' => [
+            'driver' => 'sqlsrv',
+            'url' => env('DATABASE_URL'),
+            'host' => env('DB_HOST_baa', 'EZRA'),
+            'port' => env('DB_PORT_baa', '1433'),
+            'database' => env('DB_DATABASE_pmb', 'PMB_DB'),
+            'username' => env('DB_USERNAME_baa', 'new_db_2018'),
+            'password' => env('DB_PASSWORD_baa', 'G4t3W4yUNA!'),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+        ],
 
         'mysql' => [
             'driver' => 'mysql',
