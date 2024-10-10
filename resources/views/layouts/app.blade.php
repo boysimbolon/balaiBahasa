@@ -54,6 +54,8 @@
     <script src="{{ asset('assets/vendor_components/datatable/datatables.js') }}"></script>
     <script src="{{ asset('assets/vendor_components/apexcharts-bundle/dist/apexcharts.js') }}"></script>
     <script src="{{ asset('assets/vendor_components/fullcalendar-6/dist/index.global.js') }}"></script>
+    <script src="{{ asset('assets/vendor_components/sweetalert/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor_components/sweetalert/jquery.sweet-alert.custom.js') }}"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="{{ asset('js/tailwind.min.js') }}"></script>
     <script src="{{ asset('js/demo.js') }}"></script>

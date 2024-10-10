@@ -1,4 +1,5 @@
 @section('title', $title)
+{{--@dd($ruangan)--}}
 <x-app-layout>
     <!-- Content Header -->
     <div class="flex items-center justify-between">
@@ -18,37 +19,26 @@
                         <tr>
                             <th>Nama Ruangan</th>
                             <th>Lokasi</th>
-                            <th>Kapasitas</th>
+                            <th class="text-center">Kapasitas</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>Nama Ruangan 1</td>
-                            <td>Lokasi 1</td>
-                            <td>Kapasitas 1</td>
-                            <td class="flex justify-center">
-                                <button type="submit" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-base px-4 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                                    <i class="fa-solid fa-edit"></i>
-                                </button>
-                                <button type="submit" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-base px-4 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Nama Ruangan 2</td>
-                            <td>Lokasi 2</td>
-                            <td>Kapasitas 2</td>
-                            <td class="flex justify-center">
-                                <button type="submit" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-base px-4 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                                    <i class="fa-solid fa-edit"></i>
-                                </button>
-                                <button type="submit" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-base px-4 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-                            </td>
-                        </tr>
+                        @foreach($ruangan_ujians as $ruangan)
+                            <tr>
+                                <td>{{ $ruangan->nama_ruangan }}</td>
+                                <td>{{ $ruangan->alamat }}</td>
+                                <td class="text-center">{{ $ruangan->kapasitas }}</td>
+                                <td class="flex justify-center">
+                                    <button type="submit" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-base px-4 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                                        <i class="fa-solid fa-edit"></i>
+                                    </button>
+                                    <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-base px-4 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 model_img" wire:click="deleteRuangan({{ $ruangan->id }})" id="sa-warning">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

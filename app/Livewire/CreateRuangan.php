@@ -34,6 +34,6 @@ class CreateRuangan extends Component
 
         session()->flash('success', 'Ruangan berhasil ditambahkan.');
 
-        return redirect()->route('dashboard-admin'); // Menggunakan route jika ada
+        return redirect()->route('ListRuangan'); // Menggunakan route jika ada
     }
 }
