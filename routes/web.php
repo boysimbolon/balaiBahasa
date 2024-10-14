@@ -13,6 +13,7 @@ use App\Livewire\DashboardMhs;
 use App\Livewire\DashboardUser;
 use App\Livewire\E3schedule;
 use App\Livewire\EditBiodataUser;
+use App\Livewire\EditRuanganUjian;
 use App\Livewire\History;
 use App\Livewire\HistoryMhs;
 use App\Livewire\ListUjian;
@@ -49,6 +50,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/', DashboardAdmin::class)->name('dashboard-admin');
     Route::get('/CreateRuangan', CreateRuangan::class)->name('CreateRuangan');
     Route::get('/Ruangan', RuanganUjian::class)->name('ListRuangan');
+    Route::get('/EditRuangan', EditRuanganUjian::class)->name('edit-ruang-ujian');
     Route::get('/CreateUjian', CreateUjian::class)->name('CreateUjian');
     Route::get('/Ujian', ListUjian::class)->name('ListUjian');
     Route::get('/Createtipe_ujian',CreateTipeUjian::class)->name('CreateTipeUjian');

@@ -8,6 +8,7 @@ use Livewire\Component;
 class RuanganUjian extends Component
 {
     public $ruangan_ujians;
+//    protected $listeners = ['deleteRuangan'];
 
     public function mount(){
         $this->ruangan_ujians = list_ruangan::all();
@@ -21,16 +22,12 @@ class RuanganUjian extends Component
         ]);
     }
 
-//    public function confirmDelete($id)
-//    {
-//        $this->emit('deleteRuangan', $id);
-//    }
-
-    public function deleteRuangan($id) {
-        list_ruangan::find($id)->delete();
-        $this->ruangan_ujians = list_ruangan::all();
-//        $this->emit('ruanganDeleted');
-
+    public function deleteRuangan($id)
+    {
+        // Logika untuk menghapus ruangan
+        list_ruangan::destroy($id);
+        // Tambahkan pesan sukses jika perlu
+        session()->flash('message', 'Ruangan berhasil dihapus.');
         return redirect()->route('ListRuangan');
     }
 }
