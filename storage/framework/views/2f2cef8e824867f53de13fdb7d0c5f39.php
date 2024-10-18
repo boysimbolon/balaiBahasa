@@ -35,7 +35,7 @@
                             <tbody>
                             <!--[if BLOCK]><![endif]--><?php if($pesan->isEmpty()): ?>
                                 <tr class="border-y">
-                                    <td class="p-2" colspan="5">Belum ada jadwal</td>
+                                    <td class="p-2 text-center" colspan="5">Belum ada jadwal</td>
                                 </tr>
                             <?php else: ?>
                                 <!--[if BLOCK]><![endif]--><?php $__currentLoopData = $pesan->sortBy([['listujian.tipeujian.jenis_ujian', 'asc'], ['listujian.tanggal', 'asc'], ['listujian.jam', 'asc']]); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $psn => $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

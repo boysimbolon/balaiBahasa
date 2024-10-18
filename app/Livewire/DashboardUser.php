@@ -64,7 +64,7 @@ class DashboardUser extends Component
 
         // Render view dashboard mahasiswa
         return view('livewire.dashboard-mhs', [
-            'title' => 'Dashboard Mahasiswa',
+            'title' => 'Dashboard',
             'hariSisa' => $this->hariSisa,
             'additionalData' => $additionalData,
         ]);

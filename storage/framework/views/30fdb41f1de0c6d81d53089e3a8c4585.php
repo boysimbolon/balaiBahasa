@@ -20,7 +20,7 @@
                         </div>
                         <div class="col-span-1 lg:col-span-3">
                             <div class="text-3xl xl:text-4xl text-primary mb-15">
-                                Hello <b><?php echo e($data->nama); ?></b>, Welcome Back!
+                                Hello <b><?php echo e($data->nama ? $data->nama : $additionalData->nama); ?></b>, Welcome Back!
                             </div>
                             <p class="text-dark text-lg mb-0">
                                 Your course Overcoming the fear of public speaking was completed by 11 new users this week!
@@ -74,7 +74,7 @@
                                 </div>
                             </div>
 
-                            
+
                                 <a href="https://moodle.unai.edu/course/view.php?id=<?php echo e($datas->listujian->environtmentUjian->no_modul); ?>" class="mt-25 mb-5 text-2xl text-blue-700">
                                     <?php echo e($datas->listujian->tipeUjian->jenis_ujian); ?>
 
@@ -88,7 +88,7 @@
                                 <p class="text-fade mb-0 fs-12">Expired</p>
                             <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
 
-                            
+
                                 <button onclick="salinText('<?php echo e($datas->listujian->environtmentUjian->enroll_key); ?>')" class="btn btn-primary mt-10">Copy Enroll Key</button>
                         </div>
                     </div>

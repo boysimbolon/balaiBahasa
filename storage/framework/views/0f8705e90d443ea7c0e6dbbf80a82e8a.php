@@ -10,7 +10,7 @@
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
     <!--[if BLOCK]><![endif]--><?php if(session()->has('message')): ?>
-        <div class="w-full bg-green-600 p-2 rounded text-white">
+        <div class="w-full bg-green-600 p-2 rounded text-white" >
             <?php echo e(session('message')); ?>
 
         </div>
@@ -21,8 +21,13 @@
             <div class="box">
                 <div class="box-body">
                     <p class="mb-4">Untuk melanjutkan proses pendaftaran ujian, Anda diwajibkan untuk melakukan pembayaran Ujian. Pembayaran dapat dilakukan melalui BNI Virtual Account.</p>
-                    <div class="flex justify-between items-center mt-3">
-                        <h2 class="box-title text-xl m-0 font-bold">Nomor Virtual Account : xxxxxxxxxxxxxxxx</h2>
+                    <div class="flex justify-between items-center mt-3 mx-5">
+                        <h2 class="box-title text-xl m-0 font-bold">Nomor Virtual Account : <?php echo e($va); ?></h2>
+                        <div class="flex rounded border-gray-100 border-2 p-1 cursor-pointer"  onclick="copyToClipboard(<?php echo e($va); ?>)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"><path fill="currentColor" d="M9 18q-.825 0-1.412-.587T7 16V4q0-.825.588-1.412T9 2h9q.825 0 1.413.588T20 4v12q0 .825-.587 1.413T18 18zm-4 4q-.825 0-1.412-.587T3 20V6h2v14h11v2z"/></svg>
+                            <span class="items-center flex" id="salin">Salin</span>
+                            <span class="items-center flex hidden text-green-600" id="message">Tersalin</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -71,7 +76,29 @@
             </div>
         </div>
     </div>
+        <script>
+            function copyToClipboard(text) {
+                // Gunakan navigator.clipboard untuk menyalin teks
+                navigator.clipboard.writeText(text).then(function() {
+                    console.log('Teks berhasil disalin:', text);
 
+                    // Tampilkan pesan sukses
+                    var successMessage = document.getElementById("message");
+                    var salin = document.getElementById("salin");
+                    successMessage.style.display = "block";
+                    salin.style.display = "none";
+
+                    // Sembunyikan pesan setelah 2 detik
+                    setTimeout(function() {
+                        successMessage.style.display = "none";
+                        salin.style.display = "block";
+                    }, 2000);
+                }).catch(function(err) {
+                    console.error('Gagal menyalin teks:', err);
+                });
+            }
+
+        </script>
 
 
 

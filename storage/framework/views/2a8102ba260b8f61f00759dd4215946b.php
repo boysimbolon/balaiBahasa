@@ -23,15 +23,15 @@ use Illuminate\Support\Facades\Auth;
 
     <div class="navbar-custom-menu r-side inline-flex items-center float-right">
         <ul class="nav navbar-nav inline-flex items-center">
-            <li class="dropdown notifications-menu inline-flex rounded-md">
-                <label class="switch">
-                    <a class="waves-effect waves-light btn-primary-light svg-bt-icon">
-                        <input type="checkbox" data-mainsidebarskin="toggle" id="toggle_left_sidebar_skin">
-                        <span class="switch-on"><i data-feather="moon"></i></span>
-                        <span class="switch-off"><i data-feather="sun"></i></span>
-                    </a>
-                </label>
-            </li>
+
+
+
+
+
+
+
+
+
             <!-- User Account-->
             <li class="btn-group d-xl-inline-flex d-none">
                 <a href="#" id="dropdownDividerButton" data-dropdown-toggle="dropdownDivider-2" class="justify-center btn-primary-light hover:text-white svg-bt-icon hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm !px-px !py-px text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
@@ -47,12 +47,12 @@ use Illuminate\Support\Facades\Auth;
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 drop-shadow-lg" aria-labelledby="dropdownDividerButton">
                         <!--[if BLOCK]><![endif]--><?php if($auth == "mhs"): ?>
                             <li>
-                                <a href="<?php echo e(route('biodata-mhs')); ?>" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                <a href="<?php echo e(route('biodata-mhs')); ?>" wire:navigate class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                     <i class="fa fa-user-circle-o me-3 text-xl" aria-hidden="true"> </i> My Profile
                                 </a>
                             </li>
                             <li>
-                                <a class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer" wire:click="logout">
+                                <a class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer" wire:click="logout" wire:navigate>
                                     <i class="fa-solid fa-right-from-bracket me-3 text-xl"> </i> Logout
                                 </a>
                             </li>
@@ -63,7 +63,7 @@ use Illuminate\Support\Facades\Auth;
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo e(route('edit-profile-user')); ?>" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-nowrap">
+                                <a href="<?php echo e(route('change-password-user')); ?>" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-nowrap">
                                     <i class="fa fa-key me-3 text-xl" aria-hidden="true"> </i> Ganti Password
                                 </a>
                             </li>

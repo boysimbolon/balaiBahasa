@@ -58,13 +58,13 @@ class Login extends Component
         if (Auth::guard('mhs')->check()) {
             // Redirect ke dashboard mahasiswa dengan nim
             session([ 'atribut' => auth('mhs')->user(),'guard' => 'mhs',]);
-            return redirect()->route('dashboard-mhs');
+            return $this->redirect(route('dashboard-mhs'),navigate:true);
         } elseif (Auth::guard('user')->check()) {
             // Redirect ke dashboard user dengan no_Peserta
-            return redirect()->route('dashboard-user');
+            return $this->redirect(route('dashboard-user'),navigate:true);
         }elseif(Auth::guard('admin')->check()){
             // Redirect ke dashboard admin dengan no_Peserta
-            return redirect()->route('dashboard-admin');
+            return $this->redirect(route('dashboard-admin'),navigate: true);
         }
     }
 

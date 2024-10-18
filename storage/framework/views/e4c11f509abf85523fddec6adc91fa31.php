@@ -122,30 +122,24 @@ use Illuminate\Support\Facades\Auth;
                             </a>
                         </li>
                         <li class="header fs-10 m-0 text-uppercase">Manajemen Ujian</li>
-                        <li class="">
+                        <li class="<?php echo e(Route::currentRouteName() == 'ListRuangan' || Route::currentRouteName() == 'CreateRuangan' ? 'active' : ''); ?>">
                             <a href="<?php echo e(route('ListRuangan')); ?>">
                                 <i data-feather="plus-circle"></i>
                                 <span>Ruangan</span>
                             </a>
                         </li>
-                        <li class="">
+                        <li class="<?php echo e(Route::currentRouteName() == 'ListUjian' || Route::currentRouteName() == 'CreateUjian' ? 'active' : ''); ?>">
                             <a href="<?php echo e(route('ListUjian')); ?>">
                                 <i data-feather="edit"></i>
                                 <span>Ujian</span>
                             </a>
                         </li>
-                        <li class="">
-                            <a href="<?php echo e(route('ListTipeUjian')); ?>">
-                                <i data-feather="tag"></i>
-                                <span>Tipe Ujian</span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="#">
-                                <i data-feather="clock"></i>
-                                <span>History</span>
-                            </a>
-                        </li>
+
+
+
+
+
+
                     </ul>
                 </div>
             </div>

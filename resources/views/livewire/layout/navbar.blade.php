@@ -16,7 +16,8 @@ new class extends Component {
     public function logout(Logout $logout): void
     {
         $logout();
-        redirect()->route('login')->with('message', 'Berhasil Logout.');
+        $this->redirect(route('login'), navigate: true)->with('message', 'Berhasil Logout.');
+
     }
 
     public $data, $auth, $foto;
@@ -84,12 +85,12 @@ new class extends Component {
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 drop-shadow-lg" aria-labelledby="dropdownDividerButton">
                         @if($auth == "mhs")
                             <li>
-                                <a href="{{route('biodata-mhs')}}" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                <a href="{{route('biodata-mhs')}}" wire:navigate class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                     <i class="fa fa-user-circle-o me-3 text-xl" aria-hidden="true"> </i> My Profile
                                 </a>
                             </li>
                             <li>
-                                <a class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer" wire:click="logout">
+                                <a class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer" wire:click="logout" wire:navigate>
                                     <i class="fa-solid fa-right-from-bracket me-3 text-xl"> </i> Logout
                                 </a>
                             </li>
