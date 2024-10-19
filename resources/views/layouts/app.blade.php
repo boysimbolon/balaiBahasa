@@ -10,22 +10,6 @@
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('favicon.ico') }}">
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.8/jquery.slimscroll.min.js" defer></script>
-    <script src="{{ asset('js/vendors.min.js') }}" defer></script>
-    <script src="{{ asset('js/pages/chat-popup.js') }}" defer></script>
-    <script src="{{ asset('assets/icons/feather-icons/feather.min.js') }}" defer></script>
-    <script src="{{ asset('assets/vendor_components/datatable/datatables.js') }}" defer></script>
-    <script src="{{ asset('assets/vendor_components/apexcharts-bundle/dist/apexcharts.js') }}" defer></script>
-    <script src="{{ asset('assets/vendor_components/fullcalendar-6/dist/index.global.js') }}" defer></script>
-    <script src="https://cdn.tailwindcss.com" defer></script>
-    <script src="{{ asset('js/tailwind.min.js') }}" defer></script>
-    <script src="{{ asset('js/demo.js') }}" defer></script>
-    <script src="{{ asset('js/template.js') }}" defer></script>
-    <script src="{{ asset('js/pages/dashboard.js') }}" defer></script>
-    <script src="{{ asset('js/pages/app-contact.js') }}" defer></script>
-    <script>
-        feather.replace();
-    </script>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net" >
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -61,6 +45,24 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.8/jquery.slimscroll.min.js" defer></script>
+    <script src="{{ asset('js/vendors.min.js') }}" defer></script>
+    <script src="{{ asset('js/pages/chat-popup.js') }}" defer></script>
+    <script src="{{ asset('assets/icons/feather-icons/feather.min.js') }}" defer></script>
+    <script src="{{ asset('assets/vendor_components/datatable/datatables.js') }}" defer></script>
+    <script src="{{ asset('assets/vendor_components/apexcharts-bundle/dist/apexcharts.js') }}" defer></script>
+    <script src="{{ asset('assets/vendor_components/fullcalendar-6/dist/index.global.js') }}" defer></script>
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    <script src="{{ asset('js/tailwind.min.js') }}" defer></script>
+    <script src="{{ asset('js/demo.js') }}" defer></script>
+    <script src="{{ asset('js/template.js') }}" defer></script>
+    <script src="{{ asset('js/pages/dashboard.js') }}" defer></script>
+    <script src="{{ asset('js/pages/app-contact.js') }}" defer></script>
+    <script>
+        feather.replace();
+    </script>
+
 {{--<!-- Navbar -->--}}
 {{--<nav class="fixed h-20 w-full md:w-screen drop-shadow-lg bg-white flex items-center z-20">--}}
 {{--    <!-- Menu -->--}}
