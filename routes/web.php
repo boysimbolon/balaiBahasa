@@ -14,6 +14,7 @@ use App\Livewire\DashboardUser;
 use App\Livewire\E3schedule;
 use App\Livewire\EditBiodataUser;
 use App\Livewire\EditRuanganUjian;
+use App\Livewire\EditUjian;
 use App\Livewire\History;
 use App\Livewire\HistoryMhs;
 use App\Livewire\ListUjian;
@@ -48,11 +49,12 @@ Route::prefix('mhs')->middleware('mhs')->group(function () {
 // Grouping routes for admin with prefix and middleware
 Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/', DashboardAdmin::class)->name('dashboard-admin');
-    Route::get('/CreateRuangan', CreateRuangan::class)->name('CreateRuangan');
-    Route::get('/Ruangan', RuanganUjian::class)->name('ListRuangan');
-    Route::get('/EditRuangan', EditRuanganUjian::class)->name('edit-ruang-ujian');
-    Route::get('/CreateUjian', CreateUjian::class)->name('CreateUjian');
-    Route::get('/Ujian', ListUjian::class)->name('ListUjian');
+    Route::get('/create_ruangan', CreateRuangan::class)->name('CreateRuangan');
+    Route::get('/ruangan', RuanganUjian::class)->name('ListRuangan');
+    Route::get('/edit_ruangan', EditRuanganUjian::class)->name('edit-ruang-ujian');
+    Route::get('/create_ujian', CreateUjian::class)->name('CreateUjian');
+    Route::get('/list_ujian', ListUjian::class)->name('ListUjian');
+    Route::get('/edit_ujian', EditUjian::class)->name('edit-ujian');
     Route::get('/Createtipe_ujian',CreateTipeUjian::class)->name('CreateTipeUjian');
     Route::get('/tipe_ujian',TipeUjian::class)->name('ListTipeUjian');
     Route::get('/biodata', Biodatausr::class)->name('biodataadmin');
