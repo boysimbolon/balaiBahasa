@@ -1,11 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\BniEnc;
 use App\Models\data_user;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class ApiController extends Controller
 {
@@ -13,53 +13,41 @@ class ApiController extends Controller
     public $secret_key;
     public $url;
 
-
     public function create($idUjian, $auth)
     {
-//        $client_id = '19490';
-//        $secret_key = '128bf4c4fb5b065dfb14293b12a390a4';
-//        $url = 'https://apibeta.bni-ecollection.com/';
         $this->client_id = env('BNI_CLIENT_ID');
         $this->secret_key = env('BNI_SECRET_KEY');
         $this->url = env('BNI_URL_API');
         $data_asli = [];
-        $trx_ammount = 0;
-        $description = '';
 
+        // Tentukan nilai transaksi berdasarkan jenis ujian
         switch ($idUjian) {
             case '1':
-                $trx_ammount = 250000;
+                $trx_ammount = 5000;
                 $description = 'Pembayaran English Entrance Exam';
                 break;
             case '2':
-                $trx_ammount = 200000;
+                $trx_ammount = 2000;
                 $description = 'Pembayaran English Exit Exam';
                 break;
             case '3':
-                $trx_ammount = 300000;
+                $trx_ammount = 3000;
                 $description = 'Pembayaran TOEFL';
                 break;
             default:
-                session()->flash('error', 'Jenis ujian tidak valid.');
-                return;
+                return response()->json(['error' => 'Jenis ujian tidak valid.'], 400);
         }
 
-//        $registration_code = '';
         if ($auth === 'user') {
             $data_user = data_user::where('no_Peserta', Auth::guard('user')->user()->no_Peserta)->first();
             if (!$data_user) {
-                session()->flash('error', 'Data user tidak ditemukan.');
-                return;
+                return response()->json(['error' => 'Data user tidak ditemukan.'], 404);
             }
-
-//            $eightDigits = substr($data_user->va, -8);
-//            $registration_code = "UNAI" . $eightDigits;
-
-            $data_asli = array(
+            $data_asli = [
                 'type' => 'createbilling',
                 'client_id' => $this->client_id,
                 'trx_id' => mt_rand(),
-                'datetime_expired' => date('c', time() + 1200 * 3600),
+                'datetime_expired' => date('c', time() + 3600),
                 'trx_amount' => $trx_ammount,
                 'billing_type' => 'c',
                 'customer_name' => $data_user->nama,
@@ -67,122 +55,110 @@ class ApiController extends Controller
                 'customer_phone' => $data_user->num_telp,
                 'virtual_account' => $data_user->va,
                 'description' => $description
-            );
+            ];
         } elseif ($auth === 'mhs') {
-            $id_user = DB::connection('pmb')->table('registration_form')->where('nim', trim(session('atribut')->nim))->select('id_user')->first();
+            $id_user = DB::connection('pmb')->table('registration_form')->where('nim', trim(session('atribut')->nim))->value('id_user');
             if (!$id_user) {
-                session()->flash('error', 'ID user tidak ditemukan.');
-                return;
+                return response()->json(['error' => 'ID user tidak ditemukan.'], 404);
             }
 
-            $data = DB::connection('pmb')->table('users')->where('id', $id_user->id_user)->first();
+            $data = DB::connection('pmb')->table('users')->find($id_user);
             if (!$data) {
-                session()->flash('error', 'Data user tidak ditemukan.');
-                return;
+                return response()->json(['error' => 'Data user tidak ditemukan.'], 404);
             }
-
-            $data_asli = array(
+            $data_asli = [
                 'type' => 'createbilling',
                 'client_id' => $this->client_id,
                 'trx_id' => mt_rand(),
-                'datetime_expired' => date('c', time() + 1200 * 3600),
+                'datetime_expired' => date('c', time() + 3600),
                 'trx_amount' => $trx_ammount,
                 'billing_type' => 'c',
                 'customer_name' => $data->name,
                 'customer_email' => $data->email,
                 'customer_phone' => $data->phone_number,
                 'virtual_account' => $data->virtual_account,
-                'description' => $description,
-            );
-        }
-
-        if (empty($data_asli)) {
-            session()->flash('error', 'Gagal membuat data asli.');
-            return;
+                'description' => $description.'_test software',
+            ];
         }
 
         try {
-            $response_json = $this->getResponse_json($data_asli, $this->client_id, $this->secret_key, $this->url);
+            $response_json = $this->getResponse_json($data_asli);
             if ($response_json['status'] != '000') {
-                \Log::error('Error in create billing: ', $response_json);
+                return $response_json['status'];
             } else {
                 $data_response = BniEnc::decrypt($response_json['data'], $this->client_id, $this->secret_key);
-                $key = $data_response['trx_id'];
-                $this->inquiry($key);
+                $this->inquiry($data_response['trx_id']);
+                return $response_json['status'];
             }
         } catch (\Exception $e) {
-            \Log::error('Exception in create billing: ' . $e->getMessage());
-            session()->flash('error', 'Terjadi kesalahan saat memproses permintaan.');
+            Log::error('Exception in create billing: ' . $e->getMessage());
+            return response()->json(['error' => 'Terjadi kesalahan saat memproses permintaan.'], 500);
         }
     }
 
     public function inquiry($trx_id)
     {
-        $data_asli = array(
+        $data_asli = [
             'client_id' => $this->client_id,
             'trx_id' => $trx_id,
             'type' => 'inquirybilling'
-        );
-
-        $response_json = $this->getResponse_json($data_asli, $this->client_id, $this->secret_key, $this->url);
+        ];
+        $response_json = $this->getResponse_json($data_asli);
         if ($response_json['status'] !== '000') {
-            \Log::error('Error in inquiry billing: ', $response_json);
+            return $response_json['status'];
         } else {
             $data_response = BniEnc::decrypt($response_json['data'], $this->client_id, $this->secret_key);
+            DB::connection('api')->table('bni_inquiry')->insert([
+                'client_id' => $data_response['client_id'],
+                'trx_id' => $data_response['trx_id'],
+                'virtual_account' => $data_response['virtual_account'],
+                'trx_amount' => $data_response['trx_amount'],
+                'customer_name' => $data_response['customer_name'],
+                'customer_phone' => $data_response['customer_phone'],
+                'customer_email' => $data_response['customer_email'],
+                'datetime_created' => $data_response['datetime_created'],
+                'datetime_expired' => $data_response['datetime_expired'],
+                'datetime_payment' => $data_response['datetime_payment'],
+                'datetime_last_updated' => $data_response['datetime_last_updated'],
+                'payment_ntb' => $data_response['payment_ntb'],
+                'payment_amount' => $data_response['payment_amount'],
+                'va_status' => $data_response['va_status'],
+                'description' => $data_response['description'],
+                'billing_type' => $data_response['billing_type'],
+                'datetime_created_iso8601' => $data_response['datetime_created_iso8601'],
+                'datetime_expired_iso8601' => $data_response['datetime_expired_iso8601'],
+                'datetime_payment_iso8601' => $data_response['datetime_payment_iso8601'],
+                'datetime_last_update_iso8601' => $data_response['datetime_last_updated_iso8601']
+            ]);
+            return $response_json['status'];
         }
     }
 
-    public function getResponse_json(array $data_asli, string $client_id, string $secret_key, string $url)
+    public function getResponse_json(array $data_asli)
     {
-        $hashed_string = BniEnc::encrypt(
-            $data_asli,
-            $client_id,
-            $secret_key
-        );
-        $data = array(
-            'client_id' => $client_id,
-            'data' => $hashed_string,
-        );
-        function get_content($url, $post)
-        {
-            $header[] = 'Content-Type: application/json';
-            $header[] = "Accept-Encoding: gzip, deflate";
-            $header[] = "Cache-Control: max-age=0";
-            $header[] = "Connection: keep-alive";
-            $header[] = "Accept-Language: en-US,en;q=0.8,id;q=0.6";
+        $hashed_string = BniEnc::encrypt($data_asli, $this->client_id, $this->secret_key);
+        $data = ['client_id' => $this->client_id, 'data' => $hashed_string];
 
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-            curl_setopt($ch, CURLOPT_HEADER, false);
-            curl_setopt($ch, CURLOPT_VERBOSE, false);
-            // curl_setopt($ch, CURLOPT_NOBODY, true);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-            curl_setopt($ch, CURLOPT_ENCODING, true);
-            curl_setopt($ch, CURLOPT_AUTOREFERER, true);
-            curl_setopt($ch, CURLOPT_MAXREDIRS, 5);
+        $ch = curl_init($this->url);
+        curl_setopt_array($ch, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => json_encode($data),
+            CURLOPT_HTTPHEADER => [
+                'Content-Type: application/json',
+                'Accept-Encoding: gzip, deflate',
+            ],
+        ]);
 
-            curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.120 Safari/537.36");
-
-            if ($post) {
-                curl_setopt($ch, CURLOPT_POST, true);
-                curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-            }
-
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-            $rs = curl_exec($ch);
-            dd($rs, $url);
-            if (empty($rs)) {
-                var_dump($rs, curl_error($ch));
-                curl_close($ch);
-                return false;
-            }
+        $response = curl_exec($ch);
+        if (curl_errno($ch)) {
+            Log::error('cURL error: ' . curl_error($ch));
+            curl_close($ch);
+            return false;
         }
-        $response = get_content($url, json_encode($data));
-        return json_decode($response, true);
+
+        curl_close($ch);
+        dd(json_decode($response, true));
+//        return json_decode($response, true);
     }
 }

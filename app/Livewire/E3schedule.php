@@ -112,8 +112,13 @@ class E3schedule extends Component
 //                });
                 $api = new ApiController();
                 $api->create($id["id_jenis_ujian"],'mhs');
+                if($api == '000'){
+                    session()->flash('message', 'Pesan Ujian Berhasil');
+                }else{
+                    session()->flash('message', 'Pesan Ujian Gagal');
+                }
             }
-            session()->flash('message', 'Pesan Ujian Berhasil');
+
             if(auth('user')->check()){
                 return redirect()->route('e3-schedule-user');
             }
