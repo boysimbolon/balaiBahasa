@@ -74,7 +74,7 @@ class CreateUjian extends Component
         // Tampilkan pesan sukses
         session()->flash('success', 'Jadwal Ujian berhasil ditambahkan.');
         $this->resetForm();
-        return redirect()->route('dashboard-admin');
+        return redirect()->route('ListUjian');
     }
 
     // Fungsi untuk mereset form

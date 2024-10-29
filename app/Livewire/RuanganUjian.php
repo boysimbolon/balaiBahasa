@@ -8,6 +8,7 @@ use Livewire\Component;
 class RuanganUjian extends Component
 {
     public $ruangan_ujians;
+    protected $listeners = ['editRuangan'];
 //    protected $listeners = ['deleteRuangan'];
 
     public function mount(){
@@ -29,5 +30,12 @@ class RuanganUjian extends Component
         // Tambahkan pesan sukses jika perlu
         session()->flash('message', 'Ruangan berhasil dihapus.');
         return redirect()->route('ListRuangan');
+    }
+
+    public function editRuangan($id)
+    {
+        session()->put('edit-ruang-ujian', $id);
+
+        return $this->redirect(route('edit-ruang-ujian'));
     }
 }

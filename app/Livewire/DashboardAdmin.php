@@ -3,13 +3,16 @@
 namespace App\Livewire;
 
 use App\Models\data_user;
+use App\Models\list_ruangan;
+use App\Models\tipe_ujian;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
 class DashboardAdmin extends Component
 {
-    public $data, $auth, $foto;
+    public $data, $auth, $foto, $ruangan_ujians, $tipe_ujians, $users, $data_user, $all_data_user;
 
     public function mount()
     {
@@ -24,6 +27,15 @@ class DashboardAdmin extends Component
             $this->data = data_user::where('no_Peserta', $authAdmin->no_Peserta)->first();
             $this->auth = 'admin';
         }
+
+        $this->ruangan_ujians = list_ruangan::all();
+        $this->tipe_ujians = tipe_ujian::all();
+        $this->users = User::all();
+        $this->data_user = data_user::all();
+        $this->all_data_user = User::join('data_users', 'users.no_peserta', '=', 'data_users.no_peserta')
+            ->select('users.*', 'data_users.*')
+            ->where('users.is_admin', 0)
+            ->get();
     }
 
     public function render()
