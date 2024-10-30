@@ -16,7 +16,8 @@ new class extends Component {
     public function logout(Logout $logout): void
     {
         $logout();
-        $this->redirect(route('login'), navigate: true)->with('message', 'Berhasil Logout.');
+        session()->flash('message', 'Berhasil Logout.');
+        $this->redirect(route('login'), navigate: true);
 
     }
 
@@ -96,7 +97,7 @@ new class extends Component {
                             </li>
                         @elseif($auth == 'user')
                             <li>
-                                <a href="{{ route('biodata-user') }}" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                <a href="{{ route('biodataUser') }}" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                     <i class="fa fa-user-circle-o me-3 text-xl" aria-hidden="true"> </i> My Profile
                                 </a>
                             </li>
@@ -112,15 +113,15 @@ new class extends Component {
                             </li>
                         @elseif($auth == 'admin')
                             <li>
-                                <a href="{{route('biodataadmin')}}" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                <a href="{{route('biodataAdmin')}}" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                     <i class="fa fa-user-circle-o me-3 text-xl" aria-hidden="true"> </i> My Profile
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{route('edit-profile-admin')}}" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-nowrap">
-                                    <i class="fa fa-key me-3 text-xl" aria-hidden="true"> </i> Ganti Password
-                                </a>
-                            </li>
+{{--                            <li>--}}
+{{--                                <a href="{{route('edit-profile-admin')}}" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-nowrap">--}}
+{{--                                    <i class="fa fa-key me-3 text-xl" aria-hidden="true"> </i> Ganti Password--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
                             <li>
                                 <a href="#" class="items-center m-0 text-base flex px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer" wire:click="logout">
                                     <i class="fa fa-right-from-bracket me-3 text-xl"></i> </i> Logout

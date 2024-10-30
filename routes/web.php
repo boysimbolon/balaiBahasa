@@ -12,6 +12,7 @@ use App\Livewire\DashboardAdmin;
 use App\Livewire\DashboardMhs;
 use App\Livewire\DashboardUser;
 use App\Livewire\E3schedule;
+use App\Livewire\EditBiodataAdmin;
 use App\Livewire\EditBiodataUser;
 use App\Livewire\EditRuanganUjian;
 use App\Livewire\EditUjian;
@@ -27,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 // Grouping routes for user with prefix and middleware
 Route::prefix('user')->middleware('user')->group(function () {
     Route::get('/', DashboardUser::class)->name('dashboard-user');
-    Route::get('/biodata', Biodatausr::class)->name('biodata-user');
+    Route::get('/biodata', Biodatausr::class)->name('biodataUser');
     Route::get('/biodata_edit', EditBiodataUser::class)->name('edit-profile-user');
     Route::get('/change_password', Changepassword::class)->name('change-password-user');
     Route::get('/pembayaran', Pembayaran::class)->name('payment');
@@ -57,8 +58,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/edit_ujian', EditUjian::class)->name('edit-ujian');
     Route::get('/Createtipe_ujian',CreateTipeUjian::class)->name('CreateTipeUjian');
     Route::get('/tipe_ujian',TipeUjian::class)->name('ListTipeUjian');
-    Route::get('/biodata', Biodatausr::class)->name('biodataadmin');
-    Route::get('/biodata_edit', EditBiodataUser::class)->name('edit-profile-admin');
+    Route::get('/biodata', Biodatausr::class)->name('biodataAdmin');
+    Route::get('/biodata_edit', EditBiodataAdmin::class)->name('edit-profile-admin');
     Route::get('/change_password', function () {
         return view('livewire.changepassword');
     })->name('change-password-admin');

@@ -13,146 +13,84 @@ class EditBiodataUser extends Component
 {
     use WithFileUploads;
 
-    public $userId, $userIdData, $users, $admins, $email, $nama, $tmpt_lahir, $tgl_lahir, $pekerjaan;
-    public $NIDN, $alamat, $jenis_kelamin, $instansi, $num_telp, $Pendidikan;
-    public $thn_lulus, $kewarganegaraan, $bhs_seharian, $pasFoto, $ktp;
+    public $userId, $userIdData, $dataUser, $email,$nama;
+    public $tmpt_lahir, $tgl_lahir, $pekerjaan, $NIDN, $alamat;
+    public $jenis_kelamin, $instansi, $num_telp, $Pendidikan, $thn_lulus;
+    public $kewarganegaraan, $bhs_seharian, $pasFoto, $ktp;
 
     public function mount()
     {
         $authUser = Auth::guard('user')->user();
-        $authAdmin = Auth::guard('admin')->user();
 
-        if ($authUser && $authUser->no_Peserta) {
-            $this->users = data_user::where('no_Peserta', $authUser->no_Peserta)->first();
+        $this->dataUser = data_user::where('no_Peserta', $authUser->no_Peserta)->first();
 
-            // Initialize properties with current user data
-            $this->userId = $authUser->id;
-            $this->userIdData = $this->users->id;
-            $this->nama = $this->users->nama;
-            $this->tmpt_lahir = $this->users->tmpt_lahir;
-            $this->tgl_lahir = $this->users->tgl_lahir;
-            $this->pekerjaan = $this->users->pekerjaan;
-            $this->NIDN = $this->users->NIDN;
-            $this->alamat = $this->users->alamat;
-            $this->jenis_kelamin = $this->users->jenis_kelamin;
-            $this->instansi = $this->users->instansi;
-            $this->num_telp = $this->users->num_telp;
-            $this->Pendidikan = $this->users->Pendidikan;
-            $this->thn_lulus = $this->users->thn_lulus;
-            $this->kewarganegaraan = $this->users->kewarganegaraan;
-            $this->bhs_seharian = $this->users->bhs_seharian;
-//            $this->pasFoto = $this->users->pasFoto;
-            $this->email = User::where('no_Peserta', $authUser->no_Peserta)->value('email');
-        } else {
-            $this->users = null;
-            $this->email = null;
-        }
-
-        if ($authAdmin && $authAdmin->no_Peserta) {
-            $this->admins = data_user::where('no_Peserta', $authAdmin->no_Peserta)->first();
-
-            // Initialize properties with current user data
-            $this->userId = $authAdmin->id;
-            $this->userIdData = $this->admins->id;
-            $this->nama = $this->admins->nama;
-            $this->tmpt_lahir = $this->admins->tmpt_lahir;
-            $this->tgl_lahir = $this->admins->tgl_lahir;
-            $this->pekerjaan = $this->admins->pekerjaan;
-            $this->NIDN = $this->admins->NIDN;
-            $this->alamat = $this->admins->alamat;
-            $this->jenis_kelamin = $this->admins->jenis_kelamin;
-            $this->instansi = $this->admins->instansi;
-            $this->num_telp = $this->admins->num_telp;
-            $this->Pendidikan = $this->admins->Pendidikan;
-            $this->thn_lulus = $this->admins->thn_lulus;
-            $this->kewarganegaraan = $this->admins->kewarganegaraan;
-            $this->bhs_seharian = $this->admins->bhs_seharian;
-//            $this->pasFoto = $this->admins->pasFoto;
-            $this->email = User::where('no_Peserta', $authAdmin->no_Peserta)->value('email');
-
-//            dd($this->userId);
-        } else {
-            $this->admins = null;
-            $this->email = null;
-        }
+        $this->userId = $authUser->id;
+        $this->userIdData = $this->dataUser->id;
+        $this->nama = $this->dataUser->nama;
+        $this->tmpt_lahir = $this->dataUser->tmpt_lahir;
+        $this->tgl_lahir = $this->dataUser->tgl_lahir;
+        $this->pekerjaan = $this->dataUser->pekerjaan;
+        $this->NIDN = $this->dataUser->NIDN;
+        $this->alamat = $this->dataUser->alamat;
+        $this->jenis_kelamin = $this->dataUser->jenis_kelamin;
+        $this->instansi = $this->dataUser->instansi;
+        $this->num_telp = $this->dataUser->num_telp;
+        $this->Pendidikan = $this->dataUser->Pendidikan;
+        $this->thn_lulus = $this->dataUser->thn_lulus;
+        $this->kewarganegaraan = $this->dataUser->kewarganegaraan;
+        $this->bhs_seharian = $this->dataUser->bhs_seharian;
+//            $this->pasFoto = $this->dataUser->pasFoto;
+        $this->email = User::where('no_Peserta', $authUser->no_Peserta)->value('email');
     }
 
     public function render()
     {
-        if (Auth::guard('user')) {
-            return view('livewire.editprofile', [
-                'title' => 'Edit Biodata',
-                'users' => $this->users,
-                'email' => $this->email
-            ]);
-        } elseif (Auth::guard('admin')) {
-            return view('livewire.editprofile', [
-                'title' => 'Edit Biodata',
-                'admins' => $this->admins,
-                'email' => $this->email
-            ]);
-        }
+        return view('livewire.edit-profile-user', [
+            'title' => 'Edit Biodata User',
+        ]);
     }
 
     public function editProfile()
     {
-        $authUser = Auth::guard('user')->user();
-        $authAdmin = Auth::guard('admin')->user();
-
-        try {
-            $this->validate([
-                'nama' => 'required|string|max:100',
-                'tmpt_lahir' => 'required|string|max:100',
-                'tgl_lahir' => 'required|date',
-                'pekerjaan' => 'required|string',
-                'NIDN' => 'nullable|string',
-                'alamat' => 'required|string',
-                'jenis_kelamin' => 'required|in:Perempuan,Laki-Laki',
-                'instansi' => 'required|string',
-                'num_telp' => 'required|string',
-                'email' => 'nullable|email|max:255|unique:users,email,' . $this->userId,
-                'Pendidikan' => 'required|string',
-                'thn_lulus' => 'required|string',
-                'kewarganegaraan' => 'required|string',
-                'bhs_seharian' => 'required|string',
+        $this->validate([
+            'nama' => 'required|string|max:100',
+            'tmpt_lahir' => 'required|string|max:100',
+            'tgl_lahir' => 'required|date',
+            'pekerjaan' => 'required|string',
+            'NIDN' => 'nullable|string',
+            'alamat' => 'required|string',
+            'jenis_kelamin' => 'required|in:Perempuan,Laki-Laki',
+            'instansi' => 'required|string',
+            'num_telp' => 'required|string',
+            'email' => 'nullable|email|max:255|unique:users,email,' . $this->userId,
+            'Pendidikan' => 'required|string',
+            'thn_lulus' => 'required|string',
+            'kewarganegaraan' => 'required|string',
+            'bhs_seharian' => 'required|string',
 //            'pasFoto' => 'nullable|image|max:1024',
 //            'ktp' => 'nullable|image|max:1024',
-            ]);
+        ]);
 
-            $data_user = data_user::findOrFail($this->userIdData);
-            $user = User::findOrFail($this->userId);
+        $data_user = data_user::findOrFail($this->userIdData);
+        $user = User::findOrFail($this->userId);
 
 //        $this->handleFileUpload($data_user, 'pasFoto', $updates);
 //        $this->handleFileUpload($data_user, 'ktp', $updates);
 
-            $updates = [];
-            $this->mapChangesToUpdates($data_user, $updates);
+        $updates = [];
+        $this->mapChangesToUpdates($data_user, $updates);
 
-            if ($this->email !== $user->email) {
-                $user->update(['email' => $this->email]);
-            }
+        if ($this->email !== $user->email) {
+            $user->update(['email' => $this->email]);
+        }
 
-            if ($authAdmin) {
-                if (!empty($updates)) {
-                    $data_user->update($updates);
-                    return redirect()->route('biodataadmin', ['admins' => $this->admins, 'email' => $this->email])
-                        ->with('success', 'Data pengguna berhasil diperbarui!');
-                } else {
-                    return redirect()->route('biodataadmin', ['admins' => $this->admins, 'email' => $this->email])
-                        ->with('info', 'No changes detected to update.');
-                }
-            } elseif ($authUser) {
-                if (!empty($updates)) {
-                    $data_user->update($updates);
-                    return redirect()->route('biodata-user', ['users' => $this->users, 'email' => $this->email])
-                        ->with('success', 'Data pengguna berhasil diperbarui!');
-                } else {
-                    return redirect()->route('biodata-user', ['users' => $this->users, 'email' => $this->email])
-                        ->with('info', 'No changes detected to update.');
-                }
-            }
-        } catch (\Exception $e) {
-            return back()->withErrors(['error' => 'Terjadi kesalahan: ' . $e->getMessage()]);
+        if (!empty($updates)) {
+            $data_user->update($updates);
+            return redirect()->route('biodataUser', ['users' => $this->dataUser, 'email' => $this->email])
+                ->with('success', 'Data pengguna berhasil diperbarui!');
+        } else {
+            return redirect()->route('biodataUser', ['users' => $this->dataUser, 'email' => $this->email])
+                ->with('info', 'No changes detected to update.');
         }
     }
 
