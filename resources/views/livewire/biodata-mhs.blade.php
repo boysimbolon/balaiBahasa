@@ -61,7 +61,7 @@
                             <span>S1</span>
                         </a>
                         <a class="media media-single" href="#">
-                            <span class="title text-mute">Tahun Pendidikan Pendidikan</span>
+                            <span class="title text-mute">Tahun Pendidikan</span>
                             <span>2024</span>
                         </a>
                         <a class="media media-single" href="#">
