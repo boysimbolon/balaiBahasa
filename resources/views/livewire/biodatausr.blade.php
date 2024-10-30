@@ -22,11 +22,13 @@
                     </div>
                 </div>
             </div>
-            @if(Auth::guard('user')->check())
-                <a href="{{ route('edit-profile-user') }}" type="button" class="waves-effect waves-light w-p100 rounded-xl btn btn-primary text-center">Edit Profile</a>
-            @elseif(Auth::guard('admin')->check())
-                <a href="{{ route('edit-profile-admin') }}" type="button" class="waves-effect waves-light w-p100 rounded-xl btn btn-primary text-center">Edit Profile</a>
-            @endif
+            <div class="hidden lg:block">
+                @if(Auth::guard('user')->check())
+                    <a href="{{ route('edit-profile-user') }}" type="button" class="waves-effect waves-light w-p100 rounded-xl btn btn-primary text-center">Edit Profile</a>
+                @elseif(Auth::guard('admin')->check())
+                    <a href="{{ route('edit-profile-admin') }}" type="button" class="waves-effect waves-light w-p100 rounded-xl btn btn-primary text-center">Edit Profile</a>
+                @endif
+            </div>
         </div>
         <div class="col-span-2">
             <div class="box">
@@ -43,7 +45,7 @@
                         <a class="media media-single" href="#">
                             <span class="title text-mute">Jenis Kelamin</span>
                             <span>
-                                @if($users->jenis_kelamin == 'L')
+                                @if($users->jenis_kelamin == 'Laki-Laki')
                                     Laki-laki
                                 @else
                                     Perempuan
@@ -71,7 +73,7 @@
                             <span>{{ $users->Pendidikan }}</span>
                         </a>
                         <a class="media media-single" href="#">
-                            <span class="title text-mute">Tahun Pendidikan Pendidikan</span>
+                            <span class="title text-mute">Tahun Pendidikan</span>
                             <span>{{ $users->thn_lulus }}</span>
                         </a>
                         <a class="media media-single" href="#">
@@ -86,6 +88,13 @@
                         </a>
                     </div>
                 </div>
+            </div>
+            <div class="lg:hidden mb-4">
+                @if(Auth::guard('user')->check())
+                    <a href="{{ route('edit-profile-user') }}" type="button" class="waves-effect waves-light w-p100 rounded-xl btn btn-primary text-center">Edit Profile</a>
+                @elseif(Auth::guard('admin')->check())
+                    <a href="{{ route('edit-profile-admin') }}" type="button" class="waves-effect waves-light w-p100 rounded-xl btn btn-primary text-center">Edit Profile</a>
+                @endif
             </div>
         </div>
     </div>
