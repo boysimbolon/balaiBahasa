@@ -7,7 +7,7 @@ use App\Models\list_ujian;
 use App\Models\pesan_ujian;
 use Livewire\Component;
 
-class E3schedule extends Component
+class E3Schedule extends Component
 {
     public $jenis, $tanggal, $jam, $ruangan, $kapasitas, $kuota;
     public $pesan, $tgl, $jm, $created;
@@ -38,8 +38,8 @@ class E3schedule extends Component
         $this->jam = list_ujian::pluck('jam')
             ->map(fn($item) => \Carbon\Carbon::parse($item)->translatedFormat('H:i'));
 
-        // Mengambil data kapasitas dan kuota dari metode Toeflschedule
-        $method = new Toeflschedule();
+        // Mengambil data kapasitas dan kuota dari metode ToeflSchedule
+        $method = new ToeflSchedule();
         $method->loadRuanganAndKapasitas();
         $this->ruangan = list_ujian::with('listruangan')->get();
         $this->kapasitas = $method->kapasitas;

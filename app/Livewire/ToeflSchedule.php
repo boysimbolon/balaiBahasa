@@ -8,7 +8,7 @@ use App\Models\tipe_ujian;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
-class Toeflschedule extends Component
+class ToeflSchedule extends Component
 {
     public $jenis, $tanggal, $jam, $ruangan, $kapasitas, $kuota;
     public $pesan, $tgl, $jm, $created;
