@@ -50,23 +50,29 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($pesan->sortBy([['listujian.tipeujian.jenis_ujian', 'asc'], ['listujian.tanggal', 'asc'],['listujian.jam','asc']]) as $psn => $data)
-                                @if(isset($data->listujian->id_jenis_ujian) && $data->listujian->id_jenis_ujian == '3' && $data->status=='1')
-                                    <tr class="border-y">
-                                        <td class="p-2">{{ $data->listujian->tipeujian->jenis_ujian }}</td>
-                                        <td class="p-2">{{ $tgl[$psn] ?? 'N/A' }}</td>
-                                        <td class="p-2">{{ $jm[$psn] ?? 'N/A' }}</td>
-                                        <td class="p-2">{{ $data->listruangan->nama_ruangan }}</td>
-                                        <td class="p-2">{{ $created[$psn] ?? 'N/A' }}</td>
-                                        <td class="p-2">
-                                            <div class="p-1 gap-3 flex">
-                                                <a href="" target="_blank" class="text-primary">Link Moodle</a>
-                                                <span>Enroll Key: u4JKid</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endif
-                            @endforeach
+                            @if($pesan->isEmpty())
+                                <tr class="border-y">
+                                    <td class="p-2 text-center" colspan="6">Belum ada jadwal</td>
+                                </tr>
+                            @else
+                                @foreach($pesan->sortBy([['listujian.tipeujian.jenis_ujian', 'asc'], ['listujian.tanggal', 'asc'],['listujian.jam','asc']]) as $psn => $data)
+                                    @if(isset($data->listujian->id_jenis_ujian) && $data->listujian->id_jenis_ujian == '3' && $data->status=='1')
+                                        <tr class="border-y">
+                                            <td class="p-2">{{ $data->listujian->tipeujian->jenis_ujian }}</td>
+                                            <td class="p-2">{{ $tgl[$psn] ?? 'N/A' }}</td>
+                                            <td class="p-2">{{ $jm[$psn] ?? 'N/A' }}</td>
+                                            <td class="p-2">{{ $data->listruangan->nama_ruangan }}</td>
+                                            <td class="p-2">{{ $created[$psn] ?? 'N/A' }}</td>
+                                            <td class="p-2">
+                                                <div class="p-1 gap-3 flex">
+                                                    <a href="" target="_blank" class="text-primary">Link Moodle</a>
+                                                    <span>Enroll Key: u4JKid</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endif
+                                @endforeach
+                            @endif
                             </tbody>
                         </table>
                     </div>
