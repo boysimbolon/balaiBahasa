@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Models\data_user;
+use App\Models\Data_User;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -22,7 +22,7 @@ class EditBiodataUser extends Component
     {
         $authUser = Auth::guard('user')->user();
 
-        $this->dataUser = data_user::where('no_Peserta', $authUser->no_Peserta)->first();
+        $this->dataUser = Data_User::where('no_Peserta', $authUser->no_Peserta)->first();
 
         $this->userId = $authUser->id;
         $this->userIdData = $this->dataUser->id;
@@ -71,11 +71,11 @@ class EditBiodataUser extends Component
 //            'ktp' => 'nullable|image|max:1024',
         ]);
 
-        $data_user = data_user::findOrFail($this->userIdData);
+        $data_user = Data_User::findOrFail($this->userIdData);
         $user = User::findOrFail($this->userId);
 
-//        $this->handleFileUpload($data_user, 'pasFoto', $updates);
-//        $this->handleFileUpload($data_user, 'ktp', $updates);
+//        $this->handleFileUpload($dataUser, 'pasFoto', $updates);
+//        $this->handleFileUpload($dataUser, 'ktp', $updates);
 
         $updates = [];
         $this->mapChangesToUpdates($data_user, $updates);
@@ -149,12 +149,12 @@ class EditBiodataUser extends Component
         }
     }
 
-//    private function handleFileUpload($data_user, $field, &$updates)
+//    private function handleFileUpload($dataUser, $field, &$updates)
 //    {
 //        if ($this->{$field}) {
 //            // Delete the old file if it exists
-//            if ($data_user->{$field}) {
-//                Storage::disk('public')->delete($data_user->{$field});
+//            if ($dataUser->{$field}) {
+//                Storage::disk('public')->delete($dataUser->{$field});
 //            }
 //
 //            // Store the new file

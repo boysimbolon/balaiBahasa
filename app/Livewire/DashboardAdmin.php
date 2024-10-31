@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Models\data_user;
+use App\Models\Data_User;
 use App\Models\list_ruangan;
 use App\Models\tipe_ujian;
 use App\Models\User;
@@ -24,14 +24,14 @@ class DashboardAdmin extends Component
         $authUser = Auth::guard('user')->user();
         $authAdmin = Auth::guard('admin')->user();
         if ($authAdmin && $authAdmin->no_Peserta) {
-            $this->data = data_user::where('no_Peserta', $authAdmin->no_Peserta)->first();
+            $this->data = Data_User::where('no_Peserta', $authAdmin->no_Peserta)->first();
             $this->auth = 'admin';
         }
 
         $this->ruangan_ujians = list_ruangan::all();
         $this->tipe_ujians = tipe_ujian::all();
         $this->users = User::all();
-        $this->data_user = data_user::all();
+        $this->data_user = Data_User::all();
         $this->all_data_user = User::join('data_users', 'users.no_peserta', '=', 'data_users.no_peserta')
             ->select('users.*', 'data_users.*')
             ->where('users.is_admin', 0)

@@ -6,30 +6,30 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class data_user extends Model
+class Data_User extends Model
 {
     use HasFactory,Notifiable;
     protected $connection = 'mydb';
     protected $table = 'data_users';
     protected $fillable = [
         'nama',
-        'nik' ,
+        'nik',
         'va',
-        'tmpt_lahir' ,
-        'tgl_lahir' ,
-        'pekerjaan' ,
-        'NIDN' ,
+        'tmpt_lahir',
+        'tgl_lahir',
+        'pekerjaan',
+        'NIDN',
         'alamat',
-        'jenis_kelamin' ,
-        'instansi' ,
-        'num_telp' ,
-        'Pendidikan' ,
-        'thn_lulus' ,
-        'kewarganegaraan' ,
+        'jenis_kelamin',
+        'instansi',
+        'num_telp',
+        'Pendidikan',
+        'thn_lulus',
+        'kewarganegaraan',
         'pasFoto',
         'ktp',
         'bhs_seharian',
         'no_Peserta',
-        'city'
+        'city',
     ];
 }

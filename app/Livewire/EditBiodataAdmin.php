@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Models\data_user;
+use App\Models\Data_User;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -18,7 +18,7 @@ class EditBiodataAdmin extends Component
     {
         $authAdmin = Auth::guard('admin')->user();
 
-        $this->dataAdmin = data_user::where('no_Peserta', $authAdmin->no_Peserta)->first();
+        $this->dataAdmin = Data_User::where('no_Peserta', $authAdmin->no_Peserta)->first();
 
         $this->adminId = $authAdmin->id;
         $this->adminIdData = $this->dataAdmin->id;
@@ -67,7 +67,7 @@ class EditBiodataAdmin extends Component
         ]);
 
         $admin = User::findOrFail($this->adminId);
-        $data_admin = data_user::findOrFail($this->adminIdData);
+        $data_admin = Data_User::findOrFail($this->adminIdData);
 
         $updates = [];
         $this->mapChangesToUpdates($data_admin, $updates);

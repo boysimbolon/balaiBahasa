@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Models\data_user;
+use App\Models\Data_User;
 use App\Models\pesan_ujian;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -25,8 +25,8 @@ class DashboardUser extends Component
         // Jika mahasiswa, ambil data atribut dan ujian
         $this->data = auth('user')->user();
 
-        // Ambil data tambahan dari model data_user
-        $userData = data_user::find($this->data->id);
+        // Ambil data tambahan dari model Data_User
+        $userData = Data_User::find($this->data->id);
         if ($userData) {
             // Gabungkan data user dengan data yang ada
             $this->data->additional_data = $userData; // Misalnya, jika ingin menambahkan data ke objek yang sudah ada

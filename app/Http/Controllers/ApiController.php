@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\BniEnc;
-use App\Models\data_user;
+use App\Models\Data_User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -39,7 +39,7 @@ class ApiController extends Controller
         }
 
         if ($auth === 'user') {
-            $data_user = data_user::where('no_Peserta', Auth::guard('user')->user()->no_Peserta)->first();
+            $data_user = dataUser::where('no_Peserta', Auth::guard('user')->user()->no_Peserta)->first();
             if (!$data_user) {
                 return response()->json(['error' => 'Data user tidak ditemukan.'], 404);
             }

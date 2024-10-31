@@ -2,7 +2,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\data_user;
+use App\Models\Data_User;
 use App\Models\Moodle;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -26,11 +26,11 @@ class VerifyEmailController extends Controller
             $user->email_verification_token = null; // Hapus token setelah verifikasi
             $user->save();
             if($user->is_admin=='1'){
-                $data = data_user::where('no_Peserta',$user->no_Peserta)->first();
+                $data = Data_User::where('no_Peserta',$user->no_Peserta)->first();
                 $namaArray = explode(" ", $data->nama);
                 // Mengambil nama depan (elemen pertama array)
                 $namaDepan = $namaArray[0];
-                //update data_user dikolom va
+                //update dataUser dikolom va
                 //tahun sekarang
                 $tahun = date('Y');
                 $unik =substr($user->no_Peserta, -4);

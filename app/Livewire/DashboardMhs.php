@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Models\data_user;
+use App\Models\Data_User;
 use App\Models\pesan_ujian;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;

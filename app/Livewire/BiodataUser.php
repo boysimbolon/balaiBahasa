@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Models\data_user;
+use App\Models\Data_User;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -17,10 +17,10 @@ class BiodataUser extends Component
         $authUser = Auth::guard('user')->user();
         $authAdmin = Auth::guard('admin')->user();
         if ($authUser && $authUser->no_Peserta) {
-            $this->users = data_user::where('no_Peserta', $authUser->no_Peserta)->first();
+            $this->users = Data_User::where('no_Peserta', $authUser->no_Peserta)->first();
             $this->email = user::where('no_Peserta',$authUser->no_Peserta)->select('email')->first();
         } elseif($authAdmin && $authAdmin->no_Peserta) {
-            $this->users = data_user::where('no_Peserta', $authAdmin->no_Peserta)->first();
+            $this->users = Data_User::where('no_Peserta', $authAdmin->no_Peserta)->first();
             $this->email = user::where('no_Peserta',$authAdmin->no_Peserta)->select('email')->first();
         }
     }
