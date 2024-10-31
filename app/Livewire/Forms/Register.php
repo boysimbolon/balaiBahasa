@@ -3,7 +3,7 @@
 namespace App\Livewire\Forms;
 
 use App\Mail\VerifyEmail;
-use App\Models\data_user;
+use App\Models\Data_User;
 use App\Models\Moodle;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -101,7 +101,7 @@ class Register extends Component
         Mail::to($user->email)->send(new VerifyEmail($this->no_Peserta, $this->password, $this->token));
 
         // Simpan data user tambahan ke tabel data_users
-        data_user::create($validated);
+        Data_User::create($validated);
 
         // Reset semua field form
         $this->reset([

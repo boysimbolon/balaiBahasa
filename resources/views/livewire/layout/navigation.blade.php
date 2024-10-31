@@ -3,7 +3,7 @@
 use App\Livewire\Actions\Logout;
 use Illuminate\Support\Facades\DB;
 use Livewire\Volt\Component;
-use App\Models\data_user;
+use App\Models\Data_User;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +17,7 @@ new class extends Component {
     {
         $logout();
         redirect()->route('login')->with('message', 'Berhasil Logout.');
-  }
+    }
 
     public $data, $auth, $foto;
 
@@ -28,18 +28,18 @@ new class extends Component {
         $authUser = Auth::guard('user')->user();
         $authAdmin = Auth::guard('admin')->user();
         if ($authUser && $authUser->no_Peserta) {
-            $this->data = data_user::where('no_Peserta', $authUser->no_Peserta)->first();
+            $this->data = Data_User::where('no_Peserta', $authUser->no_Peserta)->first();
             $this->auth = 'user';
         } elseif (session('guard') === "mhs") {
             $this->data = session('atribut');
             $fotos = DB::connection('sqlsrv')->table('tb_foto_mhs')->where('nim', trim($this->data->nim))->first();
 
-            $foto=trim($fotos->foto_url);
+            $foto = trim($fotos->foto_url);
             $foto = str_replace('../../photo/mhs/', '', $foto);
-            $this->foto = 'image.php?file=mhs/thumbnails/thumbnail.'.$foto;
+            $this->foto = 'image.php?file=mhs/thumbnails/thumbnail.' . $foto;
             $this->auth = 'mhs';
         } elseif ($authAdmin && $authAdmin->no_Peserta) {
-            $this->data = data_user::where('no_Peserta', $authAdmin->no_Peserta)->first();
+            $this->data = Data_User::where('no_Peserta', $authAdmin->no_Peserta)->first();
             $this->auth = 'admin';
         }
     }
@@ -159,24 +159,24 @@ new class extends Component {
                             </a>
                         </li>
                         <li class="header fs-10 m-0 text-uppercase">Manajemen Ujian</li>
-                        <li class="{{ Route::currentRouteName() == 'ListRuangan' || Route::currentRouteName() == 'CreateRuangan' ? 'active' : '' }}">
+                        <li class="{{ Route::currentRouteName() == 'ListRuangan' || Route::currentRouteName() == 'CreateRuangan' || Route::currentRouteName() == 'edit-ruang-ujian' ? 'active' : '' }}">
                             <a href="{{ route('ListRuangan') }}">
                                 <i data-feather="plus-circle"></i>
                                 <span>Ruangan</span>
                             </a>
                         </li>
-                        <li class="{{ Route::currentRouteName() == 'ListUjian' || Route::currentRouteName() == 'CreateUjian' ? 'active' : '' }}">
+                        <li class="{{ Route::currentRouteName() == 'ListUjian' || Route::currentRouteName() == 'CreateUjian' || Route::currentRouteName() == 'edit-ujian' ? 'active' : '' }}">
                             <a href="{{ route('ListUjian') }}">
                                 <i data-feather="edit"></i>
                                 <span>Ujian</span>
                             </a>
                         </li>
-{{--                        <li class="">--}}
-{{--                            <a href="#">--}}
-{{--                                <i data-feather="clock"></i>--}}
-{{--                                <span>History</span>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
+                        {{--                        <li class="">--}}
+                        {{--                            <a href="#">--}}
+                        {{--                                <i data-feather="clock"></i>--}}
+                        {{--                                <span>History</span>--}}
+                        {{--                            </a>--}}
+                        {{--                        </li>--}}
                     </ul>
                 </div>
             </div>

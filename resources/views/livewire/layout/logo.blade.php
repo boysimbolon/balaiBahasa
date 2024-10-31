@@ -1,9 +1,9 @@
 <?php
 
 use App\Livewire\Actions\Logout;
+use App\Models\Data_User;
 use Illuminate\Support\Facades\DB;
 use Livewire\Volt\Component;
-use App\Models\data_user;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,18 +28,18 @@ new class extends Component {
         $authUser = Auth::guard('user')->user();
         $authAdmin = Auth::guard('admin')->user();
         if ($authUser && $authUser->no_Peserta) {
-            $this->data = data_user::where('no_Peserta', $authUser->no_Peserta)->first();
+            $this->data = Data_User::where('no_Peserta', $authUser->no_Peserta)->first();
             $this->auth = 'user';
         } elseif (session('guard') === "mhs") {
             $this->data = session('atribut');
             $fotos = DB::connection('sqlsrv')->table('tb_foto_mhs')->where('nim', trim($this->data->nim))->first();
 
-            $foto=trim($fotos->foto_url);
+            $foto = trim($fotos->foto_url);
             $foto = str_replace('../../photo/mhs/', '', $foto);
-            $this->foto = 'image.php?file=mhs/thumbnails/thumbnail.'.$foto;
+            $this->foto = 'image.php?file=mhs/thumbnails/thumbnail.' . $foto;
             $this->auth = 'mhs';
         } elseif ($authAdmin && $authAdmin->no_Peserta) {
-            $this->data = data_user::where('no_Peserta', $authAdmin->no_Peserta)->first();
+            $this->data = Data_User::where('no_Peserta', $authAdmin->no_Peserta)->first();
             $this->auth = 'admin';
         }
     }
